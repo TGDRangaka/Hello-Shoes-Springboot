@@ -25,10 +25,4 @@ public class ItemEntity {
     private Double unitPriceBuy;
     private Double expectedPrice;
     private Double profitMargin;
-
-    @OneToMany(mappedBy="saleItemId.item", cascade = CascadeType.ALL)
-    private List<SaleItemEntity> saleItems;
-
-    @OneToMany(mappedBy = "resupplyItemId.item", cascade = CascadeType.ALL)
-    private List<ResupplyItemEntity> resupplyItems;
 }

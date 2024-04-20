@@ -22,4 +22,6 @@ public class RefundEntity {
     private Date refundDate;
     @OneToOne
     private EmployeeEntity employee;
+    @OneToOne
+    private SaleItemEntity saleItem;
 }

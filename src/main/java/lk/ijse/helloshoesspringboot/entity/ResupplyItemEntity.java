@@ -10,7 +10,7 @@ import java.util.Date;
 @Entity
 @Table(name = "resupplyItem")
 @AssociationOverrides({
-        @AssociationOverride(name = "resupplyItemId.item", joinColumns = @JoinColumn(name = "itemCode")),
+        @AssociationOverride(name = "resupplyItemId.inventory", joinColumns = @JoinColumn(name = "inventoryCode")),
         @AssociationOverride(name = "resupplyItemId.resupply", joinColumns = @JoinColumn(name = "suppplyId"))
 })
 public class ResupplyItemEntity {
@@ -18,7 +18,4 @@ public class ResupplyItemEntity {
     private ResupplyItemId resupplyItemId;
     private Integer suppliedQty;
     private Date suppliedDate;
-    private Colors color;
-    @Enumerated(EnumType.STRING)
-    private Sizes size;
 }

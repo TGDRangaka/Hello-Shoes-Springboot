@@ -15,16 +15,11 @@ import lombok.NoArgsConstructor;
 @Table(name = "saleItem")
 @AssociationOverrides({
         @AssociationOverride(name = "saleItemId.sale", joinColumns = @JoinColumn(name = "orderId")),
-        @AssociationOverride(name = "saleItemId.item", joinColumns = @JoinColumn(name = "itemCode"))
+        @AssociationOverride(name = "saleItemId.item", joinColumns = @JoinColumn(name = "inventoryCode"))
 })
 public class SaleItemEntity {
     @Id
     private SaleItemId saleItemId;
     private Integer qty;
-    @Enumerated(EnumType.STRING)
-    private Sizes size;
-    private Colors color;
     private Double unitPrice;
-    @ManyToOne
-    private RefundEntity refund;
 }

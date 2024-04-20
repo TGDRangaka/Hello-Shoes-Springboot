@@ -7,6 +7,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -14,7 +16,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "inventory")
 public class InventoryEntity {
     @Id
-    private String id;
+    private String inventoryCode;
     @Enumerated(EnumType.STRING)
     private Sizes size;
     private Colors colors;
@@ -25,4 +27,10 @@ public class InventoryEntity {
     private ItemEntity item;
     @ManyToOne
     private ItemImageEntity itemImage;
+
+    @OneToMany(mappedBy = "resupplyItemId.inventory", cascade = CascadeType.ALL)
+    private List<ResupplyItemEntity> resupplyItems;
+
+    @OneToMany(mappedBy="saleItemId.item", cascade = CascadeType.ALL)
+    private List<SaleItemEntity> saleItems;
 }
