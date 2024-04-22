@@ -1,0 +1,192 @@
+* {
+    padding: 0px;
+    margin: 0;
+    box-sizing: border-box;
+    position: relative;
+}
+
+body {
+    display: flex;
+    align-items: center;
+}
+
+.bg-theme {
+    background-color: #e6fff2;
+}
+
+.text-theme {
+    color: rgb(75, 75, 75);
+}
+
+.nav-btn-theme {
+    color: rgba(255, 255, 255, 0.7);
+    text-shadow: 0 0 15px rgba(0,0,0,0.4);
+}
+
+.nav-btn-theme:hover {
+    color: white;
+}
+
+/* ////////////////////////////////////////////////////////////////////////////////////// */
+
+nav {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding-block: 5px;
+    gap: 30px;
+    width: 80px;
+    height: 90vh;
+    border-radius: 40px;
+    z-index: 5;
+    left: 15px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    background: linear-gradient(to bottom, #55c494, #55c494);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.nav-buttons {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+
+nav button {
+    position: relative;
+    background-color: transparent;
+    border: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 26px;
+    aspect-ratio: 1;
+    padding: 5px;
+    transition-duration: .3s;
+}
+
+nav button:hover i {
+    transform: scale(1.2);
+}
+
+nav button h3 {
+    position: absolute;
+    font-size: 18px;
+    font-weight: 400;
+    padding: 2px 15px;
+    border-radius: 5px;
+    text-shadow: none;
+    color: rgb(75, 75, 75);
+    left: 110%;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    height: fit-content;
+    display: none;
+    background: rgba(255, 255, 255, 0.06);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(11.7px);
+    border: 1px solid rgba(255, 255, 255, 0.17);
+}
+
+nav button:hover h3 {
+    display: inline-block;
+}
+
+.logo {
+    width: calc(100% - 10px);
+    aspect-ratio: 1;
+    background-image: url("imgs/shoe-ease-manager-logo.png");
+    background-position: center;
+    background-size: cover;
+}
+
+.user-img {
+    width: calc(100% - 10px);
+    aspect-ratio: 1;
+    background-image: url("imgs/user_img.jpg");
+    background-position: center;
+    background-size: cover;
+    border-radius: 50%;
+}
+
+/* /////////////////////////////////////////////////////////////////////////////////////////////////// */
+
+section {
+    height: 90vh;
+    background-color: white;
+    width: 90vw;
+    position: relative;
+    left: 120px;
+    border-radius: 40px;
+    box-shadow: 0 0 50px rgba(0,0,0,0.2);
+    padding: 15px;
+}
+
+/* /////////////////////////////////////////////////////////////////////////////////////////////////// */
+
+.input {
+    display: flex;
+    flex-direction: column;
+}
+
+.input label {
+    margin-left: 5px;
+}
+
+.input input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    outline: none;
+    font-size: 18px;
+    color: rgba(0, 0, 0, 0.7);
+    border-radius: 8px;
+}
+
+.sale-items {
+    background-color: #55c494;
+    border-radius: 10px 10px 0 0;
+    font-weight: 200;
+    padding-block: 5px;
+    color: white;
+}
+
+.sale-item-card {
+    height: 120px;
+    /* display: flex;
+    align-items: center;
+    justify-content: space-between; */
+    padding: 5px;
+    /* border-radius: 10px; */
+    /* box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); */
+    background-color: white;
+    border-bottom: 1px solid rgb(238, 238, 238);
+}
+
+.sale-item-card i {
+    font-size: 24px;
+}
+
+/* /////////////////////////////////////////////////////////////////////////////////////////////////// */
+
+/* /////////////////////////////////////////////////////////////////////////////////////////////////// */
+
+/* /////////////////////////////////////////////////////////////////////////////////////////////////// */
+
+/* /////////////////////////////////////////////////////////////////////////////////////////////////// */
+
+/* /////////////////////////////////////////////////////////////////////////////////////////////////// */
+
+/* /////////////////////////////////////////////////////////////////////////////////////////////////// */
+
+/* /////////////////////////////////////////////////////////////////////////////////////////////////// */
+
+/* /////////////////////////////////////////////////////////////////////////////////////////////////// */
