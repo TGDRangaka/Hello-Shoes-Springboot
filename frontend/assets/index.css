@@ -8,10 +8,15 @@
 body {
     display: flex;
     align-items: center;
+    font-family: "Quicksand", sans-serif;
 }
 
 .bg-theme {
-    background-color: #e6fff2;
+    background-color: #e2f5ff;
+}
+
+.second-color {
+    background-color: #2f80ed;
 }
 
 .text-theme {
@@ -25,6 +30,10 @@ body {
 
 .nav-btn-theme:hover {
     color: white;
+}
+
+.hidden {
+    opacity: 0;
 }
 
 /* ////////////////////////////////////////////////////////////////////////////////////// */
@@ -45,7 +54,7 @@ nav {
     top: 0;
     bottom: 0;
     margin: auto;
-    background: linear-gradient(to bottom, #55c494, #55c494);
+    background: linear-gradient(to top, #56ccf2, #2f80ed);
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
 }
 
@@ -151,11 +160,15 @@ section {
     border-radius: 8px;
 }
 
+.input button {
+    padding: 8px;
+}
+
 .sale-items {
-    background-color: #55c494;
+    background: linear-gradient(to left, #56ccf2, #539bfa);
     border-radius: 10px 10px 0 0;
     font-weight: 200;
-    padding-block: 5px;
+    padding-block: 10px 2px;
     color: white;
 }
 
@@ -169,13 +182,119 @@ section {
     /* box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); */
     background-color: white;
     border-bottom: 1px solid rgb(238, 238, 238);
+    border-inline: 1px solid #2f80ed;
+}
+
+.sale-item-card:last-child{
+    border-bottom: 1px solid #2f80ed;
+    border-radius: 0 0 10px 10px;
 }
 
 .sale-item-card i {
     font-size: 24px;
 }
 
-/* /////////////////////////////////////////////////////////////////////////////////////////////////// */
+.import::after {
+    content: "*";
+    color: red;
+}
+
+#suggest-items-list {
+    position: absolute;
+    top: 110%;
+    z-index: 5;
+}
+
+.suggest-items-list{
+    display: none;
+}
+
+.input:hover .suggest-items-list {
+    display: block;
+}
+
+.suggest-item-card {
+    height: 100px;
+    /* display: flex;
+    align-items: center;
+    justify-content: space-between; */
+    padding: 5px;
+    /* border-radius: 10px; */
+    /* box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); */
+    background-color: #cff3ff;
+    border-bottom: 1px solid rgb(212, 212, 212);
+    margin-right: 25px;
+    cursor: pointer;
+}
+
+.suggest-item-card img {
+    border-radius: 8px;
+}
+
+#payment-details {
+    background-color: white;
+    border-radius: 30px;
+    height: 700px;
+}
+
+#payment-details img {
+    height: 80px;
+}
+
+#saleDescription {
+    color: rgb(175, 175, 175);
+}
+
+#saleDateTime h5 {
+    margin: 0;
+    color: rgb(117, 117, 117);
+}
+
+#saleSubtotal {
+    text-align: right;
+    border-bottom: 1px dashed rgb(165, 165, 165);
+}
+
+input[type="radio"] {
+    margin-left: 30px;
+}
+
+#cash {
+    border-radius: 8px;
+    outline: none;
+    border: none;
+    border: 1px solid gray;
+    text-align: right;
+    font-size: 1.5rem;
+    width: 200px;
+}
+
+#cardPaymentPopup {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    z-index: 10;
+    left: 0;
+    top: 0;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(3px);
+    border: 1px solid rgba(255, 255, 255, 0.17);
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+#cardPaymentPopup > div {
+    width: 700px;
+    height: 500px;
+    background-color: white;
+    border-radius: 30px;
+    padding: 20px;
+}
+
+#saleConfirmBtn {
+    align-self: center;
+}
 
 /* /////////////////////////////////////////////////////////////////////////////////////////////////// */
 
@@ -190,3 +309,19 @@ section {
 /* /////////////////////////////////////////////////////////////////////////////////////////////////// */
 
 /* /////////////////////////////////////////////////////////////////////////////////////////////////// */
+
+/* /////////////////////////////////////////////////////////////////////////////////////////////////// */
+
+.quicksand-thin {
+    font-family: "Quicksand", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.quicksand-bold {
+    font-family: "Quicksand", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+}

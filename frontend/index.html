@@ -9,6 +9,10 @@
     <link rel="stylesheet" href="assets/index.css">
     <link rel="stylesheet" href="assets/normalize.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
 </head>
 <body class="container-fluid vh-100 bg-theme">
 
@@ -16,13 +20,13 @@
         <div class="logo"></div>
 
         <div class="nav-buttons">
-            <button type="button" class="nav-btn-theme"><i class="fa-solid fa-house"></i><h3>Home</h3></button>
-            <button type="button" class="nav-btn-theme"><i class="fa-solid fa-hand-holding-dollar"></i><h3>Sales</h3></button>
-            <button type="button" class="nav-btn-theme"><i class="fa-solid fa-warehouse"></i><h3>Inventory</h3></button>
-            <button type="button" class="nav-btn-theme"><i class="fa-solid fa-users"></i><h3>Customers</h3></button>
-            <button type="button" class="nav-btn-theme"><i class="fa-solid fa-building-user"></i><h3>Employees</h3></button>
-            <button type="button" class="nav-btn-theme"><i class="fa-solid fa-truck"></i><h3>Suppliers</h3></button>
-            <button type="button" class="nav-btn-theme position-relative">
+            <button id="dashboardBtn" type="button" class="nav-btn-theme"><i class="fa-solid fa-house"></i><h3>Home</h3></button>
+            <button id="salesBtn" type="button" class="nav-btn-theme"><i class="fa-solid fa-hand-holding-dollar"></i><h3>Sales</h3></button>
+            <button id="inventoryBtn" type="button" class="nav-btn-theme"><i class="fa-solid fa-warehouse"></i><h3>Inventory</h3></button>
+            <button id="customerBtn" type="button" class="nav-btn-theme"><i class="fa-solid fa-users"></i><h3>Customers</h3></button>
+            <button id="employeesBtn" type="button" class="nav-btn-theme"><i class="fa-solid fa-building-user"></i><h3>Employees</h3></button>
+            <button id="suppliersBtn" type="button" class="nav-btn-theme"><i class="fa-solid fa-truck"></i><h3>Suppliers</h3></button>
+            <button id="notificationsBtn" type="button" class="nav-btn-theme position-relative">
                 <i class="fa-solid fa-bell"></i></i><h3>Notifications</h3>
                 <span class="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle">
                     <span class="visually-hidden">New alerts</span>
@@ -34,19 +38,18 @@
     </nav>
     
     <!-- Dashboard Section -->
-    <!-- <section id="dashboard" class="bg-theme">
-    </section> -->
+    <section id="dashboard" class="bg-theme"></section>
 
     <!-- Sales Section -->
     <section id="sales" class="bg-theme text-theme">
-        <h1>New Purchase</h1>
+        <h1 class="quicksand-bold">New Purchase</h1>
         <hr>
-        <div class="container-fluid row">
-            <form class="col-9">
+        <form class="container-fluid row">
+            <div id="saleItemsDetails" class="col-9">
                 <div class="row">
                     <h3>Customer Details</h3>
                     <div class="input col-6">
-                        <label for="customer-name">Name</label>
+                        <label for="customer-name" class="import">Name</label>
                         <input list="customerDataList" id="exampleDataList" placeholder="Type to search...">
                         <datalist id="customerDataList">
                             <option value="Dilshan">0770531993</option>
@@ -58,13 +61,62 @@
                     </div>
     
                     <div class="input col-6">
-                        <label for="customer-name">Contact No.</label>
+                        <label for="customer-name" class="import">Contact No.</label>
                         <input type="text" id="customer-name">
                     </div>
                 </div>
 
                 <div class="row mt-5">
-                    <h3>Items</h3>
+                    <h3 class="import">Items</h3>
+
+                    <div class="row mb-3">
+                        <div class="input col-8">
+                            <label for="customer-name" class="import">Item Code</label>
+                            <input id="saleItemCode" placeholder="Type to search...">
+                        
+                            <div id="suggest-items-list" class="w-100 suggest-items-list">
+                                <div class="suggest-item-card d-flex justify-content-between align-items-center">
+                                    <div class="d-flex h-100 gap-3">
+                                        <img src="assets/imgs/shoe1.png" alt="shoe" class="h-100">
+                                        <div class="d-flex flex-column justify-content-around quicksand-thin">
+                                            <h5>FSM00001</h5>
+                                            <h5>C: Red</h5>
+                                            <h5>S: 7</h5>
+                                        </div>
+                                    </div>
+                                    <div class="h-100 d-flex flex-column align-items-end justify-content-center quicksand-thin">
+                                        <h3>12000.00</h3>
+                                        <h5>Stock: 34</h5>
+                                    </div>
+                                </div>
+                                <div class="suggest-item-card d-flex justify-content-between align-items-center">
+                                    <div class="d-flex h-100 gap-3">
+                                        <img src="assets/imgs/shoe1.png" alt="shoe" class="h-100">
+                                        <div class="d-flex flex-column justify-content-around quicksand-thin">
+                                            <h5>FSM00001</h5>
+                                            <h5>C: Red</h5>
+                                            <h5>S: 7</h5>
+                                        </div>
+                                    </div>
+                                    <div class="h-100 d-flex flex-column align-items-end justify-content-center quicksand-thin">
+                                        <h3>12000.00</h3>
+                                        <h5>Stock: 34</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+        
+                        <div class="input col-1">
+                            <label for="itemsQty" class="import">Qty</label>
+                            <input type="number" id="itemsQty">
+                        </div>
+
+                        <div class="input col-3">
+                            <label class="hidden">NULL</label>
+                            <button type="button" class="btn btn-primary w-100">Add</button>
+                        </div>
+                    </div>
+                    
                     <div class="d-flex flex-column align-items-center">
                         <div class="sale-items container-sm row align-items-center text-center">
                             <h4 class="col-4">Product</h4>
@@ -77,36 +129,100 @@
                         <div class="sale-item-card container-sm row align-items-center">
                             <div class="h-100 d-flex gap-2 align-items-center col-4">
                                 <img class="h-100" src="assets/imgs/shoe1.png" alt="">
-                                <p class="w-50">Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+                                <p class="w-50 quicksand-bold">Lorem ipsum dolor sit amet consectetur adipisicing.</p>
                             </div>
-                            <h4 class="col-3 text-center">Rs. 1200.00</h4>
-                            <h4 class="col-1 text-center">4</h4>
-                            <h4 class="col-3 text-center">Rs. 4800.00</h4>
+                            <h4 class="col-3 text-center quicksand-thin">Rs. 1200.00</h4>
+                            <h4 class="col-1 text-center quicksand-thin">4</h4>
+                            <h4 class="col-3 text-center quicksand-thin">Rs. 4800.00</h4>
                             <i class="fa-solid fa-trash col-1 text-center"></i>
                         </div>
 
                         <div class="sale-item-card container-sm row align-items-center">
                             <div class="h-100 d-flex gap-2 align-items-center col-4">
                                 <img class="h-100" src="assets/imgs/shoe1.png" alt="">
-                                <p class="w-50">Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+                                <p class="w-50 quicksand-bold">Lorem ipsum dolor sit amet consectetur adipisicing.</p>
                             </div>
-                            <h4 class="col-3 text-center">Rs. 1200.00</h4>
-                            <h4 class="col-1 text-center">4</h4>
-                            <h4 class="col-3 text-center">Rs. 4800.00</h4>
+                            <h4 class="col-3 text-center quicksand-thin">Rs. 1200.00</h4>
+                            <h4 class="col-1 text-center quicksand-thin">4</h4>
+                            <h4 class="col-3 text-center quicksand-thin">Rs. 4800.00</h4>
                             <i class="fa-solid fa-trash col-1 text-center"></i>
                         </div>
 
-                        <button type="button" class="w-25 mt-3 btn btn-success">Add Item</button>
                     </div>
                 </div>
-            </form>
-            <div class="col-3 border">fd</div>
+            </div>
+
+            <div id="payment-details" class="col-3 border d-flex flex-column justify-content-between">
+                <div>
+                    <div id="saleDateTime" class="mt-3 d-flex justify-content-between align-items-center">
+                        <img src="assets/imgs/shoe-ease-manager-logo.png" alt="logo">
+                        <h5>17-04-2024 10:34 PM</h5>
+                    </div>
+                    <hr>
+                    <div id="saleDescription" class="d-flex justify-content-between quicksand-bold">
+                        <h4>DESCRIPTION</h4>
+                        <h4>SUBTOTAL</h4>
+                    </div>
+                    <hr>
+                    <div id="saleTotal" class="d-flex justify-content-between">
+                        <h4>Total</h4>
+                        <h4>9600.00</h4>
+                    </div>
+                    <div id="saleDiscount" class="mt-3 d-flex justify-content-between">
+                        <h4>Discounts</h4>
+                        <h4>0%</h4>
+                    </div>
+                    <h4 id="saleSubtotal" class="w-100 quicksand-bold">9600.00</h4>
+                    <div id="cashAndBalance">
+                        <div class="mt-3 d-flex justify-content-between">
+                            <h4 class="import">Cash</h4>
+                            <input type="number" name="cash" id="cash">
+                        </div>
+                        <div class="mt-3 d-flex justify-content-between">
+                            <h4>Balance</h4>
+                            <h4>400.00</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-5">
+                    <h4>Payment Method</h4>
+                    <input type="radio" id="cardPayment" name="paymentMethod" value="card">
+                    <label for="cardPayment">Card</label><br>
+                    <input type="radio" id="cashPayment" name="paymentMethod" value="cash" class="mt-2" checked>
+                    <label for="cashPayment">Cash</label>
+                </div>
+                <button id="payBtn" type="button" class="btn btn-primary w-100 mt-5 mb-3">Pay</button>
+            </div>
+        </form>
+
+        <div id="cardPaymentPopup" class="">
+            <div class="input d-flex flex-column justify-content-around">
+                <div>
+                    <h3>Bank Details</h3>
+                    <hr>
+                    <label for="lastDigits" class="import mt-3">Card Last Digits 4</label>
+                    <input type="number"><br>
+                    <label for="bankName" class="import mt-3">Bank Name</label>
+                    <input type="text">
+                </div>
+                <button id="saleConfirmBtn" type="button" class="btn btn-success mt-5 w-50">Confirm</button>
+            </div>
         </div>
     </section>
+
+    <section id="salesHistory" class="bg-theme text-theme mh-100"></section>
+    <section id="inventory" class="bg-theme text-theme mh-100"></section>
+    <section id="customer" class="bg-theme text-theme mh-100"></section>
+    <section id="employee" class="bg-theme text-theme mh-100"></section>
+    <section id="supplier" class="bg-theme text-theme mh-100"></section>
+    <section id="notification" class="bg-theme text-theme mh-100"></section>
 
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script type="module" src="controller/IndexController.js"></script>
+    <script type="module" src="controller/SalesController.js"></script>
 </body>
 </html>
