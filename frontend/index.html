@@ -49,7 +49,7 @@
                 <div class="row">
                     <h3>Customer Details</h3>
                     <div class="input col-6">
-                        <label for="customer-name" class="import">Name</label>
+                        <label for="customer-name" class="import label">Name</label>
                         <input list="customerDataList" id="exampleDataList" placeholder="Type to search...">
                         <datalist id="customerDataList">
                             <option value="Dilshan">0770531993</option>
@@ -61,7 +61,7 @@
                     </div>
     
                     <div class="input col-6">
-                        <label for="customer-name" class="import">Contact No.</label>
+                        <label for="customer-name" class="import label">Contact No.</label>
                         <input type="text" id="customer-name">
                     </div>
                 </div>
@@ -71,7 +71,7 @@
 
                     <div class="row mb-3">
                         <div class="input col-8">
-                            <label for="customer-name" class="import">Item Code</label>
+                            <label for="customer-name" class="import label">Item Code</label>
                             <input id="saleItemCode" placeholder="Type to search...">
                         
                             <div id="suggest-items-list" class="w-100 suggest-items-list">
@@ -107,7 +107,7 @@
                         </div>
         
                         <div class="input col-1">
-                            <label for="itemsQty" class="import">Qty</label>
+                            <label for="itemsQty" class="import label">Qty</label>
                             <input type="number" id="itemsQty">
                         </div>
 
@@ -121,7 +121,7 @@
                         <div class="sale-items container-sm row align-items-center text-center">
                             <h4 class="col-4">Product</h4>
                             <h4 class="col-3">Unit Price</h4>
-                            <h4 class="col-1">Quantity</h4>
+                            <h4 class="col-1">Qty.</h4>
                             <h4 class="col-3">Total</h4>
                             <h4 class="col-1"></h4>
                         </div>
@@ -210,11 +210,376 @@
         </div>
     </section>
 
-    <section id="salesHistory" class="bg-theme text-theme mh-100"></section>
-    <section id="inventory" class="bg-theme text-theme mh-100"></section>
+    <!-- Sales History Section -->
+    <section id="salesHistory" class="container-fluid bg-theme text-theme mh-100"></section>
+
+    <!-- Inventory Section -->
+    <section id="inventory" class="bg-theme text-theme mh-100">
+
+        <header class="row mb-3">
+            <div class="col-4">
+                <label for="hidden"></label>
+                <input id="inventorySearch" class="w-100" type="text" placeholder="Search Product Here...">
+                <button id="inventorySerchBtn" type="button" class=""><i class="fa-solid fa-magnifying-glass label"></i></button>
+            </div>
+            <div class="col-2">
+                <label class="label">Category</label>
+                <select class="form-select" aria-label="Default select example">
+                    <option value="ALL" selected>All</option>
+                    <option value="H">Heel</option>
+                    <option value="F">Flats</option>
+                    <option value="W">Wedges</option>
+                    <option value="FF">Flip Flops</option>
+                    <option value="SD">Sandals</option>
+                    <option value="S">Shoes</option>
+                    <option value="SL">Slippers</option>
+                </select>
+            </div>
+            <div class="col-2">
+                <label class="label">Brand</label>
+                <select class="form-select" aria-label="Default select example">
+                    <option value="ALL" selected>All Brands</option>
+                    <optgroup label="International Brands">
+                      <option value="International">All International</option>
+                      <option value="Nike">Nike</option>
+                      <option value="Adidas">Adidas</option>
+                      <option value="Puma">Puma</option>
+                      <option value="Converse">Converse</option>
+                      <option value="Vans">Vans</option>
+                      <option value="Reebok">Reebok</option>
+                      <option value="New Balance">New Balance</option>
+                      <option value="Timberland">Timberland</option>
+                      <option value="Dr. Martens">Dr. Martens</option>
+                      <option value="Asics">Asics</option>
+                      <option value="Skechers">Skechers</option>
+                      <option value="Clarks">Clarks</option>
+                      <option value="Under Armour">Under Armour</option>
+                      <option value="Fila">Fila</option>
+                      <option value="Salomon">Salomon</option>
+                    </optgroup>
+                    <optgroup label="Local Brands">
+                      <option value="Local">All Local</option>
+                      <option value="DSI">DSI</option>
+                      <option value="Bata">Bata</option>
+                      <option value="Gihan Shoe Mart">Gihan Shoe Mart</option>
+                      <option value="Redtape">Redtape</option>
+                      <option value="Hameedia">Hameedia</option>
+                      <option value="DSI Premier">DSI Premier</option>
+                      <option value="Reborn">Reborn</option>
+                      <option value="DI">DI</option>
+                      <option value="Ranpa Footwear">Ranpa Footwear</option>
+                      <option value="SADS Footwear">SADS Footwear</option>
+                      <option value="ZigZag">ZigZag</option>
+                      <option value="Dilly & Carlo">Dilly & Carlo</option>
+                      <option value="Hitz">Hitz</option>
+                      <option value="Stoneridge">Stoneridge</option>
+                      <option value="UL Wickramasinghe & Company">UL Wickramasinghe & Company</option>
+                    </optgroup>
+                </select>
+            </div>
+            <div class="col-2">
+                <label class="label">Sory By</label>
+                <select class="form-select" aria-label="Default select example">
+                    <option value="NONE" selected>None</option>
+                    <option value="A-Z">Name: A-Z</option>
+                    <option value="Z-A">Name: Z-A</option>
+                    <option value="LOW-HIGH">Price: Low-High</option>
+                    <option value="HIGH-LOW">Price: High-Low</option>
+                    <option value="MAN">Men</option>
+                    <option value="WOMEN">Women</option>
+                    <option value="FORMAL">Formal</option>
+                    <option value="CASUAL">Casual</option>
+                </select>
+            </div>
+            <div class="col-2">
+                <label class="hidden"></label>
+                <button id="addNewProductBtn" type="button" class="btn btn-primary w-100">Add New Product</button>
+            </div>
+        </header>
+
+        <div class="inventory-items-head row text-center">
+            <label class="label col-1"></label>
+            <label class="label col-2">Product ID</label>
+            <label class="label col-3">Name</label>
+            <label class="label col-2">Size</label>
+            <label class="label col-2">Price</label>
+            <label class="label col-2">Stock</label>
+        </div>
+
+        <div class="accordion" id="inventoryItems">
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <button type="button" class="accordion-button p-2" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        <div class="inventory-item-header row w-100">
+                            <!-- <img class="h-100 col-2" src="assets/imgs/shoe1.png" alt=""> -->
+                            <div class="col-1 d-flex justify-content-center">
+                                <div class="img"></div>
+                            </div>
+                            <label class="col-2">FSM000234</label>
+                            <label class="col-3">Nike Sneakers Blue</label>
+                            <label class="col-2">SIZE 6</label>
+                            <label class="col-2">Rs.3400</label>
+                            <label class="col-2">39</label>
+                        </div>
+                    </button>
+                </div>
+                <div id="collapseOne" class="accordion-collapse collapse w-100" data-bs-parent="#inventoryItems">
+                    <div class="accordion-body w-100">
+                        <div class="inventory-item-body container-fluid row">
+                            <div class="col-4 img"></div>
+                            <div class="col-8 row">
+                                <div class="inventory-body-detail col-6">
+                                    <label class="label">Product Name</label>
+                                    <h4>Nike Sneakers Blue</h4>
+                                </div>
+                                <div class="inventory-body-detail col-3">
+                                    <label class="label">Product ID</label>
+                                    <h4>FSM000234</h4>
+                                </div>
+                                <div class="inventory-body-detail col-3">
+                                    <label class="label">Size</label>
+                                    <h4>6</h4>
+                                </div>
+
+                                <div class="inventory-body-detail col-3">
+                                    <label class="label">Category</label>
+                                    <h4>Shoe</h4>
+                                </div>
+                                <div class="inventory-body-detail col-3">
+                                    <label class="label">Supplier</label>
+                                    <h4>Nike</h4>
+                                </div>
+                                <div class="inventory-body-detail col-3">
+                                    <label class="label">Colour</label>
+                                    <h4>Blue</h4>
+                                </div>
+                                <div class="inventory-body-detail col-3">
+                                    <label class="label">Stock</label>
+                                    <h4>39</h4>
+                                </div>
+
+                                <div class="inventory-body-detail col-3">
+                                    <label class="label">Sale Price</label>
+                                    <h4>3400</h4>
+                                </div>
+                                <div class="inventory-body-detail col-3">
+                                    <label class="label">Buy Price</label>
+                                    <h4>3090</h4>
+                                </div>
+                                <div class="inventory-body-detail col-3">
+                                    <label class="label">Profit Margin</label>
+                                    <h4>10%</h4>
+                                </div>
+                                <div class="inventory-body-detail col-3">
+                                    <label class="label">Expected Price</label>
+                                    <h4>3400</h4>
+                                </div>
+
+                                <div class="col-6 d-flex justify-content-center align-items-center"><button class="btn btn-success">Update</button></div>
+                                <div class="col-6 d-flex justify-content-center align-items-center"><button class="btn btn-danger">Remove</button></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- Add Product Section -->
+    <section id="addProduct" class="bg-theme text-theme mh-100">
+        <h1 class="quicksand-bold">Add Product</h1>
+        <hr>
+        <form action="" class="row">
+            <div class="col-8 row">
+                <div class="col-12 mb-3">
+                    <input type="radio" id="newProductRbtn" name="productRbtn" value="new">
+                    <label for="newProductRbtn">New Product</label>
+                    <input type="radio" id="existProductRbtn" name="productRbtn" value="exist" checked>
+                    <label for="existProductRbtn">
+                        Existing product
+                        <i title="Select this option if you want to add new size/color to a existing product."
+                        class="fa-solid fa-circle-info"></i>
+                    </label>
+                </div>
+                <div class="row"> 
+                    <div class="input col-6">
+                        <label for="" class="label">Product Name</label>
+                        <input id="productName" name="productName" type="text">
+                    </div>
+                    <div class="input col-3">
+                        <label for="" class="label">Category</label>
+                        <select class="form-select" aria-label="Default select example">
+                            <option selected>(Select Category)</option>
+                            <option value="H">Heel</option>
+                            <option value="F">Flats</option>
+                            <option value="W">Wedges</option>
+                            <option value="FF">Flip Flops</option>
+                            <option value="SD">Sandals</option>
+                            <option value="S">Shoes</option>
+                            <option value="SL">Slippers</option>
+                        </select>
+                    </div>
+                    <div class="input col-3">
+                        <label for="" class="label">Supplier</label>
+                        <select class="form-select" aria-label="Default select example">
+                            <option selected>(Select Supplier)</option>
+                            <optgroup label="International Brands">
+                                <option value="International">All International</option>
+                                <option value="Nike">Nike</option>
+                                <option value="Adidas">Adidas</option>
+                                <option value="Puma">Puma</option>
+                                <option value="Converse">Converse</option>
+                                <option value="Vans">Vans</option>
+                                <option value="Reebok">Reebok</option>
+                                <option value="New Balance">New Balance</option>
+                                <option value="Timberland">Timberland</option>
+                                <option value="Dr. Martens">Dr. Martens</option>
+                                <option value="Asics">Asics</option>
+                                <option value="Skechers">Skechers</option>
+                                <option value="Clarks">Clarks</option>
+                                <option value="Under Armour">Under Armour</option>
+                                <option value="Fila">Fila</option>
+                                <option value="Salomon">Salomon</option>
+                            </optgroup>
+                            <optgroup label="Local Brands">
+                                <option value="Local">All Local</option>
+                                <option value="DSI">DSI</option>
+                                <option value="Bata">Bata</option>
+                                <option value="Gihan Shoe Mart">Gihan Shoe Mart</option>
+                                <option value="Redtape">Redtape</option>
+                                <option value="Hameedia">Hameedia</option>
+                                <option value="DSI Premier">DSI Premier</option>
+                                <option value="Reborn">Reborn</option>
+                                <option value="DI">DI</option>
+                                <option value="Ranpa Footwear">Ranpa Footwear</option>
+                                <option value="SADS Footwear">SADS Footwear</option>
+                                <option value="ZigZag">ZigZag</option>
+                                <option value="Dilly & Carlo">Dilly & Carlo</option>
+                                <option value="Hitz">Hitz</option>
+                                <option value="Stoneridge">Stoneridge</option>
+                                <option value="UL Wickramasinghe & Company">UL Wickramasinghe & Company</option>
+                            </optgroup>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="row mt-4">
+                    <div class="input col-4">
+                        <label for="" class="label">Sell Price</label>
+                        <input id="productName" name="productName" type="text">
+                    </div>
+                    <div class="input col-4">
+                        <label for="" class="label">Buy Price</label>
+                        <input id="productName" name="productName" type="text">
+                    </div>
+                    <div class="input col-2">
+                        <label for="" class="label">Profit Margin</label>
+                        <input id="productName" name="productName" type="text">
+                    </div>
+                    <div class="input col-2">
+                        <label for="" class="label">Profit</label>
+                        <input id="productName" name="productName" type="text">
+                    </div>
+                </div>
+                <div class="row mt-4">
+                    <hr>
+                    <h4 for="" class="label ms-1 mb-3">Images</h4>
+                    <div class="col-12">
+                        <label for="" class="label ms-1">Colour Red</label><br>
+                        <input id="productName" name="productName" type="file">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-4 row">
+                <!-- Sizes -->
+                <div class="col-12 my-3">
+                    <label class="label ms-1" for="">Sizes</label><br>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="cbSize5" value="SIZE 5">
+                        <label class="label" for="cbSize5">5</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="cbSize6" value="SIZE 6">
+                        <label class="label" for="cbSize6">6</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="cbSize7" value="SIZE 7">
+                        <label class="label" for="cbSize7">7</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="cbSize8" value="SIZE 8">
+                        <label class="label" for="cbSize8">8</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="cbSize9" value="SIZE 9">
+                        <label class="label" for="cbSize9">9</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="cbSize10" value="SIZE 10">
+                        <label class="label" for="cbSize10">10</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="cbSize11" value="SIZE 11">
+                        <label class="label" for="cbSize11">11</label>
+                    </div>
+                </div>
+                <!-- colors -->
+                <div class="col-12 my-3">
+                    <label class="label ms-1" for="">Colors</label><br>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="cbColorBlack" value="Black">
+                        <label class="label" for="cbColorBlack">Black</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="cbColorWhite" value="White">
+                        <label class="label" for="cbColorWhite">White</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="cbColorRed" value="Red">
+                        <label class="label" for="cbColorRed">Red</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="cbColorBlue" value="Blue">
+                        <label class="label" for="cbColorBlue">Blue</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="cbColorGreen" value="Green">
+                        <label class="label" for="cbColorGreen">Green</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="cbColorYellow" value="Yellow">
+                        <label class="label" for="cbColorYellow">Yellow</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="cbColorOrange" value="Orange">
+                        <label class="label" for="cbColorOrange">Orange</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="cbColorPurple" value="Purple">
+                        <label class="label" for="cbColorPurple">Purple</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="cbColorOther" value="Other">
+                        <label class="label" for="cbColorOther">Other</label>
+                    </div>
+                </div>
+            </div>
+            
+        </form>
+    </section>
+
+    <!-- Customer Section -->
     <section id="customer" class="bg-theme text-theme mh-100"></section>
+
+    <!-- Employee Section -->
     <section id="employee" class="bg-theme text-theme mh-100"></section>
+
+    <!-- Supplier Section -->
     <section id="supplier" class="bg-theme text-theme mh-100"></section>
+
+    <!-- Notification Section -->
     <section id="notification" class="bg-theme text-theme mh-100"></section>
 
 
@@ -224,5 +589,6 @@
 
     <script type="module" src="controller/IndexController.js"></script>
     <script type="module" src="controller/SalesController.js"></script>
+    <script type="module" src="controller/InventoryController.js"></script>
 </body>
 </html>

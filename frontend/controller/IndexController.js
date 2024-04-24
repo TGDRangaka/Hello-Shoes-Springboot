@@ -15,6 +15,10 @@ $("#inventoryBtn").on('click', function(){
     setBtnActive("#inventory", this);
 })
 
+$("#inventoryBtn").dblclick(function() {
+    setBtnActive("#addProduct", this);
+})
+
 $("#customerBtn").on('click', function(){
     setBtnActive("#customer", this);
 })
@@ -29,6 +33,11 @@ $("#suppliersBtn").on('click', function(){
 
 $("#notificationsBtn").on('click', function(){
     setBtnActive("#notification", this);
+})
+
+
+$("#addNewProductBtn").on('click', ()=>{
+    setBtnActive("#addProduct", "#inventoryBtn")
 })
 
 const hideAllSections = () => {
@@ -48,4 +57,4 @@ const setBtnActive = (element, btn) => {
     $(element).show();
 }
 
-$("#salesBtn").click();
+$("#addNewProductBtn").click();
