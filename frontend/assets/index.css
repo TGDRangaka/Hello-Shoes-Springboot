@@ -9,10 +9,11 @@ body {
     display: flex;
     align-items: center;
     font-family: "Quicksand", sans-serif;
+    padding: 0;
 }
 
 .bg-theme {
-    background-color: #e2f5ff;
+    background-color: #f0f8ff;
 }
 
 .second-color {
@@ -133,14 +134,11 @@ nav button:hover h3 {
 /* /////////////////////////////////////////////////////////////////////////////////////////////////// */
 
 section {
-    height: 90vh;
-    background-color: white;
-    width: 90vw;
+    height: 100vh;
+    width: 100vw;
     position: relative;
-    left: 120px;
-    border-radius: 40px;
-    box-shadow: 0 0 50px rgba(0,0,0,0.2);
     padding: 15px;
+    padding-left: 120px;
 }
 
 /* /////////////////////////////////////////////////////////////////////////////////////////////////// */
@@ -409,6 +407,16 @@ input[type="radio"] {
 
 #addProduct .input select{
     height: 40px;
+}
+
+#colorImagesInputs {
+    height: 450px;
+    overflow-y: auto;
+}
+
+#colorImagesInputs .form-control {
+    width: 250px;
+    display: inline-block;
 }
 
 /* /////////////////////////////////////////////////////////////////////////////////////////////////// */

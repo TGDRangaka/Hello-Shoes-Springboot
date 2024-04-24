@@ -387,28 +387,29 @@
     </section>
 
     <!-- Add Product Section -->
-    <section id="addProduct" class="bg-theme text-theme mh-100">
+    <section id="addProduct" class="bg-theme text-theme">
         <h1 class="quicksand-bold">Add Product</h1>
         <hr>
         <form action="" class="row">
-            <div class="col-8 row">
+            <div class="col-10 row">
                 <div class="col-12 mb-3">
-                    <input type="radio" id="newProductRbtn" name="productRbtn" value="new">
+                    <input type="radio" id="newProductRbtn" name="productRbtn" value="new" checked>
                     <label for="newProductRbtn">New Product</label>
-                    <input type="radio" id="existProductRbtn" name="productRbtn" value="exist" checked>
+                    <input type="radio" id="existProductRbtn" name="productRbtn" value="exist">
                     <label for="existProductRbtn">
                         Existing product
                         <i title="Select this option if you want to add new size/color to a existing product."
                         class="fa-solid fa-circle-info"></i>
                     </label>
                 </div>
-                <div class="row"> 
+
+                <div id="newProductDetails" class="row"> 
                     <div class="input col-6">
-                        <label for="" class="label">Product Name</label>
+                        <label for="" class="label import">Product Name</label>
                         <input id="productName" name="productName" type="text">
                     </div>
                     <div class="input col-3">
-                        <label for="" class="label">Category</label>
+                        <label for="" class="label import">Category</label>
                         <select class="form-select" aria-label="Default select example">
                             <option selected>(Select Category)</option>
                             <option value="H">Heel</option>
@@ -421,7 +422,7 @@
                         </select>
                     </div>
                     <div class="input col-3">
-                        <label for="" class="label">Supplier</label>
+                        <label for="" class="label import">Supplier</label>
                         <select class="form-select" aria-label="Default select example">
                             <option selected>(Select Supplier)</option>
                             <optgroup label="International Brands">
@@ -462,72 +463,47 @@
                             </optgroup>
                         </select>
                     </div>
+
+                    <div class="input col-4 mt-4">
+                        <label for="" class="label import">Sell Price</label>
+                        <input id="productName" name="productName" type="text">
+                    </div>
+                    <div class="input col-4 mt-4">
+                        <label for="" class="label import">Buy Price</label>
+                        <input id="productName" name="productName" type="text">
+                    </div>
+                    <div class=" col-2 mt-4">
+                        <label for="" class="label import">Profit Margin</label>
+                        <!-- <input id="productName" name="productName" type="text"> -->
+                        <div class="input-group">
+                            <input type="text" class="form-control" aria-label="Dollar amount (with dot and two decimal places)">
+                            <span class="input-group-text">%</span>
+                          </div>
+                    </div>
+                    <div class="input col-2 mt-4">
+                        <label for="" class="label import">Profit</label>
+                        <input id="productName" name="productName" type="text">
+                    </div>
+                </div>
+
+                <div id="existingProductDetails" class="row">
+                    <div class="input col-4 mt-4">
+                        <label for="" class="label import">Product ID</label>
+                        <input id="productName" name="productName" type="text">
+                    </div>
                 </div>
                 
                 <div class="row mt-4">
-                    <div class="input col-4">
-                        <label for="" class="label">Sell Price</label>
-                        <input id="productName" name="productName" type="text">
-                    </div>
-                    <div class="input col-4">
-                        <label for="" class="label">Buy Price</label>
-                        <input id="productName" name="productName" type="text">
-                    </div>
-                    <div class="input col-2">
-                        <label for="" class="label">Profit Margin</label>
-                        <input id="productName" name="productName" type="text">
-                    </div>
-                    <div class="input col-2">
-                        <label for="" class="label">Profit</label>
-                        <input id="productName" name="productName" type="text">
-                    </div>
-                </div>
-                <div class="row mt-4">
                     <hr>
-                    <h4 for="" class="label ms-1 mb-3">Images</h4>
-                    <div class="col-12">
-                        <label for="" class="label ms-1">Colour Red</label><br>
-                        <input id="productName" name="productName" type="file">
-                    </div>
+                    <h4 for="" class="label ms-1">Colours, Sizes & Images</h4>
+                    <div id="colorImagesInputs"></div>
                 </div>
             </div>
             
-            <div class="col-4 row">
-                <!-- Sizes -->
-                <div class="col-12 my-3">
-                    <label class="label ms-1" for="">Sizes</label><br>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="cbSize5" value="SIZE 5">
-                        <label class="label" for="cbSize5">5</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="cbSize6" value="SIZE 6">
-                        <label class="label" for="cbSize6">6</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="cbSize7" value="SIZE 7">
-                        <label class="label" for="cbSize7">7</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="cbSize8" value="SIZE 8">
-                        <label class="label" for="cbSize8">8</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="cbSize9" value="SIZE 9">
-                        <label class="label" for="cbSize9">9</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="cbSize10" value="SIZE 10">
-                        <label class="label" for="cbSize10">10</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="cbSize11" value="SIZE 11">
-                        <label class="label" for="cbSize11">11</label>
-                    </div>
-                </div>
+            <div class="col-2 d-flex flex-column justify-content-between">
                 <!-- colors -->
-                <div class="col-12 my-3">
-                    <label class="label ms-1" for="">Colors</label><br>
+                <div id="cbColors" class="d-flex flex-column my-3">
+                    <label class="label ms-1 import" for="">Colors</label><br>
                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="checkbox" id="cbColorBlack" value="Black">
                         <label class="label" for="cbColorBlack">Black</label>
@@ -560,10 +536,12 @@
                         <input class="form-check-input" type="checkbox" id="cbColorPurple" value="Purple">
                         <label class="label" for="cbColorPurple">Purple</label>
                     </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" id="cbColorOther" value="Other">
-                        <label class="label" for="cbColorOther">Other</label>
+                    <div class="form-check form-check-inline p-0">
+                        <button id="otherColorBtn" type="button" class="btn btn-outline-primary py-1 px-3"><i class="fa-solid fa-plus me-2"></i>Other Colour/Pattern</button>
                     </div>
+                </div>
+                <div class="col-12 d-flex justify-content-end">
+                    <button class="btn btn-primary btn-lg" type="button">Add Product</button>
                 </div>
             </div>
             
