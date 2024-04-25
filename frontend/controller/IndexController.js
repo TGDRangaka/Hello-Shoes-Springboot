@@ -1,4 +1,6 @@
 
+import { token, setToken } from "../db/data.js";
+
 $("#dashboardBtn").on('click', function(){
     setBtnActive("#dashboard", this);
 })
@@ -58,3 +60,23 @@ const setBtnActive = (element, btn) => {
 }
 
 $("#employeesBtn").click();
+
+$("#loginBtn").click(()=>{
+    const settings = {
+        "url": "http://localhost:8080/api/v1/auth",
+        "method": "PUT",
+        "timeout": 0,
+        "headers": {
+            "Content-Type": "application/json"
+        },
+        "data": JSON.stringify({
+            "email": "dilshan@example.com",
+            "password": "dilshan1234"
+        }),
+    };
+      
+    $.ajax(settings).done(function (response) {
+        setToken(response.token);
+        console.log(token);
+    });
+})
