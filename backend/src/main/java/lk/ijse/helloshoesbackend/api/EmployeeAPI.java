@@ -1,14 +1,35 @@
 package lk.ijse.helloshoesbackend.api;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import lk.ijse.helloshoesbackend.bo.AuthenticationBO;
+import lk.ijse.helloshoesbackend.reqAndResp.request.SignIn;
+import lk.ijse.helloshoesbackend.reqAndResp.request.SignUp;
+import lk.ijse.helloshoesbackend.reqAndResp.response.JwtAuthResponse;
+import lk.ijse.helloshoesbackend.service.AuthenticationService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/employee")
+@RequestMapping("/api/v1/auth")
+@RequiredArgsConstructor
 public class EmployeeAPI {
-    @GetMapping
+
+    private final AuthenticationBO authenticationBO;
+
+    @GetMapping("/health")
     public String healthCheck(){
         return "Employee Health Good";
+    }
+
+//    SignIn
+    @GetMapping
+    public ResponseEntity<JwtAuthResponse> signIn(@RequestBody SignIn signIn){
+        return ResponseEntity.accepted().body(authenticationBO.signIn(signIn));
+    }
+
+//    SignUp
+    @PostMapping
+    public ResponseEntity<JwtAuthResponse> signUp(@RequestBody SignUp signUp){
+        return ResponseEntity.accepted().body(authenticationBO.signUp(signUp));
     }
 }

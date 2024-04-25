@@ -12,7 +12,7 @@ import java.util.List;
 @Service
 @Transactional
 @RequiredArgsConstructor
-public class CustomerServiceImpl implements CustomerService {
+public class CustomerServiceIMPL implements CustomerService {
     private final CustomerRepo customerRepo;
 
     public List<CustomerEntity> getAll(){
