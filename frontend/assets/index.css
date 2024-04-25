@@ -14,6 +14,7 @@ body {
 
 .bg-theme {
     background-color: #f0f8ff;
+    /* background-color: #ffffff; */
 }
 
 .second-color {
@@ -61,6 +62,7 @@ nav {
     bottom: 0;
     margin: auto;
     background: linear-gradient(to top, #56ccf2, #2f80ed);
+    /* background-color: #6d5fb4; */
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
 }
 
@@ -122,13 +124,41 @@ nav button:hover h3 {
     background-size: cover;
 }
 
-.user-img {
+.user {
     width: calc(100% - 10px);
+}
+
+.user-img {
     aspect-ratio: 1;
     background-image: url("imgs/user_img.jpg");
     background-position: center;
     background-size: cover;
     border-radius: 50%;
+}
+
+.logout {
+    position: absolute;
+    left: 15px;
+    top: 20px;
+    /* top: -30px; */
+    margin: auto;
+    transition-duration: .3s;
+}
+
+.logout i {
+    transform: rotate(180deg);
+}
+
+.user:hover .logout{
+    top: -45px;
+}
+
+.logout:hover i {
+    transform: rotate(180deg);
+}
+
+.logout h3{
+    /* position: relative; */
 }
 
 /* /////////////////////////////////////////////////////////////////////////////////////////////////// */
@@ -138,7 +168,7 @@ section {
     width: 100vw;
     position: relative;
     padding: 15px;
-    padding-left: 120px;
+    padding-left: 110px;
 }
 
 /* /////////////////////////////////////////////////////////////////////////////////////////////////// */
@@ -305,16 +335,15 @@ input[type="radio"] {
     overflow: hidden;
 }
 
-#inventorySearch {
+.search {
     border: none;
     background-color: transparent;
     border-bottom: 1px solid gray;
-    text-justify: distribute;
     padding: 10px;
     outline: none;
 }
 
-#inventorySerchBtn {
+.searchBtn {
     position: absolute;
     right: 20px;
     font-size: 26px;
@@ -350,6 +379,15 @@ input[type="radio"] {
     background-color: transparent;
 }
 
+#inventoryItems .accordion-button:focus{
+    box-shadow: none;
+    border-left: 5px solid #56ccf2;
+}
+
+#inventoryItems .accordion-item {
+    border-radius: 0;
+}
+
 .inventory-item-header {
     height: 80px;
 }
@@ -364,7 +402,7 @@ input[type="radio"] {
 
 .inventory-item-header label {
     font-size: 20px;
-    font-weight: 500;
+    font-weight: 400;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -373,7 +411,6 @@ input[type="radio"] {
 
 #inventoryItems .accordion-collapse {
     background-color: #f6f6f6;
-    border: 1px solid rgb(74, 147, 255);
     border-top-width: 0;
 }
 
@@ -420,6 +457,30 @@ input[type="radio"] {
 }
 
 /* /////////////////////////////////////////////////////////////////////////////////////////////////// */
+
+.level {
+    width: 100px;
+}
+
+.table-action {
+    width: 40px;
+}
+
+.table-action i {
+    font-size: 25px;
+}
+
+#customersTBody {
+    height: 40px;
+}
+
+.table-img {
+    width: 50px;
+}
+
+.table-img img {
+    width: 50px;
+}
 
 /* /////////////////////////////////////////////////////////////////////////////////////////////////// */
 

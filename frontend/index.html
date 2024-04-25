@@ -34,7 +34,10 @@
             </button>
         </div>
 
-        <div class="user-img"></div>
+        <div class="user">
+            <button id="suppliersBtn" type="button" class="nav-btn-theme logout"><i class="fa-solid fa-arrow-right-from-bracket"></i><h3>Logout</h3></button>
+            <div class="user-img"></div>
+        </div>
     </nav>
     
     <!-- Dashboard Section -->
@@ -215,12 +218,14 @@
 
     <!-- Inventory Section -->
     <section id="inventory" class="bg-theme text-theme mh-100">
+        <h1 class="quicksand-bold">Products</h1>
+        <hr>
 
         <header class="row mb-3">
             <div class="col-4">
                 <label for="hidden"></label>
-                <input id="inventorySearch" class="w-100" type="text" placeholder="Search Product Here...">
-                <button id="inventorySerchBtn" type="button" class=""><i class="fa-solid fa-magnifying-glass label"></i></button>
+                <input id="inventorySearch" class="w-100 search" type="text" placeholder="Search Product Here...">
+                <button id="inventorySerchBtn" type="button" class="searchBtn"><i class="fa-solid fa-magnifying-glass label"></i></button>
             </div>
             <div class="col-2">
                 <label class="label">Category</label>
@@ -297,21 +302,21 @@
             </div>
         </header>
 
-        <div class="inventory-items-head row text-center">
-            <label class="label col-1"></label>
-            <label class="label col-2">Product ID</label>
-            <label class="label col-3">Name</label>
-            <label class="label col-2">Size</label>
-            <label class="label col-2">Price</label>
-            <label class="label col-2">Stock</label>
+
+        <div class="inventory-items-head row text-center quicksand-bold pe-3">
+            <label class="col-1"></label>
+            <label class="col-2">Product ID</label>
+            <label class="col-3">Name</label>
+            <label class="col-2">Size</label>
+            <label class="col-2">Price</label>
+            <label class="col-2">Stock</label>
         </div>
 
         <div class="accordion" id="inventoryItems">
             <div class="accordion-item">
                 <div class="accordion-header">
                     <button type="button" class="accordion-button p-2" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                        <div class="inventory-item-header row w-100">
-                            <!-- <img class="h-100 col-2" src="assets/imgs/shoe1.png" alt=""> -->
+                        <div class="inventory-item-header row w-100 text-theme">
                             <div class="col-1 d-flex justify-content-center">
                                 <div class="img"></div>
                             </div>
@@ -549,10 +554,182 @@
     </section>
 
     <!-- Customer Section -->
-    <section id="customer" class="bg-theme text-theme mh-100"></section>
+    <section id="customer" class="bg-theme text-theme mh-100">
+        <h1 class="quicksand-bold">Customers</h1>
+        <hr>
+        <header class="row mb-3">
+            <div class="col-6">
+                <label for="hidden"></label>
+                <input id="customerSearch" class="w-100 search" type="text" placeholder="Search Customers Here...">
+                <button id="customerSearchBtn" type="button" class="searchBtn"><i class="fa-solid fa-magnifying-glass label"></i></button>
+            </div>
+            <div class="col-2">
+                <label class="label">Level</label>
+                <select class="form-select" aria-label="Default select example">
+                    <option value="ALL" selected>All</option>
+                    <option value="G">Gold</option>
+                    <option value="S">Silver</option>
+                    <option value="B">Bronze</option>
+                    <option value="N">New</option>
+                </select>
+            </div>
+            <div class="col-2">
+                <label class="label">Sory By</label>
+                <select class="form-select" aria-label="Default select example">
+                    <option value="NONE" selected>None</option>
+                    <option value="A-Z">Name: A-Z</option>
+                    <option value="Z-A">Name: Z-A</option>
+                    <option value="LOW-HIGH">Level: NEW-GOLD</option>
+                    <option value="HIGH-LOW">Level: GOLD-NEW</option>
+                    <option value="MAN">Male</option>
+                    <option value="WOMEN">Female</option>
+                </select>
+            </div>
+            <div class="col-2">
+                <label class="hidden"></label>
+                <button id="addNewProductBtn" type="button" class="btn btn-primary w-100">Join As Layalty</button>
+            </div>
+        </header>
+        <table class="table">
+            <thead>
+              <tr class="text-center">
+                <th scope="col" class="table-img">Level</th>
+                <th scope="col">Customer Name</th>
+                <th scope="col">Contact No.</th>
+                <th scope="col">Email</th>
+                <th scope="col">DOB</th>
+                <th scope="col">Joined Date</th>
+                <th scope="col">Gender</th>
+                <th scope="col">Recent Purchase D/T</th>
+                <th scope="col" class="table-action">Edit</th>
+              </tr>
+            </thead>
+            <tbody id="customersTBody">
+              <tr class="text-center align-middle">
+                    <td class="d-flex flex-column align-items-center">
+                        <img src="assets/icons/gold-level.png" alt="" class="">
+                        <label class="label">323</label>
+                    </td>
+                    <td>Dilshan Rangaka</td>
+                    <td>0770531993</td>
+                    <td>dilshan@mdo</td>
+                    <td>21-08-2002</td>
+                    <td>17-04-2024</td>
+                    <td>Male</td>
+                    <td>21-04-2024 10:30 PM</td>
+                    <td class="table-action"><button class="btn"><i class="fa-solid fa-pen"></i></button></i></td>
+              </tr>
+              <tr class="text-center align-middle">
+                    <td class="d-flex flex-column align-items-center">
+                        <img src="assets/icons/silver-level.png" alt="" class="">
+                        <label class="label">154</label>
+                    </td>
+                    <td>Dilshan Rangaka</td>
+                    <td>0770531993</td>
+                    <td>dilshan@mdo</td>
+                    <td>21-08-2002</td>
+                    <td>17-04-2024</td>
+                    <td>Male</td>
+                    <td>21-04-2024 10:30 PM</td>
+                    <td class="table-action"><button class="btn"><i class="fa-solid fa-pen"></i></button></i></td>
+              </tr>
+              <tr class="text-center align-middle">
+                    <td class="d-flex flex-column align-items-center">
+                        <img src="assets/icons/bronze-level.png" alt="" class="">
+                        <label class="label">78</label>
+                    </td>
+                    <td>Dilshan Rangaka</td>
+                    <td>0770531993</td>
+                    <td>dilshan@mdo</td>
+                    <td>21-08-2002</td>
+                    <td>17-04-2024</td>
+                    <td>Male</td>
+                    <td>21-04-2024 10:30 PM</td>
+                    <td class="table-action"><button class="btn"><i class="fa-solid fa-pen"></i></button></i></td>
+              </tr>
+              <tr class="text-center align-middle">
+                    <td class="d-flex flex-column align-items-center">
+                        <img src="assets/icons/new-level.png" alt="" class="">
+                        <label class="label">32</label>
+                    </td>
+                    <td>Dilshan Rangaka</td>
+                    <td>0770531993</td>
+                    <td>dilshan@mdo</td>
+                    <td>21-08-2002</td>
+                    <td>17-04-2024</td>
+                    <td>Male</td>
+                    <td>21-04-2024 10:30 PM</td>
+                    <td class="table-action"><button class="btn"><i class="fa-solid fa-pen"></i></button></i></td>
+              </tr>
+            </tbody>
+          </table>
+    </section>
+
+    <!-- Add Customer Section -->
+    <section id="addCustomer" class="bg-theme text-theme mh-100"></section>
 
     <!-- Employee Section -->
-    <section id="employee" class="bg-theme text-theme mh-100"></section>
+    <section id="employee" class="bg-theme text-theme mh-100">
+        <h1 class="quicksand-bold">Employees</h1>
+        <hr>
+        <header class="row mb-3">
+            <div class="col-6">
+                <label for="hidden"></label>
+                <input id="customerSearch" class="w-100 search" type="text" placeholder="Search Emplyees Here...">
+                <button id="customerSearchBtn" type="button" class="searchBtn"><i class="fa-solid fa-magnifying-glass label"></i></button>
+            </div>
+            <div class="col-2">
+                <label class="label">Level</label>
+                <select class="form-select" aria-label="Default select example">
+                    <option value="ALL" selected>All</option>
+                    <option value="G">Gold</option>
+                    <option value="S">Silver</option>
+                    <option value="B">Bronze</option>
+                    <option value="N">New</option>
+                </select>
+            </div>
+            <div class="col-2">
+                <label class="label">Sory By</label>
+                <select class="form-select" aria-label="Default select example">
+                    <option value="NONE" selected>None</option>
+                    <option value="A-Z">Name: A-Z</option>
+                    <option value="Z-A">Name: Z-A</option>
+                    <option value="LOW-HIGH">Level: NEW-GOLD</option>
+                    <option value="HIGH-LOW">Level: GOLD-NEW</option>
+                    <option value="MAN">Male</option>
+                    <option value="WOMEN">Female</option>
+                </select>
+            </div>
+            <div class="col-2">
+                <label class="hidden"></label>
+                <button id="addNewProductBtn" type="button" class="btn btn-primary w-100">Register New Employee</button>
+            </div>
+        </header>
+
+        <table class="table">
+            <thead>
+              <tr class="text-center">
+                <th scope="col" class="table-img">Level</th>
+                <th scope="col" class=" text-start ps-4">Employee Name</th>
+                <th scope="col">Contact No.</th>
+                <th scope="col">Email</th>
+                <th scope="col">DOB</th>
+                <th scope="col">Joined Date</th>
+                <th scope="col">Gender</th>
+                <th scope="col">Guardian</th>
+                <th scope="col">Emergency No.</th>
+                <th scope="col" class="table-action">Edit</th>
+              </tr>
+            </thead>
+            <tbody id="employeesTBody">
+              <tr class="text-center align-middle">
+              </tr>
+            </tbody>
+          </table>
+    </section>
+
+    <!-- Add Employee Section -->
+    <section id="addEmployee" class="bg-theme text-theme mh-100"></section>
 
     <!-- Supplier Section -->
     <section id="supplier" class="bg-theme text-theme mh-100"></section>
@@ -568,5 +745,6 @@
     <script type="module" src="controller/IndexController.js"></script>
     <script type="module" src="controller/SalesController.js"></script>
     <script type="module" src="controller/InventoryController.js"></script>
+    <script type="module" src="controller/CustomerController.js"></script>
 </body>
 </html>

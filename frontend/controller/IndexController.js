@@ -57,4 +57,4 @@ const setBtnActive = (element, btn) => {
     $(element).show();
 }
 
-$("#addNewProductBtn").click();
+$("#employeesBtn").click();
