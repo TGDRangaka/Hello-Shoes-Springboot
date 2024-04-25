@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/v1/auth")
 @RequiredArgsConstructor
+@CrossOrigin
 public class EmployeeAPI {
 
     private final AuthenticationBO authenticationBO;
@@ -22,7 +23,7 @@ public class EmployeeAPI {
     }
 
 //    SignIn
-    @GetMapping
+    @PutMapping
     public ResponseEntity<JwtAuthResponse> signIn(@RequestBody SignIn signIn){
         return ResponseEntity.accepted().body(authenticationBO.signIn(signIn));
     }
