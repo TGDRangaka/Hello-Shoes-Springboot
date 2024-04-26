@@ -14,7 +14,18 @@ body {
 
 .bg-theme {
     background-color: #f0f8ff;
+    background-color: #ece9e8;
     /* background-color: #ffffff; */
+}
+
+h1 {
+    color: #4c0508;
+}
+
+.main-color {
+    /* background: linear-gradient(to top, #56ccf2, #2f80ed); */
+    background: linear-gradient(to top, rgb(255, 92, 63), #fa373d);
+    background-color: #fa373d;
 }
 
 .second-color {
@@ -43,6 +54,67 @@ body {
     font-weight: 500;
 }
 
+.input label {
+    color: gray;
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+
+.table-action {
+    width: 40px;
+}
+
+.table-action i {
+    font-size: 25px;
+}
+
+
+.table-img {
+    width: 50px;
+}
+
+.table-img img {
+    width: 50px;
+}
+
+
+input, select {
+    width: 100%;
+    padding: 10px 12px;
+    border: none;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    outline: none;
+    font-size: 18px;
+    color: rgba(0, 0, 0, 0.7);
+    border-radius: 5px;
+}
+
+select {
+    padding-block: 9px;
+}
+
+::placeholder {
+    color: rgb(184, 184, 184);
+}
+
+input:focus, select:focus {
+    box-shadow: 0 0 5px 1px #fa373d96;
+}
+
+.input button {
+    padding: 8px;
+}
+
+.truncate {
+    width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.w-fit {
+    width: fit-content;
+}
 /* ////////////////////////////////////////////////////////////////////////////////////// */
 
 nav {
@@ -61,7 +133,6 @@ nav {
     top: 0;
     bottom: 0;
     margin: auto;
-    background: linear-gradient(to top, #56ccf2, #2f80ed);
     /* background-color: #6d5fb4; */
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
 }
@@ -157,10 +228,6 @@ nav button:hover h3 {
     transform: rotate(180deg);
 }
 
-.logout h3{
-    /* position: relative; */
-}
-
 /* /////////////////////////////////////////////////////////////////////////////////////////////////// */
 
 section {
@@ -179,22 +246,7 @@ section {
 }
 
 .input label {
-    margin-left: 5px;
-}
-
-.input input {
-    width: 100%;
-    padding: 10px;
-    border: none;
-    border: 1px solid rgba(0, 0, 0, 0.3);
-    outline: none;
-    font-size: 18px;
-    color: rgba(0, 0, 0, 0.7);
-    border-radius: 8px;
-}
-
-.input button {
-    padding: 8px;
+    margin-left: 3px;
 }
 
 .sale-items {
@@ -462,24 +514,8 @@ input[type="radio"] {
     width: 100px;
 }
 
-.table-action {
-    width: 40px;
-}
-
-.table-action i {
-    font-size: 25px;
-}
-
 #customersTBody {
     height: 40px;
-}
-
-.table-img {
-    width: 50px;
-}
-
-.table-img img {
-    width: 50px;
 }
 
 /* /////////////////////////////////////////////////////////////////////////////////////////////////// */

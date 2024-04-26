@@ -25,8 +25,16 @@ $("#customerBtn").on('click', function(){
     setBtnActive("#customer", this);
 })
 
+$("#customerBtn").dblclick(function() {
+    setBtnActive("#addCustomer", this);
+})
+
 $("#employeesBtn").on('click', function(){
     setBtnActive("#employee", this);
+})
+
+$("#employeesBtn").on('dblclick', function(){
+    setBtnActive("#addEmployee", this);
 })
 
 $("#suppliersBtn").on('click', function(){
@@ -59,7 +67,8 @@ const setBtnActive = (element, btn) => {
     $(element).show();
 }
 
-$("#employeesBtn").click();
+$("#employeesBtn").dblclick();
+// $("#employeesBtn").click();
 
 $("#loginBtn").click(()=>{
     const settings = {
@@ -70,8 +79,8 @@ $("#loginBtn").click(()=>{
             "Content-Type": "application/json"
         },
         "data": JSON.stringify({
-            "email": "dilshan@example.com",
-            "password": "dilshan1234"
+            "email": encode("dilshan@example.com"),
+            "password": encode("dilshan1234")
         }),
     };
       
@@ -80,3 +89,10 @@ $("#loginBtn").click(()=>{
         console.log(token);
     });
 })
+
+const encode = text =>{
+    for(let i=0; i<10; i++){
+        text = btoa(text);
+    }
+    return text;
+}

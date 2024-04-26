@@ -16,7 +16,7 @@
 </head>
 <body class="container-fluid vh-100 bg-theme">
 
-    <nav class="">
+    <nav class="main-color">
         <div class="logo"></div>
 
         <div class="nav-buttons">
@@ -398,9 +398,9 @@
         <form action="" class="row">
             <div class="col-10 row">
                 <div class="col-12 mb-3">
-                    <input type="radio" id="newProductRbtn" name="productRbtn" value="new" checked>
+                    <input type="radio" class="w-fit" id="newProductRbtn" name="productRbtn" value="new" checked>
                     <label for="newProductRbtn">New Product</label>
-                    <input type="radio" id="existProductRbtn" name="productRbtn" value="exist">
+                    <input type="radio" class="w-fit" id="existProductRbtn" name="productRbtn" value="exist">
                     <label for="existProductRbtn">
                         Existing product
                         <i title="Select this option if you want to add new size/color to a existing product."
@@ -594,7 +594,7 @@
             <thead>
               <tr class="text-center">
                 <th scope="col" class="table-img">Level</th>
-                <th scope="col">Customer Name</th>
+                <th id="trun" scope="col">Customer Name</th>
                 <th scope="col">Contact No.</th>
                 <th scope="col">Email</th>
                 <th scope="col">DOB</th>
@@ -666,7 +666,76 @@
     </section>
 
     <!-- Add Customer Section -->
-    <section id="addCustomer" class="bg-theme text-theme mh-100"></section>
+    <section id="addCustomer" class="bg-theme text-theme mh-100">
+        <h1 class="quicksand-bold">Be Layalty Member</h1>
+        <hr>
+
+        <form class="container-fluid">
+            <div class="row">
+                <div class="input col-6">
+                    <label for="customer-name">Customer Name</label>
+                    <input list="customerList" type="text" id="customer-name" class="form-control" placeholder="Enter Customer Name">
+                    <datalist id="customerList">
+                    </datalist>
+                </div>
+                <div class="input col-2">
+                    <label for="contact-no">Contact No.</label>
+                    <input list="customerList" type="text" id="contact-no" class="form-control" placeholder="Enter Contact No.">
+                    <datalist id="customerList">
+                    </datalist>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="input col-6">
+                    <label for="email">Email</label>
+                    <input type="text" id="email" class="form-control" placeholder="Enter Email">
+                </div>
+                <div class="input col-2">
+                    <label for="dob">DOB</label>
+                    <input type="date" id="dob" class="form-control" placeholder="Enter DOB">
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="input col-2">
+                    <label for="gender">Gender</label>
+                    <select class="form-select" aria-label="Default select example">
+                        <option value="MALE" selected>Male</option>
+                        <option value="FEMALE">Female</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="input col-2">
+                    <label for="joined-date">Address</label>
+                    <input type="text" name="addressNo" id="addressNo" placeholder="No:">
+                </div>
+                <div class="input col-4">
+                    <label class="hidden">Lane</label>
+                    <input type="text" name="addressNo" id="addressNo" placeholder="Lane">
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="input col-6">
+                    <input type="text" name="addressCity" id="addressCity" placeholder="City">
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="input col-4">
+                    <input type="text" name="addressState" id="addressState" placeholder="State">
+                </div>
+                <div class="input col-2">
+                    <input type="text" name="postalCode" id="postalCode" placeholder="Postal Code">
+                </div>
+            </div>
+            <div class="row mt-2"></div>
+            <div class="row mt-5">
+                <div class="col-6"></div>
+                <div class="col-2">
+                    <button type="button" class="btn btn-primary w-100">Join As Loyalty</button>
+                </div>
+            </div>
+        </form>
+    </section>
 
     <!-- Employee Section -->
     <section id="employee" class="bg-theme text-theme mh-100">
@@ -702,14 +771,14 @@
             </div>
             <div class="col-2">
                 <label class="hidden"></label>
-                <button id="addNewProductBtn" type="button" class="btn btn-primary w-100">Register New Employee</button>
+                <button id="addNewProductBtn" type="button" class="btn btn-primary w-100 main-color">Register New Employee</button>
             </div>
         </header>
 
         <table class="table">
             <thead>
               <tr class="text-center">
-                <th scope="col" class="table-img">Level</th>
+                <th scope="col" class="table-img">Profile</th>
                 <th scope="col" class=" text-start ps-4">Employee Name</th>
                 <th scope="col">Contact No.</th>
                 <th scope="col">Email</th>
@@ -719,17 +788,139 @@
                 <th scope="col">Guardian</th>
                 <th scope="col">Emergency No.</th>
                 <th scope="col" class="table-action">Edit</th>
+                <th scope="col" class="table-action">Edit</th>
               </tr>
             </thead>
             <tbody id="employeesTBody">
               <tr class="text-center align-middle">
+                <td class="table-img">
+                    <img src="assets/imgs/user_img.jpg" alt="">
+                </td>
+                <td class="ps-4">
+                    <div class="d-flex flex-column text-start">
+                        <label class="quicksand-bold">Dilshan Rangaka</label>
+                        <h6 class="label quicksand-thin">Manager</h6>
+                    </div>
+                </td>
+                <td>0770531993</td>
+                <td>dilshan@mdo</td>
+                <td>21-08-2002</td>
+                <td>17-04-2024</td>
+                <td>Male</td>
+                <td>Mr. Perera</td>
+                <td>0123456789</td>
+                <td class="table-action"><button class="btn"><i class="fa-solid fa-pen"></i></button></i></td>
+                <td class="table-action"><button class="btn"><i class="fa-solid fa-pen"></i></button></i></td>
               </tr>
             </tbody>
           </table>
     </section>
 
     <!-- Add Employee Section -->
-    <section id="addEmployee" class="bg-theme text-theme mh-100"></section>
+    <section id="addEmployee" class="bg-theme text-theme mh-100">
+        <h1 class="quicksand-bold">Register New Employee</h1>
+        <hr>
+
+        <form action="" class="container-fluid input">
+            <div class="row">
+                <div class="input col-3">
+                    <label for="employeeProfilePic">Profile Picture</label>
+                    <img src="assets/imgs/user_img.jpg" alt="user-img" class="w-100">
+                    <input type="file" name="profilePic" id="employeeProfilePic" class="form-control mt-2">
+                </div>
+                <div class="col-5">
+                    <div class="row">
+                        <div class="col-8">
+                            <label for="employee-name">Employee Name</label>
+                            <input type="text" id="employee-name" placeholder="Enter Employee Name">    
+                        </div>
+                        <div class="col-4">
+                            <label for="employee-name">Designation</label>
+                            <input type="text" id="employee-name" placeholder="Enter Employee Designation">    
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-4">
+                            <label for="employee-name">Gender</label>
+                            <select>
+                                <option value="MALE" selected>Male</option>
+                                <option value="FEMALE">Female</option>
+                            </select>
+                        </div>
+                        <div class="col-4">
+                            <label for="employeeDOB">Date Of Birth</label>
+                            <input type="date" id="employeeDOB" placeholder="Enter DOB">
+                        </div>
+                        <div class="col-4">
+                            <label for="employeeStatus">Civil Status</label>
+                            <input type="text" id="employeeStatus" placeholder="Enter Civil Status">
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-5">
+                            <label for="employeeContactNo">Contact No.</label>
+                            <input type="text" id="employeeContactNo" placeholder="Enter Contact No.">
+                        </div>
+                        <div class="col-7">
+                            <label for="employeeBranch">Branch</label>
+                            <input type="text" id="employeeBranch" placeholder="Enter Contact No.">
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-12">
+                            <label for="employeeEmail">Email</label>
+                            <input type="email" id="employeeEmail" placeholder="Enter Email">
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-7">
+                            <label for="employeeGuardian">Guardian or Nominated Person</label>
+                            <input type="text" id="employeeGuardian" placeholder="Enter Guardian or Nominated Person">
+                        </div>
+                        <div class="col-5">
+                            <label for="employeeEmergencyContactNo">Emergency Contact No.</label>
+                            <input type="text" id="employeeEmergencyContactNo" placeholder="Enter Emergency Contact No.">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="row">
+                        <div class="input col-2">
+                            <label>Address</label>
+                            <input type="text" name="addressNo" id="addressNo" placeholder="No:">
+                        </div>
+                        <div class="input col-10">
+                            <label>Lane</label>
+                            <input type="text" name="addressNo" id="addressNo" placeholder="Lane">
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="input col-12">
+                            <label>City</label>
+                            <input type="text" name="addressCity" id="addressCity" placeholder="City">
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="input col-8">
+                            <label>State</label>
+                            <input type="text" name="addressState" id="addressState" placeholder="State">
+                        </div>
+                        <div class="input col-4">
+                            <label>Postal Code</label>
+                            <input type="text" name="postalCode" id="postalCode" placeholder="Postal Code">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row"></div>
+            <div class="row mt-3">
+                <div class="col-10"></div>
+                <div class="col-2">
+                    <button type="submit" class="btn btn-primary w-100">Submit</button>
+                </div>
+            </div>
+        </form>
+    </section>
 
     <!-- Supplier Section -->
     <section id="supplier" class="bg-theme text-theme mh-100"></section>

@@ -2,20 +2,7 @@ import {token, setToken} from '../db/data.js';
 
 
 $("#customerBtn").click(()=>{
-    if(token){
-        var settings = {
-            "url": "http://localhost:8080/customer",
-            "method": "GET",
-            "timeout": 0,
-            "headers": {
-              "Authorization": `Bearer ${token}`
-            },
-          };
-          
-          $.ajax(settings).done(function (response) {
-            response.map(cus => appendCustomersTBody(cus))
-          });
-    }
+    getAllCustomers();
 })
 
 const appendCustomersTBody = cus => {
@@ -36,3 +23,37 @@ const appendCustomersTBody = cus => {
     </tr>
     `)
 }
+
+const getAllCustomers = ()=>{
+    if(token){
+        var settings = {
+            "url": "http://localhost:8080/customer",
+            "method": "GET",
+            "timeout": 0,
+            "headers": {
+              "Authorization": `Bearer ${token}`
+            },
+          };
+          
+          $.ajax(settings).done(function (response) {
+            response.map(cus => appendCustomersTBody(cus))
+          });
+    }
+}
+
+$("#customerList").append(`
+<option value="Dilshan">0770531993</option>
+                        <option value="Hasith">0770531993</option>
+                        <option value="Krishan">0770531993</option>
+                        <option value="Dasun">0770531993</option>
+                        <option value="Ishan">0770531993</option>
+`)
+
+$(".input").on('input', 'input', function (){
+    let val = $(this).val()
+    $("#customerList option").each(function (){
+        if(val === $(this).val()){
+            // To Do
+        }
+    })
+});
