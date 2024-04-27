@@ -28,4 +28,10 @@ public class EmployeeServiceIMPL implements EmployeeService {
     public void saveUser(EmployeeDTO dto) {
         employeeRepo.save(new ModelMapper().map(dto, EmployeeEntity.class));
     }
+
+    @Override
+    public EmployeeDTO getEmployee(String email) {
+        EmployeeEntity entity = employeeRepo.findByEmail(email).get();
+        return new ModelMapper().map(entity, EmployeeDTO.class);
+    }
 }

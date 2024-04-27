@@ -17,10 +17,10 @@ public class AuthenticationBOIMPL implements AuthenticationBO {
     private final AuthenticationService authenticationService;
 
     public JwtAuthResponse signIn(SignIn signIn){
-        for(int i = 0; i < 10; i++){
-            signIn.setEmail(new String(Base64.getDecoder().decode(signIn.getEmail())));
-            signIn.setPassword(new String(Base64.getDecoder().decode(signIn.getPassword())));
-        }
+//        for(int i = 0; i < 10; i++){
+//            signIn.setEmail(new String(Base64.getDecoder().decode(signIn.getEmail())));
+//            signIn.setPassword(new String(Base64.getDecoder().decode(signIn.getPassword())));
+//        }
         return authenticationService.signIn(signIn);
     }
 

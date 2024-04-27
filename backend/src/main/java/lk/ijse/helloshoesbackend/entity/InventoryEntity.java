@@ -1,7 +1,6 @@
 package lk.ijse.helloshoesbackend.entity;
 
 import jakarta.persistence.*;
-import lk.ijse.helloshoesbackend.entity.enums.Colors;
 import lk.ijse.helloshoesbackend.entity.enums.Sizes;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -10,7 +9,6 @@ import lombok.NoArgsConstructor;
 import java.util.List;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
 @Entity
 @Table(name = "inventory")
@@ -19,7 +17,7 @@ public class InventoryEntity {
     private String inventoryCode;
     @Enumerated(EnumType.STRING)
     private Sizes size;
-    private Colors colors;
+    private String colors;
     private Integer originalQty;
     private Integer currentQty;
     private String status;
@@ -34,7 +32,7 @@ public class InventoryEntity {
     @OneToMany(mappedBy="saleItemId.item", cascade = CascadeType.ALL)
     private List<SaleItemEntity> saleItems;
 
-    public InventoryEntity(Sizes size, Colors colors, Integer originalQty, Integer currentQty, String status, ItemEntity item, ItemImageEntity itemImage, List<ResupplyItemEntity> resupplyItems, List<SaleItemEntity> saleItems) {
+    public InventoryEntity(String inventoryCode, Sizes size, String colors, Integer originalQty, Integer currentQty, String status, ItemEntity item, ItemImageEntity itemImage, List<ResupplyItemEntity> resupplyItems, List<SaleItemEntity> saleItems) {
         this.inventoryCode = generateInventoryCode(item.getItemCode(), size, colors);
         this.size = size;
         this.colors = colors;
@@ -47,7 +45,7 @@ public class InventoryEntity {
         this.saleItems = saleItems;
     }
 
-    public String generateInventoryCode(String itemCode, Sizes size, Colors color){
-        return itemCode + "-" + size.name() + "-" + color.name();
+    public String generateInventoryCode(String itemCode, Sizes size, String color){
+        return itemCode + "-" + size.name() + "-" + color;
     }
 }
