@@ -1,3 +1,6 @@
+import {Item} from '../model/Item.js'
+import {Inventory} from '../model/Inventory.js'
+
 let otherBtnCount = 0;
 let isNewProduct = true;
 
@@ -99,18 +102,6 @@ $("#newProductRbtn, #existProductRbtn").click(()=>{
     }
 })
 
-$('#cbSizes').click(function() {
-    var selectedSizes = [];
-
-    $('#cbSizes .form-check-input').each(function() {
-        if ($(this).is(':checked')) {
-            selectedSizes.push($(this).val());
-        }
-    });
-
-    console.log("Selected sizes: ", selectedSizes);
-});
-
 $('#cbColors .form-check-input').click(function() {
     var selectedColors = [];
 
@@ -125,7 +116,7 @@ $('#cbColors .form-check-input').click(function() {
         $("#colorImagesInputs").empty();
         selectedColors.map(color => {
             $("#colorImagesInputs").append(`
-                <div class="mb-3">
+                <div id="${color}Inputs" class="mb-3">
                     <label for="" class="label ms-1 me-3 quicksand-bold">${color}</label>
                     <input class="form-control form-control-sm mb-2 import" id="product${color}Image" name="product${color}Image" type="file">
                     <div id="cb${color}Sizes">
@@ -159,17 +150,6 @@ $('#cbColors .form-check-input').click(function() {
                             <label class="label" for="cb${color}Size11">11</label>
                         </div>
                     </div>
-                    <div id="cb${color}Gender">
-                        <label class="label ms-1 import" for="">Gender: </label>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="cb${color}Men" value="MEN">
-                            <label class="label" for="cb${color}Men">Men</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="cb${color}Women" value="WOMEN">
-                            <label class="label" for="cb${color}Women">Women</label>
-                        </div>
-                    </div>
                 </div>
                 <hr>
             `)
@@ -177,56 +157,121 @@ $('#cbColors .form-check-input').click(function() {
     }
 });
 
+{/* <div id="cb${color}Gender">
+<label class="label ms-1 import" for="">Gender: </label>
+<div class="form-check form-check-inline">
+    <input class="form-check-input" type="checkbox" id="cb${color}Men" value="MEN">
+    <label class="label" for="cb${color}Men">Men</label>
+</div>
+<div class="form-check form-check-inline">
+    <input class="form-check-input" type="checkbox" id="cb${color}Women" value="WOMEN">
+    <label class="label" for="cb${color}Women">Women</label>
+</div>
+</div> */}
+
 $("#otherColorBtn").click(function() {
     otherBtnCount++;
+    let id = "Other" + otherBtnCount;
     $("#colorImagesInputs").append(`
-        <div class="mb-3">
-            <label for="" class="label ms-1 me-3">Other #${otherBtnCount} :</label><br>
-            <input class="form-control form-control-sm import" id="productOther${otherBtnCount}Image" name="productOther${otherBtnCount}Image" type="file">
-            <input class="form-control form-control-sm import" id="productOther${otherBtnCount}Name" name="productOther${otherBtnCount}Name" type="text" placeholder="Colour/Pattern Name*">
-            <div id="cbOther${otherBtnCount}Sizes" class="">
+        <div id="${id}Inputs" class="mb-3">
+            <label for="" class="label ms-1 me-3">#${id} :</label><br>
+            <input class="form-control form-control-sm import" id="product${id}Image" name="product${id}Image" type="file">
+            <input class="form-control form-control-sm import" id="product${id}Name" name="product${id}Name" type="text" placeholder="Colour/Pattern Name*">
+            <div id="cb${id}Sizes" class="">
                 <label class="label ms-1 import">Sizes: </label>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="cbOther${otherBtnCount}Size5" value="SIZE 5">
-                    <label class="label" for="cbOther${otherBtnCount}Size5">5</label>
+                    <input class="form-check-input" type="checkbox" id="cb${id}Size5" value="SIZE 5">
+                    <label class="label" for="cb${id}Size5">5</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="cbOther${otherBtnCount}Size6" value="SIZE 6">
-                    <label class="label" for="cbOther${otherBtnCount}Size6">6</label>
+                    <input class="form-check-input" type="checkbox" id="cb${id}Size6" value="SIZE 6">
+                    <label class="label" for="cb${id}Size6">6</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="cbOther${otherBtnCount}Size7" value="SIZE 7">
-                    <label class="label" for="cbOther${otherBtnCount}Size7">7</label>
+                    <input class="form-check-input" type="checkbox" id="cb${id}Size7" value="SIZE 7">
+                    <label class="label" for="cb${id}Size7">7</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="cbOther${otherBtnCount}Size8" value="SIZE 8">
-                    <label class="label" for="cbOther${otherBtnCount}Size8">8</label>
+                    <input class="form-check-input" type="checkbox" id="cb${id}Size8" value="SIZE 8">
+                    <label class="label" for="cb${id}Size8">8</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="cbOther${otherBtnCount}Size9" value="SIZE 9">
-                    <label class="label" for="cbOther${otherBtnCount}Size9">9</label>
+                    <input class="form-check-input" type="checkbox" id="cb${id}Size9" value="SIZE 9">
+                    <label class="label" for="cb${id}Size9">9</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="cbOther${otherBtnCount}Size10" value="SIZE 10">
-                    <label class="label" for="cbOther${otherBtnCount}Size10">10</label>
+                    <input class="form-check-input" type="checkbox" id="cb${id}Size10" value="SIZE 10">
+                    <label class="label" for="cb${id}Size10">10</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="cbOther${otherBtnCount}Size11" value="SIZE 11">
-                    <label class="label" for="cbOther${otherBtnCount}Size11">11</label>
-                </div>
-            </div>
-            <div id="cbOther${otherBtnCount}Gender">
-                <label class="label ms-1 import" for="">Gender: </label>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="cbOther${otherBtnCount}men" value="MEN">
-                    <label class="label" for="cbOther${otherBtnCount}men">Men</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="cbOther${otherBtnCount}women" value="WOMEN">
-                    <label class="label" for="cbOther${otherBtnCount}women">Women</label>
+                    <input class="form-check-input" type="checkbox" id="cb${id}Size11" value="SIZE 11">
+                    <label class="label" for="cb${id}Size11">11</label>
                 </div>
             </div>
         </div>
         <hr>
     `)
 })
+
+$("#addProductBtn").click(async ()=>{
+    let typeByOccasion = getValue("typesByOccasion")
+    let gender = getValue("typesByGender")
+    let allProducts = [];
+    let item = new Item(
+        typeByOccasion + gender,
+        getValue("productName"),
+        getValue("productByCategory"),
+        getValue("productBySupplier"),
+        null,
+        getValue("productSellPrice"),
+        getValue("productBuyPrice"),
+        getValue("productExpectProfit"),
+        getValue("productProfitMargin"),
+        null
+    );
+
+    console.log(item);
+
+    let selectedColors = [];
+    $('#cbColors .form-check-input').each(function() {
+        if ($(this).is(':checked')) {
+            selectedColors.push($(this).val());
+        }
+    });
+
+    for(let color of selectedColors){
+        let img = $(`#product${color}Image`).prop('files')[0];
+        let reader = new FileReader();
+        
+        let sizes = [];
+        let inventoryItems = [];
+
+        for(let i = 5; i < 12; i++){
+            $(`#cb${color}Size${i}`).is(':checked') && sizes.push(i);;
+        }
+        console.log(sizes);
+
+        for(let i = 0; i < sizes.length; i++){
+            let size = sizes[i];
+            let inventoryItem = new Inventory(null,size, color,null,null,null,null,null);
+            inventoryItems.push(inventoryItem);
+        }
+
+        let base64Image = await new Promise((resolve, reject) => {
+            reader.onloadend = function(){
+                resolve(reader.result);
+            }
+            reader.readAsDataURL(img);
+        });
+
+        (inventoryItems.length > 0) && (inventoryItems[0].itemImage = base64Image);
+        allProducts.push(...inventoryItems);
+    }
+
+    console.log(allProducts);
+    item.inventoryItems = allProducts;
+})
+
+const getValue = id => {
+    return $("#" + id).val();
+}

@@ -66,6 +66,7 @@ public class UserAPI {
         SignUp signUp = new SignUp(
                 name,
                 UtilMatter.convertBase64(profilePic),
+//                profilePic,
                 Gender.valueOf(gender),
                 status,
                 designation,

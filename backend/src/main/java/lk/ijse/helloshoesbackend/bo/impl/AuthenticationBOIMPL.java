@@ -21,10 +21,14 @@ public class AuthenticationBOIMPL implements AuthenticationBO {
 //            signIn.setEmail(new String(Base64.getDecoder().decode(signIn.getEmail())));
 //            signIn.setPassword(new String(Base64.getDecoder().decode(signIn.getPassword())));
 //        }
-        return authenticationService.signIn(signIn);
+        JwtAuthResponse jwtAuthResponse = authenticationService.signIn(signIn);
+        jwtAuthResponse.getUser().setPassword(null);
+        return jwtAuthResponse;
     }
 
     public JwtAuthResponse signUp(SignUp signUp){
-        return authenticationService.signUp(signUp);
+        JwtAuthResponse jwtAuthResponse = authenticationService.signUp(signUp);
+        jwtAuthResponse.getUser().setPassword(null);
+        return jwtAuthResponse;
     }
 }

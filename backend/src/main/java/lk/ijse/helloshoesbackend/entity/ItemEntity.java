@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -21,6 +23,8 @@ public class ItemEntity {
     private SupplierEntity supplier;
     private Double unitPriceSale;
     private Double unitPriceBuy;
-    private Double expectedPrice;
+    private Double expectedProfit;
     private Double profitMargin;
+    @OneToMany(mappedBy = "item",cascade = CascadeType.ALL)
+    private List<InventoryEntity> inventoryItems;
 }

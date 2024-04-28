@@ -410,12 +410,30 @@
 
                 <div id="newProductDetails" class="row"> 
                     <div class="input col-6">
-                        <label for="" class="label import">Product Name</label>
+                        <label for="productName" class="label import">Product Name</label>
                         <input id="productName" name="productName" type="text">
                     </div>
-                    <div class="input col-3">
-                        <label for="" class="label import">Category</label>
-                        <select class="form-select" aria-label="Default select example">
+                    <div class="input col-4">
+                        <label for="typesByOccasion" class="label import">Types by occasion</label>
+                        <select id="typesByOccasion" class="form-select" aria-label="Default select example">
+                            <option selected>(Select Category)</option>
+                            <option value="FS">Formal Shoes</option>
+                            <option value="CS">Casual Shoes</option>
+                            <option value="IS">Industrial Flops Shoes</option>
+                            <option value="SS">Sport Shoes</option>
+                        </select>
+                    </div>
+                    <div class="input col-2">
+                        <label for="typesByGender" class="label import">Gender</label>
+                        <select id="typesByGender" class="form-select" aria-label="Default select example">
+                            <option selected>(Select)</option>
+                            <option value="M">Men</option>
+                            <option value="W">Women</option>
+                        </select>
+                    </div>
+                    <div class="input col-6 mt-3">
+                        <label for="productByCategory" class="label import">Category</label>
+                        <select id="productByCategory" class="form-select" aria-label="Default select example">
                             <option selected>(Select Category)</option>
                             <option value="H">Heel</option>
                             <option value="F">Flats</option>
@@ -426,9 +444,9 @@
                             <option value="SL">Slippers</option>
                         </select>
                     </div>
-                    <div class="input col-3">
-                        <label for="" class="label import">Supplier</label>
-                        <select class="form-select" aria-label="Default select example">
+                    <div class="input col-6 mt-3">
+                        <label for="productBySupplier" class="label import">Supplier</label>
+                        <select id="productBySupplier" class="form-select" aria-label="Default select example">
                             <option selected>(Select Supplier)</option>
                             <optgroup label="International Brands">
                                 <option value="International">All International</option>
@@ -469,25 +487,25 @@
                         </select>
                     </div>
 
-                    <div class="input col-4 mt-4">
-                        <label for="" class="label import">Sell Price</label>
-                        <input id="productName" name="productName" type="text">
+                    <div class="input col-6 mt-4">
+                        <label for="productSellPrice" class="label import">Sell Price</label>
+                        <input id="productSellPrice" name="productSellPrice" type="number">
                     </div>
-                    <div class="input col-4 mt-4">
-                        <label for="" class="label import">Buy Price</label>
-                        <input id="productName" name="productName" type="text">
+                    <div class="input col-6 mt-4">
+                        <label for="productBuyPrice" class="label import">Buy Price</label>
+                        <input id="productBuyPrice" name="productBuyPrice" type="number">
                     </div>
-                    <div class=" col-2 mt-4">
-                        <label for="" class="label import">Profit Margin</label>
-                        <!-- <input id="productName" name="productName" type="text"> -->
-                        <div class="input-group">
+                    <div class="input col-6 mt-4">
+                        <label for="productExpectProfit" class="label import">Expected Profit</label>
+                        <input id="productExpectProfit" name="productExpectProfit" type="number">
+                    </div>
+                    <div class="input col-6 mt-4">
+                        <label for="productProfitMargin" class="label import">Profit Margin</label>
+                        <input id="productProfitMargin" name="productProfitMargin" type="number">
+                        <!-- <div class="input-group">
                             <input type="text" class="form-control" aria-label="Dollar amount (with dot and two decimal places)">
                             <span class="input-group-text">%</span>
-                          </div>
-                    </div>
-                    <div class="input col-2 mt-4">
-                        <label for="" class="label import">Profit</label>
-                        <input id="productName" name="productName" type="text">
+                        </div> -->
                     </div>
                 </div>
 
@@ -546,7 +564,7 @@
                     </div>
                 </div>
                 <div class="col-12 d-flex justify-content-end">
-                    <button class="btn btn-primary btn-lg" type="button">Add Product</button>
+                    <button id="addProductBtn" class="btn btn-primary btn-lg" type="button">Add Product</button>
                 </div>
             </div>
             
@@ -818,6 +836,7 @@
 
     <!-- Add Employee Section -->
     <section id="addEmployee" class="bg-theme text-theme mh-100">
+
         <h1 class="quicksand-bold">Register New Employee</h1>
         <hr>
 
@@ -825,7 +844,7 @@
             <div class="row">
                 <div class="input col-3">
                     <label for="employeeProfilePic">Profile Picture</label>
-                    <img src="assets/imgs/user_img.jpg" alt="user-img" class="w-100">
+                    <img id="profilePicImg" src="assets/imgs/user_img.jpg" alt="user-img" class="w-100">
                     <input type="file" name="profilePic" id="employeeProfilePic" class="form-control mt-2">
                 </div>
                 <div class="col-5">

@@ -7,6 +7,7 @@ import lk.ijse.helloshoesbackend.reqAndResp.request.SignUp;
 import lk.ijse.helloshoesbackend.reqAndResp.response.JwtAuthResponse;
 import lk.ijse.helloshoesbackend.service.AuthenticationService;
 import lk.ijse.helloshoesbackend.service.JWTService;
+import lk.ijse.helloshoesbackend.util.Conversion;
 import lk.ijse.helloshoesbackend.util.UtilMatter;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -38,7 +39,7 @@ public class AuthenticationServiceIMPL implements AuthenticationService {
 
         String token = jwtService.generateToken(byEmail);
 
-        return new JwtAuthResponse(token);
+        return new JwtAuthResponse(token, Conversion.toEmployeeDTO(byEmail));
     }
 
     @Override
@@ -50,7 +51,7 @@ public class AuthenticationServiceIMPL implements AuthenticationService {
         EmployeeEntity savedEmployee = employeeRepo.save(employeeEntity);
         String token = jwtService.generateToken(savedEmployee);
 
-        return new JwtAuthResponse(token);
+        return new JwtAuthResponse(token, Conversion.toEmployeeDTO(savedEmployee));
     }
 
     @Override
@@ -60,6 +61,6 @@ public class AuthenticationServiceIMPL implements AuthenticationService {
                 .orElseThrow(()-> new UsernameNotFoundException("User Not Found"));
 
         String token = jwtService.generateToken(employeeEntity);
-        return new JwtAuthResponse(token);
+        return new JwtAuthResponse(token, Conversion.toEmployeeDTO(employeeEntity));
     }
 }

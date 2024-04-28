@@ -20,7 +20,7 @@ import java.util.Set;
 @NoArgsConstructor
 @Entity
 @Table(name = "employee")
-public class EmployeeEntity implements UserDetails {
+public class EmployeeEntity implements UserDetails, SuperEntity {
     @Id
     private String employeeCode;
     private String name;

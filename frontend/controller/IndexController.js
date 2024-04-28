@@ -67,8 +67,8 @@ const setBtnActive = (element, btn) => {
     $(element).show();
 }
 
-$("#employeesBtn").dblclick();
-// $("#employeesBtn").click();
+$("#inventoryBtn").dblclick();
+// $("#addProductBtn").click();
 
 $("#loginBtn").click(()=>{
     const settings = {
@@ -79,20 +79,34 @@ $("#loginBtn").click(()=>{
             "Content-Type": "application/json"
         },
         "data": JSON.stringify({
-            "email": encode("dilshan@example.com"),
+            "email": encode("dilshan@gmail.com"),
             "password": encode("dilshan1234")
         }),
     };
       
     $.ajax(settings).done(function (response) {
         setToken(response.token);
-        console.log(token);
+        let img = response.user.profilePic;
+        let imgObj = new Image();
+
+        // imgObj.src = img;
+        // // imgObj.src = "data:image;base64," + img;
+
+        // imgObj.onload = function() {
+        //     console.log("Image loaded successfully");
+        //     // Access image properties and perform actions as needed
+        //     console.log("Image width: " + this.width);
+        //     console.log("Image height: " + this.height);
+        // };
+        // imgObj.onerror = function() {
+        //     console.error("Error loading image");
+        // };
     });
 })
 
 const encode = text =>{
-    for(let i=0; i<10; i++){
-        text = btoa(text);
-    }
+    // for(let i=0; i<10; i++){
+    //     text = btoa(text);
+    // }
     return text;
 }
