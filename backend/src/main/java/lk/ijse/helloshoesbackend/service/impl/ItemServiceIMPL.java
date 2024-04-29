@@ -20,14 +20,11 @@ public class ItemServiceIMPL implements ItemService {
 
     @Override
     public boolean save(ItemDTO dto) {
-        System.out.println(dto.getInventoryItems());
         try {
             List<InventoryEntity> inventoryEntities = Conversion.toInventoryEntityList(dto.getInventoryItems());
-            System.out.println(inventoryEntities);
+
             ItemEntity itemEntity = Conversion.toItemEntity(dto);
             itemEntity.setInventoryItems(inventoryEntities);
-            System.out.println(itemEntity);
-
             itemRepo.save(itemEntity);
 
             return true;

@@ -25,7 +25,7 @@ public class ItemBOIMPL implements ItemBO {
     @Override
     public boolean saveItem(ItemDTO dto) {
         Random random = new Random();
-        dto.setItemCode(dto.getItemCode() + random.nextInt(40000) + 10000);
+        dto.setItemCode(dto.getItemCode() + (random.nextInt(40000) + 10000));
         dto.getInventoryItems();
         String tempColor = "EMPTY";
         ItemImageDTO image = new ItemImageDTO();

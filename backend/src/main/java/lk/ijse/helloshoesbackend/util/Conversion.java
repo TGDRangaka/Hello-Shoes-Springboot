@@ -26,7 +26,6 @@ public class Conversion {
     }
     public static ItemEntity toItemEntity(ItemDTO dto){
         ItemEntity entity = modelMapper.map(dto, ItemEntity.class);
-        System.out.println(entity.getSupplier());
         return entity;
     }
 

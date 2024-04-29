@@ -17,6 +17,7 @@ public class ItemEntity {
     @Id
     private String itemCode;
     private String description;
+    @Enumerated(EnumType.STRING)
     private ItemCategories category;
     private String supplierName;
     @ManyToOne
