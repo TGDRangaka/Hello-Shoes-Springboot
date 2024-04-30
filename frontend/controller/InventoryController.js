@@ -1,5 +1,6 @@
 import {Item} from '../model/Item.js'
 import {Inventory} from '../model/Inventory.js'
+import {token} from '../db/data.js'
 
 let otherBtnCount = 0;
 let isNewProduct = true;
@@ -113,49 +114,53 @@ $('#cbColors .form-check-input').click(function() {
 
     if(selectedColors){
         otherBtnCount = 0;
-        $("#colorImagesInputs").empty();
+        $("#colorInputs").empty();
         selectedColors.map(color => {
-            $("#colorImagesInputs").append(`
-                <div id="${color}Inputs" class="mb-3">
-                    <label for="" class="label ms-1 me-3 quicksand-bold">${color}</label>
-                    <input class="form-control form-control-sm mb-2 import" id="product${color}Image" name="product${color}Image" type="file">
-                    <div id="cb${color}Sizes">
-                        <label class="label ms-1 import" for="">Sizes: </label>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="cb${color}Size5" value="SIZE 5">
-                            <label class="label" for="cb${color}Size5">5</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="cb${color}Size6" value="SIZE 6">
-                            <label class="label" for="cb${color}Size6">6</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="cb${color}Size7" value="SIZE 7">
-                            <label class="label" for="cb${color}Size7">7</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="cb${color}Size8" value="SIZE 8">
-                            <label class="label" for="cb${color}Size8">8</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="cb${color}Size9" value="SIZE 9">
-                            <label class="label" for="cb${color}Size9">9</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="cb${color}Size10" value="SIZE 10">
-                            <label class="label" for="cb${color}Size10">10</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="cb${color}Size11" value="SIZE 11">
-                            <label class="label" for="cb${color}Size11">11</label>
-                        </div>
-                    </div>
-                </div>
-                <hr>
-            `)
+            $("#colorInputs").append(getColorFieldsComponent(color))
         })
     }
 });
+
+const getColorFieldsComponent = color =>{
+    return `
+    <div id="${color}Inputs" class="mb-3">
+        <label for="" class="label ms-1 me-3 quicksand-bold">${color}</label>
+        <input class="form-control form-control-sm mb-2 import" id="product${color}Image" name="product${color}Image" type="file">
+        <div id="cb${color}Sizes">
+            <label class="label ms-1 import" for="">Sizes: </label>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="cb${color}Size5" value="SIZE 5">
+                <label class="label" for="cb${color}Size5">5</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="cb${color}Size6" value="SIZE 6">
+                <label class="label" for="cb${color}Size6">6</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="cb${color}Size7" value="SIZE 7">
+                <label class="label" for="cb${color}Size7">7</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="cb${color}Size8" value="SIZE 8">
+                <label class="label" for="cb${color}Size8">8</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="cb${color}Size9" value="SIZE 9">
+                <label class="label" for="cb${color}Size9">9</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="cb${color}Size10" value="SIZE 10">
+                <label class="label" for="cb${color}Size10">10</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="cb${color}Size11" value="SIZE 11">
+                <label class="label" for="cb${color}Size11">11</label>
+            </div>
+        </div>
+    </div>
+    <hr>
+`
+}
 
 {/* <div id="cb${color}Gender">
 <label class="label ms-1 import" for="">Gender: </label>
@@ -172,8 +177,8 @@ $('#cbColors .form-check-input').click(function() {
 $("#otherColorBtn").click(function() {
     otherBtnCount++;
     let id = "Other" + otherBtnCount;
-    $("#colorImagesInputs").append(`
-        <div id="${id}Inputs" class="mb-3">
+    $("#otherColorInputs").append(`
+        <div id="${id}Inputs" class="mb-3 otherColorInputs">
             <label for="" class="label ms-1 me-3">#${id} :</label><br>
             <input class="form-control form-control-sm import" id="product${id}Image" name="product${id}Image" type="file">
             <input class="form-control form-control-sm import" id="product${id}Name" name="product${id}Name" type="text" placeholder="Colour/Pattern Name*">
@@ -230,30 +235,36 @@ $("#addProductBtn").click(async ()=>{
         null
     );
 
-    console.log(item);
-
     let selectedColors = [];
     $('#cbColors .form-check-input').each(function() {
         if ($(this).is(':checked')) {
             selectedColors.push($(this).val());
         }
     });
+    for(let i = 1; i <= otherBtnCount; i++){
+        let id = "Other" + i;
+        // console.log($(`#${id}Inputs`));
+        selectedColors.push(id);
+    }
+    console.log(selectedColors);
 
     for(let color of selectedColors){
-        let img = $(`#product${color}Image`).prop('files')[0];
+        let id = color;
+        let img = $(`#product${id}Image`).prop('files')[0];
+        let colorName = id.includes("Other") ? $(`#product${id}Name`).val() : color;
+        console.log(colorName);
         let reader = new FileReader();
         
         let sizes = [];
         let inventoryItems = [];
 
         for(let i = 5; i < 12; i++){
-            $(`#cb${color}Size${i}`).is(':checked') && sizes.push(i);;
+            $(`#cb${id}Size${i}`).is(':checked') && sizes.push(i);;
         }
-        console.log(sizes);
 
         for(let i = 0; i < sizes.length; i++){
             let size = sizes[i];
-            let inventoryItem = new Inventory(null,size, color,null,null,null,null,null);
+            let inventoryItem = new Inventory("",`SIZE_${size}`, colorName,null,null,null,null,{id:"",image:""},[],[]);
             inventoryItems.push(inventoryItem);
         }
 
@@ -264,14 +275,33 @@ $("#addProductBtn").click(async ()=>{
             reader.readAsDataURL(img);
         });
 
-        (inventoryItems.length > 0) && (inventoryItems[0].itemImage = base64Image);
+        (inventoryItems.length > 0) && (inventoryItems[0].itemImage = {id:"", image:base64Image});
         allProducts.push(...inventoryItems);
     }
 
-    console.log(allProducts);
     item.inventoryItems = allProducts;
+    // console.log(item);
+    saveProduct(item);
 })
 
 const getValue = id => {
     return $("#" + id).val();
+}
+
+const saveProduct = (item) => {
+    var settings = {
+        "url": "http://localhost:8080/api/v1/item",
+        "method": "POST",
+        "timeout": 0,
+        "headers": {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`
+        },
+        "data": JSON.stringify(item),
+        // "data": JSON.stringify(item),
+      };
+      
+      $.ajax(settings).done(function (response) {
+        console.log(response);
+      });
 }

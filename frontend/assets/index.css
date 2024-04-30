@@ -6,24 +6,33 @@
 }
 
 body {
-    display: flex;
-    align-items: center;
     font-family: "Quicksand", sans-serif;
-    padding: 0;
+    overflow: hidden;
+}
+
+#bg {
+    background-image: url("imgs/bg.jpg");
+    background-size: cover;
+    background-position: center;
 }
 
 .bg-theme {
-    background-color: #f0f8ff;
-    background-color: #ece9e8;
-    /* background-color: #ffffff; */
+    background-color: #f2faf6;
+}
+
+.bg-theme-blur {
+    background: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(7.3px);
+    -webkit-backdrop-filter: blur(7.3px);
+    border: 1px solid rgba(146, 147, 146, 0.24);
 }
 
 h1 {
-    color: #4c0508;
+    color: #303030;
 }
 
 .main-color {
-    /* background: linear-gradient(to top, #56ccf2, #2f80ed); */
     background: linear-gradient(to top, rgb(250, 97, 36), #fa373d);
     background-color: #fa373d;
 }
@@ -33,16 +42,15 @@ h1 {
 }
 
 .text-theme {
-    color: rgb(75, 75, 75);
+    color: #303030;
 }
 
 .nav-btn-theme {
-    color: rgba(255, 255, 255, 0.7);
-    text-shadow: 0 0 15px rgba(0,0,0,0.4);
+    color: #929392;
 }
 
 .nav-btn-theme:hover {
-    color: white;
+    color: #303030;
 }
 
 .hidden {
@@ -50,12 +58,12 @@ h1 {
 }
 
 .label {
-    color: gray;
+    color: #303030;
     font-weight: 500;
 }
 
 .input label {
-    color: gray;
+    color: #303030;
     font-weight: 500;
     margin-bottom: 4px;
 }
@@ -118,73 +126,41 @@ input:focus, select:focus {
 /* ////////////////////////////////////////////////////////////////////////////////////// */
 
 nav {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    padding-block: 5px;
-    gap: 30px;
-    width: 80px;
-    height: 90vh;
-    border-radius: 40px;
-    z-index: 5;
-    left: 15px;
-    top: 0;
-    bottom: 0;
-    margin: auto;
-    /* background-color: #6d5fb4; */
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-}
-
-.nav-buttons {
-    position: relative;
+    /* position: absolute; */
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    border-radius: 20px 0 0 20px;
+}
+
+.nav-buttons {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
     gap: 30px;
 }
 
 nav button {
-    position: relative;
-    background-color: transparent;
+    outline: none;
     border: none;
+    background-color: transparent;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    font-size: 26px;
-    aspect-ratio: 1;
-    padding: 5px;
+    gap: 10px;
+    width: 100%;
+    font-size: 24px;
+    padding-left: 20px;
     transition-duration: .3s;
 }
 
-nav button:hover i {
-    transform: scale(1.2);
-}
-
 nav button h3 {
-    position: absolute;
-    font-size: 18px;
-    font-weight: 400;
-    padding: 2px 15px;
-    border-radius: 5px;
-    text-shadow: none;
-    color: rgb(75, 75, 75);
-    left: 110%;
-    top: 0;
-    bottom: 0;
-    margin: auto;
-    height: fit-content;
-    display: none;
-    background: rgba(255, 255, 255, 0.06);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(11.7px);
-    border: 1px solid rgba(255, 255, 255, 0.17);
-}
-
-nav button:hover h3 {
-    display: inline-block;
+    margin-top: 5px;
+    font-size: 16px;
 }
 
 .logo {
@@ -228,14 +204,18 @@ nav button:hover h3 {
     transform: rotate(180deg);
 }
 
+/* //////////////////////////////////////////////////////////////////////////////////// */
+
+#sidePane {
+    border-radius: 0 20px 20px 0;
+    height: 100%;
+}
+
 /* /////////////////////////////////////////////////////////////////////////////////////////////////// */
 
 section {
-    height: 100vh;
-    width: 100vw;
-    position: relative;
-    padding: 15px;
-    padding-left: 110px;
+    height: 100%;
+    z-index: 4;
 }
 
 /* /////////////////////////////////////////////////////////////////////////////////////////////////// */
@@ -498,12 +478,12 @@ input[type="radio"] {
     height: 40px;
 }
 
-#colorImagesInputs {
-    height: 450px;
+#prductColorInputs {
+    height: 400px;
     overflow-y: auto;
 }
 
-#colorImagesInputs .form-control {
+#prductColorInputs .form-control {
     width: 250px;
     display: inline-block;
 }

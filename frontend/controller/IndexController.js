@@ -52,18 +52,18 @@ $("#addNewProductBtn").on('click', ()=>{
 
 const hideAllSections = () => {
     $("section").hide();
-    $(".nav-buttons > button").css({
-        "color": "rgba(255, 255, 255, 0.7)",
-        "scale": "1"
-    })
+    // $(".nav-buttons > button").css({
+    //     "color": "#929392",
+    //     "scale": "1"
+    // })
 }
 
 const setBtnActive = (element, btn) => {
     hideAllSections();
-    $(btn).css({
-        "color": "white",
-        "scale": "1.2"
-    })
+    // $(btn).css({
+    //     "color": "#929392",
+    //     "scale": "1.2"
+    // })
     $(element).show();
 }
 
@@ -85,6 +85,7 @@ $("#loginBtn").click(()=>{
     };
       
     $.ajax(settings).done(function (response) {
+        if(response.token) alert("Token has been received!")
         setToken(response.token);
         let img = response.user.profilePic;
         let imgObj = new Image();
