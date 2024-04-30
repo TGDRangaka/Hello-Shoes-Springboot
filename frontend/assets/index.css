@@ -25,7 +25,7 @@ body {
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(7.3px);
     -webkit-backdrop-filter: blur(7.3px);
-    border: 1px solid rgba(146, 147, 146, 0.24);
+    /* border: 1px solid rgba(146, 147, 146, 0.24); */
 }
 
 h1 {
@@ -60,6 +60,7 @@ h1 {
 .label {
     color: #303030;
     font-weight: 500;
+    font-size: 16px;
 }
 
 .input label {
@@ -88,12 +89,12 @@ h1 {
 
 input, select {
     width: 100%;
-    padding: 10px 12px;
+    padding: 8px 12px;
     border: none;
     border: 1px solid rgba(0, 0, 0, 0.15);
     outline: none;
     font-size: 18px;
-    color: rgba(0, 0, 0, 0.7);
+    color: rgba(0, 0, 0, 0.9);
     border-radius: 5px;
 }
 
@@ -106,7 +107,7 @@ select {
 }
 
 input:focus, select:focus {
-    box-shadow: 0 0 5px 1px #fa373d96;
+    box-shadow: 0 0 5px 1px rgba(48, 48, 48, 0.4);
 }
 
 .input button {
@@ -132,20 +133,19 @@ nav {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    border-radius: 20px 0 0 20px;
+    /* border-radius: 20px 0 0 20px; */
 }
 
 .nav-buttons {
     width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
     align-items: center;
-    gap: 30px;
+    /* gap: 20px; */
 }
 
 nav button {
+    height: 70px;
     outline: none;
     border: none;
     background-color: transparent;
@@ -154,17 +154,31 @@ nav button {
     gap: 10px;
     width: 100%;
     font-size: 24px;
-    padding-left: 20px;
-    transition-duration: .3s;
+    padding-left: 50px;
+    /* border-right: 5px solid #06786e; */
+}
+
+nav button:hover {
+    border-right: 5px solid #06786e;
+    background: linear-gradient(to right, transparent , rgba(6, 124, 114, 0.2));
+}
+
+nav button:focus {
+    border-right: 5px solid #06786e;
+    background: linear-gradient(to right, transparent , rgba(6, 124, 114, 0.2));
 }
 
 nav button h3 {
-    margin-top: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
     font-size: 16px;
+    margin: 0;
 }
 
 .logo {
-    width: calc(100% - 10px);
+    width: 100px;
     aspect-ratio: 1;
     background-image: url("imgs/shoe-ease-manager-logo.png");
     background-position: center;
@@ -172,10 +186,13 @@ nav button h3 {
 }
 
 .user {
-    width: calc(100% - 10px);
+    align-self: self-end;
+    flex-grow: 1;
 }
 
 .user-img {
+    margin-left: 30px;
+    width: 60px;
     aspect-ratio: 1;
     background-image: url("imgs/user_img.jpg");
     background-position: center;
@@ -183,31 +200,14 @@ nav button h3 {
     border-radius: 50%;
 }
 
-.logout {
-    position: absolute;
-    left: 15px;
-    top: 20px;
-    /* top: -30px; */
-    margin: auto;
-    transition-duration: .3s;
-}
-
 .logout i {
-    transform: rotate(180deg);
-}
-
-.user:hover .logout{
-    top: -45px;
-}
-
-.logout:hover i {
     transform: rotate(180deg);
 }
 
 /* //////////////////////////////////////////////////////////////////////////////////// */
 
 #sidePane {
-    border-radius: 0 20px 20px 0;
+    /* border-radius: 0 20px 20px 0; */
     height: 100%;
 }
 
@@ -216,6 +216,7 @@ nav button h3 {
 section {
     height: 100%;
     z-index: 4;
+    padding: 8px;
 }
 
 /* /////////////////////////////////////////////////////////////////////////////////////////////////// */
@@ -229,6 +230,11 @@ section {
     margin-left: 3px;
 }
 
+#saleItemsDetails {
+    border-radius: 10px 0 0 10px;
+    padding-block: 10px;
+}
+
 .sale-items {
     border-radius: 10px 10px 0 0;
     font-weight: 200;
@@ -240,12 +246,7 @@ section {
 
 .sale-item-card {
     height: 120px;
-    /* display: flex;
-    align-items: center;
-    justify-content: space-between; */
     padding: 5px;
-    /* border-radius: 10px; */
-    /* box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); */
     background-color: white;
     border-bottom: 1px solid rgb(238, 238, 238);
     border-inline: 1px solid rgb(194, 194, 194);
@@ -298,9 +299,7 @@ section {
 }
 
 #payment-details {
-    background-color: white;
-    border-radius: 30px;
-    height: 700px;
+    border-radius: 0 10px 10px 0;
 }
 
 #payment-details img {
@@ -519,5 +518,27 @@ input[type="radio"] {
     font-family: "Quicksand", sans-serif;
     font-optical-sizing: auto;
     font-weight: 600;
+    font-style: normal;
+}
+.poppins-regular {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.poppins-medium {
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+}
+
+.poppins-semibold {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+}
+.poppins-bold {
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
     font-style: normal;
 }
