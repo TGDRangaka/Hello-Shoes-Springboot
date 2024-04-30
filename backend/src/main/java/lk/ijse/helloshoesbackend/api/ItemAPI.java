@@ -1,8 +1,10 @@
 package lk.ijse.helloshoesbackend.api;
 
+import jakarta.annotation.security.RolesAllowed;
 import lk.ijse.helloshoesbackend.bo.ItemBO;
 import lk.ijse.helloshoesbackend.dto.ItemDTO;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -18,8 +20,12 @@ public class ItemAPI {
     }
 
     @PostMapping
-    public boolean saveItem(@RequestBody ItemDTO dto){
-//        System.out.println(dto);
-        return itemBO.saveItem(dto);
+    @RolesAllowed("ADMIN")
+    public ResponseEntity<Boolean> saveItem(@RequestBody ItemDTO dto){
+        try{
+            return ResponseEntity.ok(itemBO.saveItem(dto));
+        }catch (Exception e){
+            return ResponseEntity.internalServerError().body(false);
+        }
     }
 }

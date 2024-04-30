@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
 public class Conversion {
@@ -54,5 +55,22 @@ public class Conversion {
     }
     public static SupplierEntity toSupplierEntity(SupplierDTO dto){
         return modelMapper.map(dto, SupplierEntity.class);
+    }
+
+    public static CustomerDTO toCustomerDTO(CustomerEntity entity){
+        return modelMapper.map(entity, CustomerDTO.class);
+    }
+    public static CustomerEntity toCustomerEntity(CustomerDTO dto){
+        return modelMapper.map(dto, CustomerEntity.class);
+    }
+    public static List<CustomerDTO> toCustomerDTOList(List<CustomerEntity> entities){
+        return entities.stream()
+                .map(entity -> modelMapper.map(entity, CustomerDTO.class))
+                .collect(Collectors.toList());
+    }
+    public static List<CustomerEntity> toCustomerEntityList(List<CustomerDTO> dtos){
+        return dtos.stream()
+                .map(dto -> modelMapper.map(dto, CustomerEntity.class))
+                .collect(Collectors.toList());
     }
 }

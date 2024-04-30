@@ -68,7 +68,7 @@ const setBtnActive = (element, btn) => {
 }
 
 // $("#inventoryBtn").dblclick();
-$("#salesBtn").click();
+$("#inventoryBtn").click();
 
 $("#loginBtn").click(()=>{
     const settings = {

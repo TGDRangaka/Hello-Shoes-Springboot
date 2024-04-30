@@ -19,8 +19,7 @@ public class ItemServiceIMPL implements ItemService {
     private final ItemRepo itemRepo;
 
     @Override
-    public boolean save(ItemDTO dto) {
-        try {
+    public boolean save(ItemDTO dto) throws Exception {
             List<InventoryEntity> inventoryEntities = Conversion.toInventoryEntityList(dto.getInventoryItems());
 
             ItemEntity itemEntity = Conversion.toItemEntity(dto);
@@ -28,9 +27,5 @@ public class ItemServiceIMPL implements ItemService {
             itemRepo.save(itemEntity);
 
             return true;
-        }catch (Exception e){
-            e.printStackTrace();
-            return false;
-        }
     }
 }
