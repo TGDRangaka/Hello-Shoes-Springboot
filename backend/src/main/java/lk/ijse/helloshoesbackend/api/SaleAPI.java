@@ -9,6 +9,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
+
 @RestController
 @RequestMapping("/api/v1/sale")
 @CrossOrigin
@@ -22,13 +24,13 @@ public class SaleAPI {
     }
 
     @PostMapping
-    public ResponseEntity<Boolean> saveSale(@RequestBody SaleDTO saleDTO, Authentication authentication){
+    public ResponseEntity saveSale(@RequestBody SaleDTO saleDTO, Authentication authentication){
         try{
             String user = authentication.getName();
             return ResponseEntity.ok(saleBO.saveSale(saleDTO, user));
         }catch (Exception e){
             e.printStackTrace();
-            return ResponseEntity.internalServerError().body(false);
+            return ResponseEntity.internalServerError().body(e.getMessage());
         }
     }
 }

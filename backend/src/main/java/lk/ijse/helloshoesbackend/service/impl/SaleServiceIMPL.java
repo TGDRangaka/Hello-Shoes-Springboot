@@ -19,14 +19,11 @@ import java.util.ArrayList;
 @RequiredArgsConstructor
 public class SaleServiceIMPL implements SaleService {
     private final SaleRepo saleRepo;
-    private final EmployeeRepo employeeRepo;
-    private final CustomerRepo customerRepo;
 
     @Override
     public boolean save(SaleDTO saleDTO) {
         SaleEntity saleEntity = Conversion.toSaleEntity(saleDTO);
         SaleEntity saved = saleRepo.save(saleEntity);
-//        SaleEntity saved = saleRepo.save(new SaleEntity("add", 0.0, PaymentMethods.CARD, 1, employeeRepo.findByEmail("dilshan@gmail.com").get(), customerRepo.findByNameAndEmail("Krishan Mihiranga", "krishan@example.com").get(), new ArrayList<>()));
 
         if(saved != null){
             return true;
