@@ -1,5 +1,7 @@
 package lk.ijse.helloshoesbackend.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lk.ijse.helloshoesbackend.entity.enums.Sizes;
 import lombok.AllArgsConstructor;
@@ -21,9 +23,11 @@ public class InventoryEntity {
     private Integer originalQty;
     private Integer currentQty;
     private String status;
+
     @ManyToOne
     private ItemEntity item;
-    @ManyToOne
+
+    @ManyToOne(fetch = FetchType.EAGER)
     private ItemImageEntity itemImage;
 
     @OneToMany(mappedBy = "resupplyItemId.inventory", cascade = CascadeType.ALL)

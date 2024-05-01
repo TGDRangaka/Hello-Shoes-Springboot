@@ -3,6 +3,7 @@ package lk.ijse.helloshoesbackend.util;
 import lk.ijse.helloshoesbackend.dto.*;
 import lk.ijse.helloshoesbackend.entity.*;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.stereotype.Component;
 
@@ -29,8 +30,22 @@ public class Conversion {
         ItemEntity entity = modelMapper.map(dto, ItemEntity.class);
         return entity;
     }
+    public static List<ItemDTO> toItemDTOList(List<ItemEntity> items){
+        modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
+        List<ItemDTO> dtos = new ArrayList<>();
+        items.forEach(item -> {
+            dtos.add(modelMapper.map(item, ItemDTO.class));
+        });
+        return dtos;
+    }
 
     public static List<InventoryDTO> toInventoryDTOList(List<InventoryEntity> entities){
+        modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
+        entities.forEach(entity -> {
+//            entity.setItem(null);
+//            entity.setSaleItems(null);
+//            entity.setResupplyItems(null);
+        });
         List<InventoryDTO> list = new ArrayList();
         for(InventoryEntity entity : entities){
             InventoryDTO dto = modelMapper.map(entity, InventoryDTO.class);

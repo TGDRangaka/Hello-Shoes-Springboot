@@ -28,4 +28,9 @@ public class ItemServiceIMPL implements ItemService {
 
             return true;
     }
+
+    @Override
+    public List<ItemDTO> getAllItems() {
+        return Conversion.toItemDTOList(itemRepo.findAll());
+    }
 }

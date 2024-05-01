@@ -27,7 +27,7 @@ public class InventoryDTO {
 
     private ItemImageDTO itemImage;
 
-    private List<ResupplyItemEntity> resupplyItems;
+    private List<ResupplyItemDTO> resupplyItems;
 
-    private List<SaleItemEntity> saleItems;
+    private List<SaleItemDTO> saleItems;
 }

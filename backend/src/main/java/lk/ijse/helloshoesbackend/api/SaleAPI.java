@@ -1,15 +1,12 @@
 package lk.ijse.helloshoesbackend.api;
 
-import jakarta.servlet.http.HttpServletRequest;
 import lk.ijse.helloshoesbackend.bo.SaleBO;
 import lk.ijse.helloshoesbackend.dto.SaleDTO;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Map;
 
 @RestController
 @RequestMapping("/api/v1/sale")

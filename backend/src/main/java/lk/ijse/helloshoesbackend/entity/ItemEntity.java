@@ -1,5 +1,8 @@
 package lk.ijse.helloshoesbackend.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lk.ijse.helloshoesbackend.entity.enums.ItemCategories;
 import lombok.AllArgsConstructor;
@@ -26,6 +29,7 @@ public class ItemEntity {
     private Double unitPriceBuy;
     private Double expectedProfit;
     private Double profitMargin;
+
     @OneToMany(mappedBy = "item",cascade = CascadeType.ALL)
     private List<InventoryEntity> inventoryItems;
 }

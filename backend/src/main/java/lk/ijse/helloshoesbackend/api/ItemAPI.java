@@ -19,6 +19,16 @@ public class ItemAPI {
         return "Item Health Good";
     }
 
+    @GetMapping
+    public ResponseEntity getAllItems(){
+        try{
+            return ResponseEntity.ok(itemBO.getAllItems());
+        }catch (Exception e){
+            e.printStackTrace();
+            return ResponseEntity.internalServerError().body(e.getMessage());
+        }
+    }
+
     @PostMapping
     @RolesAllowed("ADMIN")
     public ResponseEntity<Boolean> saveItem(@RequestBody ItemDTO dto){
