@@ -68,7 +68,7 @@ const setBtnActive = (element, btn) => {
 }
 
 // $("#inventoryBtn").dblclick();
-$("#inventoryBtn").click();
+$("#salesBtn").click();
 
 $("#loginBtn").click(()=>{
     const settings = {
@@ -89,19 +89,6 @@ $("#loginBtn").click(()=>{
         setToken(response.token);
         let img = response.user.profilePic;
         let imgObj = new Image();
-
-        // imgObj.src = img;
-        // // imgObj.src = "data:image;base64," + img;
-
-        // imgObj.onload = function() {
-        //     console.log("Image loaded successfully");
-        //     // Access image properties and perform actions as needed
-        //     console.log("Image width: " + this.width);
-        //     console.log("Image height: " + this.height);
-        // };
-        // imgObj.onerror = function() {
-        //     console.error("Error loading image");
-        // };
     });
 })
 
@@ -111,3 +98,23 @@ const encode = text =>{
     // }
     return text;
 }
+
+const settings = {
+    "url": "http://localhost:8080/api/v1/auth",
+    "method": "PUT",
+    "timeout": 0,
+    "headers": {
+        "Content-Type": "application/json"
+    },
+    "data": JSON.stringify({
+        "email": encode("dilshan@gmail.com"),
+        "password": encode("dilshan1234")
+    }),
+};
+  
+$.ajax(settings).done(function (response) {
+    if(response.token) console.log("Token has been received!")
+    setToken(response.token);
+    let img = response.user.profilePic;
+    let imgObj = new Image();
+});

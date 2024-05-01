@@ -282,7 +282,7 @@ section {
 }
 
 .suggest-items-list{
-    display: none;
+    /* display: none; */
 }
 
 .input:hover .suggest-items-list {
@@ -291,20 +291,29 @@ section {
 
 .suggest-item-card {
     height: 100px;
-    /* display: flex;
-    align-items: center;
-    justify-content: space-between; */
     padding: 5px;
-    /* border-radius: 10px; */
-    /* box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); */
-    background-color: #cff3ff;
-    border-bottom: 1px solid rgb(212, 212, 212);
-    margin-right: 25px;
+    background-color: #06786f57;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(7.3px);
+    -webkit-backdrop-filter: blur(7.3px);
+    border-radius: 12px;
+    margin-right: 24px;
+    margin-bottom: 5px;
     cursor: pointer;
 }
 
+.suggest-item-card label {
+    padding: 0;
+    margin: 0;
+}
+
 .suggest-item-card img {
+    aspect-ratio: 1;
     border-radius: 8px;
+}
+
+tr i {
+    cursor: pointer;
 }
 
 #payment-details {

@@ -71,20 +71,14 @@
                                 <h3>Customer Details</h3>
 
                                 <div class="input col-6">
-                                    <label for="customer-name" class="import label">Name</label>
-                                    <input list="customerDataList" id="exampleDataList" placeholder="Type to search...">
-                                    <datalist id="customerDataList">
-                                        <option value="Dilshan">0770531993</option>
-                                        <option value="Hasith">0770531993</option>
-                                        <option value="Krishan">0770531993</option>
-                                        <option value="Dasun">0770531993</option>
-                                        <option value="Ishan">0770531993</option>
-                                    </datalist>
+                                    <label for="saleCustomerName" class="import label">Name</label>
+                                    <input list="customerDataList" id="saleCustomerName" name="saleCustomerName" placeholder="Type to search...">
+                                    <datalist id="customerDataList"></datalist>
                                 </div>
                 
                                 <div class="input col-6">
-                                    <label for="customer-name" class="import label">Contact No.</label>
-                                    <input type="text" id="customer-name">
+                                    <label for="saleCustomerEmail" class="import label">Email</label>
+                                    <input type="email" id="saleCustomerEmail">
                                 </div>
                             </div>
                             <hr>
@@ -94,44 +88,15 @@
                                 <div class="container">
                                     <div class="row mb-3 p-0">
                                         <div class="input col-6">
-                                            <label for="customer-name" class="import label">Item Code</label>
-                                            <input id="saleItemCode" placeholder="Type to search...">
+                                            <label for="saleItemCode" class="import label">Item Code</label>
+                                            <input type="text" id="saleItemCode" placeholder="Type to search...">
                                         
-                                            <div id="suggest-items-list" class="w-100 suggest-items-list">
-                                                <div class="suggest-item-card d-flex justify-content-between align-items-center">
-                                                    <div class="d-flex h-100 gap-3">
-                                                        <img src="assets/imgs/shoe1.png" alt="shoe" class="h-100">
-                                                        <div class="d-flex flex-column justify-content-around quicksand-thin">
-                                                            <h5>FSM00001</h5>
-                                                            <h5>C: Red</h5>
-                                                            <h5>S: 7</h5>
-                                                        </div>
-                                                    </div>
-                                                    <div class="h-100 d-flex flex-column align-items-end justify-content-center quicksand-thin">
-                                                        <h3>12000.00</h3>
-                                                        <h5>Stock: 34</h5>
-                                                    </div>
-                                                </div>
-                                                <div class="suggest-item-card d-flex justify-content-between align-items-center">
-                                                    <div class="d-flex h-100 gap-3">
-                                                        <img src="assets/imgs/shoe1.png" alt="shoe" class="h-100">
-                                                        <div class="d-flex flex-column justify-content-around quicksand-thin">
-                                                            <h5>FSM00001</h5>
-                                                            <h5>C: Red</h5>
-                                                            <h5>S: 7</h5>
-                                                        </div>
-                                                    </div>
-                                                    <div class="h-100 d-flex flex-column align-items-end justify-content-center quicksand-thin">
-                                                        <h3>12000.00</h3>
-                                                        <h5>Stock: 34</h5>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            <div id="suggest-items-list" class="w-100 suggest-items-list"></div>
                                         </div>
                         
                                         <div class="input col-3">
                                             <label for="itemsQty" class="import label">Qty</label>
-                                            <input type="number" id="itemsQty">
+                                            <input type="number" id="itemsQty" value="1">
                                         </div>
 
                                         <div class="input col-3">
@@ -149,25 +114,7 @@
                                             <th>Total</th>
                                             <th class="table-action">Action</th>
                                         </thead>
-                                        <tbody>
-                                            <tr class="align-middle">
-                                                <td>
-                                                    <div class="table-img">
-                                                        <img src="assets/imgs/shoe1.png" alt="">
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="">
-                                                        <label class="quicksand-bold m-0 d-block">Nike Air</label>
-                                                        <label class="label">FSM23423</label>
-                                                    </div>
-                                                </td>
-                                                <td>2000</td>
-                                                <td>3</td>
-                                                <td>6000</td>
-                                                <td class="text-center"><i class="fa-solid fa-trash col-1 text-center"></i></td>
-                                            </tr>
-                                        </tbody>
+                                        <tbody id="saleItemTableBody"></tbody>
                                     </table>
 
                                 </div>
@@ -188,21 +135,16 @@
                                 <hr>
                                 <div id="saleTotal" class="d-flex justify-content-between">
                                     <h4>Total</h4>
-                                    <h4>9600.00</h4>
+                                    <h4 id="saleSubTotal">Rs. 00.00</h4>
                                 </div>
-                                <div id="saleDiscount" class="mt-3 d-flex justify-content-between">
-                                    <h4>Discounts</h4>
-                                    <h4>0%</h4>
-                                </div>
-                                <h4 id="saleSubtotal" class="w-100 quicksand-bold">9600.00</h4>
                                 <div id="cashAndBalance">
                                     <div class="mt-3 d-flex justify-content-between">
-                                        <h4 class="import">Cash</h4>
-                                        <input type="number" name="cash" id="cash">
+                                        <h5 class="import">Cash</h5>
+                                        <input type="number" name="saleCash" id="saleCash">
                                     </div>
                                     <div class="mt-3 d-flex justify-content-between">
                                         <h4>Balance</h4>
-                                        <h4>400.00</h4>
+                                        <label id="saleCashBalance">Rs. 00</label>
                                     </div>
                                 </div>
                             </div>
@@ -213,7 +155,7 @@
                                 <input type="radio" id="cashPayment" name="paymentMethod" value="cash" class="mt-2" checked>
                                 <label for="cashPayment">Cash</label>
                             </div>
-                            <button id="payBtn" type="button" class="btn btn-primary w-100 mt-5 mb-3">Pay</button>
+                            <button id="salePayBtn" type="button" class="btn btn-primary w-100 mt-5 mb-3">Pay</button>
                         </div>
                     </div>
                 </form>
