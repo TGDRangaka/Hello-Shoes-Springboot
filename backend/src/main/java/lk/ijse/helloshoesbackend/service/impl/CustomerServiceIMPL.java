@@ -2,6 +2,7 @@ package lk.ijse.helloshoesbackend.service.impl;
 
 import lk.ijse.helloshoesbackend.dto.CustomerDTO;
 import lk.ijse.helloshoesbackend.entity.CustomerEntity;
+import lk.ijse.helloshoesbackend.exception.NotFoundException;
 import lk.ijse.helloshoesbackend.repo.CustomerRepo;
 import lk.ijse.helloshoesbackend.service.CustomerService;
 import lk.ijse.helloshoesbackend.util.Conversion;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -28,5 +30,14 @@ public class CustomerServiceIMPL implements CustomerService {
         dto.setCustomerCode(UtilMatter.generateUUID());
         CustomerEntity save = customerRepo.save(Conversion.toCustomerEntity(dto));
         return Conversion.toCustomerDTO(save);
+    }
+
+    @Override
+    public CustomerDTO findByNameAndEmail(String name, String email) {
+        Optional<CustomerEntity> customer = customerRepo.findByNameAndEmail(name, email);
+        if (customer.isPresent()) {
+            return Conversion.toCustomerDTO(customer.get());
+        }
+        return null;
     }
 }

@@ -17,12 +17,13 @@ public class SaleEntity {
     @Id
     private String orderId;
     private Double totalPrice;
+    @Enumerated(EnumType.STRING)
     private PaymentMethods paymentMethod;
     private Integer addedPoints;
 
     @ManyToOne
     private EmployeeEntity employee;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private CustomerEntity customer;
     @OneToMany(mappedBy = "saleItemId.sale", cascade = CascadeType.ALL)
     private List<SaleItemEntity> saleItems;

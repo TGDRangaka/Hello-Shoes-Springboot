@@ -73,4 +73,25 @@ public class Conversion {
                 .map(dto -> modelMapper.map(dto, CustomerEntity.class))
                 .collect(Collectors.toList());
     }
+
+    public static SaleEntity toSaleEntity(SaleDTO dto){
+        SaleEntity entity = modelMapper.map(dto, SaleEntity.class);
+        entity.setEmployee(toEmployeeEntity(dto.getEmployee()));
+        entity.setCustomer(toCustomerEntity(dto.getCustomer()));
+        List<SaleItemEntity> saleItemEntities = new ArrayList<>();
+        for(SaleItemDTO saleItemDTO : dto.getSaleItems()){
+            saleItemEntities.add(modelMapper.map(saleItemDTO, SaleItemEntity.class));
+        }
+        entity.setSaleItems(saleItemEntities);
+        return entity;
+    }
+    public static SaleDTO toSaleDTO(SaleEntity entity){
+        SaleDTO dto = modelMapper.map(entity, SaleDTO.class);
+        dto.setEmployee(toEmployeeDTO(entity.getEmployee()));
+        dto.setCustomer(toCustomerDTO(entity.getCustomer()));
+        for(SaleItemEntity saleItemEntity : entity.getSaleItems()){
+            dto.getSaleItems().add(modelMapper.map(saleItemEntity, SaleItemDTO.class));
+        }
+        return dto;
+    }
 }
