@@ -1,5 +1,6 @@
 package lk.ijse.helloshoesbackend.api;
 
+import jakarta.annotation.security.RolesAllowed;
 import lk.ijse.helloshoesbackend.bo.SupplierBO;
 import lk.ijse.helloshoesbackend.dto.SupplierDTO;
 import lombok.RequiredArgsConstructor;
@@ -19,6 +20,7 @@ public class SupplierAPI {
     }
 
     @PostMapping
+    @RolesAllowed("ADMIN")
     public ResponseEntity<SupplierDTO> saveSupplier(@RequestBody SupplierDTO dto){
         return ResponseEntity.ok(supplierBO.saveSupplier(dto));
     }

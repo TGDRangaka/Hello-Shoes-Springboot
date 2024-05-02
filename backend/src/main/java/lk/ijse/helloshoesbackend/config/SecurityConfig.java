@@ -1,6 +1,7 @@
 package lk.ijse.helloshoesbackend.config;
 
 import lk.ijse.helloshoesbackend.service.EmployeeService;
+import lk.ijse.helloshoesbackend.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -32,7 +33,7 @@ import java.util.Arrays;
 @RequiredArgsConstructor
 public class SecurityConfig {
 
-    private final EmployeeService employeeService;
+    private final UserService userService;
     private final JWTConfigurationFilter jwtConfigurationFilter;
 
     @Bean
@@ -56,7 +57,7 @@ public class SecurityConfig {
     @Bean
     public AuthenticationProvider authenticationProvider(){
         DaoAuthenticationProvider dap = new DaoAuthenticationProvider();
-        dap.setUserDetailsService(employeeService.userDetailsService());
+        dap.setUserDetailsService(userService.userDetailsService());
         dap.setPasswordEncoder(passwordEncoder());
         return dap;
     }

@@ -9,6 +9,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Data
@@ -18,10 +20,10 @@ public class CustomerDTO {
     private String customerCode;
     private String name;
     private Gender gender;
-    private Date joinedDateAsLoyalty;
+    private LocalDate joinedDateAsLoyalty;
     private CustomerLevel level;
     private Integer totalPoints;
-    private Date dob;
+    private LocalDate dob;
     private String addressNo;
     private String addressLane;
     private String addressCity;
@@ -29,5 +31,5 @@ public class CustomerDTO {
     private String postalCode;
     private String email;
     private String phone;
-    private Timestamp recentPurchaseDateTime;
+    private LocalDateTime recentPurchaseDateTime;
 }

@@ -21,7 +21,6 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class InventoryServiceIMPL implements InventoryService {
     private final InventoryRepo inventoryRepo;
-    private final EntityManager entityManager;
 
     @Override
     public int updateCurrentQty(String inventoryId, int qty) {
@@ -53,11 +52,6 @@ public class InventoryServiceIMPL implements InventoryService {
     @Override
     public List<InventoryDTO> getAll() {
         List<InventoryEntity> all = inventoryRepo.findAll();
-        all.forEach(entity -> {
-            entity.setItem(null);
-            entity.setResupplyItems(null);
-            entity.setSaleItems(null);
-        });
         return Conversion.toInventoryDTOList(all);
     }
 
@@ -66,11 +60,6 @@ public class InventoryServiceIMPL implements InventoryService {
         List<InventoryEntity> allAvailable = inventoryRepo.findByStatus("available");
         List<InventoryEntity> allLow = inventoryRepo.findByStatus("low");
         allAvailable.addAll(allLow);
-        allAvailable.forEach(entity -> {
-//            entity.getItem().setInventoryItems(new ArrayList<>());
-//            entity.setItem(null);
-//            entityManager.detach(entity);
-        });
         return Conversion.toInventoryDTOList(allAvailable);
     }
 }

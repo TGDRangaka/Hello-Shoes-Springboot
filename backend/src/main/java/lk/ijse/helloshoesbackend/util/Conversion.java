@@ -16,11 +16,21 @@ public class Conversion {
 
     private static ModelMapper modelMapper = new ModelMapper();
 
+    public static UserDTO toUserDTO(UserEntity entity){
+        return modelMapper.map(entity, UserDTO.class);
+    }
+    public static UserEntity toUserEntity(UserDTO dto){
+        return modelMapper.map(dto, UserEntity.class);
+    }
+
     public static EmployeeDTO toEmployeeDTO(EmployeeEntity entity){
         return modelMapper.map(entity, EmployeeDTO.class);
     }
     public static EmployeeEntity toEmployeeEntity(EmployeeDTO dto){
         return modelMapper.map(dto, EmployeeEntity.class);
+    }
+    public static List<EmployeeDTO> toEmployeeDTOList(List<EmployeeEntity> entities){
+        return modelMapper.map(entities, new TypeToken<List<EmployeeDTO>>(){}.getType());
     }
 
     public static ItemDTO toItemDTO(ItemEntity entity){

@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface InventoryBO {
     List<InventoryDTO> getAllAvailableItems();
+    List<InventoryDTO> getAllItems();
 }

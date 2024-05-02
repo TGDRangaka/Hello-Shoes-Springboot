@@ -17,14 +17,10 @@ import java.util.Date;
 public class EmployeeDTO {
     private String employeeCode;
     private String name;
-    @Column(columnDefinition="LONGTEXT")
     private String profilePic;
-    @Enumerated(EnumType.STRING)
     private Gender gender;
     private String status;
     private String designation;
-    @Enumerated(EnumType.STRING)
-    private UserRole role;
     private Date dob;
     private Date joinedDate;
     private String branch;
@@ -33,10 +29,8 @@ public class EmployeeDTO {
     private String addressCity;
     private String addressState;
     private String postalCode;
-    @Column(unique = true)
     private String email;
     private String phone;
-    private String password;
     private String guardianOrNominatedPerson;
     private String emergencyContact;
 }

@@ -45,4 +45,37 @@ public class InventoryBOIMPL implements InventoryBO {
         });
         return tempList;
     }
+
+    @Override
+    public List<InventoryDTO> getAllItems() {
+        List<InventoryDTO> all = inventoryService.getAll();
+        List<InventoryDTO> tempList = new ArrayList<>();
+        all.forEach(item -> {
+            ItemDTO dto = item.getItem();
+            ItemDTO newDTO = new ItemDTO(
+                    dto.getItemCode(),
+                    dto.getDescription(),
+                    dto.getCategory(), dto.getSupplierName(), null,
+                    dto.getUnitPriceSale(),
+                    dto.getUnitPriceBuy(), dto.getExpectedProfit(), dto.getProfitMargin(), null
+            );
+
+            InventoryDTO inventoryDTO = new InventoryDTO(
+                    item.getInventoryCode(),
+                    item.getSize(),
+                    item.getColors(),
+                    item.getOriginalQty(),
+                    item.getCurrentQty(),
+                    item.getStatus(),
+                    newDTO,
+                    item.getItemImage(),
+                    null,
+                    null
+            );
+            tempList.add(inventoryDTO);
+        });
+        return tempList;
+    }
+
+
 }

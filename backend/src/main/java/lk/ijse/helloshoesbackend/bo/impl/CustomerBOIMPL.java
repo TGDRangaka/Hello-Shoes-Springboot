@@ -7,6 +7,8 @@ import lk.ijse.helloshoesbackend.service.CustomerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 @Component
@@ -23,6 +25,7 @@ public class CustomerBOIMPL implements CustomerBO {
     public CustomerDTO saveCustomer(CustomerDTO dto) throws Exception {
         dto.setLevel(CustomerLevel.NEW);
         dto.setTotalPoints(0);
+        dto.setJoinedDateAsLoyalty(LocalDate.now());
         return customerService.save(dto);
     }
 }

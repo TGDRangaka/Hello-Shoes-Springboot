@@ -4,6 +4,7 @@ import jakarta.validation.Valid;
 import lk.ijse.helloshoesbackend.bo.AuthenticationBO;
 import lk.ijse.helloshoesbackend.entity.enums.Gender;
 import lk.ijse.helloshoesbackend.entity.enums.UserRole;
+import lk.ijse.helloshoesbackend.exception.DataDuplicationException;
 import lk.ijse.helloshoesbackend.reqAndResp.request.SignIn;
 import lk.ijse.helloshoesbackend.reqAndResp.request.SignUp;
 import lk.ijse.helloshoesbackend.reqAndResp.response.JwtAuthResponse;
@@ -31,60 +32,28 @@ public class UserAPI {
 
     @GetMapping("/health")
     public String healthCheck(){
-        return "Employee Health Good";
+        return "User Health Good";
     }
 
 //    SignIn
     @PutMapping
-    public ResponseEntity<JwtAuthResponse> signIn(@RequestBody SignIn signIn){
-        return ResponseEntity.accepted().body(authenticationBO.signIn(signIn));
+    public ResponseEntity signIn(@RequestBody SignIn signIn){
+        try{
+            return ResponseEntity.accepted().body(authenticationBO.signIn(signIn));
+        }catch (Exception e){
+            return ResponseEntity.status(401).body(e.getMessage());
+        }
     }
 
 //    SignUp
-    @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public ResponseEntity<JwtAuthResponse> signUp(
-            @RequestPart ("name") String name,
-            @RequestPart ("profilePic") String profilePic,
-            @RequestPart ("gender") String gender,
-            @RequestPart ("status") String status,
-            @RequestPart ("designation") String designation,
-            @RequestPart ("role") String role,
-            @RequestPart ("dob") String dob,
-            @RequestPart ("joinedDate") String joinedDate,
-            @RequestPart ("branch") String branch,
-            @RequestPart ("addressNo") String addressNo,
-            @RequestPart ("addressLane") String addressLane,
-            @RequestPart ("addressCity") String addressCity,
-            @RequestPart ("addressState") String addressState,
-            @RequestPart ("postalCode") String postalCode,
-            @RequestPart ("email") String email,
-            @RequestPart ("phone") String phone,
-            @RequestPart ("password") String password,
-            @RequestPart ("guardianOrNominatedPerson") String guardianOrNominatedPerson,
-            @RequestPart ("emergencyContact") String emergencyContact
-    ) throws ParseException {
-        SignUp signUp = new SignUp(
-                name,
-                UtilMatter.convertBase64(profilePic),
-//                profilePic,
-                Gender.valueOf(gender),
-                status,
-                designation,
-                UserRole.valueOf(role),
-                new SimpleDateFormat("yyyy-MM-dd").parse(dob.substring(0,10)),
-                new SimpleDateFormat("yyyy-MM-dd").parse(joinedDate.substring(0,10)),
-                branch,
-                addressNo,
-                addressLane,
-                addressCity,
-                addressState,
-                postalCode,
-                email,
-                phone,
-                password,
-                guardianOrNominatedPerson,
-                emergencyContact
-        );
-        return ResponseEntity.accepted().body(authenticationBO.signUp(signUp));
+    @PostMapping
+    public ResponseEntity signUp(@RequestBody SignUp signUp){
+        try{
+            return ResponseEntity.accepted().body(authenticationBO.signUp(signUp));
+        }catch (DataDuplicationException e){
+            return ResponseEntity.status(409).body(e.getMessage());
+        }catch (Exception e){
+            return ResponseEntity.internalServerError().body(e.getMessage());
+        }
     }
 }

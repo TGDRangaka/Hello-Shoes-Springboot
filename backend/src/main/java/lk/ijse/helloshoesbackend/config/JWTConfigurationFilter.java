@@ -6,6 +6,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lk.ijse.helloshoesbackend.service.EmployeeService;
 import lk.ijse.helloshoesbackend.service.JWTService;
+import lk.ijse.helloshoesbackend.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.context.annotation.Configuration;
@@ -23,7 +24,7 @@ import java.io.IOException;
 public class JWTConfigurationFilter extends OncePerRequestFilter {
 
     private final JWTService jwtService;
-    private final EmployeeService employeeService;
+    private final UserService userService;
 
 
     @Override
@@ -43,7 +44,7 @@ public class JWTConfigurationFilter extends OncePerRequestFilter {
 
 //        validation - email validation & status of SecurityContextHolder
         if(StringUtils.isNotEmpty(userEmail) && SecurityContextHolder.getContext().getAuthentication() == null){
-            UserDetails userDetails = employeeService.userDetailsService().loadUserByUsername(userEmail);
+            UserDetails userDetails = userService.userDetailsService().loadUserByUsername(userEmail);
 
 //            validation - token status
             if(jwtService.isTokenValid(jwt, userDetails)){

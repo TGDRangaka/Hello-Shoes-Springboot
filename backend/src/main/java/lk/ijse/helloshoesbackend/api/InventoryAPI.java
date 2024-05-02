@@ -25,6 +25,17 @@ public class InventoryAPI {
     }
 
     @GetMapping
+    public ResponseEntity getAllItems() {
+        try {
+            List<InventoryDTO> allItems = inventoryBO.getAllItems();
+            return ResponseEntity.ok(allItems);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.internalServerError().body(e.getMessage());
+        }
+    }
+
+    @GetMapping("/available")
     public ResponseEntity getAllAvailableItems(){
         try {
             List<InventoryDTO> allAvailableItems = inventoryBO.getAllAvailableItems();

@@ -19,6 +19,15 @@ public class EmployeeAPI {
     private final EmployeeBO employeeBO;
 
     @GetMapping
+    public ResponseEntity getAllEmployees(){
+        try {
+            return ResponseEntity.ok(employeeBO.getAllEmployees());
+        }catch (Exception e){
+            return ResponseEntity.internalServerError().body(e.getMessage());
+        }
+    }
+
+    @GetMapping("/user")
     public ResponseEntity<EmployeeDTO> getEmployee(HttpServletRequest request){
         String token = request.getHeader("Authorization").substring(7);
         return ResponseEntity.ok(employeeBO.getEmployee(token));

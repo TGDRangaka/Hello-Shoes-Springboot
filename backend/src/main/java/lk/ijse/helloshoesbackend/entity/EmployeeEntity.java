@@ -20,7 +20,7 @@ import java.util.Set;
 @NoArgsConstructor
 @Entity
 @Table(name = "employee")
-public class EmployeeEntity implements UserDetails, SuperEntity {
+public class EmployeeEntity implements SuperEntity {
     @Id
     private String employeeCode;
     private String name;
@@ -30,8 +30,6 @@ public class EmployeeEntity implements UserDetails, SuperEntity {
     private Gender gender;
     private String status;
     private String designation;
-    @Enumerated(EnumType.STRING)
-    private UserRole role;
     private Date dob;
     private Date joinedDate;
     private String branch;
@@ -43,39 +41,6 @@ public class EmployeeEntity implements UserDetails, SuperEntity {
     @Column(unique = true)
     private String email;
     private String phone;
-    private String password;
     private String guardianOrNominatedPerson;
     private String emergencyContact;
-
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        Set<GrantedAuthority> authorities = new HashSet<>();
-        authorities.add(new SimpleGrantedAuthority("ROLE_" + role.name()));
-        return authorities;
-    }
-
-    @Override
-    public String getUsername() {
-        return email;
-    }
-
-    @Override
-    public boolean isAccountNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-        return true;
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return true;
-    }
 }

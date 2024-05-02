@@ -3,9 +3,10 @@ package lk.ijse.helloshoesbackend.service;
 import lk.ijse.helloshoesbackend.dto.EmployeeDTO;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
-public interface EmployeeService {
-    UserDetailsService userDetailsService();
-    void saveUser(EmployeeDTO dto);
+import java.util.List;
 
+public interface EmployeeService {
+    List<EmployeeDTO> getAllEmployees();
     EmployeeDTO getEmployee(String email);
+
 }
