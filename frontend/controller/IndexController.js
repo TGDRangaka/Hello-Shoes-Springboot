@@ -64,18 +64,18 @@ $("#addNewProductBtn").on('click', ()=>{
 
 const hideAllSections = () => {
     $("section").hide();
-    // $(".nav-buttons > button").css({
-    //     "color": "#929392",
-    //     "scale": "1"
-    // })
+    $(".nav-buttons > button").css({
+        "border-right": "none",
+        "background": "none"
+    })
 }
 
 const setBtnActive = (element, btn) => {
     hideAllSections();
-    // $(btn).css({
-    //     "color": "#929392",
-    //     "scale": "1.2"
-    // })
+    $(btn).css({
+        "border-right": "5px solid #03ffea",
+        "background": "linear-gradient(to right, transparent , rgba(3, 255, 234, 0.2))"
+    })
     $(element).show();
 }
 

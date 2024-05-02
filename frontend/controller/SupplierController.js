@@ -4,7 +4,7 @@ import { Supplier } from "../model/Supplier.js";
 let allSuppliers = [];
 
 $("#suppliersBtn").click(()=>{
-    getAllSuppliers();
+    // getAllSuppliers();
 })
 
 const saveSupplier = (supplier) => {

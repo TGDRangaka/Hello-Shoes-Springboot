@@ -32,10 +32,11 @@ const getAllEmployees = () => {
 const loadEmployeeTable = (employees) => {
     $("#employeesTBody").empty();
     employees.map((employee, i) => {
+        let img = employee.profilePic;
         $("#employeesTBody").append(`
         <tr class="text-center align-middle">
             <td class="table-img">
-                <img src="data:image/png;base64,${employee.profilePic}" alt="profilePic">
+                <img src="data:image;base64,${img}" alt="profilePic">
             </td>
             <td class="ps-4">
                 <div class="d-flex flex-column text-start">
@@ -80,7 +81,7 @@ function submitEmployeeForm() {
     formData.append('addressLane', $('#employeeAddressLane').val());
     formData.append('addressCity', $('#employeeAddressCity').val());
     formData.append('addressState', $('#employeeAddressState').val());
-    formData.append('addressPostcode', $('#employeeAddressPostcode').val());
+    formData.append('addressPostalCode', $('#employeeAddressPostcode').val());
 
     // Contacts section
     formData.append('email', $('#email').val());
@@ -91,6 +92,9 @@ function submitEmployeeForm() {
         "url": "http://localhost:8080/api/v1/employee",
         "method": "POST",
         "timeout": 0,
+        "headers": {
+            "Authorization": `Bearer ${token}`
+          },
         "processData": false,
         "mimeType": "multipart/form-data",
         "contentType": false,

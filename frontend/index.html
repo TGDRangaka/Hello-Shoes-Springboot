@@ -56,8 +56,8 @@
         </nav>
 
         
-        <div id="allSections" class="col p-0">
-            <header>
+        <div id="allSections" class="col ps-0 d-flex flex-column">
+            <header class="ps-5 py-3">
                 <h1 id="sectionTitle">Title</h1>
             </header>
             
@@ -69,9 +69,7 @@
 
             <!-- Sales Section -->
             <section id="sales" class="text-theme bg-theme">
-                <h1 class="poppins-semibold">New Purchase</h1>
-                <hr>
-                <form class="container top-0 bottom-0 bg-theme">
+                <form class="container-fluid bg-theme">
                     <div class="row h-100">
                         <div id="saleItemsDetails" class="col-9 h-100">
                             <div class="row mb-4">
@@ -368,20 +366,8 @@
 
             <!-- Add Product Section -->
             <section id="addProduct" class="bg-theme text-theme">
-                <h1 class="quicksand-bold">Add Product</h1>
-                <hr>
                 <form id="shoeProductForm" action="" class="row">
                     <div class="col-10 row">
-                        <div class="col-12 mb-3">
-                            <input type="radio" class="w-fit" id="newProductRbtn" name="productRbtn" value="new" checked>
-                            <label for="newProductRbtn">New Product</label>
-                            <input type="radio" class="w-fit" id="existProductRbtn" name="productRbtn" value="exist">
-                            <label for="existProductRbtn">
-                                Existing product
-                                <i title="Select this option if you want to add new size/color to a existing product."
-                                class="fa-solid fa-circle-info"></i>
-                            </label>
-                        </div>
 
                         <div id="newProductDetails" class="row"> 
                             <div class="input col-6">
@@ -419,7 +405,7 @@
                                     <option id="ss" value="SS">Sport Shoes</option>
                                 </select>
                             </div>
-                            <div class="input col-6 mt-3">
+                            <!-- <div class="input col-6 mt-3">
                                 <label for="typesByVerities:" class="label import">Types By Occasion</label>
                                 <select id="typesByVerities" class="form-select" aria-label="Default select example">
                                     <option selected>(Select Category)</option>
@@ -427,7 +413,7 @@
                                     <option value="POL">Polish</option>
                                     <option value="SO">Socks</option>
                                 </select>
-                            </div>
+                            </div> -->
                             <div class="input col-6 mt-3">
                                 <label for="productBySupplier" class="label import">Supplier</label>
                                 <select id="productBySupplier" class="form-select" aria-label="Default select example">
@@ -693,8 +679,6 @@
 
             <!-- Employee Section -->
             <section id="employee" class="bg-theme text-theme mh-100">
-                <h1 class="quicksand-bold">Employees</h1>
-                <hr>
                 <header class="row mb-3">
                     <div class="col-6">
                         <label for="hidden"></label>
@@ -725,7 +709,7 @@
                     </div>
                     <div class="col-2">
                         <label class="hidden"></label>
-                        <button id="addNewProductBtn" type="button" class="btn btn-primary w-100 main-color">Register New Employee</button>
+                        <button id="addNewProductBtn" type="button" class="btn btn-primary w-100">Register New Employee</button>
                     </div>
                 </header>
 
@@ -795,9 +779,9 @@
                             <div class="input">
                                 <label for="employeeGender">Gender</label>
                                 <select name="gender" id="employeeGender">
-                                    <option value="Male">Male</option>
-                                    <option value="Female">Female</option>
-                                    <option value="Other">Other</option>
+                                    <option value="MALE">Male</option>
+                                    <option value="FEMALE">Female</option>
+                                    <option value="OTHER">Other</option>
                                 </select>
                             </div>
                             <div class="input">

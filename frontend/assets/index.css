@@ -47,7 +47,7 @@ body {
 
 h1 {
     color: #ffffff;
-    margin-left: 20px !important;
+    margin: 0 !important;
 }
 
 .main-color {
@@ -179,10 +179,10 @@ nav button:hover {
     background: linear-gradient(to right, transparent , rgba(3, 255, 234, 0.2));
 }
 
-nav button:focus {
+/* nav button:focus {
     border-right: 5px solid #03ffea;
     background: linear-gradient(to right, transparent , rgba(3, 255, 234, 0.2));
-}
+} */
 
 nav button h3 {
     display: flex;
@@ -236,7 +236,8 @@ section {
     padding: 8px;
     display: flex;
     flex-direction: column;
-    /* border-radius: 40px 0 0 40px; */
+    border-radius: 5px;
+    /* border-top-left-radius: 40px; */
     /* box-shadow: -1px 0 20px 1px rgba(0, 0, 0, 0.2); */
 }
 
@@ -530,7 +531,7 @@ input[type="radio"] {
 }
 
 #prductColorInputs {
-    /* height: 400px; */
+    height: 400px;
     overflow-y: auto;
 }
 
