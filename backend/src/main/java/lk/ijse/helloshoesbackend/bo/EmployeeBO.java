@@ -7,4 +7,5 @@ import java.util.List;
 public interface EmployeeBO {
     EmployeeDTO getEmployee(String token);
     List<EmployeeDTO> getAllEmployees();
+    String saveEmployee(EmployeeDTO employee);
 }

@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Data
@@ -13,5 +14,5 @@ import java.util.Date;
 public class ResupplyItemDTO {
     private ResupplyItemId resupplyItemId;
     private Integer suppliedQty;
-    private Date suppliedDate;
+    private LocalDate suppliedDate;
 }

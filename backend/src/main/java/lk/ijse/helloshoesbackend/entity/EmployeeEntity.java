@@ -10,6 +10,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.time.LocalDate;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashSet;
@@ -30,8 +31,8 @@ public class EmployeeEntity implements SuperEntity {
     private Gender gender;
     private String status;
     private String designation;
-    private Date dob;
-    private Date joinedDate;
+    private LocalDate dob;
+    private LocalDate joinedDate;
     private String branch;
     private String addressNo;
     private String addressLane;

@@ -3,6 +3,7 @@ package lk.ijse.helloshoesbackend.entity;
 import jakarta.persistence.*;
 import lk.ijse.helloshoesbackend.entity.keys.ResupplyItemId;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -15,5 +16,5 @@ public class ResupplyItemEntity {
     @Id
     private ResupplyItemId resupplyItemId;
     private Integer suppliedQty;
-    private Date suppliedDate;
+    private LocalDate suppliedDate;
 }

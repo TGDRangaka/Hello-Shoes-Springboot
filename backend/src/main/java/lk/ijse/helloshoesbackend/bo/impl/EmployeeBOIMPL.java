@@ -4,6 +4,7 @@ import lk.ijse.helloshoesbackend.bo.EmployeeBO;
 import lk.ijse.helloshoesbackend.dto.EmployeeDTO;
 import lk.ijse.helloshoesbackend.service.EmployeeService;
 import lk.ijse.helloshoesbackend.service.JWTService;
+import lk.ijse.helloshoesbackend.util.UtilMatter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -23,5 +24,12 @@ public class EmployeeBOIMPL implements EmployeeBO {
     @Override
     public List<EmployeeDTO> getAllEmployees() {
         return employeeService.getAllEmployees();
+    }
+
+    @Override
+    public String saveEmployee(EmployeeDTO employee) {
+        employee.setEmployeeCode(UtilMatter.generateUUID());
+//        employee.setProfilePic(UtilMatter.convertBase64(employee.getProfilePic()));
+        return employeeService.saveEmployee(employee);
     }
 }

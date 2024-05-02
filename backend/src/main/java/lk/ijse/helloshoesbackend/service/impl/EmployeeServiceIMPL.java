@@ -36,4 +36,10 @@ public class EmployeeServiceIMPL implements EmployeeService {
         }
         throw new NotFoundException("Not Found Employee : " + email);
     }
+
+    @Override
+    public String saveEmployee(EmployeeDTO employee) {
+        EmployeeEntity save = employeeRepo.save(Conversion.toEmployeeEntity(employee));
+        return save.getEmployeeCode();
+    }
 }
