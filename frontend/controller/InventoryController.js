@@ -4,88 +4,115 @@ import {token} from '../db/data.js'
 
 let otherBtnCount = 0;
 let isNewProduct = true;
+let allItems = [];
 
-const addInventoryItems = () => {
-    for(let i = 0; i < 13; i++){
-        let id = 'inventoryItem' + i;
-    $("#inventoryItems").append(`
-    <div class="accordion-item ">
-        <div class="accordion-header">
-            <button type="button" class="accordion-button p-2" data-bs-toggle="collapse" data-bs-target="#${id}" aria-expanded="true" aria-controls="${id}">
-                <div class="inventory-item-header row w-100 text-theme">
-                    <!-- <img class="h-100 col-2" src="assets/imgs/shoe1.png" alt=""> -->
-                    <div class="col-1 d-flex justify-content-center">
-                        <div class="img"></div>
-                    </div>
-                    <label class="col-2">FSM000234</label>
-                    <label class="col-3">Nike Sneakers Blue</label>
-                    <label class="col-2">SIZE 6</label>
-                    <label class="col-2">Rs.3400</label>
-                    <label class="col-2">39</label>
+$("#inventoryBtn").click(()=>{
+    getAllItems();
+})
+
+const getAllItems = ()=>{
+    var settings = {
+        "url": "http://localhost:8080/api/v1/inventory",
+        "method": "GET",
+        "timeout": 0,
+        "headers": {
+          "Authorization": "Bearer " + token
+        },
+      };
+      
+      $.ajax(settings).done(function (response) {
+        allItems = response;
+        allItems.map(item => {
+            let img = new Image();
+            img.src = item.itemImage.image
+            item.itemImage = img;
+        })
+        loadItemTable();
+      });
+}
+
+const loadItemTable = () => {
+    $("#inventoryItems").empty();
+    allItems.map(item => {
+        $("#inventoryItems").append(`
+            <div class="accordion-item ">
+                <div class="accordion-header">
+                    <button type="button" class="accordion-button p-2" data-bs-toggle="collapse" data-bs-target="#${item.inventoryCode}" aria-expanded="true" aria-controls="${item.inventoryCode}">
+                        <div class="inventory-item-header row w-100 text-theme">
+                            <!-- <img class="h-100 col-2" src="${item.itemImage.src}" alt="shoe image"> -->
+                            <div class="col-1 d-flex justify-content-center">
+                                <div class="img"></div>
+                            </div>
+                            <label class="col-2">${item.inventoryCode}</label>
+                            <label class="col-3">${item.item.description}</label>
+                            <label class="col-2">${item.size}</label>
+                            <label class="col-2">Rs.${item.item.unitPriceSale}</label>
+                            <div class="col-2 d-flex flex-column justify-content-center align-items-center">
+                                <h4>${item.currentQty}</h4>
+                                <label class="stock stock-${getFirstLaters(item.status)}">${item.status}</label>
+                            </div>
+                        </div>
+                    </button>
                 </div>
-            </button>
-        </div>
-        <div id="${id}" class="accordion-collapse collapse w-100" data-bs-parent="#inventoryItems">
-            <div class="accordion-body m-2 w-100">
-                <div class="inventory-item-body container-fluid row">
-                    <div class="col-4 img"></div>
-                    <div class="col-8 row">
-                        <div class="inventory-body-detail col-6">
-                            <label class="label">Product Name</label>
-                            <h4>Nike Sneakers Blue</h4>
-                        </div>
-                        <div class="inventory-body-detail col-3">
-                            <label class="label">Product ID</label>
-                            <h4>FSM000234</h4>
-                        </div>
-                        <div class="inventory-body-detail col-3">
-                            <label class="label">Size</label>
-                            <h4>6</h4>
-                        </div>
-
-                        <div class="inventory-body-detail col-3">
-                            <label class="label">Category</label>
-                            <h4>Shoe</h4>
-                        </div>
-                        <div class="inventory-body-detail col-3">
-                            <label class="label">Supplier</label>
-                            <h4>Nike</h4>
-                        </div>
-                        <div class="inventory-body-detail col-3">
-                            <label class="label">Colour</label>
-                            <h4>Blue</h4>
-                        </div>
-                        <div class="inventory-body-detail col-3">
-                            <label class="label">Stock</label>
-                            <h4>39</h4>
-                        </div>
-
-                        <div class="inventory-body-detail col-3">
-                            <label class="label">Sale Price</label>
-                            <h4>3400</h4>
-                        </div>
-                        <div class="inventory-body-detail col-3">
-                            <label class="label">Buy Price</label>
-                            <h4>3090</h4>
-                        </div>
-                        <div class="inventory-body-detail col-3">
-                            <label class="label">Profit Margin</label>
-                            <h4>10%</h4>
-                        </div>
-                        <div class="inventory-body-detail col-3">
-                            <label class="label">Expected Price</label>
-                            <h4>3400</h4>
+                <div id="${item.inventoryCode}" class="accordion-collapse collapse w-100" data-bs-parent="#inventoryItems">
+                    <div class="accordion-body m-2 w-100">
+                        <div class="inventory-item-body container-fluid row">
+                            <div class="col-4 img"></div>
+                            <div class="col-8 row">
+                                <div class="inventory-body-detail col-6">
+                                    <label class="label">Product Name</label>
+                                    <h4>${item.item.description}</h4>
+                                </div>
+                                <div class="inventory-body-detail col-3">
+                                    <label class="label">Product ID</label>
+                                    <h4>${item.item.itemCode}</h4>
+                                </div>
+                                <div class="inventory-body-detail col-3">
+                                    <label class="label">Size</label>
+                                    <h4>${item.size}</h4>
+                                </div>
+        
+                                <div class="inventory-body-detail col-3">
+                                    <label class="label">Category</label>
+                                    <h4>${item.item.category}</h4>
+                                </div>
+                                <div class="inventory-body-detail col-3">
+                                    <label class="label">Supplier</label>
+                                    <h4>${item.item.supplierName}</h4>
+                                </div>
+                                <div class="inventory-body-detail col-3">
+                                    <label class="label">Colour</label>
+                                    <h4>${item.colors}</h4>
+                                </div>
+                                <div class="inventory-body-detail col-3">
+                                    <label class="label">Stock</label>
+                                    <h4>${item.currentQty}</h4>
+                                </div>
+        
+                                <div class="inventory-body-detail col-3">
+                                    <label class="label">Sale Price</label>
+                                    <h4>${item.item.unitPriceSale}</h4>
+                                </div>
+                                <div class="inventory-body-detail col-3">
+                                    <label class="label">Buy Price</label>
+                                    <h4>${item.item.unitPriceBuy}</h4>
+                                </div>
+                                <div class="inventory-body-detail col-3">
+                                    <label class="label">Profit Margin</label>
+                                    <h4>${item.item.profitMargin}%</h4>
+                                </div>
+                                <div class="inventory-body-detail col-3">
+                                    <label class="label">Expected Profit</label>
+                                    <h4>${item.item.expectedProfit}</h4>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-    `);
+        `);
+    })
 }
-}
-
-addInventoryItems();
 
 let product = 'new';
 $("#existingProductDetails").hide();
@@ -304,4 +331,28 @@ const saveProduct = (item) => {
       $.ajax(settings).done(function (response) {
         console.log(response);
       });
+}
+
+$("#productByCategory").on('change', function (){
+    let val = $(this).val();
+    if(val === 'F' || val === 'H' || val === 'W'){
+        $("#typesByGender").prop('disabled', true);
+        $("#typesByGender").val('W');
+    }else{
+        $("#typesByGender").prop('disabled', false);
+    }
+    /^(S)$/.test(val) ? $("#is, #ss").prop('disabled', false)
+    : $("#is, #ss").prop('disabled', true);
+
+    /^(FF|SL)$/.test(val) ? $("#typesByOccasion").prop('disabled', true)
+    : $("#typesByOccasion").prop('disabled', false);
+})
+
+const getFirstLaters = text => {
+    let ar = text.split(' ');
+    let s = '';
+    ar.map(t => {
+        s+=t.charAt(0);
+    })
+    return s;
 }

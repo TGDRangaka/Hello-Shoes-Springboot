@@ -34,11 +34,15 @@
                 <button id="customerBtn" type="button" class="nav-btn-theme"><i class="fa-solid fa-users"></i><h3>Customers</h3></button>
                 <button id="employeesBtn" type="button" class="nav-btn-theme"><i class="fa-solid fa-building-user"></i><h3>Employees</h3></button>
                 <button id="suppliersBtn" type="button" class="nav-btn-theme"><i class="fa-solid fa-truck"></i><h3>Suppliers</h3></button>
+                <button id="resuppliersBtn" type="button" class="nav-btn-theme"><i class="fa-solid fa-box-open"></i><h3>Resupply</h3></button>
+                <button id="analyticsBtn" type="button" class="nav-btn-theme"><i class="fa-solid fa-chart-pie"></i><h3>Analytics</h3></button>
                 <button id="notificationsBtn" type="button" class="nav-btn-theme position-relative">
-                    <i class="fa-solid fa-bell"></i></i><h3>Notifications</h3>
-                    <span class="position-absolute top-0 start-100 translate-middle p-2 bg-warning rounded-circle">
-                        <span class="visually-hidden">New alerts</span>
-                    </span>
+                    <i class="fa-solid fa-bell">
+                        <span class="position-absolute top-0 start-100 translate-middle p-2 bg-warning rounded-circle">
+                            <span class="visually-hidden">New alerts</span>
+                        </span>
+                    </i>
+                    <h3>Notifications</h3>
                 </button>
             </div>
 
@@ -53,9 +57,12 @@
 
         
         <div id="allSections" class="col p-0">
+            <header>
+                <h1 id="sectionTitle">Title</h1>
+            </header>
             
             <!-- Dashboard Section -->
-            <section id="dashboard" class=" bg-theme-blur">
+            <section id="dashboard" class="bg-theme">
                 <h1 class="poppins-semibold">Dashboard</h1>
                 <hr>
             </section>
@@ -72,7 +79,7 @@
 
                                 <div class="input col-6">
                                     <label for="saleCustomerName" class="import label">Name</label>
-                                    <input list="customerDataList" id="saleCustomerName" name="saleCustomerName" placeholder="Type to search...">
+                                    <input list="customerDataList" id="saleCustomerName" name="saleCustomerName" placeholder="Type to search..." autocomplete="off">
                                     <datalist id="customerDataList"></datalist>
                                 </div>
                 
@@ -88,8 +95,8 @@
                                 <div class="container">
                                     <div class="row mb-3 p-0">
                                         <div class="input col-6">
-                                            <label for="saleItemCode" class="import label">Item Code</label>
-                                            <input type="text" id="saleItemCode" placeholder="Type to search...">
+                                            <label for="saleItemCode" class="import label" >Item Code</label>
+                                            <input type="text" id="saleItemCode" placeholder="Type to search..." autocomplete="off">
                                         
                                             <div id="suggest-items-list" class="w-100 suggest-items-list"></div>
                                         </div>
@@ -176,10 +183,10 @@
             </section>
 
             <!-- Sales History Section -->
-            <section id="salesHistory" class="container-fluid bg-theme-blur text-theme mh-100"></section>
+            <section id="salesHistory" class="container-fluid bg-theme text-theme mh-100"></section>
 
             <!-- Inventory Section -->
-            <section id="inventory" class="bg-theme-blur text-theme mh-100">
+            <section id="inventory" class="bg-theme text-theme vh-100">
                 <h1 class="quicksand-bold">Products</h1>
                 <hr>
 
@@ -267,15 +274,17 @@
 
                 <div class="inventory-items-head row text-center quicksand-bold pe-3">
                     <label class="col-1"></label>
-                    <label class="col-2">Product ID</label>
+                    <label class="col-2">ID</label>
                     <label class="col-3">Name</label>
                     <label class="col-2">Size</label>
                     <label class="col-2">Price</label>
                     <label class="col-2">Stock</label>
                 </div>
 
+                <div class="border flex-grow mm">
+
                 <div class="accordion" id="inventoryItems">
-                    <div class="accordion-item">
+                    <!-- <div class="accordion-item">
                         <div class="accordion-header">
                             <button type="button" class="accordion-button p-2" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                 <div class="inventory-item-header row w-100 text-theme">
@@ -286,7 +295,10 @@
                                     <label class="col-3">Nike Sneakers Blue</label>
                                     <label class="col-2">SIZE 6</label>
                                     <label class="col-2">Rs.3400</label>
-                                    <label class="col-2">39</label>
+                                    <div class="col-2 d-flex flex-column justify-content-center align-items-center">
+                                        <h4>49</h4>
+                                        <label class="stock stock-a">available</label>
+                                    </div>
                                 </div>
                             </button>
                         </div>
@@ -348,16 +360,17 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
+                </div>
                 </div>
 
             </section>
 
             <!-- Add Product Section -->
-            <section id="addProduct" class="bg-theme-blur text-theme">
+            <section id="addProduct" class="bg-theme text-theme">
                 <h1 class="quicksand-bold">Add Product</h1>
                 <hr>
-                <form action="" class="row">
+                <form id="shoeProductForm" action="" class="row">
                     <div class="col-10 row">
                         <div class="col-12 mb-3">
                             <input type="radio" class="w-fit" id="newProductRbtn" name="productRbtn" value="new" checked>
@@ -376,13 +389,16 @@
                                 <input id="productName" name="productName" type="text" value="Test Product">
                             </div>
                             <div class="input col-4">
-                                <label for="typesByOccasion" class="label import">Types by occasion</label>
-                                <select id="typesByOccasion" class="form-select" aria-label="Default select example">
+                                <label for="productByCategory" class="label import">Category</label>
+                                <select id="productByCategory" class="form-select" aria-label="Default select example">
                                     <option selected>(Select Category)</option>
-                                    <option value="FS">Formal Shoes</option>
-                                    <option value="CS" selected>Casual Shoes</option>
-                                    <option value="IS">Industrial Flops Shoes</option>
-                                    <option value="SS">Sport Shoes</option>
+                                    <option value="H">Heel</option>
+                                    <option value="F">Flats</option>
+                                    <option value="W">Wedges</option>
+                                    <option value="FF">Flip Flops</option>
+                                    <option value="SD">Sandals</option>
+                                    <option value="S" selected>Shoes</option>
+                                    <option value="SL">Slippers</option>
                                 </select>
                             </div>
                             <div class="input col-2">
@@ -394,16 +410,22 @@
                                 </select>
                             </div>
                             <div class="input col-6 mt-3">
-                                <label for="productByCategory" class="label import">Category</label>
-                                <select id="productByCategory" class="form-select" aria-label="Default select example">
+                                <label for="typesByOccasion" class="label import">Types By Occasion</label>
+                                <select id="typesByOccasion" class="form-select" aria-label="Default select example">
                                     <option selected>(Select Category)</option>
-                                    <option value="HEEL">Heel</option>
-                                    <option value="FLATS">Flats</option>
-                                    <option value="WEDGES">Wedges</option>
-                                    <option value="FLIP_FLOPS">Flip Flops</option>
-                                    <option value="SANDALS">Sandals</option>
-                                    <option value="SHOES" selected>Shoes</option>
-                                    <option value="SLIPPERS">Slippers</option>
+                                    <option value="FS">Formal Shoes</option>
+                                    <option value="CS" selected>Casual Shoes</option>
+                                    <option id="is" value="IS">Industrial Flops Shoes</option>
+                                    <option id="ss" value="SS">Sport Shoes</option>
+                                </select>
+                            </div>
+                            <div class="input col-6 mt-3">
+                                <label for="typesByVerities:" class="label import">Types By Occasion</label>
+                                <select id="typesByVerities" class="form-select" aria-label="Default select example">
+                                    <option selected>(Select Category)</option>
+                                    <option value="SHMP">Shoe Shampoo</option>
+                                    <option value="POL">Polish</option>
+                                    <option value="SO">Socks</option>
                                 </select>
                             </div>
                             <div class="input col-6 mt-3">
@@ -534,10 +556,12 @@
                     </div>
                     
                 </form>
+
+                <form id="otherProductForm" action="" class="row"></form>
             </section>
 
             <!-- Customer Section -->
-            <section id="customer" class="bg-theme-blur text-theme mh-100">
+            <section id="customer" class="bg-theme text-theme mh-100">
                 <h1 class="quicksand-bold">Customers</h1>
                 <hr>
                 <header class="row mb-3">
@@ -587,141 +611,88 @@
                         <th scope="col" class="table-action">Edit</th>
                     </tr>
                     </thead>
-                    <tbody id="customersTBody">
-                    <tr class="text-center align-middle">
-                            <td class="d-flex flex-column align-items-center">
-                                <img src="assets/icons/gold-level.png" alt="" class="">
-                                <label class="label">323</label>
-                            </td>
-                            <td>Dilshan Rangaka</td>
-                            <td>0770531993</td>
-                            <td>dilshan@mdo</td>
-                            <td>21-08-2002</td>
-                            <td>17-04-2024</td>
-                            <td>Male</td>
-                            <td>21-04-2024 10:30 PM</td>
-                            <td class="table-action"><button class="btn"><i class="fa-solid fa-pen"></i></button></i></td>
-                    </tr>
-                    <tr class="text-center align-middle">
-                            <td class="d-flex flex-column align-items-center">
-                                <img src="assets/icons/silver-level.png" alt="" class="">
-                                <label class="label">154</label>
-                            </td>
-                            <td>Dilshan Rangaka</td>
-                            <td>0770531993</td>
-                            <td>dilshan@mdo</td>
-                            <td>21-08-2002</td>
-                            <td>17-04-2024</td>
-                            <td>Male</td>
-                            <td>21-04-2024 10:30 PM</td>
-                            <td class="table-action"><button class="btn"><i class="fa-solid fa-pen"></i></button></i></td>
-                    </tr>
-                    <tr class="text-center align-middle">
-                            <td class="d-flex flex-column align-items-center">
-                                <img src="assets/icons/bronze-level.png" alt="" class="">
-                                <label class="label">78</label>
-                            </td>
-                            <td>Dilshan Rangaka</td>
-                            <td>0770531993</td>
-                            <td>dilshan@mdo</td>
-                            <td>21-08-2002</td>
-                            <td>17-04-2024</td>
-                            <td>Male</td>
-                            <td>21-04-2024 10:30 PM</td>
-                            <td class="table-action"><button class="btn"><i class="fa-solid fa-pen"></i></button></i></td>
-                    </tr>
-                    <tr class="text-center align-middle">
-                            <td class="d-flex flex-column align-items-center">
-                                <img src="assets/icons/new-level.png" alt="" class="">
-                                <label class="label">32</label>
-                            </td>
-                            <td>Dilshan Rangaka</td>
-                            <td>0770531993</td>
-                            <td>dilshan@mdo</td>
-                            <td>21-08-2002</td>
-                            <td>17-04-2024</td>
-                            <td>Male</td>
-                            <td>21-04-2024 10:30 PM</td>
-                            <td class="table-action"><button class="btn"><i class="fa-solid fa-pen"></i></button></i></td>
-                    </tr>
-                    </tbody>
+                    <tbody id="customersTBody"></tbody>
                 </table>
             </section>
 
             <!-- Add Customer Section -->
-            <section id="addCustomer" class="bg-theme-blur text-theme">
-                <h1 class="quicksand-bold">Be Layalty Member</h1>
-                <hr>
-
-                <form class="container">
+            <section id="addCustomer" class="bg-theme text-theme">
+                <form action="" class="container bg-light">
+                    <hr>
                     <div class="row">
-                        <div class="input col-6">
-                            <label for="customer-name">Customer Name</label>
-                            <input list="customerList" type="text" id="customer-name" class="form-control" placeholder="Enter Customer Name">
-                            <datalist id="customerList">
-                            </datalist>
-                        </div>
-                        <div class="input col-2">
-                            <label for="contact-no">Contact No.</label>
-                            <input list="customerList" type="text" id="contact-no" class="form-control" placeholder="Enter Contact No.">
-                            <datalist id="customerList">
-                            </datalist>
-                        </div>
-                    </div>
-                    <div class="row mt-3">
-                        <div class="input col-6">
-                            <label for="email">Email</label>
-                            <input type="text" id="email" class="form-control" placeholder="Enter Email">
-                        </div>
-                        <div class="input col-2">
-                            <label for="dob">DOB</label>
-                            <input type="date" id="dob" class="form-control" placeholder="Enter DOB">
+                        <h4 class="col-5">Identity</h4>
+                        <div class="col bg-light p-3">
+                            <div class="input">
+                                <label for="customerName">Name</label>
+                                <input type="text" name="customerName" id="customerName" placeholder="Enter Name">
+                            </div>
+                            <div class="input">
+                                <label for="customerDOB">Date of Birth</label>
+                                <input type="date" name="customerDOB" id="customerDOB">
+                            </div>
+                            <div class="input">
+                                <label for="customerGender">Gender</label>
+                                <select name="customerGender" id="customerGender">
+                                    <option value="MALE">Male</option>
+                                    <option value="FEMALE">Female</option>
+                                    <option value="OTHER">Other</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
-                    <div class="row mt-3">
-                        <div class="input col-2">
-                            <label for="gender">Gender</label>
-                            <select class="form-select" aria-label="Default select example">
-                                <option value="MALE" selected>Male</option>
-                                <option value="FEMALE">Female</option>
-                            </select>
+                    <hr>
+                    <div class="row mt-4">
+                        <h4 class="col-5">Address</h4>
+                        <div class="col bg-light p-3">
+                            <div class="input">
+                                <label for="customerAddressNo">Address No.</label>
+                                <input type="text" name="customerAddressNo" id="customerAddressNo" placeholder="Enter Address No.">
+                            </div>
+                            <div class="input">
+                                <label for="customerAddressLane">Address Lane</label>
+                                <input type="text" name="customerAddressLane" id="customerAddressLane" placeholder="Enter Address Lane">
+                            </div>
+                            <div class="input">
+                                <label for="customerAddressCity">Address City</label>
+                                <input type="text" name="customerAddressCity" id="customerAddressCity" placeholder="Enter Address City">
+                            </div>
+                            <div class="input">
+                                <label for="customerAddressState">Address State</label>
+                                <input type="text" name="customerAddressState" id="customerAddressState" placeholder="Enter Address State">
+                            </div>
+                            <div class="input">
+                                <label for="customerAddressPostcode">Address Postcode</label>
+                                <input type="text" name="customerAddressPostcode" id="customerAddressPostcode" placeholder="Enter Address Postcode">
+                            </div>
                         </div>
                     </div>
-                    <div class="row mt-3">
-                        <div class="input col-2">
-                            <label for="joined-date">Address</label>
-                            <input type="text" name="addressNo" id="addressNo" placeholder="No:">
-                        </div>
-                        <div class="input col-4">
-                            <label class="hidden">Lane</label>
-                            <input type="text" name="addressNo" id="addressNo" placeholder="Lane">
-                        </div>
-                    </div>
-                    <div class="row mt-2">
-                        <div class="input col-6">
-                            <input type="text" name="addressCity" id="addressCity" placeholder="City">
-                        </div>
-                    </div>
-                    <div class="row mt-2">
-                        <div class="input col-4">
-                            <input type="text" name="addressState" id="addressState" placeholder="State">
-                        </div>
-                        <div class="input col-2">
-                            <input type="text" name="postalCode" id="postalCode" placeholder="Postal Code">
+                    <hr>
+                    <div class="row mt-4">
+                        <h4 class="col-5">Contacts</h4>
+                        <div class="col bg-light p-3">
+                            <div class="input">
+                                <label for="customerContactNo">Contact No.</label>
+                                <input type="text" name="customerContactNo" id="customerContactNo" placeholder="Enter Contact No.">
+                            </div>
+                            <div class="input">
+                                <label for="customerEmail">Email</label>
+                                <input type="email" name="customerEmail" id="customerEmail" placeholder="Enter Email">
+                            </div>
                         </div>
                     </div>
-                    <div class="row mt-2"></div>
-                    <div class="row mt-5">
-                        <div class="col-6"></div>
-                        <div class="col-2">
-                            <button type="button" class="btn btn-primary w-100">Join As Loyalty</button>
+                    <hr>
+                    <div class="row mt-4 bg-light p-3 mb-3">
+                        <div class="col-12 d-flex justify-content-end gap-3">
+                            <button type="reset" class="btn btn-dark">Cancel</button>
+                            <button id="customerSubmitBtn" type="button" class="btn btn-primary">Submit</button>
                         </div>
                     </div>
                 </form>
+                
             </section>
 
             <!-- Employee Section -->
-            <section id="employee" class="bg-theme-blur text-theme mh-100">
+            <section id="employee" class="bg-theme text-theme mh-100">
                 <h1 class="quicksand-bold">Employees</h1>
                 <hr>
                 <header class="row mb-3">
@@ -800,124 +771,209 @@
             </section>
 
             <!-- Add Employee Section -->
-            <section id="addEmployee" class="bg-theme-blur text-theme mh-100">
-
-                <h1 class="quicksand-bold">Register New Employee</h1>
-                <hr>
-
-                <form action="" class="container-fluid input">
+            <section id="addEmployee" class="bg-theme text-theme mh-100">
+                <form action="" class="container bg-light">
+                    <hr>
                     <div class="row">
-                        <div class="input col-3">
-                            <label for="employeeProfilePic">Profile Picture</label>
-                            <img id="profilePicImg" src="assets/imgs/user_img.jpg" alt="user-img" class="w-100">
-                            <input type="file" name="profilePic" id="employeeProfilePic" class="form-control mt-2">
+                        <h4 class="col-1">Identity</h4>
+                        <div class="col-4 d-flex flex-column justify-content-around">
+                            <label>Lorem ipsum consectetur, adipisicing elit. Quasi, magni.</label>
+                            <label>Lorem ipsum consectetur, adipisicing elit. Quasi, magni.</label>
+                            <label>Lorem ipsum consectetur, adipisicing elit. Quasi, magni.</label>
+                            <label>Lorem ipsum consectetur, adipisicing elit. Quasi, magni.</label>
+                            <label>Lorem ipsum consectetur, adipisicing elit. Quasi, magni.</label>
                         </div>
-                        <div class="col-5">
-                            <div class="row">
-                                <div class="col-8">
-                                    <label for="employee-name">Employee Name</label>
-                                    <input type="text" id="employee-name" placeholder="Enter Employee Name">    
-                                </div>
-                                <div class="col-4">
-                                    <label for="employee-name">Designation</label>
-                                    <input type="text" id="employee-name" placeholder="Enter Employee Designation">    
-                                </div>
+                        <div class="col p-3">
+                            <div class="input">
+                                <label for="employeeProfilePic">Profile Picture</label>
+                                <input type="file" id="employeeProfilePic">
                             </div>
-                            <div class="row mt-3">
-                                <div class="col-4">
-                                    <label for="employee-name">Gender</label>
-                                    <select>
-                                        <option value="MALE" selected>Male</option>
-                                        <option value="FEMALE">Female</option>
-                                    </select>
-                                </div>
-                                <div class="col-4">
-                                    <label for="employeeDOB">Date Of Birth</label>
-                                    <input type="date" id="employeeDOB" placeholder="Enter DOB">
-                                </div>
-                                <div class="col-4">
-                                    <label for="employeeStatus">Civil Status</label>
-                                    <input type="text" id="employeeStatus" placeholder="Enter Civil Status">
-                                </div>
+                            <div class="input">
+                                <label for="employeeName">Name</label>
+                                <input type="text" name="employeeName" id="employeeName" placeholder="Enter Name">
                             </div>
-                            <div class="row mt-3">
-                                <div class="col-5">
-                                    <label for="employeeContactNo">Contact No.</label>
-                                    <input type="text" id="employeeContactNo" placeholder="Enter Contact No.">
-                                </div>
-                                <div class="col-7">
-                                    <label for="employeeBranch">Branch</label>
-                                    <input type="text" id="employeeBranch" placeholder="Enter Contact No.">
-                                </div>
+                            <div class="input">
+                                <label for="employeeGender">Gender</label>
+                                <select name="gender" id="employeeGender">
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                    <option value="Other">Other</option>
+                                </select>
                             </div>
-                            <div class="row mt-3">
-                                <div class="col-12">
-                                    <label for="employeeEmail">Email</label>
-                                    <input type="email" id="employeeEmail" placeholder="Enter Email">
-                                </div>
+                            <div class="input">
+                                <label for="employeeDob">Date of Birth</label>
+                                <input type="date" name="employeeDob" id="employeeDob">
                             </div>
-                            <div class="row mt-3">
-                                <div class="col-7">
-                                    <label for="employeeGuardian">Guardian or Nominated Person</label>
-                                    <input type="text" id="employeeGuardian" placeholder="Enter Guardian or Nominated Person">
-                                </div>
-                                <div class="col-5">
-                                    <label for="employeeEmergencyContactNo">Emergency Contact No.</label>
-                                    <input type="text" id="employeeEmergencyContactNo" placeholder="Enter Emergency Contact No.">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="row">
-                                <div class="input col-2">
-                                    <label>Address</label>
-                                    <input type="text" name="addressNo" id="addressNo" placeholder="No:">
-                                </div>
-                                <div class="input col-10">
-                                    <label>Lane</label>
-                                    <input type="text" name="addressNo" id="addressNo" placeholder="Lane">
-                                </div>
-                            </div>
-                            <div class="row mt-3">
-                                <div class="input col-12">
-                                    <label>City</label>
-                                    <input type="text" name="addressCity" id="addressCity" placeholder="City">
-                                </div>
-                            </div>
-                            <div class="row mt-3">
-                                <div class="input col-8">
-                                    <label>State</label>
-                                    <input type="text" name="addressState" id="addressState" placeholder="State">
-                                </div>
-                                <div class="input col-4">
-                                    <label>Postal Code</label>
-                                    <input type="text" name="postalCode" id="postalCode" placeholder="Postal Code">
-                                </div>
+                            <div class="input">
+                                <label for="employeeStatus">Status</label>
+                                <input type="text" name="employeeStatus" id="employeeStatus">
                             </div>
                         </div>
                     </div>
-                    <div class="row"></div>
-                    <div class="row mt-3">
-                        <div class="col-10"></div>
-                        <div class="col-2">
-                            <button type="submit" class="btn btn-primary w-100">Submit</button>
+                    <hr>
+                    <div class="row mt-4">
+                        <h4 class="col-5">Store</h4>
+                        <div class="col p-3">
+                            <div class="input">
+                                <label for="employeeDesignation">Employee Designation</label>
+                                <input type="text" name="employeeDesignation" id="employeeDesignation" placeholder="Enter Employee Designation">
+                            </div>
+                            <div class="input">
+                                <label for="employeeBranch">Branch</label>
+                                <input type="text" name="employeeBranch" id="employeeBranch" placeholder="Enter Store Branch">
+                            </div>
+                            <div class="input">
+                                <label for="employeeJoinedDate">Joined Date</label>
+                                <input type="date" name="employeeJoinedDate" id="employeeJoinedDate">
+                            </div>
+                            <div class="input">
+                                <label for="employeeGurdian">Guardian</label>
+                                <input type="text" name="employeeGurdian" id="employeeGurdian" placeholder="Enter Gurdian Name">
+                            </div>
+                            <div class="input">
+                                <label for="employeeEmergencyNumber">Emergency number</label>
+                                <input type="text" name="employeeEmergencyNumber" id="employeeEmergencyNumber" placeholder="Enter Emergency Number">
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row mt-4">
+                        <h4 class="col-5">Address</h4>
+                        <div class="col p-3">
+                            <div class="input">
+                                <label for="employeeAddressNo">Address No.</label>
+                                <input type="text" name="employeeAddressNo" id="employeeAddressNo" placeholder="Enter Address No.">
+                            </div>
+                            <div class="input">
+                                <label for="employeeAddressLane">Address Lane</label>
+                                <input type="text" name="employeeAddressLane" id="employeeAddressLane" placeholder="Enter Address Lane">
+                            </div>
+                            <div class="input">
+                                <label for="employeeAddressCity">Address City</label>
+                                <input type="text" name="employeeAddressCity" id="employeeAddressCity" placeholder="Enter Address City">
+                            </div>
+                            <div class="input">
+                                <label for="employeeAddressState">Address State</label>
+                                <input type="text" name="employeeAddressState" id="employeeAddressState" placeholder="Enter Address State">
+                            </div>
+                            <div class="input">
+                                <label for="employeeAddressPostcode">Address Postcode</label>
+                                <input type="text" name="employeeAddressPostcode" id="employeeAddressPostcode" placeholder="Enter Address Postcode">
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row mt-4">
+                        <h4 class="col-5">Contacts</h4>
+                        <div class="col p-3">
+                            <div class="input">
+                                <label for="email">Email</label>
+                                <input type="email" name="email" id="email" placeholder="Enter Email">
+                            </div>
+                            <div class="input">
+                                <label for="phone">Phone</label>
+                                <input type="text" name="phone" id="phone" placeholder="Enter Phone">
+                            </div>
+                            <!-- Add more contact fields as needed -->
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row mt-4 p-3 mb-3">
+                        <div class="col-12 d-flex justify-content-end gap-3">
+                            <button type="button" class="btn btn-dark">Cancel</button>
+                            <button type="button" class="btn btn-primary">Submit</button>
+                        </div>
+                    </div>
+                </form>                
+            </section>
+
+            <!-- Supplier Section -->
+            <section id="supplier" class="bg-theme text-theme mh-100">
+                <form action="" class="container bg-light">
+                    <hr>
+                    <div class="row">
+                        <h4 class="col-5">Identity</h4>
+                        <div class="col bg-light p-3">
+                            <div class="input">
+                                <label for="supplierName">Supplier Name</label>
+                                <input type="text" name="supplierName" id="supplierName" placeholder="Enter Supplier Name">
+                            </div>
+                            <div class="input">
+                                <label for="supplierCategory">Supplier Category</label>
+                                <select name="supplierCategory" id="supplierCategory">
+                                    <option value="INTERNATIONAL">International</option>
+                                    <option value="LOCAL">Local</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row mt-4">
+                        <h4 class="col-5">Address</h4>
+                        <div class="col bg-light p-3">
+                            <div class="input">
+                                <label for="supplierAddressNo">Address No.</label>
+                                <input type="text" name="supplierAddressNo" id="supplierAddressNo" placeholder="Enter Address No.">
+                            </div>
+                            <div class="input">
+                                <label for="supplierAddressLane">Address Lane</label>
+                                <input type="text" name="supplierAddressLane" id="supplierAddressLane" placeholder="Enter Address Lane">
+                            </div>
+                            <div class="input">
+                                <label for="supplierAddressCity">Address City</label>
+                                <input type="text" name="supplierAddressCity" id="supplierAddressCity" placeholder="Enter Address City">
+                            </div>
+                            <div class="input">
+                                <label for="supplierAddressState">Address State</label>
+                                <input type="text" name="supplierAddressState" id="supplierAddressState" placeholder="Enter Address State">
+                            </div>
+                            <div class="input">
+                                <label for="supplierAddressPostalCode">Address Postal Code</label>
+                                <input type="text" name="supplierAddressPostalCode" id="supplierAddressPostalCode" placeholder="Enter Address Postal Code">
+                            </div>
+                            <div class="input">
+                                <label for="supplierAddressCountry">Address Country</label>
+                                <input type="text" name="supplierAddressCountry" id="supplierAddressCountry" placeholder="Enter Address Country">
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row mt-4">
+                        <h4 class="col-5">Contacts</h4>
+                        <div class="col bg-light p-3">
+                            <div class="input">
+                                <label for="supplierContactNo1">Contact No. 01</label>
+                                <input type="text" name="supplierContactNo1" id="supplierContactNo1" placeholder="Enter Contact No.">
+                            </div>
+                            <div class="input">
+                                <label for="supplierContactNo2">Contact No. 02</label>
+                                <input type="text" name="supplierContactNo2" id="supplierContactNo2" placeholder="Enter Contact No.">
+                            </div>
+                            <div class="input">
+                                <label for="supplierEmail">Email</label>
+                                <input type="email" name="supplierEmail" id="supplierEmail" placeholder="Enter Email">
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row mt-4 bg-light p-3 mb-3">
+                        <div class="col-12 d-flex justify-content-end gap-3">
+                            <button type="reset" class="btn btn-dark">Cancel</button>
+                            <button id="submitSupplierBtn" type="button" class="btn btn-primary">Submit</button>
                         </div>
                     </div>
                 </form>
             </section>
 
-            <!-- Supplier Section -->
-            <section id="supplier" class="bg-theme-blur text-theme mh-100"></section>
-
             <!-- Notification Section -->
-            <section id="notification" class="bg-theme-blur text-theme mh-100"></section>
+            <section id="notification" class="bg-theme text-theme mh-100"></section>
             
         </div>
                 
     
-        <div id="sidePane" class="col-2 bg-theme m-0">
+        <!-- <div id="sidePane" class="col-2 bg-theme m-0">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto quis impedit, ipsum magni nulla accusamus at placeat dicta laborum atque rem tenetur, alias minima sed nesciunt reiciendis eveniet beatae quibusdam. Itaque placeat eaque ad odio quos modi tenetur, quod ipsa. Eius necessitatibus quibusdam cupiditate esse magnam earum perspiciatis voluptates ex ullam pariatur expedita quod aut, illo fugit explicabo optio reiciendis non ipsam vel? Earum dolores pariatur nemo quaerat animi saepe voluptates ullam enim explicabo illum reiciendis ex veritatis ratione, eveniet aliquam repellat quo fugit officiis odit cupiditate nisi! Ab tempore obcaecati amet dolores vero perspiciatis officia quo aperiam consectetur ad!
-        </div>
+        </div> -->
     
     </main>
 
@@ -927,7 +983,9 @@
 
     <script type="module" src="controller/IndexController.js"></script>
     <script type="module" src="controller/SalesController.js"></script>
+    <script type="module" src="controller/EmployeeController.js"></script>
     <script type="module" src="controller/InventoryController.js"></script>
     <script type="module" src="controller/CustomerController.js"></script>
+    <script type="module" src="controller/SupplierController.js"></script>
 </body>
 </html>

@@ -156,7 +156,7 @@ const getAllCustomers = ()=>{
 // api
 const getAllItems = ()=>{
     var settings = {
-        "url": "http://localhost:8080/api/v1/inventory",
+        "url": "http://localhost:8080/api/v1/inventory/available",
         "method": "GET",
         "timeout": 0,
         "headers": {

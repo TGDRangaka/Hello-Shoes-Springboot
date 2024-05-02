@@ -3,51 +3,63 @@ import { token, setToken } from "../db/data.js";
 
 $("#dashboardBtn").on('click', function(){
     setBtnActive("#dashboard", this);
+    $("#sectionTitle").text("Dashboard")
 })
 
 $("#salesBtn").on('click', function(){
     setBtnActive("#sales", this);
+    $("#sectionTitle").text("New Purchase")
 })
 
 $("#salesBtn").dblclick(function() {
     setBtnActive("#salesHistory", this);
+    $("#sectionTitle").text("Sales History")
 })
 
 $("#inventoryBtn").on('click', function(){
     setBtnActive("#inventory", this);
+    $("#sectionTitle").text("Inventory")
 })
 
 $("#inventoryBtn").dblclick(function() {
     setBtnActive("#addProduct", this);
+    $("#sectionTitle").text("New Product")
 })
 
 $("#customerBtn").on('click', function(){
     setBtnActive("#customer", this);
+    $("#sectionTitle").text("Customers")
 })
 
 $("#customerBtn").dblclick(function() {
     setBtnActive("#addCustomer", this);
+    $("#sectionTitle").text("Customer Form")
 })
 
 $("#employeesBtn").on('click', function(){
     setBtnActive("#employee", this);
+    $("#sectionTitle").text("Employees")
 })
 
 $("#employeesBtn").on('dblclick', function(){
     setBtnActive("#addEmployee", this);
+    $("#sectionTitle").text("Employee Form")
 })
 
 $("#suppliersBtn").on('click', function(){
     setBtnActive("#supplier", this);
+    $("#sectionTitle").text("Supplier Form")
 })
 
 $("#notificationsBtn").on('click', function(){
     setBtnActive("#notification", this);
+    $("#sectionTitle").text("Notifications")
 })
 
 
 $("#addNewProductBtn").on('click', ()=>{
     setBtnActive("#addProduct", "#inventoryBtn")
+    $("#sectionTitle").text("New Product")
 })
 
 const hideAllSections = () => {
@@ -67,8 +79,8 @@ const setBtnActive = (element, btn) => {
     $(element).show();
 }
 
-// $("#inventoryBtn").dblclick();
-$("#salesBtn").click();
+// $("#suppliersBtn").dblclick();
+$("#suppliersBtn").click();
 
 $("#loginBtn").click(()=>{
     const settings = {

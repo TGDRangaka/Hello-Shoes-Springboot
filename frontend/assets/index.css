@@ -9,16 +9,32 @@ body {
     font-family: "Quicksand", sans-serif;
     overflow: hidden;
 }
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    border-radius: 8px;
+    background-color: #e7e7e7;
+    border: 1px solid #cacaca;
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    background-color: #363636;
+}
 
 #bg {
     /* background-image: url("imgs/bg.jpg");
     background-size: cover;
     background-position: center; */
-    background-color: #e3ece8;
+    background-color: #162232;
 }
 
 .bg-theme {
-    background-color: #f2faf6;
+    /* background-color: #f2faf6; */
+    background-color: #e8ebf0;
 }
 
 .bg-theme-blur {
@@ -30,7 +46,8 @@ body {
 }
 
 h1 {
-    color: #303030;
+    color: #ffffff;
+    margin-left: 20px !important;
 }
 
 .main-color {
@@ -43,15 +60,7 @@ h1 {
 }
 
 .text-theme {
-    color: #303030;
-}
-
-.nav-btn-theme {
-    color: #929392;
-}
-
-.nav-btn-theme:hover {
-    color: #303030;
+    color: #1f1f1f;
 }
 
 .hidden {
@@ -125,6 +134,10 @@ input:focus, select:focus {
 .w-fit {
     width: fit-content;
 }
+
+.flex-grow {
+    flex-grow: 1;
+}
 /* ////////////////////////////////////////////////////////////////////////////////////// */
 
 nav {
@@ -133,7 +146,8 @@ nav {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #e3ece8;
+    background-color: #162232;
+    color: #ccfffb;
 }
 
 .nav-buttons {
@@ -156,16 +170,18 @@ nav button {
     font-size: 24px;
     padding-left: 50px;
     /* border-right: 5px solid #06786e; */
+    color: #b4b4b4;
 }
 
 nav button:hover {
-    border-right: 5px solid #06786e;
-    background: linear-gradient(to right, transparent , rgba(6, 124, 114, 0.2));
+    color: #ffffff;
+    border-right: 5px solid #03ffea;
+    background: linear-gradient(to right, transparent , rgba(3, 255, 234, 0.2));
 }
 
 nav button:focus {
-    border-right: 5px solid #06786e;
-    background: linear-gradient(to right, transparent , rgba(6, 124, 114, 0.2));
+    border-right: 5px solid #03ffea;
+    background: linear-gradient(to right, transparent , rgba(3, 255, 234, 0.2));
 }
 
 nav button h3 {
@@ -406,8 +422,8 @@ input[type="radio"] {
 }
 
 #inventoryItems {
-
-    height: 85%;
+    /* height: 85%; */
+    height: 660px;
     border-radius: 0 0 30px 30px;
     overflow-y: scroll;
     overflow-x: hidden;
@@ -430,7 +446,7 @@ input[type="radio"] {
 
 #inventoryItems .accordion-button:focus{
     box-shadow: none;
-    border-left: 5px solid #56ccf2;
+    border-left: 5px solid #24cfc1;
 }
 
 #inventoryItems .accordion-item {
@@ -439,6 +455,7 @@ input[type="radio"] {
 
 .inventory-item-header {
     height: 80px;
+    font-size: 18px;
 }
 
 .inventory-item-header .img {
@@ -450,7 +467,7 @@ input[type="radio"] {
 }
 
 .inventory-item-header label {
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 400;
     display: flex;
     justify-content: center;
@@ -463,13 +480,30 @@ input[type="radio"] {
     border-top-width: 0;
 }
 
+.stock {
+    padding: 2px 5px;
+    width: 150px;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.stock-a{
+    background-color: rgb(163, 255, 163);
+}
+.stock-na{
+    background-color: rgb(255, 163, 163);
+}
+.stock-l{
+    background-color: rgb(255, 212, 163);
+}
+
 .inventory-item-body {
     height: 400px;
 }
 
 .inventory-item-body .img{
     aspect-ratio: 1;
-    height: 100%;
+    height: 400px;
     background-image: url("/assets/imgs/shoe1.png");
     background-size: cover;
     background-position: center;
@@ -477,6 +511,7 @@ input[type="radio"] {
 
 .inventory-body-detail h4{
     font-weight: 500;
+    font-size: 22px;
     padding-block: 10px;
     border-bottom: 1px solid rgb(197, 197, 197);
 }
@@ -484,7 +519,6 @@ input[type="radio"] {
 /* /////////////////////////////////////////////////////////////////////////////////////////////////// */
 
 #addProduct {
-
 }
 
 #addProduct .input input{
@@ -496,7 +530,7 @@ input[type="radio"] {
 }
 
 #prductColorInputs {
-    height: 400px;
+    /* height: 400px; */
     overflow-y: auto;
 }
 
@@ -516,8 +550,28 @@ input[type="radio"] {
 }
 
 /* /////////////////////////////////////////////////////////////////////////////////////////////////// */
+/* Employee Section */
+
+#addEmployee .input {
+    margin-bottom: 20px;
+}
 
 /* /////////////////////////////////////////////////////////////////////////////////////////////////// */
+/* Supplier section */
+form {
+    height: calc(100vh - 100px);
+    overflow-y: auto;
+}
+
+#supplier .input {
+    margin-bottom: 20px;
+}
+
+#supplier .input input, #supplier .input select {
+    /* width: 500px; */
+}
+
+
 
 /* /////////////////////////////////////////////////////////////////////////////////////////////////// */
 

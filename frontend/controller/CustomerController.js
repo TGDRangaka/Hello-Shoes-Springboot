@@ -1,33 +1,16 @@
 import {token, setToken} from '../db/data.js';
+import { Customer } from '../model/Customer.js';
 
+let allCustomers = [];
 
 $("#customerBtn").click(()=>{
     getAllCustomers();
 })
 
-const appendCustomersTBody = cus => {
-    $("#customersTBody").append(`
-    <tr class="text-center align-middle">
-        <td class="d-flex flex-column align-items-center">
-            <img src="assets/icons/${cus.level}-level.png" alt="" class="">
-            <label class="label">${cus.totalPoints}</label>
-        </td>
-        <td>${cus.name}</td>
-        <td>${cus.phone}</td>
-        <td>${cus.email}</td>
-        <td>${cus.dob}</td>
-        <td>${cus.joinedDateAsLoyalty}</td>
-        <td>${cus.gender}</td>
-        <td>${cus.recentPurchaseDateTime}</td>
-        <td class="table-action"><button class="btn"><i class="fa-solid fa-pen"></i></button></i></td>
-    </tr>
-    `)
-}
-
 const getAllCustomers = ()=>{
     if(token){
         var settings = {
-            "url": "http://localhost:8080/customer",
+            "url": "http://localhost:8080/api/v1/customer",
             "method": "GET",
             "timeout": 0,
             "headers": {
@@ -36,24 +19,78 @@ const getAllCustomers = ()=>{
           };
           
           $.ajax(settings).done(function (response) {
-            response.map(cus => appendCustomersTBody(cus))
+            allCustomers = response;
+            loadCustomerTable(allCustomers);
           });
     }
 }
 
-$("#customerList").append(`
-<option value="Dilshan">0770531993</option>
-                        <option value="Hasith">0770531993</option>
-                        <option value="Krishan">0770531993</option>
-                        <option value="Dasun">0770531993</option>
-                        <option value="Ishan">0770531993</option>
-`)
+const saveCustomer = (customer) => {
+    var settings = {
+        "url": "http://localhost:8080/api/v1/customer",
+        "method": "POST",
+        "timeout": 0,
+        "headers": {
+          "Authorization": `Bearer ${token}`,
+          "Content-Type": "application/json"
+        },
+        "data": JSON.stringify(customer),
+      };
+      
+      $.ajax(settings).done(function (response) {
+        // console.log(response);
+      });
+}
 
-$(".input").on('input', 'input', function (){
-    let val = $(this).val()
-    $("#customerList option").each(function (){
-        if(val === $(this).val()){
-            // To Do
-        }
+$("#customerSubmitBtn").click(()=>{
+    let customer = collectCustomerData();
+    saveCustomer(customer);
+})
+
+const loadCustomerTable = customers => {
+    $("#customersTBody").empty();
+    const getData = data =>{
+        return data ? data : 'N/A';
+    }
+    customers.map((cus,i) => {
+        $("#customersTBody").append(`
+        <tr class="text-center align-middle">
+            <td class="d-flex flex-column align-items-center">
+                <img src="assets/icons/${cus.level}-level.png" alt="" class="">
+                <label class="label">${cus.totalPoints}</label>
+            </td>
+            <td>${cus.name}</td>
+            <td>${getData(cus.phone)}</td>
+            <td>${getData(cus.email)}</td>
+            <td>${getData(cus.dob)}</td>
+            <td>${getData(cus.joinedDateAsLoyalty)}</td>
+            <td>${getData(cus.gender)}</td>
+            <td>${getData(cus.recentPurchaseDateTime)}</td>
+            <td class="table-action"><button data-index=${i} class="btn"><i class="fa-solid fa-pen"></i></button></i></td>
+        </tr>
+        `)
     })
-});
+}
+
+function collectCustomerData() {
+    // Create an object to store the collected data
+    let customerData = new Customer();
+
+    // Collect identity data
+    customerData.name = $('#customerName').val();
+    customerData.dob = $('#customerDOB').val();
+    customerData.gender = $('#customerGender').val();
+
+    // Collect address data
+    customerData.addressNo = $('#customerAddressNo').val();
+    customerData.addressLane = $('#customerAddressLane').val();
+    customerData.addressCity = $('#customerAddressCity').val();
+    customerData.addressState = $('#customerAddressState').val();
+    customerData.addressPostcode = $('#customerAddressPostcode').val();
+
+    // Collect contact data
+    customerData.contactNo = $('#customerContactNo').val();
+    customerData.email = $('#customerEmail').val();
+
+    return customerData;
+}
