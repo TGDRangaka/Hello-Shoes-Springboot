@@ -65,6 +65,10 @@ public class ItemBOIMPL implements ItemBO {
 
     @Override
     public List<ItemDTO> getAllItems() {
-        return itemService.getAllItems();
+        List<ItemDTO> allItems = itemService.getAllItems();
+
+
+
+        return allItems;
     }
 }

@@ -1,9 +1,39 @@
 import { token } from "../db/data.js";
 
 let allResupplies = [];
+let allItems = [];
+let allSuppliers = [];
+let selectedSupplier = null;
 
-$("#resuppliesBtn").click(()=>{
+$("#resupplysBtn").click(()=>{
     // getAllResupplies();
+    getAllItems();
+    getAllSuppliers();
+})
+
+const getAllSuppliers = ()=> {
+    var settings = {
+        "url": "http://localhost:8080/api/v1/supplier",
+        "method": "GET",
+        "timeout": 0,
+        "headers": {
+          "Authorization": "Bearer " + token
+        },
+      };
+      
+      $.ajax(settings).done(function (response) {
+        allSuppliers = response;
+        $("#resupplySupplier").empty();
+        allSuppliers.map(supplier => {
+            $("#resupplySupplier").append(`
+            <option value="${supplier.name}">${supplier.name}</option>
+            `)
+        })
+      });
+}
+
+$("#resupplySupplier").on('change',function(){
+    let selectedSupplier = $(this).val();
 })
 
 const saveResupplieDetails = (resupply) => {
@@ -12,6 +42,21 @@ const saveResupplieDetails = (resupply) => {
 
 const getAllResupplies = () => {
     // call api
+}
+
+const getAllItems = () => {
+    var settings = {
+        "url": "http://localhost:8080/api/v1/item",
+        "method": "GET",
+        "timeout": 0,
+        "headers": {
+          "Authorization": "Bearer " + token
+        },
+      };
+      
+      $.ajax(settings).done(function (response) {
+        allItems = response;
+      });
 }
 
 const collectResupplieData = () => {

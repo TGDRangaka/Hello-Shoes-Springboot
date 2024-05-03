@@ -40,13 +40,47 @@ public class Conversion {
         ItemEntity entity = modelMapper.map(dto, ItemEntity.class);
         return entity;
     }
+//    public static List<ItemDTO> toItemDTOList(List<ItemEntity> items){
+//        modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
+//        List<ItemDTO> dtos = new ArrayList<>();
+//        items.forEach(item -> {
+//            dtos.add(modelMapper.map(item, ItemDTO.class));
+//        });
+//        return dtos;
+//    }
     public static List<ItemDTO> toItemDTOList(List<ItemEntity> items){
         modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
-        List<ItemDTO> dtos = new ArrayList<>();
-        items.forEach(item -> {
-            dtos.add(modelMapper.map(item, ItemDTO.class));
-        });
-        return dtos;
+        return items.stream()
+                .map(entity -> {
+                    List<InventoryDTO> inventoryDTOList = new ArrayList<>();
+                    entity.getInventoryItems().forEach(inventory -> {
+                        inventoryDTOList.add(new InventoryDTO(
+                                inventory.getInventoryCode(),
+                                inventory.getSize(),
+                                inventory.getColors(),
+                                inventory.getOriginalQty(),
+                                inventory.getCurrentQty(),
+                                inventory.getStatus(),
+                                null,
+                                modelMapper.map(inventory.getItemImage(), ItemImageDTO.class),
+                                null,
+                                null
+                        ));
+                    });
+                    return new ItemDTO(
+                            entity.getItemCode(),
+                            entity.getDescription(),
+                            entity.getCategory(),
+                            entity.getSupplierName(),
+                            null,
+                            entity.getUnitPriceSale(),
+                            entity.getUnitPriceBuy(),
+                            entity.getExpectedProfit(),
+                            entity.getProfitMargin(),
+                            inventoryDTOList
+                    );
+                })
+                .collect(Collectors.toList());
     }
 
     public static List<InventoryDTO> toInventoryDTOList(List<InventoryEntity> entities){
