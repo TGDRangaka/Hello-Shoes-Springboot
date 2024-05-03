@@ -871,19 +871,21 @@
 
             <!-- Resupply Section -->
             <section id="resupply" class="bg-theme text-theme mh-100">
-                <div class="container-fluid">
+                <form class="container-fluid">
                     <div class="row">
                         <div class="col">
                             <div class="row">
                                 <div class="input col">
                                     <label for="resupplySupplier">Supplier</label>
-                                    <select name="supplier" id="resupplySupplier">
+                                    <select class="form-select" name="supplier" id="resupplySupplier">
                                     </select>
                                 </div>
 
                                 <div class="input col">
-                                    <label for="resupplyItem">Item</label>
-                                    <input type="text" id="resupplyItem" name="item">
+                                    <label for="resupplyItem">Item Code</label>
+                                    <input disabled list="resupplyItemsList" type="text" id="resupplyItem" name="item">
+                                    <datalist id="resupplyItemsList" aria-autocomplete="none">
+                                    </datalist>
                                 </div>
                             </div>
                             <hr>
@@ -894,9 +896,8 @@
                                     <div class="col-3">
                                         <img class="w-100 rounded" src="assets/imgs/shoe1.png" alt="">
                                     </div>
-                                    <div class="col d-flex flex-column justify-content-around">
+                                    <div class="col d-flex flex-column justify-content-center gap-3">
                                         <h3>Black</h3>
-                                        <hr>
                                         <table class="table text-center table-bordered">
                                             <thead>
                                                 <th class="text-start">Size</th>
@@ -934,6 +935,10 @@
                                     </div>
                                 </div>
 
+                            </div>
+                            <div class="d-flex justify-content-end gap-4 mt-3">
+                                <button class="btn btn-dark" type="reset">Cancel</button>
+                                <button id="resupplySubmitBtn" class="btn btn-primary" type="button">Submit</button>
                             </div>
                         </div>
                         <!-- <div id="cbReColors" class="col d-flex flex-column  gap-3">
@@ -973,7 +978,7 @@
                         </div> -->
                     </div>
 
-                </div>
+                </form>
             </section>
 
             <!-- Notification Section -->
