@@ -22,5 +22,4 @@ public class ResupplyItemEntity {
     @Id
     private ResupplyItemId resupplyItemId;
     private Integer suppliedQty;
-    private Double total;
 }

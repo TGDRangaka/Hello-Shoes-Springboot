@@ -18,7 +18,6 @@ import java.util.List;
 public class ResupplyDTO {
     private String supplyId;
     private LocalDate suppliedDate;
-    private Double totalAmount;
     private Integer totalQty;
 
     private SupplierDTO supplier;

@@ -18,7 +18,6 @@ public class ResupplyEntity {
     @Id
     private String supplyId;
     private LocalDate suppliedDate;
-    private Double totalAmount;
     private Integer totalQty;
 
     @ManyToOne

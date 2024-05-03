@@ -6,6 +6,7 @@ import lk.ijse.helloshoesbackend.entity.InventoryEntity;
 import lk.ijse.helloshoesbackend.exception.InvalidDataException;
 import lk.ijse.helloshoesbackend.exception.NotFoundException;
 import lk.ijse.helloshoesbackend.repo.InventoryRepo;
+import lk.ijse.helloshoesbackend.repo.ItemRepo;
 import lk.ijse.helloshoesbackend.service.InventoryService;
 import lk.ijse.helloshoesbackend.util.Conversion;
 import lombok.RequiredArgsConstructor;
@@ -21,6 +22,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class InventoryServiceIMPL implements InventoryService {
     private final InventoryRepo inventoryRepo;
+    private final ItemRepo itemRepo;
 
     @Override
     public int updateCurrentQty(String inventoryId, int qty) {

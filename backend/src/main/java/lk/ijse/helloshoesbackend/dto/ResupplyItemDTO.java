@@ -14,5 +14,4 @@ import java.util.Date;
 public class ResupplyItemDTO {
     private ResupplyItemId resupplyItemId;
     private Integer suppliedQty;
-    private Double total;
 }
