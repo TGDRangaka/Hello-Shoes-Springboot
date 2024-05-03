@@ -81,6 +81,16 @@ public class Conversion {
     public static SupplierEntity toSupplierEntity(SupplierDTO dto){
         return modelMapper.map(dto, SupplierEntity.class);
     }
+    public static List<SupplierDTO> toSupplierDTOList(List<SupplierEntity> entities){
+        return entities.stream()
+                .map(entity -> modelMapper.map(entity, SupplierDTO.class))
+                .collect(Collectors.toList());
+    }
+    public static List<SupplierEntity> toSupplierEntityList(List<SupplierDTO> dtos){
+        return dtos.stream()
+                .map(dto -> modelMapper.map(dto, SupplierEntity.class))
+                .collect(Collectors.toList());
+    }
 
     public static CustomerDTO toCustomerDTO(CustomerEntity entity){
         return modelMapper.map(entity, CustomerDTO.class);
@@ -118,5 +128,26 @@ public class Conversion {
             dto.getSaleItems().add(modelMapper.map(saleItemEntity, SaleItemDTO.class));
         }
         return dto;
+    }
+
+    public static ResupplyDTO toResupplyDTO(ResupplyEntity entity){
+        modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
+        List<ResupplyItemDTO> dtoList = new ArrayList<>();
+        for(ResupplyItemEntity resupplyItemEntity : entity.getResupplyItems()){
+            dtoList.add(modelMapper.map(resupplyItemEntity, ResupplyItemDTO.class));
+        }
+        ResupplyDTO dto = modelMapper.map(entity, ResupplyDTO.class);
+        dto.setResupplyItems(dtoList);
+        return dto;
+    }
+    public static ResupplyEntity toResupplyEntity(ResupplyDTO dto){
+//        modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
+        List<ResupplyItemEntity> entityList = new ArrayList<>();
+        for(ResupplyItemDTO resupplyItemDTO : dto.getResupplyItems()){
+            entityList.add(modelMapper.map(resupplyItemDTO, ResupplyItemEntity.class));
+        }
+        ResupplyEntity entity = modelMapper.map(dto, ResupplyEntity.class);
+        entity.setResupplyItems(entityList);
+        return entity;
     }
 }

@@ -19,6 +19,16 @@ public class SupplierAPI {
         return "Supplier Health Good";
     }
 
+    @GetMapping
+    public ResponseEntity getSuppliers(){
+        try {
+            return ResponseEntity.ok(supplierBO.getSuppliers());
+        }catch (Exception e){
+            e.printStackTrace();
+            return ResponseEntity.internalServerError().body(e.getMessage());
+        }
+    }
+
     @PostMapping
     @RolesAllowed("ADMIN")
     public ResponseEntity<SupplierDTO> saveSupplier(@RequestBody SupplierDTO dto){

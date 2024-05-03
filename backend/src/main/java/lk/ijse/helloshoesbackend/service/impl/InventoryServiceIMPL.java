@@ -62,4 +62,16 @@ public class InventoryServiceIMPL implements InventoryService {
         allAvailable.addAll(allLow);
         return Conversion.toInventoryDTOList(allAvailable);
     }
+
+    @Override
+    public void restock(String inventoryId, int qty) {
+        if(qty == 0) return;
+        if(qty < 0) throw new InvalidDataException("Qty must be greater than 1 : " + inventoryId);
+        InventoryEntity item = inventoryRepo.findById(inventoryId)
+                .orElseThrow(() -> new NotFoundException("Not found inventory item with id " + inventoryId));
+        int totQty = item.getCurrentQty() + qty;
+        item.setCurrentQty(totQty);
+        item.setOriginalQty(totQty);
+        item.setStatus("available");
+    }
 }

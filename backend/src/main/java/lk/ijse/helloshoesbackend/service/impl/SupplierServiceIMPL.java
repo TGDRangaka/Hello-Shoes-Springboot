@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -30,5 +31,10 @@ public class SupplierServiceIMPL implements SupplierService {
     public SupplierDTO findByName(String name) {
         Optional<SupplierEntity> byName = supplierRepo.findByName(name);
         return Conversion.toSupplierDTO(byName.get());
+    }
+
+    @Override
+    public List<SupplierDTO> getSuppliers() {
+        return Conversion.toSupplierDTOList(supplierRepo.findAll());
     }
 }
