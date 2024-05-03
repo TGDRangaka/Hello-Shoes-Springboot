@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Service
 @Transactional
@@ -30,5 +31,11 @@ public class SaleServiceIMPL implements SaleService {
         }else{
             return false;
         }
+    }
+
+    @Override
+    public List<SaleDTO> getSales() {
+        List<SaleEntity> all = saleRepo.findAll();
+        return Conversion.toSaleDTOList(all);
     }
 }

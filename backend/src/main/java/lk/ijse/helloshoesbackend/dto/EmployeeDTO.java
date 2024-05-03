@@ -34,4 +34,8 @@ public class EmployeeDTO {
     private String phone;
     private String guardianOrNominatedPerson;
     private String emergencyContact;
+
+    public EmployeeDTO(String name){
+        this.name = name;
+    }
 }

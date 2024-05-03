@@ -2,6 +2,7 @@ package lk.ijse.helloshoesbackend.util;
 
 import lk.ijse.helloshoesbackend.dto.*;
 import lk.ijse.helloshoesbackend.entity.*;
+import lk.ijse.helloshoesbackend.entity.keys.SaleItemId;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.modelmapper.convention.MatchingStrategies;
@@ -154,14 +155,49 @@ public class Conversion {
         entity.setSaleItems(saleItemEntities);
         return entity;
     }
-    public static SaleDTO toSaleDTO(SaleEntity entity){
-        SaleDTO dto = modelMapper.map(entity, SaleDTO.class);
-        dto.setEmployee(toEmployeeDTO(entity.getEmployee()));
-        dto.setCustomer(toCustomerDTO(entity.getCustomer()));
-        for(SaleItemEntity saleItemEntity : entity.getSaleItems()){
-            dto.getSaleItems().add(modelMapper.map(saleItemEntity, SaleItemDTO.class));
-        }
-        return dto;
+//    public static SaleDTO toSaleDTO(SaleEntity entity){
+//        modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
+//        SaleDTO dto = modelMapper.map(entity, SaleDTO.class);
+//        dto.setEmployee(toEmployeeDTO(entity.getEmployee()));
+//        dto.setCustomer(toCustomerDTO(entity.getCustomer()));
+//        for(SaleItemEntity saleItemEntity : entity.getSaleItems()){
+//            InventoryEntity dbInventory = saleItemEntity.getSaleItemId().getItem();
+//            InventoryEntity inventoryEntity = new InventoryEntity();
+//            inventoryEntity.setInventoryCode(dbInventory.getInventoryCode());
+//            inventoryEntity.setItemImage(dbInventory.getItemImage());
+//
+//            dto.getSaleItems().add(new SaleItemDTO(
+//                    new SaleItemId(null, inventoryEntity),
+//                    saleItemEntity.getQty(),
+//                    saleItemEntity.getUnitPrice()
+//            ));
+//        }
+//        return dto;
+//    }
+
+    public static List<SaleDTO> toSaleDTOList(List<SaleEntity> entities){
+        modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
+        return entities.stream()
+                .map(entity -> {
+                    SaleDTO dto = new SaleDTO(
+                            entity.getOrderId(),
+                            entity.getTotalPrice(),
+                            entity.getPaymentMethod(),
+                            entity.getAddedPoints(),
+                            entity.getOrderDate(),
+                            new EmployeeDTO(entity.getEmployee().getName()),
+                            modelMapper.map(entity.getCustomer(), CustomerDTO.class),
+                            entity.getSaleItems().stream().map(saleItem -> {
+                                InventoryEntity dbInventory = saleItem.getSaleItemId().getItem();
+                                InventoryEntity inventory = new InventoryEntity();
+                                inventory.setInventoryCode(dbInventory.getInventoryCode());
+                                inventory.setItemImage(dbInventory.getItemImage());
+                                return new SaleItemDTO(new SaleItemId(null, inventory), saleItem.getQty(), saleItem.getUnitPrice());
+                            }).collect(Collectors.toList())
+                    );
+                    return dto;
+                })
+                .collect(Collectors.toList());
     }
 
     public static ResupplyDTO toResupplyDTO(ResupplyEntity entity){

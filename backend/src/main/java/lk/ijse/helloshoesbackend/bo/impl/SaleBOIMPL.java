@@ -82,4 +82,9 @@ public class SaleBOIMPL implements SaleBO {
 
         return percentageOfItems;
     }
+
+    @Override
+    public List<SaleDTO> getSales() {
+        return saleService.getSales();
+    }
 }

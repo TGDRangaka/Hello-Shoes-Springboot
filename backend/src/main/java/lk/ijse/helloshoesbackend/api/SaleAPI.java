@@ -20,6 +20,16 @@ public class SaleAPI {
         return "Sale Health Good";
     }
 
+    @GetMapping
+    public ResponseEntity getAllSales(){
+        try{
+            return ResponseEntity.ok(saleBO.getSales());
+        }catch (Exception e){
+            e.printStackTrace();
+            return ResponseEntity.internalServerError().body(e.getMessage());
+        }
+    }
+
     @PostMapping
     public ResponseEntity saveSale(@RequestBody SaleDTO saleDTO, Authentication authentication){
         try{
