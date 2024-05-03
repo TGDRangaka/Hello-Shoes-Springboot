@@ -34,7 +34,7 @@
                 <button id="customerBtn" type="button" class="nav-btn-theme"><i class="fa-solid fa-users"></i><h3>Customers</h3></button>
                 <button id="employeesBtn" type="button" class="nav-btn-theme"><i class="fa-solid fa-building-user"></i><h3>Employees</h3></button>
                 <button id="suppliersBtn" type="button" class="nav-btn-theme"><i class="fa-solid fa-truck"></i><h3>Suppliers</h3></button>
-                <button id="resuppliersBtn" type="button" class="nav-btn-theme"><i class="fa-solid fa-box-open"></i><h3>Resupply</h3></button>
+                <button id="resupplysBtn" type="button" class="nav-btn-theme"><i class="fa-solid fa-box-open"></i><h3>Resupply</h3></button>
                 <button id="analyticsBtn" type="button" class="nav-btn-theme"><i class="fa-solid fa-chart-pie"></i><h3>Analytics</h3></button>
                 <button id="notificationsBtn" type="button" class="nav-btn-theme position-relative">
                     <i class="fa-solid fa-bell">
@@ -63,8 +63,6 @@
             
             <!-- Dashboard Section -->
             <section id="dashboard" class="bg-theme">
-                <h1 class="poppins-semibold">Dashboard</h1>
-                <hr>
             </section>
 
             <!-- Sales Section -->
@@ -181,7 +179,7 @@
             </section>
 
             <!-- Sales History Section -->
-            <section id="salesHistory" class="container-fluid bg-theme text-theme mh-100"></section>
+            <section id="salesHistory" class="bg-theme text-theme mh-100"></section>
 
             <!-- Inventory Section -->
             <section id="inventory" class="bg-theme text-theme vh-100">
@@ -281,85 +279,7 @@
 
                 <div class="border flex-grow mm">
 
-                <div class="accordion" id="inventoryItems">
-                    <!-- <div class="accordion-item">
-                        <div class="accordion-header">
-                            <button type="button" class="accordion-button p-2" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                <div class="inventory-item-header row w-100 text-theme">
-                                    <div class="col-1 d-flex justify-content-center">
-                                        <div class="img"></div>
-                                    </div>
-                                    <label class="col-2">FSM000234</label>
-                                    <label class="col-3">Nike Sneakers Blue</label>
-                                    <label class="col-2">SIZE 6</label>
-                                    <label class="col-2">Rs.3400</label>
-                                    <div class="col-2 d-flex flex-column justify-content-center align-items-center">
-                                        <h4>49</h4>
-                                        <label class="stock stock-a">available</label>
-                                    </div>
-                                </div>
-                            </button>
-                        </div>
-                        <div id="collapseOne" class="accordion-collapse collapse w-100" data-bs-parent="#inventoryItems">
-                            <div class="accordion-body w-100">
-                                <div class="inventory-item-body container-fluid row">
-                                    <div class="col-4 img"></div>
-                                    <div class="col-8 row">
-                                        <div class="inventory-body-detail col-6">
-                                            <label class="label">Product Name</label>
-                                            <h4>Nike Sneakers Blue</h4>
-                                        </div>
-                                        <div class="inventory-body-detail col-3">
-                                            <label class="label">Product ID</label>
-                                            <h4>FSM000234</h4>
-                                        </div>
-                                        <div class="inventory-body-detail col-3">
-                                            <label class="label">Size</label>
-                                            <h4>6</h4>
-                                        </div>
-
-                                        <div class="inventory-body-detail col-3">
-                                            <label class="label">Category</label>
-                                            <h4>Shoe</h4>
-                                        </div>
-                                        <div class="inventory-body-detail col-3">
-                                            <label class="label">Supplier</label>
-                                            <h4>Nike</h4>
-                                        </div>
-                                        <div class="inventory-body-detail col-3">
-                                            <label class="label">Colour</label>
-                                            <h4>Blue</h4>
-                                        </div>
-                                        <div class="inventory-body-detail col-3">
-                                            <label class="label">Stock</label>
-                                            <h4>39</h4>
-                                        </div>
-
-                                        <div class="inventory-body-detail col-3">
-                                            <label class="label">Sale Price</label>
-                                            <h4>3400</h4>
-                                        </div>
-                                        <div class="inventory-body-detail col-3">
-                                            <label class="label">Buy Price</label>
-                                            <h4>3090</h4>
-                                        </div>
-                                        <div class="inventory-body-detail col-3">
-                                            <label class="label">Profit Margin</label>
-                                            <h4>10%</h4>
-                                        </div>
-                                        <div class="inventory-body-detail col-3">
-                                            <label class="label">Expected Price</label>
-                                            <h4>3400</h4>
-                                        </div>
-
-                                        <div class="col-6 d-flex justify-content-center align-items-center"><button class="btn btn-success">Update</button></div>
-                                        <div class="col-6 d-flex justify-content-center align-items-center"><button class="btn btn-danger">Remove</button></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
-                </div>
+                <div class="accordion" id="inventoryItems"></div>
                 </div>
 
             </section>
@@ -947,6 +867,115 @@
                         </div>
                     </div>
                 </form>
+            </section>
+
+            <!-- Resupply Section -->
+            <section id="resupply" class="bg-theme text-theme mh-100">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col">
+                            <div class="row">
+                                <div class="input col">
+                                    <label for="resupplySupplier">Supplier</label>
+                                    <select name="supplier" id="resupplySupplier">
+                                        <option value="NIKE">Nike</option>
+                                        <option value="PUMA">Puma</option>
+                                    </select>
+                                </div>
+
+                                <div class="input col">
+                                    <label for="resupplyItem">Item</label>
+                                    <input type="text" id="resupplyItem" name="item">
+                                </div>
+                            </div>
+                            <hr>
+                            <h3>Resupplies</h3>
+                            <div id="resupplyItems" class="container-fluid">
+                                
+                                <div id="ResupplyItem" class="row">
+                                    <div class="col-3">
+                                        <img class="w-100 rounded" src="assets/imgs/shoe1.png" alt="">
+                                    </div>
+                                    <div class="col d-flex flex-column justify-content-around">
+                                        <h3>Black</h3>
+                                        <hr>
+                                        <table class="table text-center table-bordered">
+                                            <thead>
+                                                <th class="text-start">Size</th>
+                                                <th class="table-input">5</th>
+                                                <th class="table-input">6</th>
+                                                <th class="table-input">7</th>
+                                                <th class="table-input">8</th>
+                                                <th class="table-input">9</th>
+                                                <th class="table-input">10</th>
+                                                <th class="table-input">11</th>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <th class="text-start">Current Qty</th>
+                                                    <td>20<span class="bg-success p-1 rounded text-white bg-opacity-75 ms-1">75%</span></td>
+                                                    <td>20<span class="bg-warning p-1 rounded text-white bg-opacity-75 ms-1">38%</span></td>
+                                                    <td>20<span class="bg-success p-1 rounded text-white bg-opacity-75 ms-1">75%</span></td>
+                                                    <td>0<span class="bg-danger p-1 rounded text-white bg-opacity-75 ms-1">0%</span></td>
+                                                    <td>20<span class="bg-success p-1 rounded text-white bg-opacity-75 ms-1">75%</span></td>
+                                                    <td>20<span class="bg-success p-1 rounded text-white bg-opacity-75 ms-1">75%</span></td>
+                                                    <td>20<span class="bg-success p-1 rounded text-white bg-opacity-75 ms-1">75%</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <th class="text-start">Supply Qty</th>
+                                                    <td><input type="number" name="qty" id="" placeholder="qty"></td>
+                                                    <td><input type="number" name="qty" id="" placeholder="qty"></td>
+                                                    <td><input type="number" name="qty" id="" placeholder="qty"></td>
+                                                    <td><input type="number" name="qty" id="" placeholder="qty"></td>
+                                                    <td><input type="number" name="qty" id="" placeholder="qty"></td>
+                                                    <td><input type="number" name="qty" id="" placeholder="qty"></td>
+                                                    <td><input type="number" name="qty" id="" placeholder="qty"></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <!-- <div id="cbReColors" class="col d-flex flex-column  gap-3">
+                            <h3 class="m-0 text-start w-100 ">Colors</h3>
+                            
+                            <div class="cb-input">
+                                <input type="checkbox" id="cbRe" class="form-check-input">
+                                <label class="label" for="cbRe">Black</label>
+                            </div>
+                            <div class="cb-input">
+                                <input type="checkbox" id="cbRe" class="form-check-input">
+                                <label class="label" for="cbRe">Black</label>
+                            </div>
+                            <div class="cb-input">
+                                <input type="checkbox" id="cbRe" class="form-check-input">
+                                <label class="label" for="cbRe">Black</label>
+                            </div>
+                            <div class="cb-input">
+                                <input type="checkbox" id="cbRe" class="form-check-input">
+                                <label class="label" for="cbRe">Black</label>
+                            </div>
+                            <div class="cb-input">
+                                <input type="checkbox" id="cbRe" class="form-check-input">
+                                <label class="label" for="cbRe">Black</label>
+                            </div>
+                            <div class="cb-input">
+                                <input type="checkbox" id="cbRe" class="form-check-input">
+                                <label class="label" for="cbRe">Black</label>
+                            </div>
+                            <div class="cb-input">
+                                <input type="checkbox" id="cbRe" class="form-check-input">
+                                <label class="label" for="cbRe">Black</label>
+                            </div>
+                            <button type="button" class="btn btn-primary">Other</button>
+                            
+                              
+                        </div> -->
+                    </div>
+
+                </div>
             </section>
 
             <!-- Notification Section -->
