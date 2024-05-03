@@ -4,8 +4,28 @@ import { Supplier } from "../model/Supplier.js";
 let allSuppliers = [];
 
 $("#suppliersBtn").click(()=>{
-    // getAllSuppliers();
+    getAllSuppliers();
 })
+
+const getAllSuppliers = ()=>{
+  if(token){
+    var settings = {
+      "url": "http://localhost:8080/api/v1/supplier",
+      "method": "GET",
+      "timeout": 0,
+      "headers": {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer " + token
+      },
+    };
+    
+    $.ajax(settings).done(function (response) {
+      // console.log(response);
+      allSuppliers = response;
+      loadTable(allSuppliers);
+    });
+  }
+}
 
 const saveSupplier = (supplier) => {
     var settings = {
@@ -45,6 +65,27 @@ const getSupplierData = () => {
     supplierData.email = $('#supplierEmail').val();
 
     return supplierData;
+}
+
+const loadTable = (suppliers) => {
+  $("#supplierTbody").empty();
+  suppliers.map((supplier, i) => {
+    $("#supplierTbody").append(`
+    <tr>
+        <td>${i + 1}</td>
+        <td class="text-start">${supplier.name}</td>
+        <td>${supplier.category}</td>
+        <td>${supplier.email}</td>
+        <td class="d-flex flex-column">
+            <label>${supplier.contactNo1}</label>
+            <label>${supplier.contactNo2}</label>
+        </td>
+        <td>${supplier.originCountry}</td>
+        <td class="table-action"><button data-index="${i}" class="btn"><i class="fa-solid fa-pen"></i></button></i></td>
+        <td class="table-action"><button data-index="${i}" class="btn"><i class="fa-solid fa-pen"></i></button></i></td>
+    </tr>
+    `)
+  })
 }
 
 $("#submitSupplierBtn").click(()=> {

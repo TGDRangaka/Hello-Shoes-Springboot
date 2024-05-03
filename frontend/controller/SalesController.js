@@ -7,7 +7,162 @@ let paymentMethod = "cash";
 let inventoryItems = [];
 let allCustomers = [];
 let selectedItems = [];
+let allSoldItems = [];
 let subTotal = 0;
+
+// on section load
+$("#salesBtn").click(function(){
+    getAllItems();
+    getAllCustomers();
+    getSoldItems();
+})
+
+// api
+const getAllItems = ()=>{
+    var settings = {
+        "url": "http://localhost:8080/api/v1/inventory/available",
+        "method": "GET",
+        "timeout": 0,
+        "headers": {
+          "Authorization": "Bearer " + token
+        },
+      };
+      
+      $.ajax(settings).done(function (response) {
+        inventoryItems = response;
+        inventoryItems.map(item => {
+            let img = new Image();
+            img.src = item.itemImage.image
+            item.itemImage = img;
+        })
+      });
+}
+
+// api
+const getAllCustomers = ()=>{
+    var settings = {
+        "url": "http://localhost:8080/api/v1/customer",
+        "method": "GET",
+        "timeout": 0,
+        "headers": {
+          "Authorization": "Bearer " + token
+        },
+      };
+      
+      $.ajax(settings).done(function (response) {
+        console.log(response);
+        allCustomers = response;
+        allCustomers.map(customer => {
+            $("#customerDataList").append(`
+                <option value="${customer.name}">${customer.email}</option>
+            `)
+        })
+      });
+}
+
+// payment api call
+$("#salePayBtn, #saleConfirmBtn").click(()=>{
+    let sale = new Sale(
+        "", subTotal, paymentMethod.toUpperCase(),
+        subTotal >= 800 ? 1 : 0, null,
+        {name: $("#saleCustomerName").val(), email: $("#saleCustomerEmail").val()},
+        []
+    )
+    selectedItems.map(item => {
+        sale.saleItems.push({
+            saleItemId: {item: {inventoryCode: item.inventoryCode}},
+            qty: item.qty,
+            unitPrice: item.item.unitPriceSale
+        });
+    })
+
+    let settings = {
+        "url": "http://localhost:8080/api/v1/sale",
+        "method": "POST",
+        "timeout": 0,
+        "headers": {
+          "Authorization": "Bearer " + token,
+          "Content-Type": "application/json"
+        },
+        "data": JSON.stringify(sale)
+    };
+
+    $.ajax(settings).done(function (response){
+        console.log(response);
+    }).fail((error)=>{
+        console.log(error);
+    })
+
+})
+
+const getSoldItems = () => {
+    var settings = {
+        "url": "http://localhost:8080/api/v1/sale",
+        "method": "GET",
+        "timeout": 0,
+        "headers": {
+          "Authorization": "Bearer " + token
+        },
+      };
+      
+      $.ajax(settings).done(function (response) {
+        console.log(response);
+        allSoldItems = response;
+        loadSoldItemsTable(allSoldItems);
+      });
+}
+
+const loadSoldItemsTable = (soldItems) => {
+    $("#saleItemsAccordion").empty();
+
+    soldItems.map((sale, i) => {
+        let saleItems = sale.saleItems;
+        // ToDo
+        $("#saleItemsAccordion").append(`
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                
+                <div class="sale-accordion container-fluid w-100">
+                    <div class="row">
+                        <label class="col-1">1</label>
+                        <label class="col-2">Sold Date</label>
+                        <label class="col-2">Payment</label>
+                        <label class="col-2">Sub Total</label>
+                        <label class="col-2">Customer</label>
+                        <label class="col-2">Employee</label>
+                        <label class="col-1">Sold Items</label>
+                    </div>
+                </div>
+
+            </button>
+            </h2>
+            <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body container-fluid">
+                <table class="table table-bordered bg-light">
+                    <thead>
+                        <th class="text-center">#</th>
+                        <th>Item Name</th>
+                        <th>Unit Price</th>
+                        <th>Qty</th>
+                        <th>Total</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th class="text-center">1</th>
+                            <td>Nike Air</td>
+                            <td>600</td>
+                            <td>4</td>
+                            <td>2400</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            </div>
+        </div>
+        `)
+    })
+}
 
 $("#payBtn").on("click", ()=>{
     paymentMethod = $('input[name="paymentMethod"]:checked').val();
@@ -89,90 +244,6 @@ $("#suggest-items-list").on("click", ".suggest-item-card", function(){
     $("#suggest-items-list").hide();
     $("#saleItemCode").val(selectedItemId)
 })
-
-// on section load
-$("#salesBtn").click(function(){
-    getAllItems();
-    getAllCustomers();
-})
-
-// payment api call
-$("#salePayBtn, #saleConfirmBtn").click(()=>{
-    let sale = new Sale(
-        "", subTotal, paymentMethod.toUpperCase(),
-        subTotal >= 800 ? 1 : 0, null,
-        {name: $("#saleCustomerName").val(), email: $("#saleCustomerEmail").val()},
-        []
-    )
-    selectedItems.map(item => {
-        sale.saleItems.push({
-            saleItemId: {item: {inventoryCode: item.inventoryCode}},
-            qty: item.qty,
-            unitPrice: item.item.unitPriceSale
-        });
-    })
-
-    let settings = {
-        "url": "http://localhost:8080/api/v1/sale",
-        "method": "POST",
-        "timeout": 0,
-        "headers": {
-          "Authorization": "Bearer " + token,
-          "Content-Type": "application/json"
-        },
-        "data": JSON.stringify(sale)
-    };
-
-    $.ajax(settings).done(function (response){
-        console.log(response);
-    }).fail((error)=>{
-        console.log(error);
-    })
-
-})
-
-// api
-const getAllCustomers = ()=>{
-    var settings = {
-        "url": "http://localhost:8080/api/v1/customer",
-        "method": "GET",
-        "timeout": 0,
-        "headers": {
-          "Authorization": "Bearer " + token
-        },
-      };
-      
-      $.ajax(settings).done(function (response) {
-        console.log(response);
-        allCustomers = response;
-        allCustomers.map(customer => {
-            $("#customerDataList").append(`
-                <option value="${customer.name}">${customer.email}</option>
-            `)
-        })
-      });
-}
-
-// api
-const getAllItems = ()=>{
-    var settings = {
-        "url": "http://localhost:8080/api/v1/inventory/available",
-        "method": "GET",
-        "timeout": 0,
-        "headers": {
-          "Authorization": "Bearer " + token
-        },
-      };
-      
-      $.ajax(settings).done(function (response) {
-        inventoryItems = response;
-        inventoryItems.map(item => {
-            let img = new Image();
-            img.src = item.itemImage.image
-            item.itemImage = img;
-        })
-      });
-}
 
 $("#addSuggestItemBtn").click(()=> {
     let itemCode = $("#saleItemCode").val();

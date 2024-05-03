@@ -179,7 +179,69 @@
             </section>
 
             <!-- Sales History Section -->
-            <section id="salesHistory" class="bg-theme text-theme mh-100"></section>
+            <section id="salesHistory" class="bg-theme text-theme mh-100">
+                <header></header>
+
+                <div class="accordion accordion-flush" id="saleItemsAccordion">
+
+                    <div class="accordion-item">
+                      <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                          
+                            <div class="sale-accordion container-fluid w-100">
+                                <div class="row">
+                                    <label class="col-1">1</label>
+                                    <label class="col-2">Sold Date</label>
+                                    <label class="col-2">Payment</label>
+                                    <label class="col-2">Sub Total</label>
+                                    <label class="col-2">Customer</label>
+                                    <label class="col-2">Employee</label>
+                                    <label class="col-1">Sold Items</label>
+                                </div>
+                            </div>
+
+                        </button>
+                      </h2>
+                      <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body container-fluid">
+                            <table class="table table-bordered bg-light">
+                                <thead>
+                                    <th class="text-center">#</th>
+                                    <th>Item Name</th>
+                                    <th>Unit Price</th>
+                                    <th>Qty</th>
+                                    <th>Total</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th class="text-center">1</th>
+                                        <td>Nike Air</td>
+                                        <td>600</td>
+                                        <td>4</td>
+                                        <td>2400</td>
+                                    </tr>
+                                    <tr>
+                                        <th class="text-center">1</th>
+                                        <td>Nike Air</td>
+                                        <td>600</td>
+                                        <td>4</td>
+                                        <td>2400</td>
+                                    </tr>
+                                    <tr>
+                                        <th class="text-center">1</th>
+                                        <td>Nike Air</td>
+                                        <td>600</td>
+                                        <td>4</td>
+                                        <td>2400</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+
+            </section>
 
             <!-- Inventory Section -->
             <section id="inventory" class="bg-theme text-theme vh-100">
@@ -793,6 +855,54 @@
 
             <!-- Supplier Section -->
             <section id="supplier" class="bg-theme text-theme mh-100">
+                <header class="container-fluid">
+                    <div class="row">
+                        <div class="col-4">
+                            <input type="text" name="search" id="supplierSearch" placeholder="type here to search">
+                        </div>
+
+                        <div class="col-2 input">
+                            <label class="label" for="">Category</label>
+                            <select name="" id="">
+                                <option value="INTERNATIONAL">International</option>
+                                <option value="LOCAL">Local</option>
+                            </select>
+                        </div>
+
+                    </div>
+                </header>
+
+                <table class="table align-middle">
+                    <thead>
+                        <th>#</th>
+                        <th class="text-start">Supplier</th>
+                        <th>Category</th>
+                        <th>Email</th>
+                        <th>Contacts</th>
+                        <th>Origin Country</th>
+                        <th class="table-action">Action</th>
+                        <th class="table-action">Action</th>
+                    </thead>
+                    <tbody id="supplierTbody">
+                        <tr>
+                            <td>1</td>
+                            <td class="text-start">Nike</td>
+                            <td>INTERNATIONAL</td>
+                            <td>nike@gmail.com</td>
+                            <td class="d-flex flex-column">
+                                <label>5735468233</label>
+                                <label>8669372873</label>
+                            </td>
+                            <td>German</td>
+                            <td class="table-action"><button class="btn"><i class="fa-solid fa-pen"></i></button></i></td>
+                            <td class="table-action"><button class="btn"><i class="fa-solid fa-pen"></i></button></i></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- Supplier Form Section -->
+            <section id="supplierForm" class="bg-theme text-theme mh-100">
                 <form action="" class="container bg-light">
                     <hr>
                     <div class="row">
