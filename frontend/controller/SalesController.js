@@ -116,28 +116,40 @@ const loadSoldItemsTable = (soldItems) => {
     $("#saleItemsAccordion").empty();
 
     soldItems.map((sale, i) => {
-        let saleItems = sale.saleItems;
+        let saleItemsRows = "";
+        sale.saleItems.map((saleItem, i) => {
+            saleItemsRows += `
+                <tr class="align-middle">
+                    <td>${i+1}</td>
+                    <td>${saleItem.saleItemId.item.inventoryCode}</td>
+                    <td>${saleItem.unitPrice}</td>
+                    <td>${saleItem.qty}</td>
+                    <td>${saleItem.qty * saleItem.unitPrice}</td>
+                </tr>
+            `
+        })
+
         // ToDo
         $("#saleItemsAccordion").append(`
         <div class="accordion-item">
             <h2 class="accordion-header">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSale${i}" aria-expanded="false" aria-controls="collapseSale${i}">
                 
                 <div class="sale-accordion container-fluid w-100">
                     <div class="row">
-                        <label class="col-1">1</label>
-                        <label class="col-2">Sold Date</label>
-                        <label class="col-2">Payment</label>
-                        <label class="col-2">Sub Total</label>
-                        <label class="col-2">Customer</label>
-                        <label class="col-2">Employee</label>
-                        <label class="col-1">Sold Items</label>
+                        <label class="col-1">${i+1}</label>
+                        <label class="col-2">${sale.orderDate}</label>
+                        <label class="col-2">${sale.paymentMethod}</label>
+                        <label class="col-2">${sale.totalPrice}</label>
+                        <label class="col-2">${sale.customer.name}</label>
+                        <label class="col-2">${sale.employee.name}</label>
+                        <label class="col-1">${sale.saleItems.length}</label>
                     </div>
                 </div>
 
             </button>
             </h2>
-            <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+            <div id="collapseSale${i}" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
             <div class="accordion-body container-fluid">
                 <table class="table table-bordered bg-light">
                     <thead>
@@ -148,13 +160,7 @@ const loadSoldItemsTable = (soldItems) => {
                         <th>Total</th>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th class="text-center">1</th>
-                            <td>Nike Air</td>
-                            <td>600</td>
-                            <td>4</td>
-                            <td>2400</td>
-                        </tr>
+                        ${saleItemsRows}
                     </tbody>
                 </table>
             </div>

@@ -61,6 +61,11 @@ $("#resupplysBtn").on('click', function(){
     $("#sectionTitle").text("Supplier Form")
 })
 
+$("#resupplysBtn").on('dblclick', function(){
+    setBtnActive("#resupplyData", this);
+    $("#sectionTitle").text("Supplier Data")
+})
+
 $("#notificationsBtn").on('click', function(){
     setBtnActive("#notification", this);
     $("#sectionTitle").text("Notifications")
@@ -89,7 +94,7 @@ const setBtnActive = (element, btn) => {
     $(element).show();
 }
 
-$("#salesBtn").dblclick();
+$("#resupplysBtn").dblclick();
 // $("#salesBtn").click();
 
 $("#loginBtn").click(()=>{

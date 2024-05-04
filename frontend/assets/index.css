@@ -640,6 +640,20 @@ form {
     height: 630px;
 }
 
+#resupplyItemsAccordion img {
+    width: 70px;
+    aspect-ratio: 1;
+}
+
+#resupplyItemsAccordion .accordion-button:focus {
+    box-shadow: none;
+    background: white;
+    border-bottom: 1px solid #162232;
+}
+
+#resupplyItemsAccordion .accordion-item:hover {
+    border: 2px solid #162232;
+}
 
 /* /////////////////////////////////////////////////////////////////////////////////////////////////// */
 
