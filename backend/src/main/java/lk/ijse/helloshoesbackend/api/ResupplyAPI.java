@@ -19,6 +19,16 @@ public class ResupplyAPI {
         return "Resupply Health Good";
     }
 
+    @GetMapping
+    public ResponseEntity getAllResupplies(){
+        try {
+            return ResponseEntity.ok(resupplyBO.getAllResupplies());
+        }catch (Exception e){
+            e.printStackTrace();
+            return ResponseEntity.internalServerError().body(e.getMessage());
+        }
+    }
+
     @PostMapping
     public ResponseEntity saveResupply(@RequestBody ResupplyDTO resupplyDTO){
         try {

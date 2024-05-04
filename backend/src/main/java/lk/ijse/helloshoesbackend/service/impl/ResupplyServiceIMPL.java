@@ -9,6 +9,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @Transactional
 @RequiredArgsConstructor
@@ -23,5 +25,11 @@ public class ResupplyServiceIMPL implements ResupplyService {
         }else{
             return false;
         }
+    }
+
+    @Override
+    public List<ResupplyDTO> getAllResupplies() {
+        List<ResupplyEntity> all = resupplyRepo.findAll();
+        return Conversion.toResupplyDTOList(all);
     }
 }

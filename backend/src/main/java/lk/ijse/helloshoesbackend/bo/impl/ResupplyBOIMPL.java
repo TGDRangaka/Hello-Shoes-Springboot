@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Component
 @RequiredArgsConstructor
@@ -41,5 +42,10 @@ public class ResupplyBOIMPL implements ResupplyBO {
         }
 
         return resupplyService.save(resupplyDTO);
+    }
+
+    @Override
+    public List<ResupplyDTO> getAllResupplies() {
+        return resupplyService.getAllResupplies();
     }
 }

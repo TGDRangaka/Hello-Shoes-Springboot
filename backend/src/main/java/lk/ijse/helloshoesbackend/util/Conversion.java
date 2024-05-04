@@ -2,6 +2,7 @@ package lk.ijse.helloshoesbackend.util;
 
 import lk.ijse.helloshoesbackend.dto.*;
 import lk.ijse.helloshoesbackend.entity.*;
+import lk.ijse.helloshoesbackend.entity.keys.ResupplyItemId;
 import lk.ijse.helloshoesbackend.entity.keys.SaleItemId;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
@@ -219,5 +220,34 @@ public class Conversion {
         ResupplyEntity entity = modelMapper.map(dto, ResupplyEntity.class);
         entity.setResupplyItems(entityList);
         return entity;
+    }
+    public static List<ResupplyDTO> toResupplyDTOList(List<ResupplyEntity> entities){
+        return entities.stream().map(
+                entity -> {
+                    ResupplyDTO resupplyDTO = new ResupplyDTO(
+                            entity.getSupplyId(),
+                            entity.getSuppliedDate(),
+                            entity.getTotalQty(),
+                            modelMapper.map(entity.getSupplier(), SupplierDTO.class),
+                            entity.getResupplyItems().stream().map(resupplyItem -> {
+                                InventoryEntity dbInventory = resupplyItem.getResupplyItemId().getInventory();
+                                InventoryEntity inventoryEntity = new InventoryEntity();
+                                inventoryEntity.setInventoryCode(dbInventory.getInventoryCode());
+                                inventoryEntity.setItemImage(dbInventory.getItemImage());
+                                inventoryEntity.setCurrentQty(dbInventory.getCurrentQty());
+                                inventoryEntity.setStatus(dbInventory.getStatus());
+
+                                ItemEntity item = new ItemEntity();
+                                item.setDescription(dbInventory.getItem().getDescription());
+                                item.setItemCode(dbInventory.getItem().getItemCode());
+                                inventoryEntity.setItem(item);
+
+                                return new ResupplyItemDTO(new ResupplyItemId(inventoryEntity, null), resupplyItem.getSuppliedQty());
+
+                            }).collect(Collectors.toList())
+                    );
+                    return resupplyDTO;
+                }
+        ).collect(Collectors.toList());
     }
 }
