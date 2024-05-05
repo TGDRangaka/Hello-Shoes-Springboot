@@ -51,8 +51,6 @@ h1 {
 }
 
 .main-color {
-    background: linear-gradient(to top, rgb(250, 97, 36), #fa373d);
-    background-color: #fa373d;
 }
 
 .second-color {
@@ -175,8 +173,8 @@ nav button {
 
 nav button:hover {
     color: #ffffff;
-    border-right: 5px solid #03ffea;
-    background: linear-gradient(to right, transparent , rgba(3, 255, 234, 0.2));
+    border-right: 5px solid #03ffea !important;
+    /* background: linear-gradient(to right, transparent , rgba(215, 243, 116, 0.281)) !important; */
 }
 
 /* nav button:focus {
@@ -242,7 +240,129 @@ section {
 }
 
 /* /////////////////////////////////////////////////////////////////////////////////////////////////// */
+/* Dashboard Section */
 
+#panes {
+    overflow-y: auto;
+}
+
+.pane {
+    background-color: rgb(255, 255, 255);
+    /* border: 1px solid red; */
+    border-radius: 4px;
+    padding: 5px;
+    border: 1px solid #162232;
+    /* box-shadow: 5px -5px 20px rgba(0, 0, 0, 0.1), inset 5px -5px 20px rgb(255, 255, 255, 0.5); */
+}
+
+.dashboard-total-panes {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.pane-totals {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    padding: 20px 10px;
+    /* border-left: 4px solid #162232; */
+    margin-right: 15px;
+    /* border-radius: 0 10px 10px 0; */
+}
+
+.pane-totals::after{
+    content: "";
+    position: absolute;
+    width: 8px;
+    height: 80%;
+    border-radius: 4px;
+    background-color: #8eff8e;
+    border: 1px solid #162232;
+    right: -4px;
+}
+
+.pane-totals h3 {
+    margin: 0;
+}
+
+.pane-totals i {
+    font-size: 40px;
+    padding: 20px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background-color: #8eff8e;
+    border: 1px solid #162232;
+}
+
+.dashboard-side-pane{
+    width: 400px;
+}
+
+.charts {
+    height: 400px;
+}
+
+.bar-pane {
+    flex-grow: 1;
+}
+
+.pie-pane {
+    width: 30%;
+}
+
+/* calender */
+.calender {
+    height: fit-content;
+}
+
+.month {
+    font-size: 20px;
+}
+
+.days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgb(197, 197, 197);
+}
+
+.dates {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+}
+
+.btn-date {
+    border-radius: 50%;
+    aspect-ratio: 1;
+    margin: 4px;
+    text-align: center;
+    padding: 0;
+}
+
+.btn-date:hover {
+    border: 1px solid #8eff8e;
+}
+
+.btn-date:focus {
+    border: 1px solid #8eff8e;
+}
+
+.btn-date span {
+    width: 100%;
+}
+
+.btn-date:disabled {
+    border: none;
+}
+
+.btn-date-current, .btn-date-current:hover {
+    background-color: rgb(142, 255, 142);
+    font-weight: 600;
+}
+
+/* /////////////////////////////////////////////////////////////////////////////////////////////////// */
 .input {
     display: flex;
     flex-direction: column;

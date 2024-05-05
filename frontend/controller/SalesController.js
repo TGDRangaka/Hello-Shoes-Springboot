@@ -52,6 +52,7 @@ const getAllCustomers = ()=>{
       $.ajax(settings).done(function (response) {
         console.log(response);
         allCustomers = response;
+        $("#customerDataList").empty();
         allCustomers.map(customer => {
             $("#customerDataList").append(`
                 <option value="${customer.name}">${customer.email}</option>

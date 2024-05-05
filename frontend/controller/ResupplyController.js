@@ -144,7 +144,7 @@ const loadAllResupplies = (resupplies) => {
             </button>
             </h2>
             <div id="resupply${i}" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-            <div class="accordion-body container-fluid">
+            <div class="accordion-body container-fluid p-2 bg-light">
                 <table class="table table-bordered bg-light align-middle">
                     <thead>
                         <th class="text-center">#</th>

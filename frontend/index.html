@@ -62,7 +62,91 @@
             </header>
             
             <!-- Dashboard Section -->
-            <section id="dashboard" class="bg-theme">
+            <section id="dashboard" class="bg-theme text-theme mh-100">
+                <div id="panes" class="flex-grow">
+                    <div class="d-flex flex-grow h-100">
+
+                        <div class="d-flex flex-column w-100 gap-3">
+                            <div class="dashboard-total-panes">
+                                <div class="pane pane-totals">
+                                    <i class="fa-solid fa-hand-holding-dollar"></i>
+                                    <div class="flex-column">
+                                        <label>Total Sales</label>
+                                        <h3 id="totalSalesCount">9</h3>
+                                    </div>
+                                </div>
+                                <div class="pane pane-totals">
+                                    <i class="fa-solid fa-money-bill-trend-up"></i>
+                                    <div class="flex-column">
+                                        <label>Total Profit</label>
+                                        <h3 id="totalProfitAmount">Rs.7200</h3>
+                                    </div>
+                                </div>
+                                <div class="pane pane-totals">
+                                    <i class="fa-solid fa-boxes-stacked"></i>
+                                    <div class="flex-column">
+                                        <label>Total sold products</label>
+                                        <h3 id="totalQtySold">23</h3>
+                                    </div>
+                                </div>
+                                <div class="pane pane-totals">
+                                    <i class="fa-solid fa-boxes-stacked"></i>
+                                    <div class="flex-column">
+                                        <label>Total sold products</label>
+                                        <h3>23</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            
+
+                            <div class="d-flex me-3 charts">
+                                <div class="pane me-3 bar-pane d-flex flex-column h-100">
+                                        <canvas id="salesWeeklyBarChart" class="w-100"></canvas>
+                                </div>
+                                <div class="pane pie-pane">
+                                    <div class="text-center">Weekly Sales</div>
+                                    <canvas id="stockPieChart"></canvas>
+                                </div>
+                            </div>
+
+                            <div class="me-3 pane flex-grow">
+                                Most sold items in rank
+                            </div>
+                        </div>
+
+                        <div class="dashboard-side-pane d-flex flex-column gap-3">
+                            <!-- Calendar -->
+                            <div class="calender pane">
+                                <!-- <div class="col pane"> -->
+
+                                    <div class="calendar-top w-100 d-flex justify-content-between align-items-center mt-2">
+                                        <button id="prevMonthBtn" type="button" class="btn"><i class="fa-solid fa-angle-left"></i></button>
+                                        <span><label class="quicksand-bold me-3 month">Month</label><label class="year">Year</label></span>
+                                        <button id="nextMonthBtn" type="button" class="btn"><i class="fa-solid fa-angle-right"></i></button>
+                                    </div>
+                                    <div class="days text-center mt-3">
+                                        <span>Mon</span>
+                                        <span>Tue</span>
+                                        <span>Wed</span>
+                                        <span>Thu</span>
+                                        <span>Fri</span>
+                                        <span>Sat</span>
+                                        <span>Sun</span>
+                                    </div>
+                                    <div id="dates" class="dates text-center flex-grow">
+                                    </div>
+                                    
+                                <!-- </div> -->
+                            </div>
+                            <div class="pane flex-grow">
+                                <!-- <div class="col pane"> -->
+                                    Notifications
+                                <!-- </div> -->
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
             </section>
 
             <!-- Sales Section -->
@@ -1114,7 +1198,7 @@
                         </button>
                       </h2>
                       <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                        <div class="accordion-body container-fluid">
+                        <div class="accordion-body container-fluid p-2 bg-light">
                             <table class="table table-bordered bg-light align-middle">
                                 <thead>
                                     <th class="text-center">#</th>
@@ -1175,8 +1259,10 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <script type="module" src="controller/IndexController.js"></script>
+    <script type="module" src="controller/AdminPanelController.js"></script>
     <script type="module" src="controller/SalesController.js"></script>
     <script type="module" src="controller/EmployeeController.js"></script>
     <script type="module" src="controller/InventoryController.js"></script>
