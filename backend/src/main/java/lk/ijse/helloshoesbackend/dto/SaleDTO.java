@@ -6,7 +6,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.List;
 
 @Data
@@ -17,7 +19,8 @@ public class SaleDTO {
     private Double totalPrice;
     private PaymentMethods paymentMethod;
     private Integer addedPoints;
-    private LocalDateTime orderDate;
+    private LocalDate orderDate;
+    private LocalTime orderTime;
 
     private EmployeeDTO employee;
     private CustomerDTO customer;

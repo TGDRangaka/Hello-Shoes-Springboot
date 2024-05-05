@@ -19,7 +19,9 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.*;
 
 @Component
@@ -54,7 +56,8 @@ public class SaleBOIMPL implements SaleBO {
 //        Set order id and order datetime
         String orderId = UtilMatter.generateUUID();
         saleDTO.setOrderId(orderId);
-        saleDTO.setOrderDate(LocalDateTime.now());
+        saleDTO.setOrderDate(LocalDate.now());
+        saleDTO.setOrderTime(LocalTime.now());
 
         Map<String, Integer> percentageOfItems = new HashMap<>();
         for(int i = 0; i < saleDTO.getSaleItems().size(); i++){
@@ -62,7 +65,7 @@ public class SaleBOIMPL implements SaleBO {
             String inventoryCode = saleItem.getSaleItemId().getItem().getInventoryCode();
 
 
-            saleItem.getSaleItemId().setSale(new SaleEntity(orderId, 0.0, PaymentMethods.CARD, 0, null, null, null, new ArrayList<>()));
+            saleItem.getSaleItemId().setSale(new SaleEntity(orderId, 0.0, PaymentMethods.CARD, 0, null, null,null, null, new ArrayList<>()));
 
             // Decrease the current qty for sale item and return percentage of current qty/original qty
             int percentageOfCurrentQty = inventoryService.updateCurrentQty(inventoryCode, saleItem.getQty());

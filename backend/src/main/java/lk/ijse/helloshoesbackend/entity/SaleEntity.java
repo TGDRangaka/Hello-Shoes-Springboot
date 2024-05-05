@@ -7,7 +7,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.Date;
 import java.util.List;
 
@@ -23,7 +25,8 @@ public class SaleEntity {
     @Enumerated(EnumType.STRING)
     private PaymentMethods paymentMethod;
     private Integer addedPoints;
-    private LocalDateTime orderDate;
+    private LocalDate orderDate;
+    private LocalTime orderTime;
 
     @ManyToOne
     private EmployeeEntity employee;

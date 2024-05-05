@@ -186,6 +186,7 @@ public class Conversion {
                             entity.getPaymentMethod(),
                             entity.getAddedPoints(),
                             entity.getOrderDate(),
+                            entity.getOrderTime(),
                             new EmployeeDTO(entity.getEmployee().getName()),
                             modelMapper.map(entity.getCustomer(), CustomerDTO.class),
                             entity.getSaleItems().stream().map(saleItem -> {
