@@ -12,7 +12,7 @@ import java.util.List;
 
 @Repository
 public interface SaleRepo extends JpaRepository<SaleEntity, String> {
-    int countByOrderDate(LocalDate date);
+    Integer countByOrderDate(LocalDate date);
     List<SaleEntity> findAllByOrderDate(LocalDate date);
     @Query("SELECT NEW lk.ijse.helloshoesbackend.dto.projection.DailySalesProjection(s.orderDate, COUNT(s.orderId)) FROM SaleEntity s " +
             "WHERE s.orderDate >= :from AND s.orderDate <= :to " +

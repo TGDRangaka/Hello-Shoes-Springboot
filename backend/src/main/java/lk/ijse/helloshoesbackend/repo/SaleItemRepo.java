@@ -21,7 +21,7 @@ public interface SaleItemRepo extends JpaRepository<SaleItemEntity, String> {
 
     @Query("SELECT SUM(si.qty) FROM SaleItemEntity si " +
             "INNER JOIN SaleEntity s ON s.orderId = si.saleItemId.sale.orderId WHERE s.orderDate = :date")
-    int getTotalQtySold(@Param("date") LocalDate orderDate);
+    Integer getTotalQtySold(@Param("date") LocalDate orderDate);
 
     @Query("SELECT NEW lk.ijse.helloshoesbackend.dto.projection.MostSoldItemProjection(si.qty, i.inventoryCode, i.item.description, i.itemImage.image) FROM SaleItemEntity si " +
             "INNER JOIN InventoryEntity i ON i.inventoryCode = si.saleItemId.item.inventoryCode " +

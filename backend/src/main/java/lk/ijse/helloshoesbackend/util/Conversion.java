@@ -251,4 +251,36 @@ public class Conversion {
                 }
         ).collect(Collectors.toList());
     }
+
+    public static RefundEntity toRefundEntity(RefundDTO refundDTO){
+        return modelMapper.map(refundDTO, RefundEntity.class);
+    }
+
+    public static List<RefundDTO> toRefundDTOList(List<RefundEntity> entities){
+        return entities.stream().map(entity -> {
+            InventoryEntity dbTempInventory = entity.getSaleItem().getSaleItemId().getItem();
+            InventoryEntity tempInventory = new InventoryEntity();
+            EmployeeDTO tempEmployee = new EmployeeDTO();
+
+            tempInventory.setInventoryCode(dbTempInventory.getInventoryCode());
+            tempInventory.setItemImage(dbTempInventory.getItemImage());
+            tempEmployee.setName(entity.getEmployee().getName());
+
+            RefundDTO refundDTO = new RefundDTO(
+                    entity.getRefundId(),
+                    entity.getDescription(),
+                    entity.getRefundDate(),
+                    entity.getQty(),
+                    tempEmployee,
+                    new SaleItemDTO(
+                            new SaleItemId(
+                                    null,
+                                    tempInventory
+                            ),
+                            null, null
+                    )
+            );
+            return refundDTO;
+        }).collect(Collectors.toList());
+    }
 }

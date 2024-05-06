@@ -12,7 +12,7 @@ import java.time.LocalDate;
 @RequestMapping("/api/v1/admin-panel")
 @CrossOrigin
 @RequiredArgsConstructor
-public class AdminPanel {
+public class AdminPanelAPI {
     private final AdminPanelBO adminPanelBO;
 
     @GetMapping("/health")

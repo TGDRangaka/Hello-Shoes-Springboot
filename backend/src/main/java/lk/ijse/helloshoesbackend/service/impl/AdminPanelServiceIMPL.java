@@ -3,7 +3,6 @@ package lk.ijse.helloshoesbackend.service.impl;
 import lk.ijse.helloshoesbackend.dto.projection.DailySalesProjection;
 import lk.ijse.helloshoesbackend.dto.projection.MostSoldItemProjection;
 import lk.ijse.helloshoesbackend.dto.projection.SaleItemProjection;
-import lk.ijse.helloshoesbackend.entity.SaleEntity;
 import lk.ijse.helloshoesbackend.repo.SaleItemRepo;
 import lk.ijse.helloshoesbackend.repo.SaleRepo;
 import lk.ijse.helloshoesbackend.service.AdminPanelService;
@@ -25,7 +24,8 @@ public class AdminPanelServiceIMPL implements AdminPanelService {
 
     @Override
     public int getTotalSalesCount(LocalDate date) {
-        return saleRepo.countByOrderDate(date);
+        Integer integer = saleRepo.countByOrderDate(date);
+        return integer == null? 0 : integer;
     }
 
     @Override
@@ -40,7 +40,8 @@ public class AdminPanelServiceIMPL implements AdminPanelService {
 
     @Override
     public int getTotalSoldProductsCount(LocalDate date) {
-        return saleItemRepo.getTotalQtySold(date);
+        Integer totalQtySold = saleItemRepo.getTotalQtySold(date);
+        return totalQtySold == null? 0 : totalQtySold;
     }
 
     @Override
