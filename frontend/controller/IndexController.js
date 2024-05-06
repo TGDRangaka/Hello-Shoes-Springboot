@@ -77,6 +77,11 @@ $("#addNewProductBtn").on('click', ()=>{
     $("#sectionTitle").text("New Product")
 })
 
+$("#refundBtn").on('click', ()=>{
+    setBtnActive("#refund", "#refundBtn")
+    $("#sectionTitle").text("Refund Item")
+})
+
 const hideAllSections = () => {
     $("section").hide();
     $(".nav-buttons > button").css({
@@ -95,7 +100,7 @@ const setBtnActive = (element, btn) => {
 }
 
 // $("#dashboardBtn").dblclick();
-$("#dashboardBtn").click();
+$("#refundBtn").click();
 
 $("#loginBtn").click(()=>{
     const settings = {

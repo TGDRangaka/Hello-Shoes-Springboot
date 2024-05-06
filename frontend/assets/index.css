@@ -3,6 +3,7 @@
     margin: 0;
     box-sizing: border-box;
     position: relative;
+    overflow: hidden;
 }
 
 body {
@@ -25,15 +26,18 @@ body {
     background-color: #363636;
 }
 
+/* Create root variables for colors */
+:root {
+    --bg-color: #162232;
+    --text-color: #1f1f1f;
+    --main-color: ;
+}
+
 #bg {
-    /* background-image: url("imgs/bg.jpg");
-    background-size: cover;
-    background-position: center; */
-    background-color: #162232;
+    background-color: var(--bg-color)
 }
 
 .bg-theme {
-    /* background-color: #f2faf6; */
     background-color: #e8ebf0;
 }
 
@@ -229,7 +233,8 @@ nav button h3 {
 /* /////////////////////////////////////////////////////////////////////////////////////////////////// */
 
 section {
-    height: 100%;
+    height: calc(100vh - 71px);
+    /* height: 100%; */
     z-index: 4;
     padding: 8px;
     display: flex;
@@ -251,7 +256,7 @@ section {
     /* border: 1px solid red; */
     border-radius: 4px;
     padding: 5px;
-    border: 1px solid #162232;
+    /* border: 1px solid #162232; */
     /* box-shadow: 5px -5px 20px rgba(0, 0, 0, 0.1), inset 5px -5px 20px rgb(255, 255, 255, 0.5); */
 }
 
@@ -278,7 +283,7 @@ section {
     height: 80%;
     border-radius: 4px;
     background-color: #8eff8e;
-    border: 1px solid #162232;
+    border: 1px solid #16223242;
     right: -4px;
 }
 
@@ -292,7 +297,7 @@ section {
     aspect-ratio: 1;
     border-radius: 50%;
     background-color: #8eff8e;
-    border: 1px solid #162232;
+    /* border: 1px solid #162232; */
 }
 
 .dashboard-side-pane{
@@ -776,6 +781,11 @@ form {
 }
 
 /* /////////////////////////////////////////////////////////////////////////////////////////////////// */
+/* Refund Section */
+
+#refund p {
+    color: rgb(163, 163, 163);
+}
 
 /* /////////////////////////////////////////////////////////////////////////////////////////////////// */
 

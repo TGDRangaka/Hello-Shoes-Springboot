@@ -4,6 +4,7 @@ var currentDate = new Date();
 let currentDay = currentDate.getDate();
 let currentMonth = currentDate.getMonth() + 1; 
 let currentYear = currentDate.getFullYear();
+const barChart = document.getElementById('salesWeeklyBarChart');
 
 $("#dashboardBtn").click(()=>{
     getAdminPanelData(`${currentYear}-${currentMonth}-${currentDay}`)
@@ -29,16 +30,21 @@ const getAdminPanelData = (date)=>{
 
 const displayData = (data) => {
     console.log(data);
-    $("#totalSalesCount").val(data.totalSalesCount) // total sales count
-    $("#totalProfitAmount").val(data.totalProfitAmount) // total profit amount
-    $("#totalQtySold").val(data.totalQtySold)   // total qty sold
+    $("#totalSalesCount").text(data.totalSalesCount) // total sales count
+    $("#totalProfitAmount").text(data.totalProfitAmount) // total profit amount
+    $("#totalQtySold").text(data.totalQtySold)   // total qty sold
 
-    setBarChart(data.dailySales);
+    // set bar chart
+    let barLabels = [];
+    let barData = [];
+    data.dailySales.map(dailySale => {
+        barLabels.push(dailySale.date)
+        barData.push(dailySale.totalSales)
+    })
+    barChartData.labels = barLabels;
+    barChartData.datasets[0].data = barData;
+    bc.update();
 }
-
-console.log("Current Date: " + currentDay);
-console.log("Current Month: " + currentMonth);
-console.log("Current Year: " + currentYear);
 
 setCalender(currentYear, currentMonth, currentDay);
 
@@ -79,24 +85,6 @@ function setCalender(year, month, day) {
     return dates;
 }
 
-$("#prevMonthBtn").click(()=>{
-    currentMonth--;
-    if(currentMonth == 0){
-        currentMonth = 12;
-        currentYear--;
-    }
-    setCalender(currentYear, currentMonth, currentDay);
-})
-
-$("#nextMonthBtn").click(()=>{
-    currentMonth++;
-    if(currentMonth == 13){
-        currentMonth = 1;
-        currentYear++;
-    }
-    setCalender(currentYear, currentMonth, currentDay);
-})
-
 $("#dates").on('click', '.btn-date', function(){
     let date = $(this).attr('id')
 
@@ -104,41 +92,42 @@ $("#dates").on('click', '.btn-date', function(){
     // ToDo : get dashboard data
 })
 
+let barChartData = {
+    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+    datasets: [{
+        label: '# of Votes',
+        data: [12, 19, 3, 5, 2, 3],
+        backgroundColor: [
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(255, 206, 86, 0.2)',
+            'rgba(75, 192, 192, 0.2)',
+            'rgba(153, 102, 255, 0.2)',
+            'rgba(255, 159, 64, 0.2)'
+        ],
+        borderColor: [
+            'rgba(255, 99, 132, 1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)',
+            'rgba(75, 192, 192, 1)',
+            'rgba(153, 102, 255, 1)',
+            'rgba(255, 159, 64, 1)'
+        ],
+        borderWidth: 1
+    }]
+};
 // Charts 
-const setBarChart = data => {
-    const ctx = document.getElementById('salesWeeklyBarChart');
-    new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: [data[0][0], data[1][0], data[2][0], data[3][0], data[4][0], data[5][0], data[6][0]],
-            datasets: [
-            {
-            label: 'Sales',
-            data: [data[0][1], data[1][1], data[2][1], data[3][1], data[4][1], data[5][1], data[6][1]],
-            borderWidth: 1,
-            borderColor: 'rgba(142, 255, 142, 1)',
-            backgroundColor: 'rgba(142, 255, 142, .6)',
-            }
-            // ,
-            // {
-            // label: 'Profits',
-            // data: [12, 19, 3, 5, 2, 3],
-            // borderWidth: 1,
-            // borderColor: 'rgba(142, 255, 142, 1)',
-            // backgroundColor: 'rgba(22, 34, 50, .9)',
-            // }
-        ]
-        },
-        options: {
-            scales: {
-            y: {
-                beginAtZero: true
-            }
-            }
+let bc = new Chart(barChart, {
+    type: 'bar',
+    data: barChartData,
+    options: {
+        scales: {
+        y: {
+            beginAtZero: true
         }
-    });
-}
-
+        }
+    }
+});
 
 const pieChart = document.getElementById('stockPieChart');
 new Chart(pieChart, {
@@ -164,5 +153,23 @@ new Chart(pieChart, {
           hoverOffset: 4
         }]
       }
+})
+
+$("#prevMonthBtn").click(()=>{
+    currentMonth--;
+    if(currentMonth == 0){
+        currentMonth = 12;
+        currentYear--;
+    }
+    setCalender(currentYear, currentMonth, currentDay);
+})
+
+$("#nextMonthBtn").click(()=>{
+    currentMonth++;
+    if(currentMonth == 13){
+        currentMonth = 1;
+        currentYear++;
+    }
+    setCalender(currentYear, currentMonth, currentDay);
 })
 
