@@ -3,7 +3,7 @@
     margin: 0;
     box-sizing: border-box;
     position: relative;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 body {
@@ -30,7 +30,11 @@ body {
 :root {
     --bg-color: #162232;
     --text-color: #1f1f1f;
-    --main-color: ;
+    --highlight-color: #8eff8e;
+    --label-color: #303030;
+    --light-text: #b8b8b8;
+    --light-bg-color: #ffffff;
+    --nav-selected: #03ffea;
 }
 
 #bg {
@@ -54,9 +58,6 @@ h1 {
     margin: 0 !important;
 }
 
-.main-color {
-}
-
 .second-color {
     background-color: #2f80ed;
 }
@@ -69,14 +70,18 @@ h1 {
     opacity: 0;
 }
 
+.overflow-h {
+    overflow: hidden;
+}
+
 .label {
-    color: #303030;
+    color: var(--label-color);
     font-weight: 500;
     font-size: 16px;
 }
 
 .input label {
-    color: #303030;
+    color: var(--label-color);
     font-weight: 500;
     margin-bottom: 4px;
 }
@@ -106,7 +111,7 @@ input, select {
     border: 1px solid rgba(0, 0, 0, 0.15);
     outline: none;
     font-size: 18px;
-    color: rgba(0, 0, 0, 0.9);
+    color: var(--text-color);
     border-radius: 5px;
 }
 
@@ -148,8 +153,8 @@ nav {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #162232;
-    color: #ccfffb;
+    background-color: var(--bg-color);
+    color: var(--light-text);
 }
 
 .nav-buttons {
@@ -172,13 +177,13 @@ nav button {
     font-size: 24px;
     padding-left: 50px;
     /* border-right: 5px solid #06786e; */
-    color: #b4b4b4;
+    color: var(--light-text);
 }
 
 nav button:hover {
     color: #ffffff;
-    border-right: 5px solid #03ffea !important;
-    /* background: linear-gradient(to right, transparent , rgba(215, 243, 116, 0.281)) !important; */
+    border-right: 5px solid var(--nav-selected) !important;
+    /* background: linear-gradient(to right, transparent , rgba(116, 192, 243, 0.281)) !important; */
 }
 
 /* nav button:focus {
@@ -252,7 +257,7 @@ section {
 }
 
 .pane {
-    background-color: rgb(255, 255, 255);
+    background-color: var(--light-bg-color);
     /* border: 1px solid red; */
     border-radius: 4px;
     padding: 5px;
@@ -282,8 +287,8 @@ section {
     width: 8px;
     height: 80%;
     border-radius: 4px;
-    background-color: #8eff8e;
-    border: 1px solid #16223242;
+    background-color: var(--highlight-color);
+    border: 1px solid var(--bg-color);
     right: -4px;
 }
 
@@ -296,7 +301,7 @@ section {
     padding: 20px;
     aspect-ratio: 1;
     border-radius: 50%;
-    background-color: #8eff8e;
+    background-color: var(--highlight-color);
     /* border: 1px solid #162232; */
 }
 
@@ -346,12 +351,8 @@ section {
     padding: 0;
 }
 
-.btn-date:hover {
-    border: 1px solid #8eff8e;
-}
-
-.btn-date:focus {
-    border: 1px solid #8eff8e;
+.btn-date:hover, .btn-date:focus {
+    border: 1px solid var(--bg-color);
 }
 
 .btn-date span {
@@ -363,7 +364,7 @@ section {
 }
 
 .btn-date-current, .btn-date-current:hover {
-    background-color: rgb(142, 255, 142);
+    background-color: var(--highlight-color);
     font-weight: 600;
 }
 
@@ -572,7 +573,7 @@ input[type="radio"] {
 
 #inventoryItems .accordion-button:focus{
     box-shadow: none;
-    border-left: 5px solid #24cfc1;
+    border-left: 5px solid var(--bg-color);
 }
 
 #inventoryItems .accordion-item {
@@ -784,7 +785,7 @@ form {
 /* Refund Section */
 
 #refund p {
-    color: rgb(163, 163, 163);
+    color: var(--light-text);
 }
 
 /* /////////////////////////////////////////////////////////////////////////////////////////////////// */

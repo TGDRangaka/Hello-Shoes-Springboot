@@ -106,5 +106,4 @@ function submitEmployeeForm() {
       });
 }
 
-// Add event listener to the submit button
-$('button.btn-primary').on('click', submitEmployeeForm);
+$('#submitEmployeeBtn').on('click', submitEmployeeForm);
