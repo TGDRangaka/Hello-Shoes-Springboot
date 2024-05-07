@@ -93,14 +93,14 @@ const hideAllSections = () => {
 const setBtnActive = (element, btn) => {
     hideAllSections();
     $(btn).css({
-        "border-right": "5px solid #03ffea",
-        "background": "linear-gradient(to right, transparent , rgba(3, 255, 234, 0.2))"
+        "border-right": "5px solid #793FDF",
+        "background": "linear-gradient(to right, transparent , rgba(133, 118, 255, 0.5))"
     })
     $(element).show();
 }
 
 // $("#dashboardBtn").dblclick();
-$("#refundBtn").click();
+$("#dashboardBtn").click();
 
 $("#loginBtn").click(()=>{
     const settings = {

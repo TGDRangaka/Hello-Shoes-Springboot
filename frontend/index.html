@@ -21,10 +21,10 @@
         <nav class="col-2 nav p-0">
             <div class="d-flex align-items-center justify-content-center gap-4 w-100">
                 <div class="logo"></div>
-                <div class="input">
+                <!-- <div class="input">
                     <h4 class="m-0">ShoeEase</h4>
                     <h6 class="m-0">Management System</h6>
-                </div>
+                </div> -->
             </div>
 
             <div class="nav-buttons mt-3">
@@ -36,29 +36,33 @@
                 <button id="suppliersBtn" type="button" class="nav-btn-theme"><i class="fa-solid fa-truck"></i><h3>Suppliers</h3></button>
                 <button id="resupplysBtn" type="button" class="nav-btn-theme"><i class="fa-solid fa-box-open"></i><h3>Resupply</h3></button>
                 <button id="refundBtn" type="button" class="nav-btn-theme"><i class="fa-solid fa-reply-all"></i><h3>Refund</h3></button>
-                <button id="notificationsBtn" type="button" class="nav-btn-theme position-relative">
-                    <i class="fa-solid fa-bell">
-                        <span class="position-absolute top-0 start-100 translate-middle p-2 bg-warning rounded-circle">
-                            <span class="visually-hidden">New alerts</span>
-                        </span>
-                    </i>
-                    <h3>Notifications</h3>
-                </button>
             </div>
 
-            <div class="user d-flex flex-column w-100 gap-3 justify-content-end pb-3">
-                <button id="suppliersBtn" type="button" class="nav-btn-theme logout"><i class="fa-solid fa-arrow-right-from-bracket"></i><h3>Logout</h3></button>
-                <div class="d-flex align-items-center gap-2">
-                    <div id="loginBtn" class="user-img"></div>
-                    <h5>Dilshan Rangaka</h5>
-                </div>
+            <div class="flex-grow d-flex flex-column w-100 gap-3 justify-content-end pb-3">
+                <button id="logoutBtn" type="button" class="nav-btn-theme logout"><i class="fa-solid fa-arrow-right-from-bracket"></i><h3>Logout</h3></button>
             </div>
         </nav>
 
         
         <div id="allSections" class="col ps-0 d-flex flex-column">
-            <header class="ps-5 py-3">
-                <h1 id="sectionTitle">Title</h1>
+            <header class="ps-5 pe-3 py-3 d-flex align-items-center gap-3">
+                <h1 class="flex-grow" id="sectionTitle">Title</h1>
+
+                <button id="notificationBtn" type="button" class="btn">
+                    <i class="fa-regular fa-bell text-white">
+                        <span class="position-absolute top-0 start-100 translate-middle p-2 rounded-circle">
+                            <span class="visually-hidden">New alerts</span>
+                        </span>
+                    </i>
+                </button>
+
+                <button type="button" class="d-flex align-items-center gap-2 user">
+                    <div id="loginBtn" class="user-img"></div>
+                    <div class="d-flex flex-column text-start">
+                        <label>Dilshan Rangaka</label>
+                        <label>dilshan@gmail.com</label>
+                    </div>
+                </button>
             </header>
             
             <!-- Dashboard Section -->
@@ -150,102 +154,102 @@
             </section>
 
             <!-- Sales Section -->
-            <section id="sales" class="text-theme bg-theme">
-                <form class="container-fluid bg-theme">
-                    <div class="row h-100">
-                        <div id="saleItemsDetails" class="col-9 h-100">
-                            <div class="row mb-4">
-                                <h3>Customer Details</h3>
+            <section id="sales" class="text-theme bg-theme flex-row gap-3">
+                <div id="saleItemsDetails" class="flex-grow h-100 rounded p-3">
+                    <div class="row mb-4">
+                        <h3>Customer Details</h3>
 
-                                <div class="input col-6">
-                                    <label for="saleCustomerName" class="import label">Name</label>
-                                    <input list="customerDataList" id="saleCustomerName" name="saleCustomerName" placeholder="Type to search..." autocomplete="off">
-                                    <datalist id="customerDataList"></datalist>
-                                </div>
-                
-                                <div class="input col-6">
-                                    <label for="saleCustomerEmail" class="import label">Email</label>
-                                    <input type="email" id="saleCustomerEmail">
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="row mt-4">
-                                <h3 class="">Items</h3>
-
-                                <div class="container">
-                                    <div class="row mb-3 p-0">
-                                        <div class="input col-6">
-                                            <label for="saleItemCode" class="import label" >Item Code</label>
-                                            <input type="text" id="saleItemCode" placeholder="Type to search..." autocomplete="off">
-                                        
-                                            <div id="suggest-items-list" class="w-100 suggest-items-list"></div>
-                                        </div>
-                        
-                                        <div class="input col-3">
-                                            <label for="itemsQty" class="import label">Qty</label>
-                                            <input type="number" id="itemsQty" value="1">
-                                        </div>
-
-                                        <div class="input col-3">
-                                            <label class="hidden label">NULL</label>
-                                            <button id="addSuggestItemBtn" type="button" class="btn btn-primary pb-1">Add</button>
-                                        </div>
-                                    </div>
-
-                                    <table class="table">
-                                        <thead>
-                                            <th class="table-img">Image</th>
-                                            <th>Product</th>
-                                            <th>Unit Price</th>
-                                            <th>Qty.</th>
-                                            <th>Total</th>
-                                            <th class="table-action">Action</th>
-                                        </thead>
-                                        <tbody id="saleItemTableBody"></tbody>
-                                    </table>
-
-                                </div>
-                            </div>
+                        <div class="input col-6">
+                            <label for="saleCustomerName" class="import label">Name</label>
+                            <input list="customerDataList" id="saleCustomerName" name="saleCustomerName" placeholder="Type to search..." autocomplete="off">
+                            <datalist id="customerDataList"></datalist>
                         </div>
-
-                        <div id="payment-details" class="col-3 d-flex flex-column justify-content-between h-100">
-                            <div>
-                                <div id="saleDateTime" class="mt-3 d-flex justify-content-between align-items-center">
-                                    <img src="assets/imgs/shoe-ease-manager-logo.png" alt="logo">
-                                    <h5>17-04-2024 10:34 PM</h5>
-                                </div>
-                                <hr>
-                                <div id="saleDescription" class="d-flex justify-content-between quicksand-bold">
-                                    <h4>DESCRIPTION</h4>
-                                    <h4>SUBTOTAL</h4>
-                                </div>
-                                <hr>
-                                <div id="saleTotal" class="d-flex justify-content-between">
-                                    <h4>Total</h4>
-                                    <h4 id="saleSubTotal">Rs. 00.00</h4>
-                                </div>
-                                <div id="cashAndBalance">
-                                    <div class="mt-3 d-flex justify-content-between">
-                                        <h5 class="import">Cash</h5>
-                                        <input type="number" name="saleCash" id="saleCash">
-                                    </div>
-                                    <div class="mt-3 d-flex justify-content-between">
-                                        <h4>Balance</h4>
-                                        <label id="saleCashBalance">Rs. 00</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="mt-5">
-                                <h4>Payment Method</h4>
-                                <input type="radio" id="cardPayment" name="paymentMethod" value="card">
-                                <label for="cardPayment">Card</label><br>
-                                <input type="radio" id="cashPayment" name="paymentMethod" value="cash" class="mt-2" checked>
-                                <label for="cashPayment">Cash</label>
-                            </div>
-                            <button id="salePayBtn" type="button" class="btn btn-primary w-100 mt-5 mb-3">Pay</button>
+        
+                        <div class="input col-6">
+                            <label for="saleCustomerEmail" class="import label">Email</label>
+                            <input type="email" id="saleCustomerEmail">
                         </div>
                     </div>
-                </form>
+                    <hr>
+                    <div class="row mt-4">
+                        <h3 class="">Items</h3>
+
+                        <div class="container">
+                            <div class="row mb-3 p-0">
+                                <div class="input col-6">
+                                    <label for="saleItemCode" class="import label" >Item Code</label>
+                                    <input type="text" id="saleItemCode" placeholder="Type to search..." autocomplete="off">
+                                
+                                    <div id="suggest-items-list" class="w-100 suggest-items-list"></div>
+                                </div>
+                
+                                <div class="input col-3">
+                                    <label for="itemsQty" class="import label">Qty</label>
+                                    <input type="number" id="itemsQty" value="1">
+                                </div>
+
+                                <div class="input col-3">
+                                    <label class="hidden label">NULL</label>
+                                    <button id="addSuggestItemBtn" type="button" class="btn btn-primary pb-1">Add</button>
+                                </div>
+                            </div>
+
+                            <table class="table table-bordered">
+                                <thead>
+                                    <th class="table-img">Image</th>
+                                    <th>Product</th>
+                                    <th>Unit Price</th>
+                                    <th>Qty.</th>
+                                    <th>Total</th>
+                                    <th class="table-action">Action</th>
+                                </thead>
+                                <tbody id="saleItemTableBody">
+                                    <tr>
+                                        <td colspan="6" class="text-center">No Items Added</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div id="payment-details" class="d-flex flex-column justify-content-between h-100 rounded p-3">
+                    <div>
+                        <div id="saleDateTime" class="mt-3 d-flex justify-content-between align-items-center">
+                            <img src="assets/imgs/shoe-ease-manager-logo.png" alt="logo">
+                            <h5>17-04-2024 10:34 PM</h5>
+                        </div>
+                        <hr>
+                        <div id="saleDescription" class="d-flex justify-content-between quicksand-bold">
+                            <h4>DESCRIPTION</h4>
+                            <h4>SUBTOTAL</h4>
+                        </div>
+                        <hr>
+                        <div id="saleTotal" class="d-flex justify-content-between">
+                            <h4>Total</h4>
+                            <h4 id="saleSubTotal">Rs. 00.00</h4>
+                        </div>
+                        <div id="cashAndBalance">
+                            <div class="mt-3 d-flex justify-content-between">
+                                <h5 class="import">Cash</h5>
+                                <input type="number" name="saleCash" id="saleCash">
+                            </div>
+                            <div class="mt-3 d-flex justify-content-between">
+                                <h4>Balance</h4>
+                                <label id="saleCashBalance">Rs. 00</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-5">
+                        <h4>Payment Method</h4>
+                        <input type="radio" id="cardPayment" name="paymentMethod" value="card">
+                        <label for="cardPayment">Card</label><br>
+                        <input type="radio" id="cashPayment" name="paymentMethod" value="cash" class="mt-2" checked>
+                        <label for="cashPayment">Cash</label>
+                    </div>
+                    <button id="salePayBtn" type="button" class="btn btn-primary w-100 mt-5 mb-3">Pay</button>
+                </div>
 
                 <div id="cardPaymentPopup" class="">
                     <div class="input d-flex flex-column justify-content-around">
@@ -664,7 +668,11 @@
                         <th scope="col" class="table-action">Edit</th>
                     </tr>
                     </thead>
-                    <tbody id="customersTBody"></tbody>
+                    <tbody id="customersTBody">
+                        <tr>
+                            <td colspan="9" class="text-center">No Data Available</td>
+                        </tr>
+                    </tbody>
                 </table>
             </section>
 
@@ -797,26 +805,9 @@
                     </tr>
                     </thead>
                     <tbody id="employeesTBody">
-                    <tr class="text-center align-middle">
-                        <td class="table-img">
-                            <img src="assets/imgs/user_img.jpg" alt="">
-                        </td>
-                        <td class="ps-4">
-                            <div class="d-flex flex-column text-start">
-                                <label class="quicksand-bold">Dilshan Rangaka</label>
-                                <h6 class="label quicksand-thin">Manager</h6>
-                            </div>
-                        </td>
-                        <td>0770531993</td>
-                        <td>dilshan@mdo</td>
-                        <td>21-08-2002</td>
-                        <td>17-04-2024</td>
-                        <td>Male</td>
-                        <td>Mr. Perera</td>
-                        <td>0123456789</td>
-                        <td class="table-action"><button class="btn"><i class="fa-solid fa-pen"></i></button></i></td>
-                        <td class="table-action"><button class="btn"><i class="fa-solid fa-pen"></i></button></i></td>
-                    </tr>
+                        <tr>
+                            <td colspan="11" class="text-center">No Data Available</td>
+                        </tr>
                     </tbody>
                 </table>
             </section>
@@ -970,17 +961,7 @@
                     </thead>
                     <tbody id="supplierTbody">
                         <tr>
-                            <td>1</td>
-                            <td class="text-start">Nike</td>
-                            <td>INTERNATIONAL</td>
-                            <td>nike@gmail.com</td>
-                            <td class="d-flex flex-column">
-                                <label>5735468233</label>
-                                <label>8669372873</label>
-                            </td>
-                            <td>German</td>
-                            <td class="table-action"><button class="btn"><i class="fa-solid fa-pen"></i></button></i></td>
-                            <td class="table-action"><button class="btn"><i class="fa-solid fa-pen"></i></button></i></td>
+                            <td colspan="8" class="text-center">No Data Available</td>
                         </tr>
                     </tbody>
                 </table>

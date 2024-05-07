@@ -28,21 +28,41 @@ body {
 
 /* Create root variables for colors */
 :root {
-    --bg-color: #162232;
+    /* --bg-color: #1f2a41;
     --text-color: #1f1f1f;
     --highlight-color: #8eff8e;
     --label-color: #303030;
     --light-text: #b8b8b8;
     --light-bg-color: #ffffff;
-    --nav-selected: #03ffea;
+    --nav-selected: #03ffea; */
+    --bg-color: #100d24;
+    --bg-cozxclor: rgb(21, 21, 21);
+    --text-color: #332941;
+    --highlight-color: #793FDF;
+    --label-color: #303030;
+    --light-text: #b8b8b8;
+    --light-bg-color: #fdfdff;
+    --nav-selected: #793FDF;
 }
 
 #bg {
     background-color: var(--bg-color)
 }
 
+.btn-primary {
+    background-color: var(--highlight-color);
+    border: 1px solid var(--bg-color);
+}
+
+.btn-primary:hover{
+    background-color: var(--highlight-color);
+    border: 1px solid var(--bg-color);
+    filter: brightness(.9);
+}
+
 .bg-theme {
-    background-color: #e8ebf0;
+    /* background-color: #e8ebf0; */
+    background-color: #d8d3ff;
 }
 
 .bg-theme-blur {
@@ -201,21 +221,32 @@ nav button h3 {
 }
 
 .logo {
-    width: 100px;
-    aspect-ratio: 1;
-    background-image: url("imgs/shoe-ease-manager-logo.png");
+    height: 50px;
+    width: 100%;
+    /* aspect-ratio: 1; */
+    background-image: url("imgs/logo.png");
     background-position: center;
     background-size: cover;
+    margin-block: 15px;
+}
+
+#notificationBtn{
+    font-size: 30px;
+}
+
+#notificationBtn span {
+    background-color: var(--nav-selected);
 }
 
 .user {
-    align-self: self-end;
-    flex-grow: 1;
+    color: var(--light-bg-color);
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
 }
 
 .user-img {
-    margin-left: 30px;
-    width: 60px;
+    width: 50px;
     aspect-ratio: 1;
     background-image: url("imgs/user_img.jpg");
     background-position: center;
@@ -276,9 +307,7 @@ section {
     justify-content: center;
     gap: 30px;
     padding: 20px 10px;
-    /* border-left: 4px solid #162232; */
     margin-right: 15px;
-    /* border-radius: 0 10px 10px 0; */
 }
 
 .pane-totals::after{
@@ -287,8 +316,8 @@ section {
     width: 8px;
     height: 80%;
     border-radius: 4px;
-    background-color: var(--highlight-color);
-    border: 1px solid var(--bg-color);
+    /* background-color: var(--highlight-color); */
+    /* border: 1px solid rgba(128, 128, 128, 0.418); */
     right: -4px;
 }
 
@@ -302,7 +331,7 @@ section {
     aspect-ratio: 1;
     border-radius: 50%;
     background-color: var(--highlight-color);
-    /* border: 1px solid #162232; */
+    color: var(--light-bg-color);
 }
 
 .dashboard-side-pane{
@@ -366,6 +395,7 @@ section {
 .btn-date-current, .btn-date-current:hover {
     background-color: var(--highlight-color);
     font-weight: 600;
+    color: var(--light-bg-color);
 }
 
 /* /////////////////////////////////////////////////////////////////////////////////////////////////// */
@@ -385,6 +415,7 @@ section {
 
 #saleItemsDetails {
     padding-block: 10px;
+    background-color: var(--light-bg-color);
 }
 
 .sale-items {
@@ -460,7 +491,9 @@ tr i {
 }
 
 #payment-details {
-    border-left: 1px dashed gray;
+    /* border-left: 1px dashed gray; */
+    width: 400px;
+    background-color: var(--light-bg-color);
 }
 
 #payment-details img {

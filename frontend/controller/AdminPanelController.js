@@ -141,16 +141,17 @@ new Chart(pieChart, {
           'Yellow'
         ],
         datasets: [{
-          label: 'My First Dataset',
+          label: 'Profit',
           data: [300, 50, 100,10,40],
           backgroundColor: [
-            'rgba(22, 34, 50, 1)',
-            'rgba(22, 34, 50, .8)',
-            'rgba(22, 34, 50, .6)',
-            'rgba(22, 34, 50, .4)',
-            'rgba(22, 34, 50, .2)'
+            '#392467',
+            '#614BC3',
+            '#9400FF',
+            '#BC7AF9',
+            '#D0A2F7'
           ],
-          hoverOffset: 4
+          hoverOffset: 4,
+          borderWidth: 1
         }]
       }
 })
