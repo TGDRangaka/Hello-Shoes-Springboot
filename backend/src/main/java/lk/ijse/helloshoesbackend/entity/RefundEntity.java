@@ -1,9 +1,6 @@
 package lk.ijse.helloshoesbackend.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -22,9 +19,10 @@ public class RefundEntity {
     private String description;
     private LocalDate refundDate;
     private int qty;
+    private double refundTotal;
 
-    @OneToOne
+    @ManyToOne
     private EmployeeEntity employee;
-    @OneToOne
+    @ManyToOne
     private SaleItemEntity saleItem;
 }

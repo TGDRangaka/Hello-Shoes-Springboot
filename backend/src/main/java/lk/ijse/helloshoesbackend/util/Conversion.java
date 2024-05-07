@@ -42,14 +42,6 @@ public class Conversion {
         ItemEntity entity = modelMapper.map(dto, ItemEntity.class);
         return entity;
     }
-//    public static List<ItemDTO> toItemDTOList(List<ItemEntity> items){
-//        modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
-//        List<ItemDTO> dtos = new ArrayList<>();
-//        items.forEach(item -> {
-//            dtos.add(modelMapper.map(item, ItemDTO.class));
-//        });
-//        return dtos;
-//    }
     public static List<ItemDTO> toItemDTOList(List<ItemEntity> items){
         modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
         return items.stream()
@@ -122,11 +114,6 @@ public class Conversion {
                 .map(entity -> modelMapper.map(entity, SupplierDTO.class))
                 .collect(Collectors.toList());
     }
-    public static List<SupplierEntity> toSupplierEntityList(List<SupplierDTO> dtos){
-        return dtos.stream()
-                .map(dto -> modelMapper.map(dto, SupplierEntity.class))
-                .collect(Collectors.toList());
-    }
 
     public static CustomerDTO toCustomerDTO(CustomerEntity entity){
         return modelMapper.map(entity, CustomerDTO.class);
@@ -156,25 +143,6 @@ public class Conversion {
         entity.setSaleItems(saleItemEntities);
         return entity;
     }
-//    public static SaleDTO toSaleDTO(SaleEntity entity){
-//        modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
-//        SaleDTO dto = modelMapper.map(entity, SaleDTO.class);
-//        dto.setEmployee(toEmployeeDTO(entity.getEmployee()));
-//        dto.setCustomer(toCustomerDTO(entity.getCustomer()));
-//        for(SaleItemEntity saleItemEntity : entity.getSaleItems()){
-//            InventoryEntity dbInventory = saleItemEntity.getSaleItemId().getItem();
-//            InventoryEntity inventoryEntity = new InventoryEntity();
-//            inventoryEntity.setInventoryCode(dbInventory.getInventoryCode());
-//            inventoryEntity.setItemImage(dbInventory.getItemImage());
-//
-//            dto.getSaleItems().add(new SaleItemDTO(
-//                    new SaleItemId(null, inventoryEntity),
-//                    saleItemEntity.getQty(),
-//                    saleItemEntity.getUnitPrice()
-//            ));
-//        }
-//        return dto;
-//    }
 
     public static List<SaleDTO> toSaleDTOList(List<SaleEntity> entities){
         modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
@@ -189,17 +157,32 @@ public class Conversion {
                             entity.getOrderTime(),
                             new EmployeeDTO(entity.getEmployee().getName()),
                             modelMapper.map(entity.getCustomer(), CustomerDTO.class),
-                            entity.getSaleItems().stream().map(saleItem -> {
-                                InventoryEntity dbInventory = saleItem.getSaleItemId().getItem();
-                                InventoryEntity inventory = new InventoryEntity();
-                                inventory.setInventoryCode(dbInventory.getInventoryCode());
-                                inventory.setItemImage(dbInventory.getItemImage());
-                                return new SaleItemDTO(new SaleItemId(null, inventory), saleItem.getQty(), saleItem.getUnitPrice());
-                            }).collect(Collectors.toList())
+                            toSaleItemDTOList(entity.getSaleItems())
+//                            entity.getSaleItems().stream().map(saleItem -> {
+//                                InventoryEntity dbInventory = saleItem.getSaleItemId().getItem();
+//                                InventoryEntity inventory = new InventoryEntity();
+//                                inventory.setInventoryCode(dbInventory.getInventoryCode());
+//                                inventory.setItemImage(dbInventory.getItemImage());
+//                                return new SaleItemDTO(new SaleItemId(null, inventory), saleItem.getQty(), saleItem.getUnitPrice());
+//                            }).collect(Collectors.toList())
                     );
                     return dto;
                 })
                 .collect(Collectors.toList());
+    }
+
+    public static List<SaleItemDTO> toSaleItemDTOList(List<SaleItemEntity> entities){
+        return entities.stream().map(saleItem -> {
+            InventoryEntity dbInventory = saleItem.getSaleItemId().getItem();
+            InventoryEntity inventory = new InventoryEntity();
+            SaleEntity sale = new SaleEntity();
+
+            sale.setOrderId(saleItem.getSaleItemId().getSale().getOrderId());
+            inventory.setInventoryCode(dbInventory.getInventoryCode());
+            inventory.setItemImage(dbInventory.getItemImage());
+
+            return new SaleItemDTO(new SaleItemId(sale, inventory), saleItem.getQty(), saleItem.getUnitPrice());
+        }).collect(Collectors.toList());
     }
 
     public static ResupplyDTO toResupplyDTO(ResupplyEntity entity){
@@ -271,6 +254,7 @@ public class Conversion {
                     entity.getDescription(),
                     entity.getRefundDate(),
                     entity.getQty(),
+                    entity.getRefundTotal(),
                     tempEmployee,
                     new SaleItemDTO(
                             new SaleItemId(

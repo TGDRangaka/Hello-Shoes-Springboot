@@ -14,6 +14,7 @@ public class RefundDTO {
     private String description;
     private LocalDate refundDate;
     private int qty;
+    private double refundTotal;
 
     private EmployeeDTO employee;
     private SaleItemDTO saleItem;

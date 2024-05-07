@@ -2,6 +2,7 @@ package lk.ijse.helloshoesbackend.api;
 
 import lk.ijse.helloshoesbackend.bo.SaleBO;
 import lk.ijse.helloshoesbackend.dto.SaleDTO;
+import lk.ijse.helloshoesbackend.service.SaleService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class SaleAPI {
     private final SaleBO saleBO;
+//    private final SaleService saleService;
 
     @GetMapping("/health")
     public String healthCheck(){

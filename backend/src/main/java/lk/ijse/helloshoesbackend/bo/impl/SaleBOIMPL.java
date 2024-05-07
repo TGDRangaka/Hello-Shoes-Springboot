@@ -1,20 +1,17 @@
 package lk.ijse.helloshoesbackend.bo.impl;
 
 import lk.ijse.helloshoesbackend.bo.SaleBO;
-import lk.ijse.helloshoesbackend.dto.CustomerDTO;
-import lk.ijse.helloshoesbackend.dto.EmployeeDTO;
-import lk.ijse.helloshoesbackend.dto.SaleDTO;
-import lk.ijse.helloshoesbackend.dto.SaleItemDTO;
+import lk.ijse.helloshoesbackend.dto.*;
 import lk.ijse.helloshoesbackend.entity.SaleEntity;
 import lk.ijse.helloshoesbackend.entity.enums.CustomerLevel;
 import lk.ijse.helloshoesbackend.entity.enums.PaymentMethods;
+import lk.ijse.helloshoesbackend.entity.keys.SaleItemId;
 import lk.ijse.helloshoesbackend.exception.InvalidDataException;
-import lk.ijse.helloshoesbackend.service.CustomerService;
-import lk.ijse.helloshoesbackend.service.EmployeeService;
-import lk.ijse.helloshoesbackend.service.InventoryService;
-import lk.ijse.helloshoesbackend.service.SaleService;
+import lk.ijse.helloshoesbackend.exception.NotFoundException;
+import lk.ijse.helloshoesbackend.service.*;
 import lk.ijse.helloshoesbackend.util.UtilMatter;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -25,15 +22,16 @@ import java.time.LocalTime;
 import java.util.*;
 
 @Component
+@Transactional
 @RequiredArgsConstructor
 public class SaleBOIMPL implements SaleBO {
     private final SaleService saleService;
     private final EmployeeService employeeService;
     private final CustomerService customerService;
     private final InventoryService inventoryService;
+    private final RefundService refundService;
 
     @Override
-    @Transactional
     public Map saveSale(SaleDTO saleDTO, String user) {
 //        Set Employee who did the sale
         EmployeeDTO employee = employeeService.getEmployee(user);
@@ -54,7 +52,7 @@ public class SaleBOIMPL implements SaleBO {
         );
 
 //        Set order id and order datetime
-        String orderId = UtilMatter.generateUUID();
+        String orderId = "OD" + (new Random().nextInt(900000) + 100000);
         saleDTO.setOrderId(orderId);
         saleDTO.setOrderDate(LocalDate.now());
         saleDTO.setOrderTime(LocalTime.now());
@@ -89,5 +87,74 @@ public class SaleBOIMPL implements SaleBO {
     @Override
     public List<SaleDTO> getSales() {
         return saleService.getSales();
+    }
+
+    @Override
+    public void refundSaleItems(List<RefundDTO> refunds, String user) {
+//        Set Employee who did the sale
+        EmployeeDTO employee = employeeService.getEmployee(user);
+
+        LocalDate date = LocalDate.now();
+        String orderId = refunds.get(0).getSaleItem().getSaleItemId().getSale().getOrderId();
+//        double totalRefund = 0.0;
+
+        for (int i = 0; i < refunds.size(); i++) {
+            RefundDTO refund = refunds.get(i);
+            if(refund.getQty() <= 0) throw new InvalidDataException("Invalid refund quantity: " + refund.getQty());
+//            totalRefund += refund.getRefundTotal();
+            String inventoryCode = refund.getSaleItem().getSaleItemId().getItem().getInventoryCode();
+
+//            set refund details
+            refund.setRefundId(UtilMatter.generateUUID());
+            refund.setRefundDate(date);
+            refund.setEmployee(employee);
+
+//            save refund
+            refundService.refundSaleItem(refund);
+
+//            delete saleItem if qty equals, otherwise update quantity of saleItem
+//            saleService.refundUpdateSaleItem(refund.getSaleItem().getSaleItemId(), refund.getQty());
+
+//            inventory update (send minus integer to increment)
+            int stockPercentage = inventoryService.updateCurrentQty(inventoryCode, -refund.getQty());
+            if (stockPercentage > 50) {
+                inventoryService.updateStockStatus(inventoryCode, "available");
+            } else if(stockPercentage > 0) {
+                inventoryService.updateStockStatus(inventoryCode, "low");
+            }
+        }
+
+//        update order total
+//        saleService.updateSaleTotal(orderId, totalRefund);
+
+    }
+
+    @Override
+    public List<SaleItemDTO> getSaleItems(String orderId) {
+        boolean isRefundAvailable = saleService.checkRefundAvailable(orderId);
+        if(isRefundAvailable){
+            List<SaleItemDTO> saleItems = saleService.getSaleItems(orderId);
+            for (int i = 0; i < saleItems.size(); i++) {
+                int currentQty = saleItems.get(i).getQty();
+                int refundedQty = 0;
+//            check if refunded before
+                List<RefundDTO> alreadyRefunds = refundService.checkRefundedBefore(saleItems.get(i));
+                for (RefundDTO alreadyRefund : alreadyRefunds) {
+                    refundedQty += alreadyRefund.getQty();
+                }
+
+                saleItems.get(i).setQty(currentQty - refundedQty);
+                if(saleItems.get(i).getQty() <= 0){
+                    saleItems.remove(i);
+                }
+            }
+            return saleItems;
+        }
+        throw new NotFoundException("Refund not available for order: " + orderId);
+    }
+
+    @Override
+    public List<RefundDTO> getAllRefunds() {
+        return refundService.getAllRefunds();
     }
 }

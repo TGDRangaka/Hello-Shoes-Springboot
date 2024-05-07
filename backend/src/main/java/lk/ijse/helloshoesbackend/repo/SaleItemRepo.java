@@ -3,6 +3,7 @@ package lk.ijse.helloshoesbackend.repo;
 import lk.ijse.helloshoesbackend.dto.projection.MostSoldItemProjection;
 import lk.ijse.helloshoesbackend.dto.projection.SaleItemProjection;
 import lk.ijse.helloshoesbackend.entity.SaleItemEntity;
+import lk.ijse.helloshoesbackend.entity.keys.SaleItemId;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -12,7 +13,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Repository
-public interface SaleItemRepo extends JpaRepository<SaleItemEntity, String> {
+public interface SaleItemRepo extends JpaRepository<SaleItemEntity, SaleItemId> {
     @Query("SELECT NEW lk.ijse.helloshoesbackend.dto.projection.SaleItemProjection(si.qty, item.expectedProfit) FROM SaleItemEntity si " +
             "INNER JOIN InventoryEntity i ON i.inventoryCode = si.saleItemId.item.inventoryCode " +
             "INNER JOIN ItemEntity item ON item.itemCode = i.item.itemCode " +
