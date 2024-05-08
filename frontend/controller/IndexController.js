@@ -84,23 +84,20 @@ $("#refundBtn").on('click', ()=>{
 
 const hideAllSections = () => {
     $("section").hide();
-    $(".nav-buttons > button").css({
-        "border-right": "none",
-        "background": "none"
-    })
+    // $(".nav-buttons > button").prop('active', false);
+    $(".nav-buttons > button").addClass('nav-button-inactive')
 }
 
 const setBtnActive = (element, btn) => {
     hideAllSections();
-    $(btn).css({
-        "border-right": "5px solid #793FDF",
-        "background": "linear-gradient(to right, transparent , rgba(133, 118, 255, 0.5))"
-    })
+    $(btn).removeClass('nav-button-inactive'); 
+    $(btn).addClass('nav-button-active');
+    // $(btn).toggleClass("nav-button-inactive");
     $(element).show();
 }
 
-// $("#dashboardBtn").dblclick();
-$("#dashboardBtn").click();
+$("#inventoryBtn").dblclick();
+// $("#inventoryBtn").click();
 
 $("#loginBtn").click(()=>{
     const settings = {

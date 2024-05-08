@@ -151,97 +151,32 @@ $('#cbColors .form-check-input').click(function() {
 const getColorFieldsComponent = color =>{
     return `
     <div id="${color}Inputs" class="mb-3">
-        <label for="" class="label ms-1 me-3 quicksand-bold">${color}</label>
-        <input class="form-control form-control-sm mb-2 import" id="product${color}Image" name="product${color}Image" type="file">
-        <div id="cb${color}Sizes">
-            <label class="label ms-1 import" for="">Sizes: </label>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="cb${color}Size5" value="SIZE 5">
-                <label class="label" for="cb${color}Size5">5</label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="cb${color}Size6" value="SIZE 6">
-                <label class="label" for="cb${color}Size6">6</label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="cb${color}Size7" value="SIZE 7">
-                <label class="label" for="cb${color}Size7">7</label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="cb${color}Size8" value="SIZE 8">
-                <label class="label" for="cb${color}Size8">8</label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="cb${color}Size9" value="SIZE 9">
-                <label class="label" for="cb${color}Size9">9</label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="cb${color}Size10" value="SIZE 10">
-                <label class="label" for="cb${color}Size10">10</label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="cb${color}Size11" value="SIZE 11">
-                <label class="label" for="cb${color}Size11">11</label>
-            </div>
+        <label for="" class="label ms-1 me-3 quicksand-bold">Black</label>
+        <div class="mt-2">
+            <label class="label">Image: </label>
+            <input class="form-control mb-2 import" id="product${color}Image" name="product${color}Image" type="file">
         </div>
     </div>
     <hr>
-`
+    `
 }
-
-{/* <div id="cb${color}Gender">
-<label class="label ms-1 import" for="">Gender: </label>
-<div class="form-check form-check-inline">
-    <input class="form-check-input" type="checkbox" id="cb${color}Men" value="MEN">
-    <label class="label" for="cb${color}Men">Men</label>
-</div>
-<div class="form-check form-check-inline">
-    <input class="form-check-input" type="checkbox" id="cb${color}Women" value="WOMEN">
-    <label class="label" for="cb${color}Women">Women</label>
-</div>
-</div> */}
 
 $("#otherColorBtn").click(function() {
     otherBtnCount++;
     let id = "Other" + otherBtnCount;
     $("#otherColorInputs").append(`
-        <div id="${id}Inputs" class="mb-3 otherColorInputs">
-            <label for="" class="label ms-1 me-3">#${id} :</label><br>
-            <input class="form-control form-control-sm import" id="product${id}Image" name="product${id}Image" type="file">
-            <input class="form-control form-control-sm import" id="product${id}Name" name="product${id}Name" type="text" placeholder="Colour/Pattern Name*">
-            <div id="cb${id}Sizes" class="">
-                <label class="label ms-1 import">Sizes: </label>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="cb${id}Size5" value="SIZE 5">
-                    <label class="label" for="cb${id}Size5">5</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="cb${id}Size6" value="SIZE 6">
-                    <label class="label" for="cb${id}Size6">6</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="cb${id}Size7" value="SIZE 7">
-                    <label class="label" for="cb${id}Size7">7</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="cb${id}Size8" value="SIZE 8">
-                    <label class="label" for="cb${id}Size8">8</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="cb${id}Size9" value="SIZE 9">
-                    <label class="label" for="cb${id}Size9">9</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="cb${id}Size10" value="SIZE 10">
-                    <label class="label" for="cb${id}Size10">10</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="cb${id}Size11" value="SIZE 11">
-                    <label class="label" for="cb${id}Size11">11</label>
-                </div>
-            </div>
+    <div id="${id}Inputs" class="mb-3 otherColorInputs">
+        <label for="" class="label ms-1 me-3">#${id} :</label><br>
+        <div class="mt-2">
+            <label class="label">Color Name: </label>
+            <input class="form-control import" id="product${id}Name" name="product${id}Name" type="text" placeholder="Colour/Pattern Name*">
         </div>
-        <hr>
+        <div class="mt-2">
+            <label class="label">Image: </label>
+            <input class="form-control mb-2 import" id="product${id}Image" name="product${id}Image" type="file">
+        </div>
+    </div>
+    <hr>
     `)
 })
 
@@ -282,12 +217,12 @@ $("#addProductBtn").click(async ()=>{
         console.log(colorName);
         let reader = new FileReader();
         
-        let sizes = [];
+        let sizes = [5,6,7,8,9,10,11];
         let inventoryItems = [];
 
-        for(let i = 5; i < 12; i++){
-            $(`#cb${id}Size${i}`).is(':checked') && sizes.push(i);;
-        }
+        // for(let i = 5; i < 12; i++){
+        //     $(`#cb${id}Size${i}`).is(':checked') && sizes.push(i);;
+        // }
 
         for(let i = 0; i < sizes.length; i++){
             let size = sizes[i];
@@ -307,7 +242,7 @@ $("#addProductBtn").click(async ()=>{
     }
 
     item.inventoryItems = allProducts;
-    // console.log(item);
+    console.log(item);
     saveProduct(item);
 })
 
