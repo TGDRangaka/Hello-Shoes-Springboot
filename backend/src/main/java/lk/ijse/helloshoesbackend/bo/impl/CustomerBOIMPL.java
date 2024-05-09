@@ -28,4 +28,9 @@ public class CustomerBOIMPL implements CustomerBO {
         dto.setJoinedDateAsLoyalty(LocalDate.now());
         return customerService.save(dto);
     }
+
+    @Override
+    public void updateCustomer(CustomerDTO dto, String customerId) {
+        customerService.update(dto, customerId);
+    }
 }

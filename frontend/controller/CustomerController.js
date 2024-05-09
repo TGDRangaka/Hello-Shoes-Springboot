@@ -2,6 +2,8 @@ import {token, setToken} from '../db/data.js';
 import { Customer } from '../model/Customer.js';
 
 let allCustomers = [];
+let customerData = new Customer();
+let isCustomerSelected = false;
 
 $("#customerBtn").click(()=>{
     getAllCustomers();
@@ -38,13 +40,37 @@ const saveCustomer = (customer) => {
       };
       
       $.ajax(settings).done(function (response) {
-        // console.log(response);
+        console.log(response);
+        $("#customerFormBtn").click();
+      });
+}
+
+const updateCustomer = (customer) => {
+    var settings = {
+        "url": "http://localhost:8080/api/v1/customer/" + customer.customerCode,
+        "method": "PUT",
+        "timeout": 0,
+        "headers": {
+          "Authorization": `Bearer ${token}`,
+          "Content-Type": "application/json"
+        },
+        "data": JSON.stringify(customer),
+      };
+      
+      $.ajax(settings).done(function (response) {
+        console.log(response);
+        $("#customerFormBtn").click();
       });
 }
 
 $("#customerSubmitBtn").click(()=>{
     let customer = collectCustomerData();
-    saveCustomer(customer);
+    if(isCustomerSelected){
+        customer.customerCode = customerData.customerCode;
+        updateCustomer(customer);
+    }else{
+        saveCustomer(customer);
+    }
 })
 
 const loadCustomerTable = customers => {
@@ -73,8 +99,6 @@ const loadCustomerTable = customers => {
 }
 
 function collectCustomerData() {
-    // Create an object to store the collected data
-    let customerData = new Customer();
 
     // Collect identity data
     customerData.name = $('#customerName').val();
@@ -86,11 +110,49 @@ function collectCustomerData() {
     customerData.addressLane = $('#customerAddressLane').val();
     customerData.addressCity = $('#customerAddressCity').val();
     customerData.addressState = $('#customerAddressState').val();
-    customerData.addressPostcode = $('#customerAddressPostcode').val();
+    customerData.postalCode = $('#customerAddressPostcode').val();
 
     // Collect contact data
-    customerData.contactNo = $('#customerContactNo').val();
+    customerData.phone = $('#customerContactNo').val();
     customerData.email = $('#customerEmail').val();
 
     return customerData;
 }
+
+const setCustomerData = customer => {
+    // Set identity data
+    $('#customerName').val(customer.name);
+    $('#customerDOB').val(customer.dob);
+    $('#customerGender').val(customer.gender);
+
+    // Set address data
+    $('#customerAddressNo').val(customer.addressNo);
+    $('#customerAddressLane').val(customer.addressLane);
+    $('#customerAddressCity').val(customer.addressCity);
+    $('#customerAddressState').val(customer.addressState);
+    $('#customerAddressPostcode').val(customer.postalCode);
+
+    // Set contact data
+    $('#customerContactNo').val(customer.phone);
+    $('#customerEmail').val(customer.email);
+}
+
+$("#customersTBody").on('click', '.btn', function() {
+    let index = $(this).data('index');
+    let customer = allCustomers[index];
+    
+    customerData = customer;
+    isCustomerSelected = true;
+    setCustomerData(customer);
+    $("#customerFormBtn").click();
+})
+
+$("#customerFormBtn").click(function(){
+    $("#customer").toggle();
+    $("#addCustomer").toggle();
+})
+
+$("#customerCancelBtn").click(function(){
+    customerData = new Customer();
+    isCustomerSelected = false;
+})

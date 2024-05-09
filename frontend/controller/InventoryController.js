@@ -57,7 +57,7 @@ const loadItemTable = (allItems) => {
             item.inventoryItems.map(inventory => (inventory.colors === color) && tempItems.push(inventory))
             itemsByColors.push({color: color, items: tempItems});
         })
-        console.log(itemsByColors);
+        // console.log(itemsByColors);
         // return;
         // set table row through loop
                     // <img src="${colorItem.items[0].itemImage.image}" class="img-fluid" alt="">
@@ -76,7 +76,7 @@ const loadItemTable = (allItems) => {
             //     `;
             // })
             colorItem.items.sort((a, b) => parseInt(a.size.substring(5)) - parseInt(b.size.substring(5)))
-            console.log(colorItem.items);
+            // console.log(colorItem.items);
             let totQty = 0;
             for(let j = 0,k = 0; j < 7; j++) {
                 let itm = colorItem.items[k];
@@ -324,7 +324,7 @@ $("#addProductBtn").click(async ()=>{
     }
 
     item.inventoryItems = allProducts;
-    console.log(item);
+    // console.log(item);
     saveProduct(item);
 })
 

@@ -8,5 +8,6 @@ import java.util.List;
 public interface CustomerService {
     List<CustomerDTO> getAll();
     CustomerDTO save(CustomerDTO dto);
+    void update(CustomerDTO dto, String customerId);
     CustomerDTO findByNameAndEmail(String name, String email);
 }

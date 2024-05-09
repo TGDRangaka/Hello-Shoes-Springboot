@@ -271,7 +271,36 @@
 
             <!-- Sales History Section -->
             <section id="salesHistory" class="bg-theme text-theme mh-100">
-                <div class="accordion-list-header container-fluid bg-white">
+                <header class="mb-3 rounded row">
+                    <div class="input-group search col">
+                        <input type="text" class="form-control" placeholder="Item Code">
+                        <button class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
+                    </div>
+                    <div class="col-2">
+                        <label class="label">Payment</label>
+                        <select class="form-select" aria-label="Default select example">
+                            <option value="ALL" selected>All</option>
+                            <option value="CASH">Cash</option>
+                            <option value="CARD">Card</option>
+                        </select>
+                    </div>
+                    <div class="col-2">
+                        <label class="label">Sory By</label>
+                        <select class="form-select" aria-label="Default select example">
+                            <option value="NONE" selected>None</option>
+                            <option value="LOW-HIGH">Total: Low-High</option>
+                            <option value="HIGH-LOW">Total: High-Low</option>
+                            <option value="LOW-HIGH">Date: Latest</option>
+                            <option value="HIGH-LOW">Date: Oldest</option>
+                        </select>
+                    </div>
+                    <div class="col-2">
+                        <label class="hidden"></label>
+                        <button id="addNewProductBtn" type="button" class="btn btn-primary w-100">Add New Product</button>
+                    </div>
+                </header>
+
+                <div class="accordion-list-header container-fluid">
                     <div class="row">
                         <label class="col-1">#</label>
                         <label class="col-2">Sold Date</label>
@@ -348,13 +377,12 @@
             <!-- Inventory Section -->
             <section id="inventory" class="bg-theme text-theme vh-100">
 
-                <div class="bg-light p-2">
-                    <header class="mb-3 rounded">
-                        <div class="input-group search">
-                            <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2">
-                            <button class="btn btn-outline-secondary" type="button" id="button-addon2">Button</button>
+                    <header class="mb-3 rounded row">
+                        <div class="input-group search col">
+                            <input type="text" class="form-control" placeholder="Item Code">
+                            <button class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
                         </div>
-                        <div class="">
+                        <div class="col">
                             <label class="label">Category</label>
                             <select class="form-select" aria-label="Default select example">
                                 <option value="ALL" selected>All</option>
@@ -367,7 +395,7 @@
                                 <option value="SL">Slippers</option>
                             </select>
                         </div>
-                        <div class="">
+                        <div class="col">
                             <label class="label">Brand</label>
                             <select class="form-select" aria-label="Default select example">
                                 <option value="ALL" selected>All Brands</option>
@@ -409,7 +437,7 @@
                                 </optgroup>
                             </select>
                         </div>
-                        <div class="">
+                        <div class="col">
                             <label class="label">Sory By</label>
                             <select class="form-select" aria-label="Default select example">
                                 <option value="NONE" selected>None</option>
@@ -423,7 +451,7 @@
                                 <option value="CASUAL">Casual</option>
                             </select>
                         </div>
-                        <div class="">
+                        <div class="col">
                             <label class="hidden"></label>
                             <button id="addNewProductBtn" type="button" class="btn btn-primary w-100">Add New Product</button>
                         </div>
@@ -556,7 +584,6 @@
 
                         </div>
                     </div>
-                </div>
                 
 
             </section>
@@ -729,8 +756,6 @@
 
             <!-- Customer Section -->
             <section id="customer" class="bg-theme text-theme mh-100">
-                <h1 class="quicksand-bold">Customers</h1>
-                <hr>
                 <header class="row mb-3">
                     <div class="col-6">
                         <label for="hidden"></label>
@@ -761,7 +786,7 @@
                     </div>
                     <div class="col-2">
                         <label class="hidden"></label>
-                        <button id="addNewProductBtn" type="button" class="btn btn-primary w-100">Join As Layalty</button>
+                        <button id="customerFormBtn" type="button" class="btn btn-primary w-100">Join As Layalty</button>
                     </div>
                 </header>
                 <table class="table">
@@ -854,7 +879,7 @@
                     <hr>
                     <div class="row mt-4 p-3 mb-3">
                         <div class="col-12 d-flex justify-content-end gap-3">
-                            <button type="reset" class="btn btn-dark">Cancel</button>
+                            <button id="customerCancelBtn" type="reset" class="btn btn-dark">Cancel</button>
                             <button id="customerSubmitBtn" type="button" class="btn btn-primary">Submit</button>
                         </div>
                     </div>
@@ -1228,41 +1253,6 @@
                                 <button id="resupplySubmitBtn" class="btn btn-primary" type="button">Submit</button>
                             </div>
                         </div>
-                        <!-- <div id="cbReColors" class="col d-flex flex-column  gap-3">
-                            <h3 class="m-0 text-start w-100 ">Colors</h3>
-                            
-                            <div class="cb-input">
-                                <input type="checkbox" id="cbRe" class="form-check-input">
-                                <label class="label" for="cbRe">Black</label>
-                            </div>
-                            <div class="cb-input">
-                                <input type="checkbox" id="cbRe" class="form-check-input">
-                                <label class="label" for="cbRe">Black</label>
-                            </div>
-                            <div class="cb-input">
-                                <input type="checkbox" id="cbRe" class="form-check-input">
-                                <label class="label" for="cbRe">Black</label>
-                            </div>
-                            <div class="cb-input">
-                                <input type="checkbox" id="cbRe" class="form-check-input">
-                                <label class="label" for="cbRe">Black</label>
-                            </div>
-                            <div class="cb-input">
-                                <input type="checkbox" id="cbRe" class="form-check-input">
-                                <label class="label" for="cbRe">Black</label>
-                            </div>
-                            <div class="cb-input">
-                                <input type="checkbox" id="cbRe" class="form-check-input">
-                                <label class="label" for="cbRe">Black</label>
-                            </div>
-                            <div class="cb-input">
-                                <input type="checkbox" id="cbRe" class="form-check-input">
-                                <label class="label" for="cbRe">Black</label>
-                            </div>
-                            <button type="button" class="btn btn-primary">Other</button>
-                            
-                              
-                        </div> -->
                     </div>
 
                 </form>

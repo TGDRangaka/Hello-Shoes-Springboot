@@ -33,6 +33,17 @@ public class CustomerServiceIMPL implements CustomerService {
     }
 
     @Override
+    public void update(CustomerDTO dto, String customerId) {
+        if(customerRepo.existsById(customerId)){
+            CustomerEntity customerEntity = Conversion.toCustomerEntity(dto);
+            customerEntity.setCustomerCode(customerId);
+            customerRepo.save(customerEntity);
+            return;
+        }
+        throw new NotFoundException("Not Found Customer : " + customerId);
+    }
+
+    @Override
     public CustomerDTO findByNameAndEmail(String name, String email) {
         Optional<CustomerEntity> customer = customerRepo.findByNameAndEmail(name, email);
         if (customer.isPresent()) {

@@ -66,12 +66,12 @@ const getAllResupplies = () => {
         "method": "GET",
         "timeout": 0,
         "headers": {
-            "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjpbeyJhdXRob3JpdHkiOiJST0xFX0FETUlOIn1dLCJzdWIiOiJkaWxzaGFuQGdtYWlsLmNvbSIsImlhdCI6MTcxNDgzNTIwMCwiZXhwIjoxNzE0ODY0MDAwfQ.R3qDwOk45Fi5qiB4Swpqc04X9T8eItVNA8HyvM7D-OE"
+            "Authorization": "Bearer " + token
         },
     };
 
     $.ajax(settings).done(function (response) {
-        console.log(response);
+        // console.log(response);
         allResupplies = response;
         loadAllResupplies(allResupplies);
     });
@@ -131,10 +131,11 @@ const loadAllResupplies = (resupplies) => {
             <h2 class="accordion-header">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#resupply${i}" aria-expanded="false" aria-controls="resupply${i}">
                 
-                <div class="sale-accordion container-fluid w-100">
+                <div class="container-fluid w-100">
                     <div class="row">
                         <label class="col-1">${i+1}</label>
                         <label class="col">${itemCode}</label>
+                        <label class="col">${itemName}</label>
                         <label class="col">${resupply.supplier.name}</label>
                         <label class="col-2">${resupply.totalQty}</label>
                         <label class="col-2">${resupply.suppliedDate}</label>
@@ -144,8 +145,8 @@ const loadAllResupplies = (resupplies) => {
             </button>
             </h2>
             <div id="resupply${i}" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-            <div class="accordion-body container-fluid p-2 bg-light">
-                <table class="table table-bordered bg-light align-middle">
+            <div class="accordion-body container-fluid p-2">
+                <table class="table table-bordered border-dark align-middle">
                     <thead>
                         <th class="text-center">#</th>
                         <th class="table-img">Image</th>
@@ -199,7 +200,7 @@ const setItemDataList = (supplier) => {
     $("#resupplyItemsList").empty();
     $("#resupplyItem").append('<option value="-" selected>Select Item</option>');
     items.map(item => {
-        console.log(item);
+        // console.log(item);
         $("#resupplyItemsList").append(`
         <option value="${item.itemCode}">${item.description}</option>
         `)
@@ -215,7 +216,7 @@ $("#resupplyItem").on('change',function(){
             item.inventoryItems.map(inv => colors.push(inv.colors))
             colors = [...new Set(colors)];
             let colorItems = []
-            console.log(colors);
+            // console.log(colors);
             colors.map(color => {
                 colorItems.push({
                     color: color, 
@@ -248,8 +249,8 @@ const addResupplyComponent = (colorItems) => {
     })
 
     $("#resupplyItems").append(`
-    <div id="ResupplyItem${colorItems.color}" class="row">
-        <div class="col-3">
+    <div id="ResupplyItem${colorItems.color}" class="row mt-3">
+        <div class="col-2">
             <img class="w-100 rounded" src="${colorItems.items[0].itemImage.image}" alt="shoe img">
         </div>
         <div class="col d-flex flex-column justify-content-around">

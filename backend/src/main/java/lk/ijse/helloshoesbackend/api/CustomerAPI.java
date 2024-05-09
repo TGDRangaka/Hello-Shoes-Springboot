@@ -4,6 +4,7 @@ import jakarta.annotation.security.RolesAllowed;
 import lk.ijse.helloshoesbackend.bo.CustomerBO;
 import lk.ijse.helloshoesbackend.dto.CustomerDTO;
 import lk.ijse.helloshoesbackend.entity.CustomerEntity;
+import lk.ijse.helloshoesbackend.exception.NotFoundException;
 import lk.ijse.helloshoesbackend.service.CustomerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +44,19 @@ public class CustomerAPI {
             return ResponseEntity.ok(customerBO.saveCustomer(customer));
         }catch (Exception e){
             return ResponseEntity.internalServerError().body(null);
+        }
+    }
+
+    @PutMapping("/{customerId}")
+    @RolesAllowed("ADMIN")
+    public ResponseEntity updateCustomer(@RequestBody CustomerDTO customer, @PathVariable String customerId){
+        try {
+            customerBO.updateCustomer(customer, customerId);
+            return ResponseEntity.accepted().body("Success");
+        }catch (NotFoundException e){
+            return ResponseEntity.notFound().build();
+        }catch (Exception e){
+            return ResponseEntity.internalServerError().body(e.getMessage());
         }
     }
 }
