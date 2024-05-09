@@ -29,7 +29,11 @@ public class EmployeeBOIMPL implements EmployeeBO {
     @Override
     public String saveEmployee(EmployeeDTO employee) {
         employee.setEmployeeCode(UtilMatter.generateUUID());
-//        employee.setProfilePic(UtilMatter.convertBase64(employee.getProfilePic()));
         return employeeService.saveEmployee(employee);
+    }
+
+    @Override
+    public void updateEmployee(EmployeeDTO employee, String employeeCode) {
+        employeeService.updateEmployee(employee, employeeCode);
     }
 }

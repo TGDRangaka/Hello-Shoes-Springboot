@@ -61,11 +61,10 @@ public class EmployeeAPI {
             @RequestPart("emergencyNumber") String emergencyContact
     ){
         try {
-            byte[] profilePicBytes = profilePic.getBytes();
 
             EmployeeDTO employee = new EmployeeDTO();
             employee.setName(name);
-            employee.setProfilePic(UtilMatter.convertBase64(profilePicBytes));
+            employee.setProfilePic(UtilMatter.convertBase64(profilePic.getBytes()));
             employee.setGender(Gender.valueOf(gender));
             employee.setStatus(status);
             employee.setDesignation(designation);
@@ -82,6 +81,58 @@ public class EmployeeAPI {
             employee.setGuardianOrNominatedPerson(guardianOrNominatedPerson);
             employee.setEmergencyContact(emergencyContact);
             return ResponseEntity.ok(employeeBO.saveEmployee(employee));
+        }catch (Exception e){
+            e.printStackTrace();
+            return ResponseEntity.internalServerError().body(e.getMessage());
+        }
+    }
+
+    @PutMapping(path = "/{employeeCode}" ,consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @RolesAllowed("ADMIN")
+    @ResponseStatus(value = HttpStatus.CREATED)
+    public ResponseEntity updateEmployee(
+            @RequestPart("name") String name,
+            @RequestPart("profilePic") MultipartFile profilePic,
+            @RequestPart("gender") String gender,
+            @RequestPart("status") String status,
+            @RequestPart("designation") String designation,
+            @RequestPart("dob") String dob,
+            @RequestPart("joinedDate") String joinedDate,
+            @RequestPart("branch") String branch,
+            @RequestPart("addressNo") String addressNo,
+            @RequestPart("addressLane") String addressLane,
+            @RequestPart("addressCity") String addressCity,
+            @RequestParam("addressState") String addressState,
+            @RequestPart("addressPostalCode") String postalCode,
+            @RequestPart("email") String email,
+            @RequestPart("phone") String phone,
+            @RequestPart("guardian") String guardianOrNominatedPerson,
+            @RequestPart("emergencyNumber") String emergencyContact,
+            @PathVariable("employeeCode") String employeeCode
+    ){
+        try {
+
+            EmployeeDTO employee = new EmployeeDTO();
+            employee.setName(name);
+            employee.setProfilePic(UtilMatter.convertBase64(profilePic.getBytes()));
+            employee.setGender(Gender.valueOf(gender));
+            employee.setStatus(status);
+            employee.setDesignation(designation);
+            employee.setDob(LocalDate.parse(dob));
+            employee.setJoinedDate(LocalDate.parse(joinedDate));
+            employee.setBranch(branch);
+            employee.setAddressNo(addressNo);
+            employee.setAddressLane(addressLane);
+            employee.setAddressCity(addressCity);
+            employee.setAddressState(addressState);
+            employee.setPostalCode(postalCode);
+            employee.setEmail(email);
+            employee.setPhone(phone);
+            employee.setGuardianOrNominatedPerson(guardianOrNominatedPerson);
+            employee.setEmergencyContact(emergencyContact);
+
+            employeeBO.updateEmployee(employee,employeeCode);
+            return ResponseEntity.ok("Success");
         }catch (Exception e){
             e.printStackTrace();
             return ResponseEntity.internalServerError().body(e.getMessage());

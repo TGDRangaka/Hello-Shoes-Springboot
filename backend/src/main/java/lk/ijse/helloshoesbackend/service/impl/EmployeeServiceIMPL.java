@@ -42,4 +42,29 @@ public class EmployeeServiceIMPL implements EmployeeService {
         EmployeeEntity save = employeeRepo.save(Conversion.toEmployeeEntity(employee));
         return save.getEmployeeCode();
     }
+
+    @Override
+    public void updateEmployee(EmployeeDTO employee, String employeeCode) {
+        Optional<EmployeeEntity> byId = employeeRepo.findById(employeeCode);
+        if(byId.isPresent()){
+            EmployeeEntity entity = byId.get();
+            entity.setName(employee.getName());
+            entity.setGender(employee.getGender());
+            entity.setStatus(employee.getStatus());
+            entity.setDesignation(employee.getDesignation());
+            entity.setDob(employee.getDob());
+            entity.setJoinedDate(employee.getJoinedDate());
+            entity.setBranch(employee.getBranch());
+            entity.setAddressNo(employee.getAddressNo());
+            entity.setAddressLane(employee.getAddressLane());
+            entity.setAddressCity(employee.getAddressCity());
+            entity.setPostalCode(employee.getPostalCode());
+            entity.setEmail(employee.getEmail());
+            entity.setPhone(employee.getPhone());
+            entity.setGuardianOrNominatedPerson(employee.getGuardianOrNominatedPerson());
+            entity.setEmergencyContact(employee.getEmergencyContact());
+            return;
+        }
+        throw new NotFoundException("Not Found Employee : " + employeeCode);
+    }
 }
