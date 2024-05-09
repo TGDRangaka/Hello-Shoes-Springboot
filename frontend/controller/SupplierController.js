@@ -76,10 +76,8 @@ const loadTable = (suppliers) => {
         <td class="text-start">${supplier.name}</td>
         <td>${supplier.category}</td>
         <td>${supplier.email}</td>
-        <td class="d-flex flex-column">
-            <label>${supplier.contactNo1}</label>
-            <label>${supplier.contactNo2}</label>
-        </td>
+        <td>${supplier.contactNo1}</td>
+        <td>${supplier.contactNo2}</td>
         <td>${supplier.originCountry}</td>
         <td class="table-action"><button data-index="${i}" class="btn"><i class="fa-solid fa-pen"></i></button></i></td>
         <td class="table-action"><button data-index="${i}" class="btn"><i class="fa-solid fa-pen"></i></button></i></td>

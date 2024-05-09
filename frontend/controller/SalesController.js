@@ -121,10 +121,10 @@ const loadSoldItemsTable = (soldItems) => {
         sale.saleItems.map((saleItem, i) => {
             saleItemsRows += `
                 <tr class="align-middle">
-                    <td>${i+1}</td>
+                    <td class="text-center">${i+1}</td>
                     <td>${saleItem.saleItemId.item.inventoryCode}</td>
                     <td>${saleItem.unitPrice}</td>
-                    <td>${saleItem.qty}</td>
+                    <td class="text-center">${saleItem.qty}</td>
                     <td>${saleItem.qty * saleItem.unitPrice}</td>
                 </tr>
             `
@@ -152,12 +152,12 @@ const loadSoldItemsTable = (soldItems) => {
             </h2>
             <div id="collapseSale${i}" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
             <div class="accordion-body container-fluid">
-                <table class="table table-bordered bg-light">
+                <table class="table table-bordered border-dark">
                     <thead>
                         <th class="text-center">#</th>
                         <th>Item Name</th>
                         <th>Unit Price</th>
-                        <th>Qty</th>
+                        <th class="text-center">Qty</th>
                         <th>Total</th>
                     </thead>
                     <tbody>

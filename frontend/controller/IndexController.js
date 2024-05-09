@@ -96,8 +96,8 @@ const setBtnActive = (element, btn) => {
     $(element).show();
 }
 
-$("#inventoryBtn").dblclick();
-// $("#inventoryBtn").click();
+// $("#salesBtn").dblclick();
+$("#inventoryBtn").click();
 
 $("#loginBtn").click(()=>{
     const settings = {

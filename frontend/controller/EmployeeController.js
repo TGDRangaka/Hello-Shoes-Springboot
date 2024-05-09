@@ -34,7 +34,7 @@ const loadEmployeeTable = (employees) => {
     employees.map((employee, i) => {
         let img = employee.profilePic;
         $("#employeesTBody").append(`
-        <tr class="text-center align-middle">
+        <tr class="align-middle">
             <td class="table-img">
                 <img src="data:image;base64,${img}" alt="profilePic">
             </td>
