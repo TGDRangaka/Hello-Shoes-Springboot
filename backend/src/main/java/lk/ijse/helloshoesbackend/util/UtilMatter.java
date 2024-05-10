@@ -9,6 +9,6 @@ public class UtilMatter {
     }
 
     public static String convertBase64(byte[] data){
-        return Base64.getEncoder().encodeToString(data);
+        return Base64.getEncoder().encodeToString(data).replaceAll("(\\r\\n|\\n|\\r)", "");
     }
 }

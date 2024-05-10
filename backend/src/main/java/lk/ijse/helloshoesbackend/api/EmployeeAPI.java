@@ -131,8 +131,7 @@ public class EmployeeAPI {
             employee.setGuardianOrNominatedPerson(guardianOrNominatedPerson);
             employee.setEmergencyContact(emergencyContact);
 
-            employeeBO.updateEmployee(employee,employeeCode);
-            return ResponseEntity.ok("Success");
+            return ResponseEntity.ok().body(employeeBO.updateEmployee(employee,employeeCode));
         }catch (Exception e){
             e.printStackTrace();
             return ResponseEntity.internalServerError().body(e.getMessage());

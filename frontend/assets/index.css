@@ -40,7 +40,7 @@ body {
     --text-color: #332941;
     --highlight-color: #793FDF;
     --label-color: #303030;
-    --light-text: #b8b8b8;
+    --light-text: #a0a0a0;
     --light-bg-color: #fdfdff;
     --nav-selected: #793FDF;
 }
@@ -131,7 +131,7 @@ input, select {
     border: 1px solid rgba(0, 0, 0, 0.2);
     outline: none;
     font-size: 18px;
-    color: var(--text-color);
+    color: var(--bg-color);
     border-radius: 5px;
 }
 
@@ -140,7 +140,7 @@ select {
 }
 
 ::placeholder {
-    color: rgb(184, 184, 184);
+    color: var(--light-text);
 }
 
 input:focus, select:focus {
@@ -257,11 +257,15 @@ nav button h3 {
 
 .user-img {
     width: 50px;
-    aspect-ratio: 1;
-    background-image: url("imgs/user_img.jpg");
+    height: 50px;
     background-position: center;
     background-size: cover;
     border-radius: 50%;
+    border: 3px solid var(--nav-selected);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .logout i {
@@ -304,6 +308,92 @@ section header {
     width: 400px;
     height: 38px;
     align-self: self-end;
+}
+
+/* /////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+/* Profile */
+
+#profile {
+    overflow-y: auto;
+}
+
+.cover-img {
+    width: 100%;
+    aspect-ratio: 5/1;
+    background-image: url('imgs/cover-img-b.png');
+    background-size: cover;
+    background-position: center;
+    border-radius: 15px;
+    /* border: 3px solid var(--nav-selected); */
+}
+
+.cover-body{
+    position: absolute;
+    left: 50px;
+    bottom: -40%;
+    display: flex;
+    align-items: end;
+}
+
+.cover-body .data {
+    font-weight: 700;
+}
+
+.profile-img {
+    width: 250px;
+    aspect-ratio: 1;
+    background-image: url('imgs/user_img.jpg');
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+    border: 3px solid var(--nav-selected);
+}
+
+.profile-img i {
+    position: absolute;
+    right: 5%;
+    bottom: 5%;
+    z-index: 5;
+    background-color: var(--nav-selected);
+    color: var(--light-bg-color);
+    width: 50px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    font-size: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition-duration: .1s;
+    overflow: hidden;
+}
+
+.profile-img input {
+    position: absolute;
+    opacity: 0;
+    aspect-ratio: 1;
+}
+
+.profile-img i:hover {
+    scale: 1.1;
+    filter: brightness(1.2);
+}
+
+.profile-informations {
+    background-color: var(--light-bg-color);
+    margin-top: 170px;
+    height: fit-content;
+}
+
+.profile-informations .input {
+    flex-direction: row;
+    height: 40px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.profile-informations input {
+    width: 80%;
 }
 
 /* /////////////////////////////////////////////////////////////////////////////////////////////////// */
@@ -731,6 +821,15 @@ input[type="radio"] {
 
 #addEmployee .input {
     margin-bottom: 20px;
+}
+
+.employee-img {
+    width: 80%;
+    aspect-ratio: 1;
+    /* border: 1px solid black; */
+    background-position: center;
+    background-size: cover;
+    border-radius: 50%;
 }
 
 /* /////////////////////////////////////////////////////////////////////////////////////////////////// */

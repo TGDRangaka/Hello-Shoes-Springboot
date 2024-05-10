@@ -1,8 +1,8 @@
-import {token} from '../db/data.js';
+import {token, user, setUser} from '../db/data.js';
 import {Employee} from '../model/Employee.js'
 
 let allEmployees = [];
-let employeeData = null;
+let employeeData = new Employee();
 let isEmployeeSelected = false;
 
 $("#employeesBtn").click(()=>{
@@ -60,7 +60,7 @@ const loadEmployeeTable = (employees) => {
     })
 }
 
-function submitEmployeeForm() {
+function saveEmployee() {
     let formData = collectEmployeeData();
 
     var settings = {
@@ -81,11 +81,7 @@ function submitEmployeeForm() {
       });
 }
 
-function updateEmployee() {
-    let formData = collectEmployeeData();
-    if(!$('#employeeProfilePic')[0].files[0]){
-        formData.append('profilePic', dataURLtoFile("data:image/png;base64,"+employeeData.profilePic, 'profilePic'))
-    }
+function updateEmployee(formData) {
     // return;
     var settings = {
         "url": "http://localhost:8080/api/v1/employee/" + employeeData.employeeCode,
@@ -101,7 +97,8 @@ function updateEmployee() {
       };
       
       $.ajax(settings).done(function (response) {
-        console.log(response);
+        console.log(JSON.parse(response));
+        setUser(JSON.parse(response));
       });
 }
 
@@ -137,7 +134,8 @@ const collectEmployeeData = ()=>{
 
 const setEmployeeData = employee => {
     // Identity section
-
+// console.log(employee.profilePic);
+    $(".employee-img").css('background-image', `url(data:image/jpeg;base64,${user.profilePic})`);
     $('#employeeProfilePic')[0].files[0];
     $('#employeeName').val(employee.name);
     $('#employeeGender').val(employee.gender);
@@ -148,7 +146,7 @@ const setEmployeeData = employee => {
     $('#employeeDesignation').val(employee.designation);
     $('#employeeBranch').val(employee.branch);
     $('#employeeJoinedDate').val(employee.joinedDate);
-    $('#employeeGuardian').val(employee.guardianOrNominatedPerson);
+    $('#employeeGurdian').val(employee.guardianOrNominatedPerson);
     $('#employeeEmergencyNumber').val(employee.emergencyContact);
 
     // Address section
@@ -163,11 +161,84 @@ const setEmployeeData = employee => {
     $('#phone').val(employee.phone);
 }
 
+const setProfileData = employee => {
+    // console.log(employee);
+    // Set the profile picture
+    if (employee.profilePic) {
+        $(".profile-img").css('background-image', `url(data:image/jpeg;base64,${employee.profilePic})`);
+    }
+    
+    // Set other user data
+    $("#profileEmail").val(employee.email);
+    $("#userPhone").val(employee.phone);
+    $("#userEmergencyNumber").val(employee.emergencyContact);
+    $("#userAddressNo").val(employee.addressNo);
+    $("#userAddressLane").val(employee.addressLane);
+    $("#userAddressCity").val(employee.addressCity);
+    $("#userAddressState").val(employee.addressState);
+    $("#userAddressPostcode").val(employee.postalCode);
+}
+
+const collectProfileData = () => {
+        employeeData = user;
+        let formData = new FormData();
+        console.log(employeeData);
+
+        // Identity section
+        formData.append('profilePic', $('#userProfilePic')[0].files[0]);    //
+        formData.append('name', employeeData.name);
+        formData.append('gender', employeeData.gender);
+        formData.append('dob', employeeData.dob);
+        formData.append('status', employeeData.status);
+    
+        // Store section
+        formData.append('designation', employeeData.designation);
+        formData.append('branch', employeeData.branch);
+        formData.append('joinedDate', employeeData.joinedDate);
+        formData.append('guardian', employeeData.guardianOrNominatedPerson);
+        formData.append('emergencyNumber', $("#userEmergencyNumber").val());    //
+    
+        // Address section
+        formData.append('addressNo', $('#userAddressNo').val());    //
+        formData.append('addressLane', $('#userAddressLane').val());    //
+        formData.append('addressCity', $('#userAddressCity').val());    //
+        formData.append('addressState', $('#userAddressState').val());    //
+        formData.append('addressPostalCode', $('#userAddressPostcode').val());    //
+    
+        // Contacts section
+        formData.append('email', $('#profileEmail').val());    //
+        formData.append('phone', $('#userPhone').val());    //
+
+        return formData;
+}
+
+$('#userProfilePic').on('input', () => {
+    let img = $('#userProfilePic')[0].files[0];
+    let imgUrl = URL.createObjectURL(img);
+    $(".profile-img").css('background-image', `url(${imgUrl})`);
+;})
+
 $('#submitEmployeeBtn').on('click', ()=>{
     if(isEmployeeSelected){
-        updateEmployee();
+        let formData = collectEmployeeData();
+        if(!$('#employeeProfilePic')[0].files[0]){
+            formData.append('profilePic', dataURLtoFile("data:image/png;base64,"+employeeData.profilePic, 'profilePic'))
+            console.log('set prev img')
+        }
+        updateEmployee(formData);
+    }
+});
+
+$('#submitProfileBtn').on('click', ()=>{
+    if(isEmployeeSelected){
+        let formData = collectProfileData();
+        if(!$('#userProfilePic')[0].files[0]){
+            formData.append('profilePic', dataURLtoFile("data:image/png;base64,"+employeeData.profilePic, 'profilePic'))
+            console.log('set prev img')
+        }
+        updateEmployee(formData);
     }else{
-        submitEmployeeForm();
+        saveEmployee();
     }
 });
 
@@ -201,3 +272,12 @@ function dataURLtoFile(dataurl, filename) {
 //Usage example:
 // var file = dataURLtoFile('data:text/plain;base64,aGVsbG8=','hello.txt');
 // console.log(file);
+
+$("#loginBtn").click(()=>{
+    console.log(user);
+    isEmployeeSelected = true;
+    employeeData = user;
+    setProfileData(user);
+    $("section").hide();
+    $("#profile").show();
+})

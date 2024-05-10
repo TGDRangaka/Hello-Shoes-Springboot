@@ -8,8 +8,6 @@ import lk.ijse.helloshoesbackend.service.EmployeeService;
 import lk.ijse.helloshoesbackend.util.Conversion;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -44,11 +42,12 @@ public class EmployeeServiceIMPL implements EmployeeService {
     }
 
     @Override
-    public void updateEmployee(EmployeeDTO employee, String employeeCode) {
+    public EmployeeDTO updateEmployee(EmployeeDTO employee, String employeeCode) {
         Optional<EmployeeEntity> byId = employeeRepo.findById(employeeCode);
         if(byId.isPresent()){
             EmployeeEntity entity = byId.get();
             entity.setName(employee.getName());
+            entity.setProfilePic(employee.getProfilePic());
             entity.setGender(employee.getGender());
             entity.setStatus(employee.getStatus());
             entity.setDesignation(employee.getDesignation());
@@ -63,7 +62,8 @@ public class EmployeeServiceIMPL implements EmployeeService {
             entity.setPhone(employee.getPhone());
             entity.setGuardianOrNominatedPerson(employee.getGuardianOrNominatedPerson());
             entity.setEmergencyContact(employee.getEmergencyContact());
-            return;
+
+            return Conversion.toEmployeeDTO(entity);
         }
         throw new NotFoundException("Not Found Employee : " + employeeCode);
     }

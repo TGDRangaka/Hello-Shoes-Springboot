@@ -60,10 +60,11 @@
                 </button>
 
                 <button type="button" class="d-flex align-items-center gap-2 user">
-                    <div id="loginBtn" class="user-img"></div>
+                    <div id="loginBtn" class="user-img">
+                    </div>
                     <div class="d-flex flex-column text-start">
-                        <label>Dilshan Rangaka</label>
-                        <label>dilshan@gmail.com</label>
+                        <label class="userName">Dilshan Rangaka</label>
+                        <label class="userEmail">dilshan@gmail.com</label>
                     </div>
                 </button>
             </header>
@@ -952,17 +953,14 @@
                     <div class="row">
                         <h4 class="col-1">General</h4>
                         <div class="col-4 d-flex flex-column justify-content-around">
-                            <label>Lorem ipsum consectetur, adipisicing elit. Quasi, magni.</label>
-                            <label>Lorem ipsum consectetur, adipisicing elit. Quasi, magni.</label>
-                            <label>Lorem ipsum consectetur, adipisicing elit. Quasi, magni.</label>
-                            <label>Lorem ipsum consectetur, adipisicing elit. Quasi, magni.</label>
-                            <label>Lorem ipsum consectetur, adipisicing elit. Quasi, magni.</label>
-                        </div>
-                        <div class="col p-3">
-                            <div class="input">
+                            <div class="employee-img"></div>
+                            <div class="input w-100">
                                 <label for="employeeProfilePic">Profile Picture</label>
                                 <input type="file" id="employeeProfilePic">
                             </div>
+                        </div>
+                        <div class="col p-3">
+                            
                             <div class="input">
                                 <label for="employeeName">Name</label>
                                 <input type="text" name="employeeName" id="employeeName" placeholder="Enter Name">
@@ -1060,6 +1058,71 @@
                         </div>
                     </div>
                 </form>                
+            </section>
+
+            <!-- Profile Settings -->
+            <section id="profile" class="bg-theme text-theme mh-100">
+                <form>
+                    <div class="cover-img">
+                        <div class="cover-body">
+                            <div class="profile-img">
+                                <i class="fa-solid fa-pen"><input type="file" id="userProfilePic"></i>
+                                
+                            </div>
+                            <div class="data ms-4 mb-4 poppins-bold">
+                                <h4 class="userName">Dilshan Rangaka</h4>
+                                <h5 class="userEmail">dilshan@gmai.com</h5>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="profile-informations d-flex flex-column gap-2 p-3 rounded">
+                        <h4 class="m-0">Contacts</h4>
+                        <div class="input">
+                            <label for="profileEmail">Email</label>
+                            <input type="email" name="profileEmail" id="profileEmail" placeholder="Enter User Email">
+                        </div>
+                        <div class="input">
+                            <label for="userPhone">Phone</label>
+                            <input type="text" name="userPhone" id="userPhone" placeholder="Enter User Phone">
+                        </div>
+                        <div class="input">
+                            <label for="userEmergencyNumber">Emergency Number</label>
+                            <input type="text" name="userEmergencyNumber" id="userEmergencyNumber" placeholder="Enter Emergency Number">
+                        </div>
+
+                        <h4 class="m-0 mt-3">Address</h4>
+                        <div class="input">
+                            <label for="userAddressNo">Address No.</label>
+                            <input type="text" name="userAddressNo" id="userAddressNo" placeholder="Enter Address No.">
+                        </div>
+                        <div class="input">
+                            <label for="userAddressLane">Address Lane</label>
+                            <input type="text" name="userAddressLane" id="userAddressLane" placeholder="Enter Address Lane">
+                        </div>
+                        <div class="input">
+                            <label for="userAddressCity">Address City</label>
+                            <input type="text" name="userAddressCity" id="userAddressCity" placeholder="Enter Address City">
+                        </div>
+                        <div class="input">
+                            <label for="userAddressState">Address State</label>
+                            <input type="text" name="userAddressState" id="userAddressState" placeholder="Enter Address State">
+                        </div>
+                        <div class="input">
+                            <label for="userAddressPostcode">Postal Code</label>
+                            <input type="text" name="userAddressPostcode" id="userAddressPostcode" placeholder="Enter Address Postcode">
+                        </div>
+
+                        <div class="row mt-4 mb-3">
+                            <div class="col-12 d-flex justify-content-end gap-3">
+                                <button type="reset" class="btn btn-dark">Cancel</button>
+                                <button id="submitProfileBtn" type="button" class="btn btn-primary">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                
+
             </section>
 
             <!-- Supplier Section -->

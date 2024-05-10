@@ -8,5 +8,5 @@ public interface EmployeeBO {
     EmployeeDTO getEmployee(String token);
     List<EmployeeDTO> getAllEmployees();
     String saveEmployee(EmployeeDTO employee);
-    void updateEmployee(EmployeeDTO employee, String employeeCode);
+    EmployeeDTO updateEmployee(EmployeeDTO employee, String employeeCode);
 }

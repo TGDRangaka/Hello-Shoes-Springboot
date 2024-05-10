@@ -3,7 +3,6 @@ package lk.ijse.helloshoesbackend.bo.impl;
 import lk.ijse.helloshoesbackend.bo.EmployeeBO;
 import lk.ijse.helloshoesbackend.dto.EmployeeDTO;
 import lk.ijse.helloshoesbackend.service.EmployeeService;
-import lk.ijse.helloshoesbackend.service.JWTService;
 import lk.ijse.helloshoesbackend.util.UtilMatter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -33,7 +32,7 @@ public class EmployeeBOIMPL implements EmployeeBO {
     }
 
     @Override
-    public void updateEmployee(EmployeeDTO employee, String employeeCode) {
-        employeeService.updateEmployee(employee, employeeCode);
+    public EmployeeDTO updateEmployee(EmployeeDTO employee, String employeeCode) {
+        return employeeService.updateEmployee(employee, employeeCode);
     }
 }

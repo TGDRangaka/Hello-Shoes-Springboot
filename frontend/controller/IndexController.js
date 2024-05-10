@@ -1,5 +1,5 @@
 
-import { token, setToken } from "../db/data.js";
+import { token,user, setUser, setToken } from "../db/data.js";
 
 $("#dashboardBtn").on('click', function(){
     setBtnActive("#dashboard", this);
@@ -71,7 +71,6 @@ $("#notificationsBtn").on('click', function(){
     $("#sectionTitle").text("Notifications")
 })
 
-
 $("#addNewProductBtn").on('click', ()=>{
     setBtnActive("#addProduct", "#inventoryBtn")
     $("#sectionTitle").text("New Product")
@@ -80,6 +79,11 @@ $("#addNewProductBtn").on('click', ()=>{
 $("#refundBtn").on('click', ()=>{
     setBtnActive("#refund", "#refundBtn")
     $("#sectionTitle").text("Refund Item")
+})
+
+$("#loginBtn").click(()=>{
+    setBtnActive("#profile", "#loginBtn")
+    $("#sectionTitle").text("Profile")
 })
 
 const hideAllSections = () => {
@@ -97,29 +101,7 @@ const setBtnActive = (element, btn) => {
 }
 
 // $("#salesBtn").dblclick();
-$("#inventoryBtn").click();
-
-$("#loginBtn").click(()=>{
-    const settings = {
-        "url": "http://localhost:8080/api/v1/auth",
-        "method": "PUT",
-        "timeout": 0,
-        "headers": {
-            "Content-Type": "application/json"
-        },
-        "data": JSON.stringify({
-            "email": encode("dilshan@gmail.com"),
-            "password": encode("dilshan1234")
-        }),
-    };
-      
-    $.ajax(settings).done(function (response) {
-        if(response.token) alert("Token has been received!")
-        setToken(response.token);
-        let img = response.user.profilePic;
-        let imgObj = new Image();
-    });
-})
+$("#loginBtn").click();
 
 const encode = text =>{
     // for(let i=0; i<10; i++){
@@ -144,6 +126,9 @@ const settings = {
 $.ajax(settings).done(function (response) {
     if(response.token) console.log("Token has been received!")
     setToken(response.token);
-    let img = response.user.profilePic;
-    let imgObj = new Image();
+    setUser(response.user.employee);
+    $(".userName").text(user.name);
+    $(".userEmail").text(user.email);
+    // let profilePic = user.profilePic.replace(/(\r\n|\n|\r)/gm, "")
+    $(".user-img").css('background-image', `url(data:image/jpeg;base64,${user.profilePic})`);
 });
