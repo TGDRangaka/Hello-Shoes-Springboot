@@ -43,6 +43,7 @@ body {
     --light-text: #a0a0a0;
     --light-bg-color: #fdfdff;
     --nav-selected: #793FDF;
+    --second-bg-color: #eedbff;
 }
 
 #bg {
@@ -62,7 +63,7 @@ body {
 
 .bg-theme {
     /* background-color: #e8ebf0; */
-    background-color: #eedbff;
+    background-color: var(--second-bg-color);
 }
 
 .bg-theme-blur {
@@ -125,14 +126,14 @@ h1 {
 
 
 input, select {
-    width: 100%;
+    width: 500px;
     padding: 8px 12px;
     border: none;
-    border: 1px solid rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(0, 0, 0, 0.6) !important;
     outline: none;
     font-size: 18px;
     color: var(--bg-color);
-    border-radius: 5px;
+    border-radius: 5px !important;
 }
 
 select {
@@ -144,7 +145,7 @@ select {
 }
 
 input:focus, select:focus {
-    box-shadow: 0 0 5px 1px rgba(48, 48, 48, 0.4);
+    /* box-shadow: 0 0 5px 1px rgba(48, 48, 48, 0.4); */
 }
 
 .input button {
@@ -308,6 +309,23 @@ section header {
     width: 400px;
     height: 38px;
     align-self: self-end;
+}
+
+#sectionTitle {
+    width: 300px;
+    height: 50px;
+    margin: 0;
+    background-color: var(--second-bg-color);
+    position: absolute;
+    bottom: 0;
+    left: 30px;
+    color: var(--bg-color);
+    border-radius: 10px 10px 0 0;
+    /* clip-path: polygon(50% 0%, 100% 0, 100% 60%, 100% 100%, 0 100%, 0 77%, 14% 0); */
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* /////////////////////////////////////////////////////////////////////////////////////////////////////////// */

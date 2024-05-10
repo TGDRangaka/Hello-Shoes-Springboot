@@ -3,8 +3,9 @@ import {Inventory} from '../model/Inventory.js'
 import {token} from '../db/data.js'
 
 let otherBtnCount = 0;
-let isNewProduct = true;
 let allItems = [];
+let shoeColors = ['Black', 'White', 'Red', 'Blue', 'Brown', 'Gray'];
+// let socksColors = ['Black', 'White', 'Brown'];
 
 $("#inventoryBtn").click(()=>{
     getAllItems();
@@ -199,20 +200,7 @@ const loadItemTable = (allItems) => {
 let product = 'new';
 $("#existingProductDetails").hide();
 
-$("#newProductRbtn, #existProductRbtn").click(()=>{
-    product = $('input[name="productRbtn"]:checked').val();
-    if(product === 'new'){
-        isNewProduct = true;
-        $("#newProductDetails").show();
-        $("#existingProductDetails").hide();
-    } else {
-        isNewProduct = false;
-        $("#newProductDetails").hide();
-        $("#existingProductDetails").show();
-    }
-})
-
-$('#cbColors .form-check-input').click(function() {
+$('#cbColors').on('click', '.form-check-input',function() {
     var selectedColors = [];
 
     $('#cbColors .form-check-input').each(function() {
@@ -243,7 +231,7 @@ const getColorFieldsComponent = color =>{
     `
 }
 
-$("#otherColorBtn").click(function() {
+$('#cbColors').on('click', '#otherColorBtn',function() {
     otherBtnCount++;
     let id = "Other" + otherBtnCount;
     $("#otherColorInputs").append(`
@@ -264,12 +252,15 @@ $("#otherColorBtn").click(function() {
 
 $("#addProductBtn").click(async ()=>{
     let typeByOccasion = getValue("typesByOccasion")
+    let category = getValue("productByCategory");
+    let verities = getValue("typesByVerities");
     let gender = getValue("typesByGender")
     let allProducts = [];
+
     let item = new Item(
         typeByOccasion + gender,
         getValue("productName"),
-        getValue("productByCategory"),
+        category,
         getValue("productBySupplier"),
         null,
         getValue("productSellPrice"),
@@ -280,37 +271,54 @@ $("#addProductBtn").click(async ()=>{
     );
 
     let selectedColors = [];
-    $('#cbColors .form-check-input').each(function() {
-        if ($(this).is(':checked')) {
-            selectedColors.push($(this).val());
+    if(category === 'ACC'){
+        if(verities === 'POLB'){
+            selectedColors.push("Black");
+        }else if(verities === 'POLBR'){
+            selectedColors.push("Brown");
+        }else if(verities === 'POLDBR'){
+            selectedColors.push("Dark Brown");
+        }else{
+            selectedColors.push("No-Colour");
         }
-    });
-    for(let i = 1; i <= otherBtnCount; i++){
-        let id = "Other" + i;
-        // console.log($(`#${id}Inputs`));
-        selectedColors.push(id);
+    }else{
+        $('#cbColors .form-check-input').each(function() {
+            if ($(this).is(':checked')) {
+                selectedColors.push($(this).val());
+            }
+        });
+        for(let i = 1; i <= otherBtnCount; i++){
+            let id = "Other" + i;
+            // console.log($(`#${id}Inputs`));
+            selectedColors.push(id);
+        }
     }
+    
     console.log(selectedColors);
 
     for(let color of selectedColors){
         let id = color;
-        let img = $(`#product${id}Image`).prop('files')[0];
+        let img = (category === 'ACC') ? $(`#shampooNoClrImage`).prop('files')[0] : $(`#product${id}Image`).prop('files')[0];
         let colorName = id.includes("Other") ? $(`#product${id}Name`).val() : color;
         console.log(colorName);
         let reader = new FileReader();
         
-        let sizes = [5,6,7,8,9,10,11];
         let inventoryItems = [];
 
-        // for(let i = 5; i < 12; i++){
-        //     $(`#cb${id}Size${i}`).is(':checked') && sizes.push(i);;
-        // }
-
-        for(let i = 0; i < sizes.length; i++){
-            let size = sizes[i];
-            let inventoryItem = new Inventory("",`SIZE_${size}`, colorName,null,null,null,null,{id:"",image:""},[],[]);
+        if(category !== 'ACC'){
+            let sizes = [5,6,7,8,9,10,11];
+            for(let i = 0; i < sizes.length; i++){
+                let size = sizes[i];
+                let inventoryItem = new Inventory("",`SIZE_${size}`, colorName,null,null,null,null,{id:"",image:""},[],[]);
+                inventoryItems.push(inventoryItem);
+            }
+        }else{
+            item.itemCode = verities;
+            let size = (['SHMP', 'POLB', 'POLBR', 'POLDBR'].includes(verities)) ? 'NOT_APPLICABLE' : verities === 'SOF' ? 'FULL' : verities === 'SOH' ? 'HALF' : 'NOT_APPLICABLE';
+            let inventoryItem = new Inventory("", size, colorName,null,null,null,null,{id:"",image:""},[],[]);
             inventoryItems.push(inventoryItem);
         }
+        
 
         let base64Image = await new Promise((resolve, reject) => {
             reader.onloadend = function(){
@@ -324,7 +332,7 @@ $("#addProductBtn").click(async ()=>{
     }
 
     item.inventoryItems = allProducts;
-    // console.log(item);
+    console.log(item);
     saveProduct(item);
 })
 
@@ -350,19 +358,53 @@ const saveProduct = (item) => {
       });
 }
 
+// inventory category validations
+
+$("#accessoriesAdditional").hide();
+$("#accessoriesImage").hide();
 $("#productByCategory").on('change', function (){
     let val = $(this).val();
+
+    // set gender women for women items
     if(val === 'F' || val === 'H' || val === 'W'){
         $("#typesByGender").prop('disabled', true);
         $("#typesByGender").val('W');
     }else{
         $("#typesByGender").prop('disabled', false);
     }
+
+    // if category shoes enable occasion types(industry, sport)
     /^(S)$/.test(val) ? $("#is, #ss").prop('disabled', false)
     : $("#is, #ss").prop('disabled', true);
 
+    // if category flip-flops/slippers, then disable occasion all types
     /^(FF|SL)$/.test(val) ? $("#typesByOccasion").prop('disabled', true)
     : $("#typesByOccasion").prop('disabled', false);
+
+    if(val === 'ACC'){
+        $("#shoesAdditional").hide();
+        $("#accessoriesAdditional").show();
+        $("#shoeColors").hide();
+        $("#accessoriesImage").show();
+    }else{
+        $("#shoesAdditional").show();
+        $("#accessoriesAdditional").hide();
+        $("#shoeColors").show();
+        $("#accessoriesImage").hide();
+        setShoeColorButtons();
+    }
+})
+
+$("#typesByVerities").on('change', function(){
+    // let val = $(this).val();
+    // if(['SHMP', 'POLB', 'POLBR', 'POLDBR'].includes(val)){
+    //     $("#shoeColors").hide();
+    //     $("#accessoriesImage").show();
+    // }else if(val === 'SOF' || val === 'SOH'){
+    //     $("#shoeColors").show();
+    //     $("#accessoriesImage").hide();
+    //     setColorButtons(socksColors);
+    // }
 })
 
 const getFirstLaters = text => {
@@ -374,13 +416,24 @@ const getFirstLaters = text => {
     return s;
 }
 
-var swiper = new Swiper(".mySwiper", {
-    pagination: {
-      el: ".swiper-pagination",
-      type: "fraction",
-    },
-    navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev",
-    },
-  });
+
+const setColorButtons = colors => {
+    $("#cbColors").empty();
+    $("#colorInputs").empty();
+    $("#otherColorInputs").empty();
+    colors.map(color => {
+        $("#cbColors").append(`
+        <div class="cb-input">
+            <input class="form-check-input" type="checkbox" id="cbColor${color}" value="${color}">
+            <label class="label" for="cbColor${color}">${color}</label>
+        </div>
+        `)
+    })
+}
+const setShoeColorButtons = () => {
+    setColorButtons(shoeColors);
+    $("#cbColors").append(`
+    <button id="otherColorBtn" type="button" class="btn btn-primary"><i class="fa-solid fa-plus me-2"></i>Other</button>
+    `);
+}
+setShoeColorButtons();

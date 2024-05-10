@@ -49,7 +49,9 @@
         
         <div id="allSections" class="col ps-0 d-flex flex-column">
             <header class="ps-5 pe-3 py-3 d-flex align-items-center gap-3">
-                <h1 class="flex-grow" id="sectionTitle">Title</h1>
+                <div class="flex-grow position-static">
+                    <h1 id="sectionTitle">Title</h1>
+                </div>
 
                 <button id="notificationBtn" type="button" class="btn">
                     <i class="fa-regular fa-bell text-white">
@@ -612,6 +614,7 @@
                                     <option value="SD">Sandals</option>
                                     <option value="S" selected>Shoes</option>
                                     <option value="SL">Slippers</option>
+                                    <option value="ACC">Accessories</option>
                                 </select>
                             </div>
                             <div class="input mt-3">
@@ -659,7 +662,7 @@
                         </div>
                     </div>
                     <hr>
-                    <div class="row">
+                    <div id="shoesAdditional" class="row">
                         <h4 class="col-5">Additional</h4>
                         <div class="col p-3">
                             <div class="input">
@@ -678,6 +681,23 @@
                                     <option value="CS" selected>Casual Shoes</option>
                                     <option id="is" value="IS">Industrial Flops Shoes</option>
                                     <option id="ss" value="SS">Sport Shoes</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" id="accessoriesAdditional">
+                        <h4 class="col-5">Additional</h4>
+                        <div class="col p-3">
+                            <div class="input">
+                                <label for="typesByVerities" class="label import">Types By Verities</label>
+                                <select id="typesByVerities" class="form-select">
+                                    <option selected>(Select Category)</option>
+                                    <option value="SHMP">Shoe Shampoo</option>
+                                    <option value="POLB">Black Polish</option>
+                                    <option value="POLBR">Brown Polish</option>
+                                    <option value="POLDBR">Dark Brown Polish</option>
+                                    <option value="SOF">Full Socks</option>
+                                    <option value="SOH">Half Socks</option>
                                 </select>
                             </div>
                         </div>
@@ -705,44 +725,27 @@
                         </div>
                     </div>
                     <hr>
-                    <div class="row">
+                    <div id="shoeColors" class="row">
                         <div class="col-5">
                             <h4 class="m-0">Colors</h4>
                             
                             <p>Please select available colors for product</p>
-                            <div id="cbColors" class="p-3">
-                                <div class="cb-input">
-                                    <input class="form-check-input" type="checkbox" id="cbColorBlack" value="Black">
-                                    <label class="label" for="cbColorBlack">Black</label>
-                                </div>
-                                <div class="cb-input">
-                                    <input class="form-check-input" type="checkbox" id="cbColorWhite" value="White">
-                                    <label class="label" for="cbColorWhite">White</label>
-                                </div>
-                                <div class="cb-input">
-                                    <input class="form-check-input" type="checkbox" id="cbColorRed" value="Red">
-                                    <label class="label" for="cbColorRed">Red</label>
-                                </div>
-                                <div class="cb-input">
-                                    <input class="form-check-input" type="checkbox" id="cbColorBlue" value="Blue">
-                                    <label class="label" for="cbColorBlue">Blue</label>
-                                </div>
-                                <div class="cb-input">
-                                    <input class="form-check-input" type="checkbox" id="cbColorGray" value="Gray">
-                                    <label class="label" for="cbColorGray">Gray</label>
-                                </div>
-                                <div class="cb-input">
-                                    <input class="form-check-input" type="checkbox" id="cbColorBrown" value="Brown">
-                                    <label class="label" for="cbColorBrown">Brown</label>
-                                </div>
-                                <button id="otherColorBtn" type="button" class="btn btn-primary"><i class="fa-solid fa-plus me-2"></i>Other</button>
-                            </div>
+                            <div id="cbColors" class="p-3"></div>
                             
                         </div>
                         <div class="col p-3">
                             <div id="prductColorInputs">
                                 <div id="colorInputs"></div>
                                 <div id="otherColorInputs"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="accessoriesImage" class="row">
+                        <h4 class="col-5">Image</h4>
+                        <div class="col p-3">
+                            <div class="input">
+                                <label for="shampooNoClrImage" class="label import">Image</label>
+                                <input id="shampooNoClrImage" name="shampooNoClrImage" type="file">
                             </div>
                         </div>
                     </div>
@@ -1301,16 +1304,6 @@
                                                     <td>20<span class="bg-success p-1 rounded text-white bg-opacity-75 ms-1">75%</span></td>
                                                     <td>20<span class="bg-success p-1 rounded text-white bg-opacity-75 ms-1">75%</span></td>
                                                     <td>20<span class="bg-success p-1 rounded text-white bg-opacity-75 ms-1">75%</span></td>
-                                                </tr>
-                                                <tr>
-                                                    <th class="text-start">Supply Qty</th>
-                                                    <td><input type="number" name="qty" id="" placeholder="qty"></td>
-                                                    <td><input type="number" name="qty" id="" placeholder="qty"></td>
-                                                    <td><input type="number" name="qty" id="" placeholder="qty"></td>
-                                                    <td><input type="number" name="qty" id="" placeholder="qty"></td>
-                                                    <td><input type="number" name="qty" id="" placeholder="qty"></td>
-                                                    <td><input type="number" name="qty" id="" placeholder="qty"></td>
-                                                    <td><input type="number" name="qty" id="" placeholder="qty"></td>
                                                 </tr>
                                             </tbody>
                                         </table>
