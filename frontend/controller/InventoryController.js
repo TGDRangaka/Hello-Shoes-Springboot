@@ -4,6 +4,8 @@ import {token} from '../db/data.js'
 
 let otherBtnCount = 0;
 let allItems = [];
+let selectedItem = null;
+let isItemSelected = false;
 let shoeColors = ['Black', 'White', 'Red', 'Blue', 'Brown', 'Gray'];
 // let socksColors = ['Black', 'White', 'Brown'];
 
@@ -37,92 +39,119 @@ const loadItemTable = (allItems) => {
 
     $("#inventoryItems").empty();
     allItems.map((item, i) => {
-        // get a image
-        let img = item.inventoryItems[0].itemImage.image;
-        // get inventory items by colors
+
+        let category = item.category;
         let colors = [];
         let imgsByColors = '';
         let itemsByColors = [];
-        item.inventoryItems.map(inventory => {
-            if(!colors.includes(inventory.colors)){
-                colors.push(inventory.colors);
-                imgsByColors += `
-                <div class="swiper-slide">
-                    <img src="${inventory.itemImage.image}" class="img-fluid" alt="">
-                </div>
-                `
-            }
-        })
-        colors.map((color) => {
-            let tempItems = [];
-            item.inventoryItems.map(inventory => (inventory.colors === color) && tempItems.push(inventory))
-            itemsByColors.push({color: color, items: tempItems});
-        })
-        // console.log(itemsByColors);
-        // return;
-        // set table row through loop
-                    // <img src="${colorItem.items[0].itemImage.image}" class="img-fluid" alt="">
         let rows = '';
-        itemsByColors.map((colorItem, i) => {
-            let row = `
-            <tr>
-                <td>${i+1}</td>
-                <td>
-                <img src="${colorItem.items[0].itemImage.image}" class="img-fluid" alt="">
-                </td>
-                <td class="text-start">${colorItem.color}</td>`;
-            // colorItem.items.map(item => {
-            //     row += `
-            //     <td>${item.currentQty}<span class="bg-success p-1 rounded text-white bg-opacity-75 ms-1">75%</span></td>
-            //     `;
-            // })
-            colorItem.items.sort((a, b) => parseInt(a.size.substring(5)) - parseInt(b.size.substring(5)))
-            // console.log(colorItem.items);
-            let totQty = 0;
-            for(let j = 0,k = 0; j < 7; j++) {
-                let itm = colorItem.items[k];
-                if(`SIZE_${j+5}` === itm.size){
-                    totQty += itm.currentQty;
-                    let per = itm.currentQty == 0 ? 0 : itm.currentQty / itm.originalQty * 100;
-                    row += `
-                    <td>${itm.currentQty}<span class="bg-${per >= 50? 'success' : per > 0 ? 'warning' : 'danger'} p-1 rounded text-white bg-opacity-75 ms-1">${per.toFixed(0)}%</span></td>`
-                    k++;
-                    (k == colorItem.items.length) && k--;
-                }else{
-                    row += `
-                    <td>0<span class="bg-danger p-1 rounded text-white bg-opacity-75 ms-1">0%</span></td>`
+        if(category !== 'ACC'){
+            // get inventory items by colors
+            item.inventoryItems.map(inventory => {
+                if(!colors.includes(inventory.colors)){
+                    colors.push(inventory.colors);
+                    imgsByColors += `
+                    <div class="swiper-slide">
+                        <img src="${inventory.itemImage.image}" class="img-fluid" alt="">
+                    </div>
+                    `
                 }
-            }
-            row += `
-                <td>${totQty}</td>
-            </tr>`;
-            rows += row;
-            // console.log(colorItem.color, row);
-        })
+            })
+            colors.map((color) => {
+                let tempItems = [];
+                item.inventoryItems.map(inventory => (inventory.colors === color) && tempItems.push(inventory))
+                itemsByColors.push({color: color, items: tempItems});
+            })
+
+            // set table row through loop
+            itemsByColors.map((colorItem, i) => {
+                let row = `
+                <tr>
+                    <td>${i+1}</td>
+                    <td>
+                    <img src="${colorItem.items[0].itemImage.image}" class="img-fluid" alt="">
+                    </td>
+                    <td class="text-start">${colorItem.color}</td>`;
+                // colorItem.items.map(item => {
+                //     row += `
+                //     <td>${item.currentQty}<span class="bg-success p-1 rounded text-white bg-opacity-75 ms-1">75%</span></td>
+                //     `;
+                // })
+                colorItem.items.sort((a, b) => parseInt(a.size.substring(5)) - parseInt(b.size.substring(5)))
+                // console.log(colorItem.items);
+                let totQty = 0;
+                for(let j = 0,k = 0; j < 7; j++) {
+                    let itm = colorItem.items[k];
+                    if(`SIZE_${j+5}` === itm.size){
+                        totQty += itm.currentQty;
+                        let per = itm.currentQty == 0 ? 0 : itm.currentQty / itm.originalQty * 100;
+                        row += `
+                        <td>${itm.currentQty}<span class="bg-${per >= 50? 'success' : per > 0 ? 'warning' : 'danger'} p-1 rounded text-white bg-opacity-75 ms-1">${per.toFixed(0)}%</span></td>`
+                        k++;
+                        (k == colorItem.items.length) && k--;
+                    }else{
+                        row += `
+                        <td>0<span class="bg-danger p-1 rounded text-white bg-opacity-75 ms-1">0%</span></td>`
+                    }
+                }
+                row += `
+                    <td>${totQty}</td>
+                </tr>`;
+                rows += row;
+                // console.log(colorItem.color, row);
+            })
+        }else{
+            let accessory = item.inventoryItems[0]
+            var accessoriesData = `
+                <div class="input col-3">
+                    <label class="label">Colour</label>
+                    <h4>${accessory.colors}</h4>
+                </div>
+                <div class="input col-3">
+                    <label class="label">Size</label>
+                    <h4>${accessory.size}</h4>
+                </div>
+                <div class="input col-3">
+                    <label class="label">Quantity</label>
+                    <h4>${accessory.currentQty}</h4>
+                </div>
+                <div class="input col-3">
+                    <label class="label">Stock Percentage</label>
+                    <h4>${accessory.status}</h4>
+                </div>
+            `
+        }
+        // <h4>${accessory.currentQty == 0 ? 0 : (accessory.currentQty / accessory.originalQty * 100).toFixed(0)}%</h4>
+
+
+        // get a image
+        let img = item.inventoryItems[0].itemImage.image;
+        let header = `
+        <div class="row align-items-center">
+            <div class="col-1 d-flex justify-content-center align-items-center gap-3">
+                <span class="">${i+1}</span>
+                <img src="${img}" class="img-fluid table-img" alt="">
+            </div>
+            <div class="col">${item.description}</div>
+            <div class="col">${item.category}</div>
+            <div class="col">${item.supplierName}</div>
+            <div class="col-1">${item.unitPriceSale}</div>
+            <div class="col-1">${item.unitPriceBuy}</div>
+            <div class="col-1"><i data-index="${i}" class="fa-solid fa-pen itemEdit"></i></div>
+        </div>
+        `;
 
         $("#inventoryItems").append(`
         <div class="accordion-item">
             <h2 class="accordion-header">
             <button class="accordion-button collapsed p-1" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse${i}" aria-expanded="false" aria-controls="flush-collapse${i}">
                 <div class="sale-accordion container-fluid">
-                    <div class="row align-items-center">
-                        <div class="col-1 d-flex justify-content-center align-items-center gap-3">
-                            <span class="">${i+1}</span>
-                            <img src="${img}" class="img-fluid table-img" alt="">
-                        </div>
-                        <div class="col">${item.description}</div>
-                        <div class="col">${item.category}</div>
-                        <div class="col">${item.supplierName}</div>
-                        <div class="col-1">${colors.length}</div>
-                        <div class="col-1">${item.unitPriceSale}</div>
-                        <div class="col-1">${item.unitPriceBuy}</div>
-                    </div>
+                    ${header}
                 </div>
             </button>
             </h2>
             <div id="flush-collapse${i}" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
             <div class="accordion-body container-fluid">
-                
                 <div class="row">
                     <div class="col-3 d-flex justify-content-center align-items-center">
                         <img src="${img}" alt="item image" />
@@ -162,9 +191,10 @@ const loadItemTable = (allItems) => {
                             <label class="label">Expected Profit</label>
                             <h4>Rs.200</h4>
                         </div>
+                        ${category === 'ACC' ? accessoriesData : ''}
                     </div>
                 </div>
-                <div class="row mt-3 p-3">
+                ${category !== 'ACC' ? `<div class="row mt-3 p-3">
                     <table class="table col table-bordered border-dark">
                         <thead class="align-middle">
                             <tr>
@@ -188,7 +218,7 @@ const loadItemTable = (allItems) => {
                             ${rows}
                         </tbody>
                     </table>
-                </div>
+                </div>` : ''}
 
             </div>
             </div>
@@ -196,9 +226,6 @@ const loadItemTable = (allItems) => {
         `);
     })
 }
-
-let product = 'new';
-$("#existingProductDetails").hide();
 
 $('#cbColors').on('click', '.form-check-input',function() {
     var selectedColors = [];
@@ -231,10 +258,8 @@ const getColorFieldsComponent = color =>{
     `
 }
 
-$('#cbColors').on('click', '#otherColorBtn',function() {
-    otherBtnCount++;
-    let id = "Other" + otherBtnCount;
-    $("#otherColorInputs").append(`
+const getOtherColorFieldsComponent = (id) => {
+    return `
     <div id="${id}Inputs" class="mb-3 otherColorInputs">
         <label for="" class="label ms-1 me-3">#${id} :</label><br>
         <div class="mt-2">
@@ -247,7 +272,13 @@ $('#cbColors').on('click', '#otherColorBtn',function() {
         </div>
     </div>
     <hr>
-    `)
+    `;
+}
+
+$('#cbColors').on('click', '#otherColorBtn',function() {
+    otherBtnCount++;
+    let id = "Other" + otherBtnCount;
+    $("#otherColorInputs").append(getOtherColorFieldsComponent(id));
 })
 
 $("#addProductBtn").click(async ()=>{
@@ -395,18 +426,6 @@ $("#productByCategory").on('change', function (){
     }
 })
 
-$("#typesByVerities").on('change', function(){
-    // let val = $(this).val();
-    // if(['SHMP', 'POLB', 'POLBR', 'POLDBR'].includes(val)){
-    //     $("#shoeColors").hide();
-    //     $("#accessoriesImage").show();
-    // }else if(val === 'SOF' || val === 'SOH'){
-    //     $("#shoeColors").show();
-    //     $("#accessoriesImage").hide();
-    //     setColorButtons(socksColors);
-    // }
-})
-
 const getFirstLaters = text => {
     let ar = text.split(' ');
     let s = '';
@@ -414,6 +433,99 @@ const getFirstLaters = text => {
         s+=t.charAt(0);
     })
     return s;
+}
+
+$("#inventoryItems").on('click', '.itemEdit', function(){
+    let index = $(this).data('index');
+    console.log(index);
+    selectedItem = allItems[index];
+    $("#inventory").toggle();
+    $("#addProduct").toggle();
+    setItemData(selectedItem);
+})
+
+const setItemData = item => {
+    // General
+    $("#productName").val(item.description);
+    $("#productByCategory").val(item.category);
+    $("#productByCategory").prop('disabled', true);
+    $("#productBySupplier").val(item.supplierName);
+    $("#productBySupplier").prop('disabled', true);
+
+    // Additional
+    let letters = item.itemCode.substring(0, item.itemCode.length - 5);
+    if(item.category !== 'ACC'){
+        let gender = letters.charAt(letters.length - 1);
+        $("#typesByGender").prop('disabled', true);
+        $("#typesByGender").val(gender);
+        $("#typesByOccasion").prop('disabled', true);
+        $("#typesByOccasion").val(item.itemCode.charAt(0) + 'S');
+    }else{
+        $("#shoesAdditional").hide();
+        $("#accessoriesAdditional").show();
+        $("#typesByVerities").prop('disabled', true);
+        $("#typesByVerities").val(letters);
+    }
+
+    // Prices
+    $("#productSellPrice").val(item.unitPriceSale);
+    $("#productBuyPrice").val(item.unitPriceBuy);
+    $("#productExpectProfit").val(item.expectedProfit);
+    $("#productProfitMargin").val(item.profitMargin);
+
+    // Colors/Images
+    if(item.category !== 'ACC'){
+        let colors = []
+        item.inventoryItems.map(inventory => {
+            !colors.includes(inventory.colors) && colors.push(inventory.colors);
+        })
+        console.log(colors);
+        $("#cbColors").empty();
+        $("#colorInputs").empty();
+        $("#otherColorInputs").empty();
+        let colorCount = 0;
+        shoeColors.map(color => {
+            $("#cbColors").append(`
+            <div class="cb-input">
+                <input class="form-check-input" type="checkbox" id="cbColor${color}" value="${color}" ${colors.includes(color) ? 'checked disabled' : ''}>
+                <label class="label" for="cbColor${color}">${color}</label>
+            </div>
+            `)
+            if(colors.includes(color)){
+                colorCount++;
+                $("#colorInputs").append(getColorFieldsComponent(color))
+            }
+        })
+        $("#cbColors").append(`
+        <button id="otherColorBtn" type="button" class="btn btn-primary"><i class="fa-solid fa-plus me-2"></i>Other</button>
+        `);
+        console.log(colorCount, colors.length);
+        if(colorCount !== colors.length){
+            otherBtnCount = 0;
+            for(let j = colorCount; j < colors.length; j++){
+                let id = 'Other' + otherBtnCount++;
+                $("#otherColorInputs").append(`
+                <div id="${id}Inputs" class="mb-3 otherColorInputs">
+                    <label for="" class="label ms-1 me-3">#${id} :</label><br>
+                    <div class="mt-2">
+                        <label class="label">Color Name: </label>
+                        <input class="form-control import" id="product${id}Name" name="product${id}Name" type="text" value="${colors[j]}" disabled>
+                    </div>
+                    <div class="mt-2">
+                        <label class="label">Image: </label>
+                        <input class="form-control mb-2 import" id="product${id}Image" name="product${id}Image" type="file">
+                    </div>
+                </div>
+                <hr>
+                `)
+            }
+        }
+        $("#shoeColors").show();
+        $("#accessoriesImage").hide();
+    }else{
+        $("#shoeColors").hide();
+        $("#accessoriesImage").show();
+    }
 }
 
 
