@@ -38,4 +38,16 @@ public class ItemAPI {
             return ResponseEntity.internalServerError().body(false);
         }
     }
+
+    @PutMapping("/{itemCode}")
+    @RolesAllowed("ADMIN")
+    public ResponseEntity updateItem(@RequestBody ItemDTO dto, @PathVariable String itemCode){
+        try{
+            itemBO.updateItem(dto, itemCode);
+            return ResponseEntity.ok("Success");
+        }catch (Exception e){
+            e.printStackTrace();
+            return ResponseEntity.internalServerError().body("Failed");
+        }
+    }
 }

@@ -1,6 +1,5 @@
 package lk.ijse.helloshoesbackend.service.impl;
 
-import jakarta.persistence.EntityManager;
 import lk.ijse.helloshoesbackend.dto.InventoryDTO;
 import lk.ijse.helloshoesbackend.entity.InventoryEntity;
 import lk.ijse.helloshoesbackend.exception.InvalidDataException;
@@ -13,7 +12,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -75,5 +73,13 @@ public class InventoryServiceIMPL implements InventoryService {
         item.setCurrentQty(totQty);
         item.setOriginalQty(totQty);
         item.setStatus("available");
+    }
+
+    @Override
+    public String[] getAvailableColorsById(String id){
+        if(itemRepo.existsById(id)){
+            return inventoryRepo.getAvailableColorsById(id);
+        }
+        throw new NotFoundException("Not found inventory item with id " + id);
     }
 }

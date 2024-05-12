@@ -282,6 +282,81 @@ $('#cbColors').on('click', '#otherColorBtn',function() {
 })
 
 $("#addProductBtn").click(async ()=>{
+    // let typeByOccasion = getValue("typesByOccasion")
+    // let category = getValue("productByCategory");
+    // let verities = getValue("typesByVerities");
+    // let gender = getValue("typesByGender")
+
+    // let item = new Item(
+    //     category === 'ACC' ? verities : typeByOccasion + gender,
+    //     getValue("productName"),
+    //     category,
+    //     getValue("productBySupplier"),
+    //     null,
+    //     getValue("productSellPrice"),
+    //     getValue("productBuyPrice"),
+    //     getValue("productExpectProfit"),
+    //     getValue("productProfitMargin"),
+    //     []
+    // );
+
+    // let selectedColors = [];
+    // if(category === 'ACC'){
+    //     if(verities === 'POLB'){
+    //         selectedColors.push("Black");
+    //     }else if(verities === 'POLBR'){
+    //         selectedColors.push("Brown");
+    //     }else if(verities === 'POLDBR'){
+    //         selectedColors.push("Dark Brown");
+    //     }else{
+    //         selectedColors.push("No-Colour");
+    //     }
+    // }else{
+    //     $('#cbColors .form-check-input').each(function() {
+    //         if ($(this).is(':checked')) {
+    //             selectedColors.push($(this).val());
+    //         }
+    //     });
+    //     for(let i = 1; i <= otherBtnCount; i++){
+    //         let id = "Other" + i;
+    //         selectedColors.push(id);
+    //     }
+    // }
+    
+    // console.log(selectedColors);
+
+    // for(let color of selectedColors){
+    //     let id = color;
+    //     let img = (category === 'ACC') ? $(`#shampooNoClrImage`).prop('files')[0] : $(`#product${id}Image`).prop('files')[0];
+    //     let colorName = id.includes("Other") ? $(`#product${id}Name`).val() : color;
+    //     console.log(colorName);
+    //     let reader = new FileReader();
+
+    //     let base64Image = await new Promise((resolve, reject) => {
+    //         reader.onloadend = function(){
+    //             resolve(reader.result);
+    //         }
+    //         reader.readAsDataURL(img);
+    //     });
+    //     let inventoryItm = new Inventory();
+    //     inventoryItm.size = (category !== 'ACC') ? 'SIZE_5' : (['SHMP', 'POLB', 'POLBR', 'POLDBR'].includes(verities)) ? 'NOT_APPLICABLE' : verities === 'SOF' ? 'FULL' : verities === 'SOH' ? 'HALF' : 'NOT_APPLICABLE';
+    //     inventoryItm.colors = colorName;
+    //     inventoryItm.itemImage = {id:"", image:base64Image};
+    //     inventoryItm.resupplyItems = [];
+    //     inventoryItm.saleItems = [];
+
+    //     item.inventoryItems.push(inventoryItm);
+    // }
+    // console.log(item);
+    isItemSelected ? updateProduct() : saveProduct();
+    // saveProduct(item);
+})
+
+const getValue = id => {
+    return $("#" + id).val();
+}
+
+const saveProduct = async () => {
     let typeByOccasion = getValue("typesByOccasion")
     let category = getValue("productByCategory");
     let verities = getValue("typesByVerities");
@@ -329,33 +404,18 @@ $("#addProductBtn").click(async ()=>{
         let id = color;
         let img = (category === 'ACC') ? $(`#shampooNoClrImage`).prop('files')[0] : $(`#product${id}Image`).prop('files')[0];
         let colorName = id.includes("Other") ? $(`#product${id}Name`).val() : color;
-        console.log(colorName);
-        let reader = new FileReader();
 
-        let base64Image = await new Promise((resolve, reject) => {
-            reader.onloadend = function(){
-                resolve(reader.result);
-            }
-            reader.readAsDataURL(img);
-        });
         let inventoryItm = new Inventory();
         inventoryItm.size = (category !== 'ACC') ? 'SIZE_5' : (['SHMP', 'POLB', 'POLBR', 'POLDBR'].includes(verities)) ? 'NOT_APPLICABLE' : verities === 'SOF' ? 'FULL' : verities === 'SOH' ? 'HALF' : 'NOT_APPLICABLE';
         inventoryItm.colors = colorName;
-        inventoryItm.itemImage = {id:"", image:base64Image};
+        inventoryItm.itemImage = {id:"", image: await getFileToBase64(img)};
         inventoryItm.resupplyItems = [];
         inventoryItm.saleItems = [];
 
         item.inventoryItems.push(inventoryItm);
     }
     console.log(item);
-    // saveProduct(item);
-})
 
-const getValue = id => {
-    return $("#" + id).val();
-}
-
-const saveProduct = (item) => {
     var settings = {
         "url": "http://localhost:8080/api/v1/item",
         "method": "POST",
@@ -371,6 +431,116 @@ const saveProduct = (item) => {
       $.ajax(settings).done(function (response) {
         console.log(response);
       });
+}
+
+const updateProduct = async () => {
+    let typeByOccasion = getValue("typesByOccasion")
+    let category = getValue("productByCategory");
+    let verities = getValue("typesByVerities");
+    let gender = getValue("typesByGender")
+
+    let item = new Item(
+        category === 'ACC' ? verities : typeByOccasion + gender,
+        getValue("productName"),
+        category,
+        getValue("productBySupplier"),
+        null,
+        getValue("productSellPrice"),
+        getValue("productBuyPrice"),
+        getValue("productExpectProfit"),
+        getValue("productProfitMargin"),
+        []
+    );
+
+    let selectedColors = [];
+    if(category === 'ACC'){
+        if(verities === 'POLB'){
+            selectedColors.push("Black");
+        }else if(verities === 'POLBR'){
+            selectedColors.push("Brown");
+        }else if(verities === 'POLDBR'){
+            selectedColors.push("Dark Brown");
+        }else{
+            selectedColors.push("No-Colour");
+        }
+    }else{
+        $('#cbColors .form-check-input').each(function() {
+            if ($(this).is(':checked')) {
+                selectedColors.push($(this).val());
+            }
+        });
+        for(let i = 1; i <= otherBtnCount; i++){
+            let id = "Other" + i;
+            selectedColors.push(id);
+        }
+    }
+    
+    console.log('selectedColors',selectedColors);
+    let availableColors = [];
+    selectedItem.inventoryItems.map(itm => {
+        !availableColors.includes(itm.colors) && availableColors.push(itm.colors);
+    })
+
+    for(let color of selectedColors){
+        let id = color;
+        let inventoryItm = new Inventory();
+        let colorName = id.includes("Other") ? $(`#product${id}Name`).val() : color;
+        inventoryItm.size = (category !== 'ACC') ? 'SIZE_5' : (['SHMP', 'POLB', 'POLBR', 'POLDBR'].includes(verities)) ? 'NOT_APPLICABLE' : verities === 'SOF' ? 'FULL' : verities === 'SOH' ? 'HALF' : 'NOT_APPLICABLE';
+        inventoryItm.colors = colorName;
+        inventoryItm.resupplyItems = [];
+        inventoryItm.saleItems = [];
+
+        // process inventory images
+        try {
+            
+        } catch (error) {
+            
+        }
+        let img = (category === 'ACC') ? $(`#shampooNoClrImage`).prop('files')[0] : $(`#product${id}Image`).prop('files')[0];
+        if(availableColors.includes(colorName)){
+            let currentImage = selectedItem.inventoryItems.find(itm => itm.colors === colorName).itemImage;
+            if(img){
+                console.log('new image ', colorName);
+                inventoryItm.itemImage = {id: currentImage.id, image: await getFileToBase64(img)};
+            }else{
+                console.log('current image ', colorName);
+                inventoryItm.itemImage = currentImage;
+            }
+        }else{
+            console.log('new image & new item ', colorName);
+            inventoryItm.itemImage = {id:"", image: await getFileToBase64(img)};
+            // set file input validations
+        }
+
+        item.inventoryItems.push(inventoryItm);
+    }
+    console.log(item);
+
+    var settings = {
+        "url": "http://localhost:8080/api/v1/item/" + selectedItem.itemCode,
+        "method": "PUT",
+        "timeout": 0,
+        "headers": {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`
+        },
+        "data": JSON.stringify(item),
+        // "data": JSON.stringify(item),
+      };
+      
+      $.ajax(settings).done(function (response) {
+        console.log(response);
+      });
+}
+
+const getFileToBase64 = async file => {
+    let reader = new FileReader();
+    return new Promise((resolve, reject) => {
+        reader.onloadend = function(){
+            resolve(reader.result);
+        }
+        reader.readAsDataURL(file);
+    });
 }
 
 // inventory category validations
@@ -468,7 +638,7 @@ const setItemData = item => {
         $("#cbColors").empty();
         $("#colorInputs").empty();
         $("#otherColorInputs").empty();
-        let colorCount = 0;
+        // let colorCount = 0;
         shoeColors.map(color => {
             $("#cbColors").append(`
             <div class="cb-input">
@@ -477,34 +647,33 @@ const setItemData = item => {
             </div>
             `)
             if(colors.includes(color)){
-                colorCount++;
+                // colorCount++;
                 $("#colorInputs").append(getColorFieldsComponent(color))
+                colors.splice(colors.indexOf(color), 1);
             }
         })
         $("#cbColors").append(`
         <button id="otherColorBtn" type="button" class="btn btn-primary"><i class="fa-solid fa-plus me-2"></i>Other</button>
         `);
-        console.log(colorCount, colors.length);
-        if(colorCount !== colors.length){
-            otherBtnCount = 0;
-            for(let j = colorCount; j < colors.length; j++){
-                let id = 'Other' + otherBtnCount++;
-                $("#otherColorInputs").append(`
-                <div id="${id}Inputs" class="mb-3 otherColorInputs">
-                    <label for="" class="label ms-1 me-3">#${id} :</label><br>
-                    <div class="mt-2">
-                        <label class="label">Color Name: </label>
-                        <input class="form-control import" id="product${id}Name" name="product${id}Name" type="text" value="${colors[j]}" disabled>
-                    </div>
-                    <div class="mt-2">
-                        <label class="label">Image: </label>
-                        <input class="form-control mb-2 import" id="product${id}Image" name="product${id}Image" type="file">
-                    </div>
+        otherBtnCount = 0;
+        colors.map(color =>{
+            otherBtnCount++;
+            let id = 'Other' + otherBtnCount;
+            $("#otherColorInputs").append(`
+            <div id="${id}Inputs" class="mb-3 otherColorInputs">
+                <label for="" class="label ms-1 me-3">#${id} :</label><br>
+                <div class="mt-2">
+                    <label class="label">Color Name: </label>
+                    <input class="form-control import" id="product${id}Name" name="product${id}Name" type="text" value="${color}" disabled>
                 </div>
-                <hr>
-                `)
-            }
-        }
+                <div class="mt-2">
+                    <label class="label">Image: </label>
+                    <input class="form-control mb-2 import" id="product${id}Image" name="product${id}Image" type="file">
+                </div>
+            </div>
+            <hr>
+            `)
+        })
         $("#shoeColors").show();
         $("#accessoriesImage").hide();
     }else{
@@ -534,3 +703,15 @@ const setShoeColorButtons = () => {
     `);
 }
 setShoeColorButtons();
+
+function dataURLtoFile(dataurl, filename) {
+    var arr = dataurl.split(','),
+        mime = arr[0].match(/:(.*?);/)[1],
+        bstr = atob(arr[arr.length - 1]), 
+        n = bstr.length, 
+        u8arr = new Uint8Array(n);
+    while(n--){
+        u8arr[n] = bstr.charCodeAt(n);
+    }
+    return new File([u8arr], filename, {type:mime});
+}

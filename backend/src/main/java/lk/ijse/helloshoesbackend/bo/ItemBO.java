@@ -6,5 +6,8 @@ import java.util.List;
 
 public interface ItemBO {
     boolean saveItem(ItemDTO dto) throws Exception;
+
+    void updateItem(ItemDTO dto, String id);
+
     List<ItemDTO> getAllItems();
 }

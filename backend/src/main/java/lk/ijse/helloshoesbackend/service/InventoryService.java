@@ -10,4 +10,6 @@ public interface InventoryService {
     List<InventoryDTO> getAll();
     List<InventoryDTO> getAllAvailableItems();
     void restock(String inventoryId, int qty);
+
+    String[] getAvailableColorsById(String id);
 }
