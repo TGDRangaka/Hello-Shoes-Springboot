@@ -286,10 +286,9 @@ $("#addProductBtn").click(async ()=>{
     let category = getValue("productByCategory");
     let verities = getValue("typesByVerities");
     let gender = getValue("typesByGender")
-    let allProducts = [];
 
     let item = new Item(
-        typeByOccasion + gender,
+        category === 'ACC' ? verities : typeByOccasion + gender,
         getValue("productName"),
         category,
         getValue("productBySupplier"),
@@ -298,7 +297,7 @@ $("#addProductBtn").click(async ()=>{
         getValue("productBuyPrice"),
         getValue("productExpectProfit"),
         getValue("productProfitMargin"),
-        null
+        []
     );
 
     let selectedColors = [];
@@ -320,7 +319,6 @@ $("#addProductBtn").click(async ()=>{
         });
         for(let i = 1; i <= otherBtnCount; i++){
             let id = "Other" + i;
-            // console.log($(`#${id}Inputs`));
             selectedColors.push(id);
         }
     }
@@ -333,23 +331,6 @@ $("#addProductBtn").click(async ()=>{
         let colorName = id.includes("Other") ? $(`#product${id}Name`).val() : color;
         console.log(colorName);
         let reader = new FileReader();
-        
-        let inventoryItems = [];
-
-        if(category !== 'ACC'){
-            let sizes = [5,6,7,8,9,10,11];
-            for(let i = 0; i < sizes.length; i++){
-                let size = sizes[i];
-                let inventoryItem = new Inventory("",`SIZE_${size}`, colorName,null,null,null,null,{id:"",image:""},[],[]);
-                inventoryItems.push(inventoryItem);
-            }
-        }else{
-            item.itemCode = verities;
-            let size = (['SHMP', 'POLB', 'POLBR', 'POLDBR'].includes(verities)) ? 'NOT_APPLICABLE' : verities === 'SOF' ? 'FULL' : verities === 'SOH' ? 'HALF' : 'NOT_APPLICABLE';
-            let inventoryItem = new Inventory("", size, colorName,null,null,null,null,{id:"",image:""},[],[]);
-            inventoryItems.push(inventoryItem);
-        }
-        
 
         let base64Image = await new Promise((resolve, reject) => {
             reader.onloadend = function(){
@@ -357,14 +338,17 @@ $("#addProductBtn").click(async ()=>{
             }
             reader.readAsDataURL(img);
         });
+        let inventoryItm = new Inventory();
+        inventoryItm.size = (category !== 'ACC') ? 'SIZE_5' : (['SHMP', 'POLB', 'POLBR', 'POLDBR'].includes(verities)) ? 'NOT_APPLICABLE' : verities === 'SOF' ? 'FULL' : verities === 'SOH' ? 'HALF' : 'NOT_APPLICABLE';
+        inventoryItm.colors = colorName;
+        inventoryItm.itemImage = {id:"", image:base64Image};
+        inventoryItm.resupplyItems = [];
+        inventoryItm.saleItems = [];
 
-        (inventoryItems.length > 0) && (inventoryItems[0].itemImage = {id:"", image:base64Image});
-        allProducts.push(...inventoryItems);
+        item.inventoryItems.push(inventoryItm);
     }
-
-    item.inventoryItems = allProducts;
     console.log(item);
-    saveProduct(item);
+    // saveProduct(item);
 })
 
 const getValue = id => {
@@ -439,6 +423,7 @@ $("#inventoryItems").on('click', '.itemEdit', function(){
     let index = $(this).data('index');
     console.log(index);
     selectedItem = allItems[index];
+    isItemSelected = true;
     $("#inventory").toggle();
     $("#addProduct").toggle();
     setItemData(selectedItem);
