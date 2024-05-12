@@ -2,6 +2,8 @@ import { token } from "../db/data.js";
 import { Supplier } from "../model/Supplier.js";
 
 let allSuppliers = [];
+let selectedSupplier = null;
+let isSupplierSelected = false;
 
 $("#suppliersBtn").click(()=>{
     getAllSuppliers();
@@ -28,20 +30,37 @@ const getAllSuppliers = ()=>{
 }
 
 const saveSupplier = (supplier) => {
-    var settings = {
-        "url": "http://localhost:8080/api/v1/supplier",
-        "method": "POST",
-        "timeout": 0,
-        "headers": {
-          "Content-Type": "application/json",
-          "Authorization": "Bearer " + token
-        },
-        "data": JSON.stringify(supplier),
-      };
-      
-      $.ajax(settings).done(function (response) {
-        // console.log(response);
-      });
+  var settings = {
+    "url": "http://localhost:8080/api/v1/supplier",
+    "method": "POST",
+    "timeout": 0,
+    "headers": {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer " + token
+    },
+    "data": JSON.stringify(supplier),
+  };
+  
+  $.ajax(settings).done(function (response) {
+    // console.log(response);
+  });
+}
+
+const updateSupplier = (supplier) => {
+  var settings = {
+    "url": "http://localhost:8080/api/v1/supplier/" + selectedSupplier.code,
+    "method": "PUT",
+    "timeout": 0,
+    "headers": {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer " + token
+    },
+    "data": JSON.stringify(supplier),
+  };
+  
+  $.ajax(settings).done(function (response) {
+    console.log(response);
+  });
 }
 
 const getSupplierData = () => {
@@ -67,6 +86,20 @@ const getSupplierData = () => {
     return supplierData;
 }
 
+const setSupplierData = (supplier) => {
+  $('#supplierName').val(supplier.name);
+  $('#supplierCategory').val(supplier.category);
+  $('#supplierAddressNo').val(supplier.addressNo);
+  $('#supplierAddressLane').val(supplier.addressLane);
+  $('#supplierAddressCity').val(supplier.addressCity);
+  $('#supplierAddressState').val(supplier.addressState);
+  $('#supplierAddressPostalCode').val(supplier.postalCode);
+  $('#supplierAddressCountry').val(supplier.originCountry);
+  $('#supplierContactNo1').val(supplier.contactNo1);
+  $('#supplierContactNo2').val(supplier.contactNo2);
+  $('#supplierEmail').val(supplier.email);
+}
+
 const loadTable = (suppliers) => {
   $("#supplierTbody").empty();
   suppliers.map((supplier, i) => {
@@ -80,7 +113,6 @@ const loadTable = (suppliers) => {
         <td>${supplier.contactNo2}</td>
         <td>${supplier.originCountry}</td>
         <td class="table-action"><button data-index="${i}" class="btn"><i class="fa-solid fa-pen"></i></button></i></td>
-        <td class="table-action"><button data-index="${i}" class="btn"><i class="fa-solid fa-pen"></i></button></i></td>
     </tr>
     `)
   })
@@ -88,5 +120,14 @@ const loadTable = (suppliers) => {
 
 $("#submitSupplierBtn").click(()=> {
     let supplierData = getSupplierData();
-    saveSupplier(supplierData);
+    !isSupplierSelected ? saveSupplier(supplierData) : updateSupplier(supplierData);
+})
+
+$("#supplierTbody").on('click', 'button', function(){
+  let index = $(this).data('index');
+  isSupplierSelected = true;
+  selectedSupplier = allSuppliers[index];
+  $("#supplier").toggle();
+  $("#supplierForm").toggle();
+  setSupplierData(selectedSupplier);
 })

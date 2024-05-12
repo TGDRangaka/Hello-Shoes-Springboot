@@ -34,4 +34,16 @@ public class SupplierAPI {
     public ResponseEntity<SupplierDTO> saveSupplier(@RequestBody SupplierDTO dto){
         return ResponseEntity.ok(supplierBO.saveSupplier(dto));
     }
+
+    @PutMapping("/{supplierCode}")
+    @RolesAllowed("ADMIN")
+    public ResponseEntity updateSupplier(@RequestBody SupplierDTO dto, @PathVariable String supplierCode){
+        try {
+            supplierBO.updateSupplier(dto, supplierCode);
+            return ResponseEntity.accepted().body("Success");
+        }catch (Exception e){
+            e.printStackTrace();
+            return ResponseEntity.internalServerError().body(e.getMessage());
+        }
+    }
 }

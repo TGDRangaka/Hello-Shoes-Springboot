@@ -19,6 +19,11 @@ public class SupplierBOIIMPL implements SupplierBO {
     }
 
     @Override
+    public void updateSupplier(SupplierDTO dto, String code){
+        supplierService.update(dto, code);
+    }
+
+    @Override
     public List<SupplierDTO> getSuppliers() {
         return supplierService.getSuppliers();
     }

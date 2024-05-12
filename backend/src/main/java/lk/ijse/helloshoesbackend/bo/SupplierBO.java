@@ -6,5 +6,8 @@ import java.util.List;
 
 public interface SupplierBO {
     SupplierDTO saveSupplier(SupplierDTO dto);
+
+    void updateSupplier(SupplierDTO dto, String code);
+
     List<SupplierDTO> getSuppliers();
 }

@@ -101,7 +101,7 @@ const setBtnActive = (element, btn) => {
 }
 
 // $("#inventoryBtn").dblclick();
-$("#inventoryBtn").click();
+$("#suppliersBtn").click();
 
 const encode = text =>{
     // for(let i=0; i<10; i++){

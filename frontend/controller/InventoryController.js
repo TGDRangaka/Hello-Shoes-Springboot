@@ -475,7 +475,6 @@ const updateProduct = async () => {
         }
     }
     
-    console.log('selectedColors',selectedColors);
     let availableColors = [];
     selectedItem.inventoryItems.map(itm => {
         !availableColors.includes(itm.colors) && availableColors.push(itm.colors);
@@ -500,14 +499,11 @@ const updateProduct = async () => {
         if(availableColors.includes(colorName)){
             let currentImage = selectedItem.inventoryItems.find(itm => itm.colors === colorName).itemImage;
             if(img){
-                console.log('new image ', colorName);
                 inventoryItm.itemImage = {id: currentImage.id, image: await getFileToBase64(img)};
             }else{
-                console.log('current image ', colorName);
                 inventoryItm.itemImage = currentImage;
             }
         }else{
-            console.log('new image & new item ', colorName);
             inventoryItm.itemImage = {id:"", image: await getFileToBase64(img)};
             // set file input validations
         }
