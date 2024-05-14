@@ -973,7 +973,6 @@ form {
     aspect-ratio: 1;
     background-size: cover;
     background-position: center;
-    background-image: url('imgs/shoe1.png');
 }
 
 .resupplyInputs table input::-webkit-outer-spin-button,

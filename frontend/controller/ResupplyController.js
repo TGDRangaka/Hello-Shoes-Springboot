@@ -201,10 +201,10 @@ const setItemDataList = (supplier) => {
     console.log(items);
     $(".supplier-items").empty();
     items.map(item => {
-        // let img = item.
+        let img = item.inventoryItems[0].itemImage.image;
         $(".supplier-items").append(`
         <div data-code="${item.itemCode}" class="supplier-item-card">
-            <div class="img"></div>
+            <div class="img" style="background-image: url(${img})"></div>
             <div class="info">
                 <h5 class="m-0">${item.itemCode}</h5>
                 <label class="m-0">${item.description}</label>
