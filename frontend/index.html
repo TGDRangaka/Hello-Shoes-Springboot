@@ -816,26 +816,29 @@
 
             <!-- Add Customer Section -->
             <section id="addCustomer" class="bg-theme text-theme">
-                <form action="" class="container-fluid bg-light">
+                <form class="container-fluid bg-white">
                     <hr>
                     <div class="row">
                         <h4 class="col-5">General</h4>
                         <div class="col p-3">
                             <div class="input">
                                 <label for="customerName">Name</label>
-                                <input type="text" name="customerName" id="customerName" placeholder="Enter Name">
+                                <input type="text" name="customerName" id="customerName" placeholder="Enter Name" required>
+                                <div class="validation"></div>
                             </div>
-                            <div class="input">
+                            <div class="input mt-3">
                                 <label for="customerDOB">Date of Birth</label>
-                                <input type="date" name="customerDOB" id="customerDOB">
+                                <input type="date" name="customerDOB" id="customerDOB" required>
+                                <div class="validation"></div>
                             </div>
-                            <div class="input">
+                            <div class="input mt-3">
                                 <label for="customerGender">Gender</label>
-                                <select name="customerGender" id="customerGender">
+                                <select name="customerGender" id="customerGender" required>
                                     <option value="MALE">Male</option>
                                     <option value="FEMALE">Female</option>
                                     <option value="OTHER">Other</option>
                                 </select>
+                                <div class="validation"></div>
                             </div>
                         </div>
                     </div>
@@ -845,23 +848,28 @@
                         <div class="col p-3">
                             <div class="input">
                                 <label for="customerAddressNo">Address No.</label>
-                                <input type="text" name="customerAddressNo" id="customerAddressNo" placeholder="Enter Address No.">
+                                <input type="text" name="customerAddressNo" id="customerAddressNo" placeholder="Enter Address No." required>
+                                <div class="validation"></div>
                             </div>
-                            <div class="input">
+                            <div class="input mt-3">
                                 <label for="customerAddressLane">Address Lane</label>
-                                <input type="text" name="customerAddressLane" id="customerAddressLane" placeholder="Enter Address Lane">
+                                <input type="text" name="customerAddressLane" id="customerAddressLane" placeholder="Enter Address Lane" required>
+                                <div class="validation"></div>
                             </div>
-                            <div class="input">
+                            <div class="input mt-3">
                                 <label for="customerAddressCity">Address City</label>
-                                <input type="text" name="customerAddressCity" id="customerAddressCity" placeholder="Enter Address City">
+                                <input type="text" name="customerAddressCity" id="customerAddressCity" placeholder="Enter Address City" required>
+                                <div class="validation"></div>
                             </div>
-                            <div class="input">
+                            <div class="input mt-3">
                                 <label for="customerAddressState">Address State</label>
-                                <input type="text" name="customerAddressState" id="customerAddressState" placeholder="Enter Address State">
+                                <input type="text" name="customerAddressState" id="customerAddressState" placeholder="Enter Address State" required>
+                                <div class="validation"></div>
                             </div>
-                            <div class="input">
+                            <div class="input mt-3">
                                 <label for="customerAddressPostcode">Address Postcode</label>
-                                <input type="text" name="customerAddressPostcode" id="customerAddressPostcode" placeholder="Enter Address Postcode">
+                                <input type="text" name="customerAddressPostcode" id="customerAddressPostcode" placeholder="Enter Address Postcode" required>
+                                <div class="validation"></div>
                             </div>
                         </div>
                     </div>
@@ -871,11 +879,13 @@
                         <div class="col p-3">
                             <div class="input">
                                 <label for="customerContactNo">Contact No.</label>
-                                <input type="text" name="customerContactNo" id="customerContactNo" placeholder="Enter Contact No.">
+                                <input type="text" name="customerContactNo" id="customerContactNo" placeholder="Enter Contact No." required>
+                                <div class="validation"></div>
                             </div>
-                            <div class="input">
+                            <div class="input mt-3">
                                 <label for="customerEmail">Email</label>
-                                <input type="email" name="customerEmail" id="customerEmail" placeholder="Enter Email">
+                                <input type="email" name="customerEmail" id="customerEmail" placeholder="Enter Email" required>
+                                <div class="validation"></div>
                             </div>
                         </div>
                     </div>
@@ -1536,6 +1546,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
+    <!-- Sweet Alert 2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
@@ -1548,5 +1561,6 @@
     <script type="module" src="controller/SupplierController.js"></script>
     <script type="module" src="controller/ResupplyController.js"></script>
     <script type="module" src="controller/RefundController.js"></script>
+    <script type="module" src="util/UtilMatter.js"></script>
 </body>
 </html>

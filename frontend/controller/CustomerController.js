@@ -1,4 +1,5 @@
-import {token, setToken} from '../db/data.js';
+import {token} from '../db/data.js';
+import { getRegex, setAsValid, setAsInvalid } from '../util/UtilMatter.js';
 import { Customer } from '../model/Customer.js';
 
 let allCustomers = [];
@@ -65,11 +66,13 @@ const updateCustomer = (customer) => {
 
 $("#customerSubmitBtn").click(()=>{
     let customer = collectCustomerData();
-    if(isCustomerSelected){
-        customer.customerCode = customerData.customerCode;
-        updateCustomer(customer);
-    }else{
-        saveCustomer(customer);
+    let isValidData = checkValidations(customer);
+    if(isValidData){
+        if(isCustomerSelected){
+            updateCustomer(customer);
+        }else{
+            saveCustomer(customer);
+        }
     }
 })
 
@@ -156,3 +159,39 @@ $("#customerCancelBtn").click(function(){
     customerData = new Customer();
     isCustomerSelected = false;
 })
+
+const checkValidations = (customer) => {
+    
+    // General
+    return (getRegex('name').test(customer.name) ? setAsValid("#customerName", 'Looks Good!')
+    : setAsInvalid("#customerName", 'Name is required!'))
+    &
+    (!isNaN(Date.parse(customer.dob)) ? setAsValid("#customerDOB", 'Looks Good!')
+    : setAsInvalid("#customerDOB", 'Please select a valid date.'))
+    &
+    (customer.gender ? setAsValid("#customerGender", 'Looks Good!')
+    : setAsInvalid("#customerGender", 'Please select a gender.'))
+    &
+    // Address
+    (getRegex('address').test(customer.addressNo) ? setAsValid("#customerAddressNo", 'Looks Good!')
+    : setAsInvalid("#customerAddressNo", 'Please enter valid address no.'))
+    &
+    (getRegex('address').test(customer.addressLane) ? setAsValid("#customerAddressLane", 'Looks Good!')
+    : setAsInvalid("#customerAddressLane", 'Please enter valid address lane'))
+    &
+    (getRegex('address').test(customer.addressCity) ? setAsValid("#customerAddressCity", 'Looks Good!')
+    : setAsInvalid("#customerAddressCity", 'Please enter valid address city'))
+    &
+    (getRegex('address').test(customer.addressState) ? setAsValid("#customerAddressState", 'Looks Good!')
+    : setAsInvalid("#customerAddressState", 'Please enter valid address state'))
+    &
+    (Number.isInteger(parseInt(customer.postalCode)) ? setAsValid("#customerAddressPostcode", 'Looks Good!')
+    : setAsInvalid("#customerAddressPostcode", 'Please enter valid address postalcode'))
+    &
+    // Contacts
+    (getRegex('phone').test(customer.phone) ? setAsValid("#customerContactNo", 'Looks Good!')
+    : setAsInvalid("#customerContactNo", 'Please enter valid number'))
+    &
+    (getRegex('email').test(customer.email) ? setAsValid("#customerEmail", 'Looks Good!')
+    : setAsInvalid("#customerEmail", 'Please enter valid email'));
+}
