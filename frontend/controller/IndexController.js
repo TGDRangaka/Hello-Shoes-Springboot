@@ -1,5 +1,5 @@
 
-import { token,user, setUser, setToken } from "../db/data.js";
+import { user, setUser, setToken } from "../db/data.js";
 
 $("#dashboardBtn").on('click', function(){
     setBtnActive("#dashboard", this);
@@ -58,12 +58,12 @@ $("#suppliersBtn").on('dblclick', function(){
 
 $("#resupplysBtn").on('click', function(){
     setBtnActive("#resupply", this);
-    $("#sectionTitle").text("Supplier Form")
+    $("#sectionTitle").text("Resupplies")
 })
 
 $("#resupplysBtn").on('dblclick', function(){
     setBtnActive("#resupplyData", this);
-    $("#sectionTitle").text("Supplier Data")
+    $("#sectionTitle").text("Resupply History")
 })
 
 $("#notificationsBtn").on('click', function(){
@@ -100,8 +100,8 @@ const setBtnActive = (element, btn) => {
     $(element).show();
 }
 
-// $("#inventoryBtn").dblclick();
-$("#suppliersBtn").click();
+// $("#resupplysBtn").dblclick();
+$("#resupplysBtn").click();
 
 const encode = text =>{
     // for(let i=0; i<10; i++){

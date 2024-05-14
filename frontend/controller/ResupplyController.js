@@ -192,31 +192,51 @@ const collectResupplieData = () => {
         ));
     })
     resupply.resupplyItems = resupplyItems;
+    console.log(resupply);
     return resupply;
 }
 
 const setItemDataList = (supplier) => {
     let items = allItems.filter(item => item.supplierName === supplier);
-    $("#resupplyItemsList").empty();
-    $("#resupplyItem").append('<option value="-" selected>Select Item</option>');
+    console.log(items);
+    $(".supplier-items").empty();
     items.map(item => {
-        // console.log(item);
-        $("#resupplyItemsList").append(`
-        <option value="${item.itemCode}">${item.description}</option>
-        `)
+        // let img = item.
+        $(".supplier-items").append(`
+        <div data-code="${item.itemCode}" class="supplier-item-card">
+            <div class="img"></div>
+            <div class="info">
+                <h5 class="m-0">${item.itemCode}</h5>
+                <label class="m-0">${item.description}</label>
+                <span>${item.category}</span>
+            </div>
+        </div>
+        `);
     })
+    // $("#resupplyItem").append('<option value="-" selected>Select Item</option>');
+    // items.map(item => {
+    //     $("#resupplyItemsList").append(`
+    //     <option value="${item.itemCode}">${item.description}</option>
+    //     `)
+    // })
 }
 
-$("#resupplyItem").on('change',function(){
-    let selectedItem = $(this).val();
-    console.log("selected item",selectedItem);
+$(".supplier-items").on('click', '.supplier-item-card', function(){
+    let itemCode = $(this).data("code");
+    $(".supplier-item-card").removeClass("supplier-item-card-selected");
+    $(this).addClass("supplier-item-card-selected");
+    getSelectedItemData(itemCode);
+})
+
+const getSelectedItemData = selectedItemCode => {
+    console.log("selected item",selectedItemCode);
     allItems.map(item => {
-        if(item.itemCode === selectedItem) {
+        if(item.itemCode === selectedItemCode) {
             let colors = []
             item.inventoryItems.map(inv => colors.push(inv.colors))
             colors = [...new Set(colors)];
             let colorItems = []
-            // console.log(colors);
+            console.log(colors);
             colors.map(color => {
                 colorItems.push({
                     color: color, 
@@ -225,19 +245,20 @@ $("#resupplyItem").on('change',function(){
             })
 
             
-            $("#resupplyItems").empty();
+            $(".resupplyInputs").empty();
             selectedItems = [];
             colorItems.forEach(colorItem => {
                 addResupplyComponent(colorItem)
                 selectedItems.push(...colorItem.items);
             });
-            // console.log(colorItems);
+            console.log(colorItems);
         }
     })
-})
+}
 
 const addResupplyComponent = (colorItems) => {
     // console.log("resupply items",colorItems);
+    // return;
     let theads = '';
     let currentQtys = '';
     let inputs = '';
@@ -248,31 +269,27 @@ const addResupplyComponent = (colorItems) => {
         inputs += `<td><input type="number" name="qty" id="${item.inventoryCode}" placeholder="qty"></td>`;
     })
 
-    $("#resupplyItems").append(`
-    <div id="ResupplyItem${colorItems.color}" class="row mt-3">
-        <div class="col-2">
-            <img class="w-100 rounded" src="${colorItems.items[0].itemImage.image}" alt="shoe img">
-        </div>
-        <div class="col d-flex flex-column justify-content-around">
-            <hr>
-            <h3>${colorItems.color}</h3>
-            <table class="table text-center table-bordered">
-                <thead>
-                    <th class="text-start">Size</th>
-                    ${theads}
-                </thead>
-                <tbody>
-                    <tr>
-                        <th class="text-start">Current Qty</th>
-                        ${currentQtys}
-                    </tr>
-                    <tr>
-                        <th class="text-start">Supply Qty</th>
-                        ${inputs}
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
+    $(".resupplyInputs").append(`
+    <table id="resupplyFormTable${colorItems.color}" class="table table-bordered border-dark w-100 text-center align-middle">
+        <thead>
+            <th colspan="8" class="text-center">
+                <h4 class="m-0 quicksand-bold">${colorItems.color}</h4>
+            </th>
+        </thead>
+        <tbody>
+            <tr>
+                <th class="text-start">Sizes</th>
+                ${theads}
+            </tr>
+            <tr>
+                <th class="text-start">Current Qty.</th>
+                ${currentQtys}
+            </tr>
+            <tr>
+                <th class="text-start">Resupply Qty.</th>
+                ${inputs}
+            </tr>
+        </tbody>
+    </table>
     `);
 }

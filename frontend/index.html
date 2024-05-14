@@ -1255,72 +1255,143 @@
 
             <!-- Resupply Section -->
             <section id="resupply" class="bg-theme text-theme mh-100">
-                <form class="container-fluid">
-                    <div class="row">
-                        <div class="col">
+                <form class="d-flex gap-3">
+
+                        <div class="">
                             <div class="row">
                                 <div class="input col">
                                     <label for="resupplySupplier">Supplier</label>
                                     <select class="form-select" name="supplier" id="resupplySupplier">
                                     </select>
                                 </div>
-
-                                <div class="input col">
-                                    <label for="resupplyItem">Item Code</label>
-                                    <input disabled list="resupplyItemsList" type="text" id="resupplyItem" name="item">
-                                    <datalist id="resupplyItemsList" aria-autocomplete="none">
-                                    </datalist>
-                                </div>
                             </div>
-                            <hr>
-                            <h3>Resupplies</h3>
-                            <div id="resupplyItems" class="container-fluid">
+
+                            <!-- Selected Supplier items -->
+                            <div class="supplier-items">
                                 
-                                <div id="ResupplyItem" class="row">
-                                    <div class="col-3">
-                                        <img class="w-100 rounded" src="assets/imgs/shoe1.png" alt="">
-                                    </div>
-                                    <div class="col d-flex flex-column justify-content-center gap-3">
-                                        <h3>Black</h3>
-                                        <table class="table text-center table-bordered">
-                                            <thead>
-                                                <th class="text-start">Size</th>
-                                                <th class="table-input">5</th>
-                                                <th class="table-input">6</th>
-                                                <th class="table-input">7</th>
-                                                <th class="table-input">8</th>
-                                                <th class="table-input">9</th>
-                                                <th class="table-input">10</th>
-                                                <th class="table-input">11</th>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <th class="text-start">Current Qty</th>
-                                                    <td>20<span class="bg-success p-1 rounded text-white bg-opacity-75 ms-1">75%</span></td>
-                                                    <td>20<span class="bg-warning p-1 rounded text-white bg-opacity-75 ms-1">38%</span></td>
-                                                    <td>20<span class="bg-success p-1 rounded text-white bg-opacity-75 ms-1">75%</span></td>
-                                                    <td>0<span class="bg-danger p-1 rounded text-white bg-opacity-75 ms-1">0%</span></td>
-                                                    <td>20<span class="bg-success p-1 rounded text-white bg-opacity-75 ms-1">75%</span></td>
-                                                    <td>20<span class="bg-success p-1 rounded text-white bg-opacity-75 ms-1">75%</span></td>
-                                                    <td>20<span class="bg-success p-1 rounded text-white bg-opacity-75 ms-1">75%</span></td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
+                                <div class="supplier-item-card">
+                                    <div class="img"></div>
+                                    <div class="info">
+                                        <h5 class="m-0">FSW00342</h5>
+                                        <label class="m-0">Nike Air 2</label>
+                                        <span>Shoe</span>
                                     </div>
                                 </div>
-
+                                
+                                <div class="supplier-item-card">
+                                    <div class="img"></div>
+                                    <div class="info">
+                                        <h5 class="m-0">FSW00342</h5>
+                                        <label class="m-0">Nike Air 2</label>
+                                        <span>Shoe</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="supplier-item-card">
+                                    <div class="img"></div>
+                                    <div class="info">
+                                        <h5 class="m-0">FSW00342</h5>
+                                        <label class="m-0">Nike Air 2</label>
+                                        <span>Shoe</span>
+                                    </div>
+                                </div>
                             </div>
+                        </div>
+
+                        <div class="flex-grow mt-4">
+
+                            <div class="resupplyInputs">
+                                <table id="resupplyFormTable" class="table table-bordered border-dark w-100 text-center align-middle">
+                                    <thead>
+                                        <th colspan="8" class="text-center">
+                                            <h4 class="m-0 quicksand-bold">Black</h4>
+                                        </th>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th class="text-start">Sizes</th>
+                                            <th>5</th>
+                                            <th>6</th>
+                                            <th>7</th>
+                                            <th>8</th>
+                                            <th>9</th>
+                                            <th>10</th>
+                                            <th>11</th>
+                                        </tr>
+                                        <tr>
+                                            <th class="text-start">Current Qty.</th>
+                                            <td>23<span class="stock-percentage stock-a">15%</span></td>
+                                            <td>23<span class="stock-percentage stock-na">15%</span></td>
+                                            <td>23<span class="stock-percentage stock-l">15%</span></td>
+                                            <td>23<span class="stock-percentage stock-l">15%</span></td>
+                                            <td>23<span class="stock-percentage stock-l">15%</span></td>
+                                            <td>23<span class="stock-percentage stock-a">15%</span></td>
+                                            <td>23<span class="stock-percentage stock-na">15%</span></td>
+                                        </tr>
+                                        <tr>
+                                            <th class="text-start">Resupply Qty.</th>
+                                            <td><input type="number"></td>
+                                            <td><input type="number"></td>
+                                            <td><input type="number"></td>
+                                            <td><input type="number"></td>
+                                            <td><input type="number"></td>
+                                            <td><input type="number"></td>
+                                            <td><input type="number"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <table id="resupplyFormTable" class="table table-bordered border-dark w-100 text-center align-middle">
+                                    <thead>
+                                        <th colspan="8" class="text-center">
+                                            <h4 class="m-0 quicksand-bold">Black</h4>
+                                        </th>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th class="text-start">Sizes</th>
+                                            <th>5</th>
+                                            <th>6</th>
+                                            <th>7</th>
+                                            <th>8</th>
+                                            <th>9</th>
+                                            <th>10</th>
+                                            <th>11</th>
+                                        </tr>
+                                        <tr>
+                                            <th class="text-start">Current Qty.</th>
+                                            <td>23<span class="stock-percentage stock-a">15%</span></td>
+                                            <td>23<span class="stock-percentage stock-na">15%</span></td>
+                                            <td>23<span class="stock-percentage stock-l">15%</span></td>
+                                            <td>23<span class="stock-percentage stock-l">15%</span></td>
+                                            <td>23<span class="stock-percentage stock-l">15%</span></td>
+                                            <td>23<span class="stock-percentage stock-a">15%</span></td>
+                                            <td>23<span class="stock-percentage stock-na">15%</span></td>
+                                        </tr>
+                                        <tr>
+                                            <th class="text-start">Resupply Qty.</th>
+                                            <td><input type="number"></td>
+                                            <td><input type="number"></td>
+                                            <td><input type="number"></td>
+                                            <td><input type="number"></td>
+                                            <td><input type="number"></td>
+                                            <td><input type="number"></td>
+                                            <td><input type="number"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+
                             <div class="d-flex justify-content-end gap-4 mt-3">
                                 <button class="btn btn-dark" type="reset">Cancel</button>
                                 <button id="resupplySubmitBtn" class="btn btn-primary" type="button">Submit</button>
                             </div>
                         </div>
-                    </div>
-
                 </form>
             </section>
 
-            <section id="resupplyData" class="bg-theme text-theme mh-100">
+            <!-- Resupply Data Section -->
+            <section id="resupplyData" class="bg-theme text-theme">
                 <header class="mb-3 rounded row">
                     <div class="input-group search col">
                         <input type="text" class="form-control" placeholder="Item Code">
@@ -1408,133 +1479,11 @@
                     </div>
                 </div>
 
-                <div class="accordion accordion-flush" id="resupplyItemsAccordion">
-
-                    <div class="accordion-item">
-                      <h2 class="accordion-header">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapsefd" aria-expanded="false" aria-controls="flush-collapsefd">
-                          
-                            <div class="sale-accordion container-fluid w-100">
-                                <div class="row">
-                                    <label class="col-1">1</label>
-                                    <label class="col">Item</label>
-                                    <label class="col">Supplier</label>
-                                    <label class="col-2">Total Qty</label>
-                                    <label class="col-2">Supplied Date</label>
-                                </div>
-                            </div>
-
-                        </button>
-                      </h2>
-                      <div id="flush-collapsefd" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                        <div class="accordion-body container-fluid p-2">
-                            <table class="table table-bordered border-dark align-middle">
-                                <thead>
-                                    <th class="text-center">#</th>
-                                    <th class="table-img">Image</th>
-                                    <th>Sub Item</th>
-                                    <th class="text-center">Supplied Qty</th>
-                                    <th class="text-center">Current Qty</th>
-                                </thead>
-                                <tbody>
-                                     <tr>
-                                        <td class="text-center">1</td>
-                                        <td>
-                                            <img src="https://via.placeholder.com/70" alt="" class="img-fluid">
-                                        </td>
-                                        <td>Black</td>
-                                        <td class="text-center">20</td>
-                                        <td class="text-center">20</td>
-                                    </tr>
-                                     <tr>
-                                        <td class="text-center">1</td>
-                                        <td>
-                                            <img src="https://via.placeholder.com/70" alt="" class="img-fluid">
-                                        </td>
-                                        <td>Black</td>
-                                        <td class="text-center">20</td>
-                                        <td class="text-center">20</td>
-                                    </tr>
-                                     <tr>
-                                        <td class="text-center">1</td>
-                                        <td>
-                                            <img src="https://via.placeholder.com/70" alt="" class="img-fluid">
-                                        </td>
-                                        <td>Black</td>
-                                        <td class="text-center">20</td>
-                                        <td class="text-center">20</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="accordion-item">
-                      <h2 class="accordion-header">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                          
-                            <div class="sale-accordion container-fluid w-100">
-                                <div class="row">
-                                    <label class="col-1">1</label>
-                                    <label class="col">Item</label>
-                                    <label class="col">Supplier</label>
-                                    <label class="col-2">Total Qty</label>
-                                    <label class="col-2">Supplied Date</label>
-                                </div>
-                            </div>
-
-                        </button>
-                      </h2>
-                      <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                        <div class="accordion-body container-fluid p-2">
-                            <table class="table table-bordered border-dark align-middle">
-                                <thead>
-                                    <th class="text-center">#</th>
-                                    <th class="table-img">Image</th>
-                                    <th>Sub Item</th>
-                                    <th class="text-center">Supplied Qty</th>
-                                    <th class="text-center">Current Qty</th>
-                                </thead>
-                                <tbody>
-                                     <tr>
-                                        <td class="text-center">1</td>
-                                        <td>
-                                            <img src="https://via.placeholder.com/70" alt="" class="img-fluid">
-                                        </td>
-                                        <td>Black</td>
-                                        <td class="text-center">20</td>
-                                        <td class="text-center">20</td>
-                                    </tr>
-                                     <tr>
-                                        <td class="text-center">1</td>
-                                        <td>
-                                            <img src="https://via.placeholder.com/70" alt="" class="img-fluid">
-                                        </td>
-                                        <td>Black</td>
-                                        <td class="text-center">20</td>
-                                        <td class="text-center">20</td>
-                                    </tr>
-                                     <tr>
-                                        <td class="text-center">1</td>
-                                        <td>
-                                            <img src="https://via.placeholder.com/70" alt="" class="img-fluid">
-                                        </td>
-                                        <td>Black</td>
-                                        <td class="text-center">20</td>
-                                        <td class="text-center">20</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                      </div>
-                    </div>
-
-                </div>
+                <div class="accordion accordion-flush" id="resupplyItemsAccordion"></div>
             </section>
 
             <!-- Refund Section -->
-            <section id="refund" class="bg-theme text-theme">
+            <section id="refund" class="bg-theme text-theme mh-100">
                 <form class="container-fluid flex-grow">
                     <div class="row h-100 gap-3">
                         <div class="col-5 bg-white rounded pt-2">
@@ -1572,9 +1521,6 @@
                     </div>
                 </form>
             </section>
-
-            <!-- Notification Section -->
-            <section id="notification" class="bg-theme text-theme mh-100"></section>
             
         </div>
                 
