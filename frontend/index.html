@@ -948,7 +948,6 @@
                         <th scope="col">Guardian</th>
                         <th scope="col">Emergency No.</th>
                         <th scope="col" class="table-action">Edit</th>
-                        <th scope="col" class="table-action">Edit</th>
                     </tr>
                     </thead>
                     <tbody id="employeesTBody">
@@ -962,21 +961,25 @@
             <!-- Add Employee Section -->
             <section id="addEmployee" class="bg-theme text-theme mh-100">
                 <form action="" class="container-fluid bg-light">
-                    <hr>
-                    <div class="row">
-                        <h4 class="col-1">General</h4>
-                        <div class="col-4 d-flex flex-column justify-content-around">
-                            <div class="employee-img"></div>
-                            <div class="input w-100">
-                                <label for="employeeProfilePic">Profile Picture</label>
+
+                    <div class="row mt-3">
+                        <div class="col d-flex justify-content-center align-items-center">
+                            <div class="employee-img">
+                                <i class="fa-solid fa-pen img-edit"></i>
                                 <input type="file" id="employeeProfilePic">
+                                <div class="validation"></div>
                             </div>
                         </div>
+                    </div>
+
+                    <div class="row mt-3">
+                        <h4 class="col-5">General</h4>
                         <div class="col p-3">
                             
                             <div class="input">
                                 <label for="employeeName">Name</label>
                                 <input type="text" name="employeeName" id="employeeName" placeholder="Enter Name">
+                                <div class="validation"></div>
                             </div>
                             <div class="input">
                                 <label for="employeeGender">Gender</label>
@@ -985,14 +988,17 @@
                                     <option value="FEMALE">Female</option>
                                     <option value="OTHER">Other</option>
                                 </select>
+                                <div class="validation"></div>
                             </div>
                             <div class="input">
                                 <label for="employeeDob">Date of Birth</label>
                                 <input type="date" name="employeeDob" id="employeeDob">
+                                <div class="validation"></div>
                             </div>
                             <div class="input">
                                 <label for="employeeStatus">Status</label>
                                 <input type="text" name="employeeStatus" id="employeeStatus">
+                                <div class="validation"></div>
                             </div>
                         </div>
                     </div>
@@ -1003,22 +1009,27 @@
                             <div class="input">
                                 <label for="employeeDesignation">Employee Designation</label>
                                 <input type="text" name="employeeDesignation" id="employeeDesignation" placeholder="Enter Employee Designation">
+                                <div class="validation"></div>
                             </div>
                             <div class="input">
                                 <label for="employeeBranch">Branch</label>
                                 <input type="text" name="employeeBranch" id="employeeBranch" placeholder="Enter Store Branch">
+                                <div class="validation"></div>
                             </div>
                             <div class="input">
                                 <label for="employeeJoinedDate">Joined Date</label>
                                 <input type="date" name="employeeJoinedDate" id="employeeJoinedDate">
+                                <div class="validation"></div>
                             </div>
                             <div class="input">
                                 <label for="employeeGurdian">Guardian</label>
                                 <input type="text" name="employeeGurdian" id="employeeGurdian" placeholder="Enter Gurdian Name">
+                                <div class="validation"></div>
                             </div>
                             <div class="input">
                                 <label for="employeeEmergencyNumber">Emergency number</label>
                                 <input type="text" name="employeeEmergencyNumber" id="employeeEmergencyNumber" placeholder="Enter Emergency Number">
+                                <div class="validation"></div>
                             </div>
                         </div>
                     </div>
@@ -1029,22 +1040,27 @@
                             <div class="input">
                                 <label for="employeeAddressNo">Address No.</label>
                                 <input type="text" name="employeeAddressNo" id="employeeAddressNo" placeholder="Enter Address No.">
+                                <div class="validation"></div>
                             </div>
                             <div class="input">
                                 <label for="employeeAddressLane">Address Lane</label>
                                 <input type="text" name="employeeAddressLane" id="employeeAddressLane" placeholder="Enter Address Lane">
+                                <div class="validation"></div>
                             </div>
                             <div class="input">
                                 <label for="employeeAddressCity">Address City</label>
                                 <input type="text" name="employeeAddressCity" id="employeeAddressCity" placeholder="Enter Address City">
+                                <div class="validation"></div>
                             </div>
                             <div class="input">
                                 <label for="employeeAddressState">Address State</label>
                                 <input type="text" name="employeeAddressState" id="employeeAddressState" placeholder="Enter Address State">
+                                <div class="validation"></div>
                             </div>
                             <div class="input">
                                 <label for="employeeAddressPostcode">Address Postcode</label>
                                 <input type="text" name="employeeAddressPostcode" id="employeeAddressPostcode" placeholder="Enter Address Postcode">
+                                <div class="validation"></div>
                             </div>
                         </div>
                     </div>
@@ -1055,12 +1071,13 @@
                             <div class="input">
                                 <label for="email">Email</label>
                                 <input type="email" name="email" id="email" placeholder="Enter Email">
+                                <div class="validation"></div>
                             </div>
                             <div class="input">
                                 <label for="phone">Phone</label>
                                 <input type="text" name="phone" id="phone" placeholder="Enter Phone">
+                                <div class="validation"></div>
                             </div>
-                            <!-- Add more contact fields as needed -->
                         </div>
                     </div>
                     <hr>
@@ -1089,41 +1106,49 @@
                         </div>
                     </div>
 
-                    <div class="profile-informations d-flex flex-column gap-2 p-3 rounded">
+                    <div class="profile-informations d-flex flex-column align-items-center gap-2 p-3 rounded">
                         <h4 class="m-0">Contacts</h4>
-                        <div class="input">
+                        <div class="input mt-2">
                             <label for="profileEmail">Email</label>
                             <input type="email" name="profileEmail" id="profileEmail" placeholder="Enter User Email">
+                            <div class="validation"></div>
                         </div>
-                        <div class="input">
+                        <div class="input mt-2">
                             <label for="userPhone">Phone</label>
                             <input type="text" name="userPhone" id="userPhone" placeholder="Enter User Phone">
+                            <div class="validation"></div>
                         </div>
-                        <div class="input">
+                        <div class="input mt-2">
                             <label for="userEmergencyNumber">Emergency Number</label>
                             <input type="text" name="userEmergencyNumber" id="userEmergencyNumber" placeholder="Enter Emergency Number">
+                            <div class="validation"></div>
                         </div>
 
                         <h4 class="m-0 mt-3">Address</h4>
-                        <div class="input">
+                        <div class="input mt-2">
                             <label for="userAddressNo">Address No.</label>
                             <input type="text" name="userAddressNo" id="userAddressNo" placeholder="Enter Address No.">
+                            <div class="validation"></div>
                         </div>
-                        <div class="input">
+                        <div class="input mt-2">
                             <label for="userAddressLane">Address Lane</label>
                             <input type="text" name="userAddressLane" id="userAddressLane" placeholder="Enter Address Lane">
+                            <div class="validation"></div>
                         </div>
-                        <div class="input">
+                        <div class="input mt-2">
                             <label for="userAddressCity">Address City</label>
                             <input type="text" name="userAddressCity" id="userAddressCity" placeholder="Enter Address City">
+                            <div class="validation"></div>
                         </div>
-                        <div class="input">
+                        <div class="input mt-2">
                             <label for="userAddressState">Address State</label>
                             <input type="text" name="userAddressState" id="userAddressState" placeholder="Enter Address State">
+                            <div class="validation"></div>
                         </div>
-                        <div class="input">
+                        <div class="input mt-2">
                             <label for="userAddressPostcode">Postal Code</label>
                             <input type="text" name="userAddressPostcode" id="userAddressPostcode" placeholder="Enter Address Postcode">
+                            <div class="validation"></div>
                         </div>
 
                         <div class="row mt-4 mb-3">

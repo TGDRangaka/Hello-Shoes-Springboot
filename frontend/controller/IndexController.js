@@ -100,7 +100,7 @@ const setBtnActive = (element, btn) => {
     $(element).show();
 }
 
-$("#customerBtn").dblclick();
+$("#employeesBtn").dblclick();
 // $("#customerBtn").click();
 
 const encode = text =>{

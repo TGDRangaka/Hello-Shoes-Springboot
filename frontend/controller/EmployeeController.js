@@ -1,5 +1,6 @@
 import {token, user, setUser} from '../db/data.js';
 import {Employee} from '../model/Employee.js'
+import { getRegex, setAsInvalid, setAsValid, clearValidations } from '../util/UtilMatter.js';
 
 let allEmployees = [];
 let employeeData = new Employee();
@@ -54,7 +55,6 @@ const loadEmployeeTable = (employees) => {
             <td>${employee.guardianOrNominatedPerson}</td>
             <td>${employee.emergencyContact}</td>
             <td class="table-action"><button data-index=${i} class="btn edit"><i class="fa-solid fa-pen"></i></button></i></td>
-            <td class="table-action"><button data-index=${i} class="btn delete"><i class="fa-solid fa-pen"></i></button></i></td>
         </tr>
         `);
     })
@@ -78,6 +78,7 @@ function saveEmployee() {
       
       $.ajax(settings).done(function (response) {
         console.log(response);
+        clearValidations("#addEmployee form");
       });
 }
 
@@ -98,7 +99,7 @@ function updateEmployee(formData) {
       
       $.ajax(settings).done(function (response) {
         console.log(JSON.parse(response));
-        setUser(JSON.parse(response));
+        clearValidations("#addEmployee form");
       });
 }
 
@@ -135,7 +136,7 @@ const collectEmployeeData = ()=>{
 const setEmployeeData = employee => {
     // Identity section
 // console.log(employee.profilePic);
-    $(".employee-img").css('background-image', `url(data:image/jpeg;base64,${user.profilePic})`);
+    $(".employee-img").css('background-image', `url(data:image/jpeg;base64,${employee.profilePic})`);
     $('#employeeProfilePic')[0].files[0];
     $('#employeeName').val(employee.name);
     $('#employeeGender').val(employee.gender);
@@ -212,33 +213,146 @@ const collectProfileData = () => {
         return formData;
 }
 
+const checkValidations = () => {
+    // General
+    return ($('#employeeName').val().length > 4 ? setAsValid("#employeeName", 'Looks Good!')
+    : setAsInvalid("#employeeName", 'Name is required!'))
+    &
+    (!isNaN(Date.parse($('#employeeDob').val())) ? setAsValid("#employeeDob", 'Looks Good!')
+    : setAsInvalid("#employeeDob", 'Please select a valid date.'))
+    &
+    ($('#employeeProfilePic')[0].files[0] ? setAsValid("#employeeProfilePic", 'Photo selected')
+    : setAsInvalid("#employeeProfilePic", 'Please select employee profile picture.'))
+    &
+    ($('#employeeGender').val() ? setAsValid("#employeeGender", 'Looks Good!')
+    : setAsInvalid("#employeeGender", 'Please select a gender.'))
+    &
+    ($('#employeeStatus').val() ? setAsValid("#employeeStatus", 'Looks Good!')
+    : setAsInvalid("#employeeStatus", 'Please enter status of employee'))
+    &
+
+    // Store
+    ($('#employeeDesignation').val().length > 4 ? setAsValid("#employeeDesignation", 'Looks Good!')
+    : setAsInvalid("#employeeDesignation", 'Please enter designation.'))
+    &
+    (getRegex('name').test($('#employeeBranch').val()) ? setAsValid("#employeeBranch", 'Looks Good!')
+    : setAsInvalid("#employeeBranch", 'Please enter branch name.'))
+    &
+    (!isNaN(Date.parse($('#employeeJoinedDate').val())) ? setAsValid("#employeeJoinedDate", 'Looks Good!')
+    : setAsInvalid("#employeeJoinedDate", 'Please select a valid date.'))
+    &
+    ($('#employeeGurdian').val().length > 4 ? setAsValid("#employeeGurdian", 'Looks Good!')
+    : setAsInvalid("#employeeGurdian", 'Please enter gurdian or nominated person'))
+    &
+    (getRegex('phone').test($('#employeeEmergencyNumber').val()) ? setAsValid("#employeeEmergencyNumber", 'Looks Good!')
+    : setAsInvalid("#employeeEmergencyNumber", 'Please enter emergency number'))
+    &
+
+    // Address
+    (getRegex('address').test($('#employeeAddressNo').val()) ? setAsValid("#employeeAddressNo", 'Looks Good!')
+    : setAsInvalid("#employeeAddressNo", 'Please enter valid address no.'))
+    &
+    (getRegex('address').test($('#employeeAddressLane').val()) ? setAsValid("#employeeAddressLane", 'Looks Good!')
+    : setAsInvalid("#employeeAddressLane", 'Please enter valid address lane'))
+    &
+    (getRegex('address').test($('#employeeAddressCity').val()) ? setAsValid("#employeeAddressCity", 'Looks Good!')
+    : setAsInvalid("#employeeAddressCity", 'Please enter valid address city'))
+    &
+    (getRegex('address').test($('#employeeAddressState').val()) ? setAsValid("#employeeAddressState", 'Looks Good!')
+    : setAsInvalid("#employeeAddressState", 'Please enter valid address state'))
+    &
+    (Number.isInteger(parseInt($('#employeeAddressPostcode').val())) ? setAsValid("#employeeAddressPostcode", 'Looks Good!')
+    : setAsInvalid("#employeeAddressPostcode", 'Please enter valid address postalcode'))
+    &
+
+    // Contacts
+    (getRegex('phone').test($('#phone').val()) ? setAsValid("#phone", 'Looks Good!')
+    : setAsInvalid("#phone", 'Please enter valid number'))
+    &
+    (getRegex('email').test($('#email').val()) ? setAsValid("#email", 'Looks Good!')
+    : setAsInvalid("#email", 'Please enter valid email'));
+}
+
+const checkProfileValidations = () => {
+    return (getRegex('email').test($('#profileEmail').val()) ? setAsValid("#profileEmail", 'Looks Good!')
+    : setAsInvalid("#profileEmail", 'Email is required!'))
+    &
+    (getRegex('phone').test($('#userPhone').val()) ? setAsValid("#userPhone", 'Looks Good!')
+    : setAsInvalid("#userPhone", 'Please enter valid number'))
+    &
+    (getRegex('phone').test($('#userEmergencyNumber').val()) ? setAsValid("#userEmergencyNumber", 'Looks Good!')
+    : setAsInvalid("#userEmergencyNumber", 'Please enter emergency number'))
+    &
+
+    // Address
+    (getRegex('address').test($('#userAddressNo').val()) ? setAsValid("#userAddressNo", 'Looks Good!')
+    : setAsInvalid("#userAddressNo", 'Please enter valid address no.'))
+    &
+    (getRegex('address').test($('#userAddressLane').val()) ? setAsValid("#userAddressLane", 'Looks Good!')
+    : setAsInvalid("#userAddressLane", 'Please enter valid address lane'))
+    &
+    (getRegex('address').test($('#userAddressCity').val()) ? setAsValid("#userAddressCity", 'Looks Good!')
+    : setAsInvalid("#userAddressCity", 'Please enter valid address city'))
+    &
+    (getRegex('address').test($('#userAddressState').val()) ? setAsValid("#userAddressState", 'Looks Good!')
+    : setAsInvalid("#userAddressState", 'Please enter valid address state'))
+    &
+    (Number.isInteger(parseInt($('#userAddressPostcode').val())) ? setAsValid("#userAddressPostcode", 'Looks Good!')
+    : setAsInvalid("#userAddressPostcode", 'Please enter valid address postalcode'));
+}
+
 $('#userProfilePic').on('input', () => {
     let img = $('#userProfilePic')[0].files[0];
     let imgUrl = URL.createObjectURL(img);
     $(".profile-img").css('background-image', `url(${imgUrl})`);
 ;})
 
+$('#employeeProfilePic').on('input', () => {
+    let img = $('#employeeProfilePic')[0].files[0];
+    let imgUrl = URL.createObjectURL(img);
+    $(".employee-img").css('background-image', `url(${imgUrl})`);
+;})
+
 $('#submitEmployeeBtn').on('click', ()=>{
-    if(isEmployeeSelected){
-        let formData = collectEmployeeData();
-        if(!$('#employeeProfilePic')[0].files[0]){
-            formData.append('profilePic', dataURLtoFile("data:image/png;base64,"+employeeData.profilePic, 'profilePic'))
-            console.log('set prev img')
+    if(checkValidations()){
+        if(isEmployeeSelected){
+            let formData = collectEmployeeData();
+            if(!$('#employeeProfilePic')[0].files[0]){
+                formData.append('profilePic', dataURLtoFile("data:image/png;base64,"+employeeData.profilePic, 'profilePic'))
+                console.log('set prev img')
+            }
+            updateEmployee(formData);
         }
-        updateEmployee(formData);
+    }else{
+        saveEmployee(formData);
     }
 });
 
 $('#submitProfileBtn').on('click', ()=>{
-    if(isEmployeeSelected){
+    if(checkProfileValidations() && isEmployeeSelected){
         let formData = collectProfileData();
         if(!$('#userProfilePic')[0].files[0]){
             formData.append('profilePic', dataURLtoFile("data:image/png;base64,"+employeeData.profilePic, 'profilePic'))
             console.log('set prev img')
         }
-        updateEmployee(formData);
-    }else{
-        saveEmployee();
+        var settings = {
+            "url": "http://localhost:8080/api/v1/employee/" + employeeData.employeeCode,
+            "method": "PUT",
+            "timeout": 0,
+            "headers": {
+                "Authorization": `Bearer ${token}`
+            },
+            "processData": false,
+            "mimeType": "multipart/form-data",
+            "contentType": false,
+            "data": formData
+        };
+        
+        $.ajax(settings).done(function (response) {
+            console.log(JSON.parse(response));
+            setUser(JSON.parse(response));
+            clearValidations("#profile form");
+        });
     }
 });
 

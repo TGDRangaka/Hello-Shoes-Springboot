@@ -404,14 +404,14 @@ section header {
 }
 
 .profile-informations .input {
-    flex-direction: row;
+    /* flex-direction: row;
     height: 40px;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-between; */
 }
 
 .profile-informations input {
-    width: 80%;
+    width: 500px;
 }
 
 /* /////////////////////////////////////////////////////////////////////////////////////////////////// */
@@ -847,12 +847,45 @@ input[type="radio"] {
 }
 
 .employee-img {
-    width: 80%;
+    width: 300px;
     aspect-ratio: 1;
-    /* border: 1px solid black; */
+    border: 3px solid var(--highlight-color);
     background-position: center;
     background-size: cover;
     border-radius: 50%;
+}
+
+.employee-img input {
+    width: 50px;
+    aspect-ratio: 1;
+    position: absolute;
+    right: 5%;
+    bottom: 5%;
+    border-radius: 50%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.employee-img .img-edit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    aspect-ratio: 1;
+    font-size: 24px;
+    position: absolute;
+    right: 5%;
+    bottom: 5%;
+    border-radius: 50%;
+    background-color: var(--highlight-color);
+    color: var(--light-bg-color);
+    cursor: pointer;
+}
+
+.employee-img .validation{
+    position: absolute;
+    bottom: -25px;
+    left: 10px;
 }
 
 /* /////////////////////////////////////////////////////////////////////////////////////////////////// */

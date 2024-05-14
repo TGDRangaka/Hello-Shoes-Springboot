@@ -1,11 +1,11 @@
 // Name regex
-const nameRegex = /^[A-Za-z '-]+$/;
+const nameRegex = /^[A-Za-z.'-]+(?: [A-Za-z.'-]+)?$/;
 
 // Address regex
 const addressRegex = /^[A-Za-z0-9\/\s.,#'-]+$/;
 
 // Phone number regex
-const phoneRegex = /^(?:\+?94|0)?(?:7\d{8})$/;
+const phoneRegex = /^(?:\+?94|0)?(?:\d{9})$/;
 
 // Email regex
 const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -44,4 +44,8 @@ export const setAsInvalid = (element, message) => {
     $(element).parent().find(".validation").html(invalidIcon + message);
     $(element).parent().find(".validation").css("color", "rgb(255, 87, 87)");
     return false;
+}
+
+export const clearValidations = (form) => {
+    $(form).find(".validation").html("");
 }
