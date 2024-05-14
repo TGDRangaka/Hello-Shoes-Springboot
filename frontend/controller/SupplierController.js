@@ -1,5 +1,6 @@
 import { token } from "../db/data.js";
 import { Supplier } from "../model/Supplier.js";
+import { setAsInvalid, setAsValid, getRegex, clearValidations } from "../util/UtilMatter.js";
 
 let allSuppliers = [];
 let selectedSupplier = null;
@@ -43,6 +44,7 @@ const saveSupplier = (supplier) => {
   
   $.ajax(settings).done(function (response) {
     // console.log(response);
+    clearValidations("#supplierForm form");
   });
 }
 
@@ -60,6 +62,7 @@ const updateSupplier = (supplier) => {
   
   $.ajax(settings).done(function (response) {
     console.log(response);
+    clearValidations("#supplierForm form");
   });
 }
 
@@ -118,8 +121,49 @@ const loadTable = (suppliers) => {
   })
 }
 
+const checkValidations = (supplier) => {
+  // General
+  return (getRegex('name').test(supplier.name) ? setAsValid("#supplierName", 'Looks Good!')
+  : setAsInvalid("#supplierName", 'Name is required!'))
+  &
+  (supplier.category ? setAsValid("#supplierCategory", 'Looks Good!')
+  : setAsInvalid("#supplierCategory", 'Please select category'))
+  &
+
+  // Address
+  (getRegex('address').test(supplier.addressNo) ? setAsValid("#supplierAddressNo", 'Looks Good!')
+  : setAsInvalid("#supplierAddressNo", 'Please enter valid address no.'))
+  &
+  (getRegex('address').test(supplier.addressLane) ? setAsValid("#supplierAddressLane", 'Looks Good!')
+  : setAsInvalid("#supplierAddressLane", 'Please enter valid address lane'))
+  &
+  (getRegex('address').test(supplier.addressCity) ? setAsValid("#supplierAddressCity", 'Looks Good!')
+  : setAsInvalid("#supplierAddressCity", 'Please enter valid address city'))
+  &
+  (getRegex('address').test(supplier.addressState) ? setAsValid("#supplierAddressState", 'Looks Good!')
+  : setAsInvalid("#supplierAddressState", 'Please enter valid address state'))
+  &
+  (getRegex('address').test(supplier.postalCode) ? setAsValid("#supplierAddressPostalCode", 'Looks Good!')
+  : setAsInvalid("#supplierAddressPostalCode", 'Please enter valid address postalcode'))
+  &
+  (getRegex('address').test(supplier.originCountry) ? setAsValid("#supplierAddressCountry", 'Looks Good!')
+  : setAsInvalid("#supplierAddressCountry", 'Please enter valid address Country'))
+  &
+
+  // Contacts
+  (getRegex('phone').test(supplier.contactNo1) ? setAsValid("#supplierContactNo1", 'Looks Good!')
+  : setAsInvalid("#supplierContactNo1", 'Please enter valid number'))
+  &
+  (getRegex('phone').test(supplier.contactNo2) ? setAsValid("#supplierContactNo2", 'Looks Good!')
+  : setAsInvalid("#supplierContactNo2", 'Please enter valid number'))
+  &
+  (getRegex('email').test(supplier.email) ? setAsValid("#supplierEmail", 'Looks Good!')
+  : setAsInvalid("#supplierEmail", 'Please enter valid email'));
+}
+
 $("#submitSupplierBtn").click(()=> {
     let supplierData = getSupplierData();
+    if(!checkValidations(supplierData)) return;
     !isSupplierSelected ? saveSupplier(supplierData) : updateSupplier(supplierData);
 })
 
