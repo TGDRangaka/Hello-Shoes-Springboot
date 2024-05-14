@@ -1,6 +1,7 @@
 import { token } from "../db/data.js";
 import { Resupply } from "../model/Resupply.js";
 import { ResupplyItem } from "../model/ResupplyItem.js"
+import { getCategory } from "../util/UtilMatter.js";
 
 let allResupplies = [];
 let allItems = [];
@@ -208,7 +209,7 @@ const setItemDataList = (supplier) => {
             <div class="info">
                 <h5 class="m-0">${item.itemCode}</h5>
                 <label class="m-0">${item.description}</label>
-                <span>${item.category}</span>
+                <span>${getCategory(item.category)}</span>
             </div>
         </div>
         `);

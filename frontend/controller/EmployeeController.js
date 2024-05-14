@@ -315,16 +315,16 @@ $('#employeeProfilePic').on('input', () => {
 
 $('#submitEmployeeBtn').on('click', ()=>{
     if(checkValidations()){
+        let formData = collectEmployeeData();
         if(isEmployeeSelected){
-            let formData = collectEmployeeData();
             if(!$('#employeeProfilePic')[0].files[0]){
                 formData.append('profilePic', dataURLtoFile("data:image/png;base64,"+employeeData.profilePic, 'profilePic'))
                 console.log('set prev img')
             }
             updateEmployee(formData);
+        }else{
+            saveEmployee(formData);
         }
-    }else{
-        saveEmployee(formData);
     }
 });
 

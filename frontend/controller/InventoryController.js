@@ -1,6 +1,7 @@
 import {Item} from '../model/Item.js'
 import {Inventory} from '../model/Inventory.js'
 import {token} from '../db/data.js'
+import { getCategory, setAsInvalid, setAsValid, clearValidations } from '../util/UtilMatter.js';
 
 let otherBtnCount = 0;
 let allItems = [];
@@ -133,7 +134,7 @@ const loadItemTable = (allItems) => {
                 <img src="${img}" class="img-fluid table-img" alt="">
             </div>
             <div class="col">${item.description}</div>
-            <div class="col">${item.category}</div>
+            <div class="col">${getCategory(item.category)}</div>
             <div class="col">${item.supplierName}</div>
             <div class="col-1">${item.unitPriceSale}</div>
             <div class="col-1">${item.unitPriceBuy}</div>
@@ -282,74 +283,9 @@ $('#cbColors').on('click', '#otherColorBtn',function() {
 })
 
 $("#addProductBtn").click(async ()=>{
-    // let typeByOccasion = getValue("typesByOccasion")
-    // let category = getValue("productByCategory");
-    // let verities = getValue("typesByVerities");
-    // let gender = getValue("typesByGender")
-
-    // let item = new Item(
-    //     category === 'ACC' ? verities : typeByOccasion + gender,
-    //     getValue("productName"),
-    //     category,
-    //     getValue("productBySupplier"),
-    //     null,
-    //     getValue("productSellPrice"),
-    //     getValue("productBuyPrice"),
-    //     getValue("productExpectProfit"),
-    //     getValue("productProfitMargin"),
-    //     []
-    // );
-
-    // let selectedColors = [];
-    // if(category === 'ACC'){
-    //     if(verities === 'POLB'){
-    //         selectedColors.push("Black");
-    //     }else if(verities === 'POLBR'){
-    //         selectedColors.push("Brown");
-    //     }else if(verities === 'POLDBR'){
-    //         selectedColors.push("Dark Brown");
-    //     }else{
-    //         selectedColors.push("No-Colour");
-    //     }
-    // }else{
-    //     $('#cbColors .form-check-input').each(function() {
-    //         if ($(this).is(':checked')) {
-    //             selectedColors.push($(this).val());
-    //         }
-    //     });
-    //     for(let i = 1; i <= otherBtnCount; i++){
-    //         let id = "Other" + i;
-    //         selectedColors.push(id);
-    //     }
-    // }
-    
-    // console.log(selectedColors);
-
-    // for(let color of selectedColors){
-    //     let id = color;
-    //     let img = (category === 'ACC') ? $(`#shampooNoClrImage`).prop('files')[0] : $(`#product${id}Image`).prop('files')[0];
-    //     let colorName = id.includes("Other") ? $(`#product${id}Name`).val() : color;
-    //     console.log(colorName);
-    //     let reader = new FileReader();
-
-    //     let base64Image = await new Promise((resolve, reject) => {
-    //         reader.onloadend = function(){
-    //             resolve(reader.result);
-    //         }
-    //         reader.readAsDataURL(img);
-    //     });
-    //     let inventoryItm = new Inventory();
-    //     inventoryItm.size = (category !== 'ACC') ? 'SIZE_5' : (['SHMP', 'POLB', 'POLBR', 'POLDBR'].includes(verities)) ? 'NOT_APPLICABLE' : verities === 'SOF' ? 'FULL' : verities === 'SOH' ? 'HALF' : 'NOT_APPLICABLE';
-    //     inventoryItm.colors = colorName;
-    //     inventoryItm.itemImage = {id:"", image:base64Image};
-    //     inventoryItm.resupplyItems = [];
-    //     inventoryItm.saleItems = [];
-
-    //     item.inventoryItems.push(inventoryItm);
-    // }
-    // console.log(item);
-    isItemSelected ? updateProduct() : saveProduct();
-    // saveProduct(item);
+    if(checkValidations()){
+        isItemSelected ? updateProduct() : saveProduct();
+    }
 })
 
 const getValue = id => {
@@ -404,6 +340,8 @@ const saveProduct = async () => {
         let id = color;
         let img = (category === 'ACC') ? $(`#shampooNoClrImage`).prop('files')[0] : $(`#product${id}Image`).prop('files')[0];
         let colorName = id.includes("Other") ? $(`#product${id}Name`).val() : color;
+        
+        if(!checkImage(img, colorName)) return;
 
         let inventoryItm = new Inventory();
         inventoryItm.size = (category !== 'ACC') ? 'SIZE_5' : (['SHMP', 'POLB', 'POLBR', 'POLDBR'].includes(verities)) ? 'NOT_APPLICABLE' : verities === 'SOF' ? 'FULL' : verities === 'SOH' ? 'HALF' : 'NOT_APPLICABLE';
@@ -504,8 +442,8 @@ const updateProduct = async () => {
                 inventoryItm.itemImage = currentImage;
             }
         }else{
+            if(!checkImage(img, colorName)) return;
             inventoryItm.itemImage = {id:"", image: await getFileToBase64(img)};
-            // set file input validations
         }
 
         item.inventoryItems.push(inventoryItm);
@@ -537,6 +475,46 @@ const getFileToBase64 = async file => {
         }
         reader.readAsDataURL(file);
     });
+}
+
+const checkValidations = () => {
+    let selectedColors = [];
+    $('#cbColors .form-check-input').each(function() {
+        if ($(this).is(':checked')) {
+            selectedColors.push($(this).val());
+        }
+    });
+    for(let i = 1; i <= otherBtnCount; i++){
+        let id = "Other" + i;
+        selectedColors.push(id);
+    }
+
+    if(selectedColors.length <= 0){
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Please select color/s for product",
+        });
+        return false;
+    }
+
+    return ($("#productName").val() ? setAsValid('#productName', 'Looks Good!')
+    : setAsInvalid('#productName', 'Name Required!'))
+    &
+    ($("#productBySupplier").val() ? setAsValid('#productBySupplier', 'Looks Good!')
+    : setAsInvalid('#productBySupplier', 'Please select the supplier'))
+    &
+    ($("#productSellPrice").val() ? setAsValid('#productSellPrice', 'Looks Good!')
+    : setAsInvalid('#productSellPrice', 'Please enter the selling price'))
+    &
+    ($("#productBuyPrice").val() ? setAsValid('#productBuyPrice', 'Looks Good!')
+    : setAsInvalid('#productBuyPrice', 'Please enter the buying price'))
+    &
+    ($("#productExpectProfit").val() ? setAsValid('#productExpectProfit', 'Looks Good!')
+    : setAsInvalid('#productExpectProfit', 'Please enter the expected profit'))
+    &
+    ($("#productProfitMargin").val() ? setAsValid('#productProfitMargin', 'Looks Good!')
+    : setAsInvalid('#productProfitMargin', 'Please enter the profit margin'));
 }
 
 // inventory category validations
@@ -678,7 +656,6 @@ const setItemData = item => {
     }
 }
 
-
 const setColorButtons = colors => {
     $("#cbColors").empty();
     $("#colorInputs").empty();
@@ -710,4 +687,56 @@ function dataURLtoFile(dataurl, filename) {
         u8arr[n] = bstr.charCodeAt(n);
     }
     return new File([u8arr], filename, {type:mime});
+}
+
+$("#productSellPrice").on('input', function(){
+    let sell = $(this).val() ? $(this).val() : 0;
+    let buy = $("#productBuyPrice").val() ? $("#productBuyPrice").val() : 0;
+    $("#productExpectProfit").val(sell - buy);
+    $("#productProfitMargin").val((sell == 0 & buy == 0) ? 0 : (sell - buy) / buy * 100);
+})
+
+$("#productBuyPrice").on('input', function(){
+    let sell = $("#productSellPrice").val() ? $("#productSellPrice").val() : 0;
+    let buy = $(this).val() ? $(this).val() : 0;
+    $("#productExpectProfit").val(sell - buy);
+    $("#productProfitMargin").val((sell == 0 & buy == 0) ? 0 : (sell - buy) / buy * 100);
+});
+
+$("#productExpectProfit").on('input', function(){
+    let buy = $("#productBuyPrice").val() ? $("#productBuyPrice").val() : 0;
+    let profit = $(this).val() ? $(this).val() : 0;
+    let sell = parseInt(buy) + parseInt(profit);
+    $("#productSellPrice").val(sell)
+    $("#productProfitMargin").val((sell == 0 & buy == 0) ? 0 : profit / buy * 100);
+});
+
+$("#productProfitMargin").on('input', function(){
+    let buy = $("#productBuyPrice").val() ? $("#productBuyPrice").val() : 0;
+    let profit = parseInt(buy) * (parseInt($(this).val()) / 100.0);
+    let sell = parseInt(buy) + parseInt(profit);
+    $("#productSellPrice").val(sell)
+    $("#productExpectProfit").val(profit);
+});
+
+
+const checkImage = (img, colorName) =>{
+    console.log(img, colorName);
+    if(colorName === ''){
+        Swal.fire({
+            icon: "error",
+            title: "No Color",
+            text: "Please specify a name for color/design",
+        });
+        return false;
+    }
+    if(!img){
+        Swal.fire({
+            icon: "error",
+            title: "No Image...",
+            text: "Please select an image for color/s",
+        });
+        return false;
+    }
+    return true;
 }

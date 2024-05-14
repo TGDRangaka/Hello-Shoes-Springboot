@@ -49,3 +49,17 @@ export const setAsInvalid = (element, message) => {
 export const clearValidations = (form) => {
     $(form).find(".validation").html("");
 }
+
+export const getCategory = value => {
+    switch(value){
+        case 'S': return 'Shoe';
+        case 'FF': return 'Flip Flop';
+        case 'H': return 'Heel';
+        case 'F': return 'Flats';
+        case 'W': return 'Wedges';
+        case 'SL': return 'Slippers';
+        case 'SD': return 'Sandals';
+        case 'ACC': return 'Accessory';
+        default: return null;
+    }
+}

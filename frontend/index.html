@@ -601,12 +601,12 @@
                         <div class="col p-3">
                             <div class="input">
                                 <label for="productName" class="label import">Product Name</label>
-                                <input id="productName" name="productName" type="text" value="Test Product">
+                                <input id="productName" name="productName" type="text" value="Valid">
+                                <div class="validation"></div>
                             </div>
                             <div class="input mt-3">
                                 <label for="productByCategory" class="label import">Category</label>
                                 <select id="productByCategory" class="form-select" aria-label="Default select example">
-                                    <option selected>(Select Category)</option>
                                     <option value="H">Heel</option>
                                     <option value="F">Flats</option>
                                     <option value="W">Wedges</option>
@@ -620,7 +620,7 @@
                             <div class="input mt-3">
                                 <label for="productBySupplier" class="label import">Supplier</label>
                                 <select id="productBySupplier" class="form-select" aria-label="Default select example">
-                                    <option selected>(Select Supplier)</option>
+                                    <option value="" selected>(Select Supplier)</option>
                                     <optgroup label="International Brands">
                                         <option value="International">All International</option>
                                         <option value="NIKE" selected>Nike</option>
@@ -658,6 +658,7 @@
                                         <option value="UL Wickramasinghe & Company">UL Wickramasinghe & Company</option>
                                     </optgroup>
                                 </select>
+                                <div class="validation"></div>
                             </div>
                         </div>
                     </div>
@@ -668,15 +669,13 @@
                             <div class="input">
                                 <label for="typesByGender" class="label import">Gender</label>
                                 <select id="typesByGender" class="form-select" aria-label="Default select example">
-                                    <option selected>(Select)</option>
-                                    <option value="M">Men</option>
-                                    <option value="W" selected>Women</option>
+                                    <option value="M" selected>Men</option>
+                                    <option value="W">Women</option>
                                 </select>
                             </div>
                             <div class="input mt-3">
                                 <label for="typesByOccasion" class="label import">Types By Occasion</label>
                                 <select id="typesByOccasion" class="form-select" aria-label="Default select example">
-                                    <option selected>(Select Category)</option>
                                     <option value="FS">Formal Shoes</option>
                                     <option value="CS" selected>Casual Shoes</option>
                                     <option id="is" value="IS">Industrial Flops Shoes</option>
@@ -691,8 +690,7 @@
                             <div class="input">
                                 <label for="typesByVerities" class="label import">Types By Verities</label>
                                 <select id="typesByVerities" class="form-select">
-                                    <option selected>(Select Category)</option>
-                                    <option value="SHMP">Shoe Shampoo</option>
+                                    <option value="SHMP" selected>Shoe Shampoo</option>
                                     <option value="POLB">Black Polish</option>
                                     <option value="POLBR">Brown Polish</option>
                                     <option value="POLDBR">Dark Brown Polish</option>
@@ -709,18 +707,22 @@
                             <div class="input">
                                 <label for="productSellPrice" class="label import">Sell Price</label>
                                 <input id="productSellPrice" name="productSellPrice" type="number" value="2000">
+                                <div class="validation"></div>
                             </div>
                             <div class="input mt-4">
                                 <label for="productBuyPrice" class="label import">Buy Price</label>
                                 <input id="productBuyPrice" name="productBuyPrice" type="number" value="1800">
+                                <div class="validation"></div>
                             </div>
                             <div class="input mt-4">
                                 <label for="productExpectProfit" class="label import">Expected Profit</label>
                                 <input id="productExpectProfit" name="productExpectProfit" type="number" value="200">
+                                <div class="validation"></div>
                             </div>
                             <div class="input mt-4">
                                 <label for="productProfitMargin" class="label import">Profit Margin</label>
                                 <input id="productProfitMargin" name="productProfitMargin" type="number" value="10">
+                                <div class="validation"></div>
                             </div>
                         </div>
                     </div>
@@ -1312,110 +1314,11 @@
                                         <span>Shoe</span>
                                     </div>
                                 </div>
-                                
-                                <div class="supplier-item-card">
-                                    <div class="img"></div>
-                                    <div class="info">
-                                        <h5 class="m-0">FSW00342</h5>
-                                        <label class="m-0">Nike Air 2</label>
-                                        <span>Shoe</span>
-                                    </div>
-                                </div>
-                                
-                                <div class="supplier-item-card">
-                                    <div class="img"></div>
-                                    <div class="info">
-                                        <h5 class="m-0">FSW00342</h5>
-                                        <label class="m-0">Nike Air 2</label>
-                                        <span>Shoe</span>
-                                    </div>
-                                </div>
                             </div>
                         </div>
 
                         <div class="flex-grow mt-4">
-
-                            <div class="resupplyInputs">
-                                <table id="resupplyFormTable" class="table table-bordered border-dark w-100 text-center align-middle">
-                                    <thead>
-                                        <th colspan="8" class="text-center">
-                                            <h4 class="m-0 quicksand-bold">Black</h4>
-                                        </th>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <th class="text-start">Sizes</th>
-                                            <th>5</th>
-                                            <th>6</th>
-                                            <th>7</th>
-                                            <th>8</th>
-                                            <th>9</th>
-                                            <th>10</th>
-                                            <th>11</th>
-                                        </tr>
-                                        <tr>
-                                            <th class="text-start">Current Qty.</th>
-                                            <td>23<span class="stock-percentage stock-a">15%</span></td>
-                                            <td>23<span class="stock-percentage stock-na">15%</span></td>
-                                            <td>23<span class="stock-percentage stock-l">15%</span></td>
-                                            <td>23<span class="stock-percentage stock-l">15%</span></td>
-                                            <td>23<span class="stock-percentage stock-l">15%</span></td>
-                                            <td>23<span class="stock-percentage stock-a">15%</span></td>
-                                            <td>23<span class="stock-percentage stock-na">15%</span></td>
-                                        </tr>
-                                        <tr>
-                                            <th class="text-start">Resupply Qty.</th>
-                                            <td><input type="number"></td>
-                                            <td><input type="number"></td>
-                                            <td><input type="number"></td>
-                                            <td><input type="number"></td>
-                                            <td><input type="number"></td>
-                                            <td><input type="number"></td>
-                                            <td><input type="number"></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <table id="resupplyFormTable" class="table table-bordered border-dark w-100 text-center align-middle">
-                                    <thead>
-                                        <th colspan="8" class="text-center">
-                                            <h4 class="m-0 quicksand-bold">Black</h4>
-                                        </th>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <th class="text-start">Sizes</th>
-                                            <th>5</th>
-                                            <th>6</th>
-                                            <th>7</th>
-                                            <th>8</th>
-                                            <th>9</th>
-                                            <th>10</th>
-                                            <th>11</th>
-                                        </tr>
-                                        <tr>
-                                            <th class="text-start">Current Qty.</th>
-                                            <td>23<span class="stock-percentage stock-a">15%</span></td>
-                                            <td>23<span class="stock-percentage stock-na">15%</span></td>
-                                            <td>23<span class="stock-percentage stock-l">15%</span></td>
-                                            <td>23<span class="stock-percentage stock-l">15%</span></td>
-                                            <td>23<span class="stock-percentage stock-l">15%</span></td>
-                                            <td>23<span class="stock-percentage stock-a">15%</span></td>
-                                            <td>23<span class="stock-percentage stock-na">15%</span></td>
-                                        </tr>
-                                        <tr>
-                                            <th class="text-start">Resupply Qty.</th>
-                                            <td><input type="number"></td>
-                                            <td><input type="number"></td>
-                                            <td><input type="number"></td>
-                                            <td><input type="number"></td>
-                                            <td><input type="number"></td>
-                                            <td><input type="number"></td>
-                                            <td><input type="number"></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            
+                            <div class="resupplyInputs"></div>
 
                             <div class="d-flex justify-content-end gap-4 mt-3">
                                 <button class="btn btn-dark" type="reset">Cancel</button>
