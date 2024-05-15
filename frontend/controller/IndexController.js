@@ -21,7 +21,7 @@ $("#inventoryBtn").on('click', function(){
     $("#sectionTitle").text("Inventory")
 })
 
-$("#inventoryBtn").dblclick(function() {
+$("#inventoryFormBtn").click(function() {
     setBtnActive("#addProduct", this);
     $("#sectionTitle").text("New Product")
 })
@@ -31,8 +31,8 @@ $("#customerBtn").on('click', function(){
     $("#sectionTitle").text("Customers")
 })
 
-$("#customerBtn").dblclick(function() {
-    setBtnActive("#addCustomer", this);
+$("#customerFormBtn").on('click', function() {
+    setBtnActive("#customer", this);
     $("#sectionTitle").text("Customer Form")
 })
 
@@ -41,7 +41,7 @@ $("#employeesBtn").on('click', function(){
     $("#sectionTitle").text("Employees")
 })
 
-$("#employeesBtn").on('dblclick', function(){
+$("#employeeFormBtn").on('click', function(){
     setBtnActive("#addEmployee", this);
     $("#sectionTitle").text("Employee Form")
 })
@@ -51,7 +51,7 @@ $("#suppliersBtn").on('click', function(){
     $("#sectionTitle").text("Supplier Form")
 })
 
-$("#suppliersBtn").on('dblclick', function(){
+$("#supplierFormBtn").on('click', function(){
     setBtnActive("#supplierForm", this);
     $("#sectionTitle").text("Supplier Form")
 })
@@ -88,20 +88,18 @@ $("#loginBtn").click(()=>{
 
 const hideAllSections = () => {
     $("section").hide();
-    // $(".nav-buttons > button").prop('active', false);
-    $(".nav-buttons > button").addClass('nav-button-inactive')
+    $(".nav-buttons button").addClass('nav-button-inactive')
 }
 
 const setBtnActive = (element, btn) => {
     hideAllSections();
     $(btn).removeClass('nav-button-inactive'); 
     $(btn).addClass('nav-button-active');
-    // $(btn).toggleClass("nav-button-inactive");
     $(element).show();
 }
 
-$("#inventoryBtn").dblclick();
-// $("#customerBtn").click();
+// $("#inventoryBtn").dblclick();
+$("#dashboardBtn").click();
 
 const encode = text =>{
     // for(let i=0; i<10; i++){
@@ -132,3 +130,27 @@ $.ajax(settings).done(function (response) {
     // let profilePic = user.profilePic.replace(/(\r\n|\n|\r)/gm, "")
     $(".user-img").css('background-image', `url(data:image/jpeg;base64,${user.profilePic})`);
 });
+
+let isBtnsDropdowned = false;
+$("#btnsDropdown").click(function(){
+    if(!isBtnsDropdowned){
+        $(".formBtnsDown .body").css({
+            'height': '200px',
+            'opacity': '1',
+        })
+        $(this).find('.down').css('rotate', '180deg')
+        isBtnsDropdowned = true;
+    }else{
+        $(".formBtnsDown .body").css({
+            'height': '0px',
+            'opacity': '0',
+        })
+        $(this).find('.down').css('rotate', '0deg')
+        isBtnsDropdowned = false;
+    }
+})
+
+// $(".notification-pane").hide();
+$("#notificationBtn").click(()=>{
+    $(".notification-pane").toggle();
+})

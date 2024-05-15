@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="assets/index.css">
     <link rel="stylesheet" href="assets/normalize.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+    <link rel= "stylesheet" href= "https://maxst.icons8.com/vue-static/landings/line-awesome/font-awesome-line-awesome/css/all.min.css" >
     
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
@@ -32,6 +32,28 @@
 
             <div class="nav-buttons mt-3">
                 <button id="dashboardBtn" type="button" class="nav-btn-theme"><i class="fa-solid fa-house"></i><h3 class="align-middle">Home</h3></button>
+
+                <div class="formBtnsDown w-100">
+                    <button id="btnsDropdown" class="header">
+                        <i class="fa-regular fa-rectangle-list"></i><h3>Registrations</h3>
+                        <i class="fa-solid fa-angle-down down"></i>
+                    </button>
+                    <div class="body">
+                        <button id="inventoryFormBtn" type="button" class="nav-btn-theme">
+                            <i class="fa-solid fa-box"></i><h3>Inventory Form</h3>
+                        </button>
+                        <button id="employeeFormBtn" type="button" class="nav-btn-theme">
+                            <i class="fa-regular fa-address-card"></i><h3>Employee Form</h3>
+                        </button>
+                        <button id="customerFormBtn" type="button" class="nav-btn-theme">
+                            <i class="fa-solid fa-address-book"></i><h3>Customer Form</h3>
+                        </button>
+                        <button id="supplierFormBtn" type="button" class="nav-btn-theme">
+                            <i class="fa-solid fa-truck-arrow-right"></i><h3>Supplier Form</h3>
+                        </button>
+                    </div>
+                </div>
+
                 <button id="salesBtn" type="button" class="nav-btn-theme"><i class="fa-solid fa-hand-holding-dollar"></i><h3>Sales</h3></button>
                 <button id="inventoryBtn" type="button" class="nav-btn-theme"><i class="fa-solid fa-warehouse"></i><h3>Inventory</h3></button>
                 <button id="customerBtn" type="button" class="nav-btn-theme"><i class="fa-solid fa-users"></i><h3>Customers</h3></button>
@@ -74,9 +96,9 @@
             <!-- Dashboard Section -->
             <section id="dashboard" class="bg-theme text-theme mh-100">
                 <div id="panes" class="flex-grow">
-                    <div class="d-flex flex-grow h-100 gap-3">
+                    <div class="d-flex flex-grow h-100 gap-3 overflow-h">
 
-                        <div class="d-flex flex-column w-100 gap-3">
+                        <div class="d-flex flex-column gap-3">
                             <div class="dashboard-total-panes">
                                 <div class="pane pane-totals">
                                     <i class="fa-solid fa-hand-holding-dollar"></i>
@@ -113,14 +135,69 @@
                                 <div class="pane bar-pane d-flex flex-column h-100">
                                         <canvas id="salesWeeklyBarChart" class="w-100 h-100"></canvas>
                                 </div>
-                                <div class="pane pie-pane">
-                                    <div class="text-center">Weekly Sales</div>
-                                    <canvas id="stockPieChart"></canvas>
+                                <div class="pane pie-pane flex-grow">
+                                    <canvas id="lineChart" class="w-100 h-100"></canvas>
                                 </div>
                             </div>
 
-                            <div class="pane flex-grow">
-                                Most sold items in rank
+                            <div class="flex-grow p-0 d-flex gap-3">
+                                <div class="most-sold-items">
+                                    <div class="most-sold-item">
+                                        <div class="img" style="background-image: url(assets/imgs/shoe1.png);"></div>
+                                        <div class="body">
+                                            <h6>FSM03456</h6>
+                                            <label>Nike Air 2</label>
+                                            <label>Sold 15</label>
+                                        </div>
+                                        <span>1</span>
+                                    </div>
+                                    <div class="most-sold-item">
+                                        <div class="img" style="background-image: url(assets/imgs/shoe1.png);"></div>
+                                        <div class="body">
+                                            <h6>FSM03456</h6>
+                                            <label>Nike Air 2</label>
+                                            <label>Sold 15</label>
+                                        </div>
+                                        <span>2</span>
+                                    </div>
+                                    <div class="most-sold-item">
+                                        <div class="img" style="background-image: url(assets/imgs/shoe1.png);"></div>
+                                        <div class="body">
+                                            <h6>FSM03456</h6>
+                                            <label>Nike Air 2</label>
+                                            <label>Sold 15</label>
+                                        </div>
+                                        <span>3</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex-grow shortcutMenu">
+                                    <button type="button" class="shortcutBtn">
+                                        Inventory Form
+                                        <img src="assets/icons/inventory-form.png" alt="">
+                                    </button>
+                                    <button type="button" class="shortcutBtn">
+                                        Employee Form
+                                        <img src="assets/icons/employee-form.png" alt="">
+                                    </button>
+                                    <button type="button" class="shortcutBtn">
+                                        Customer Form
+                                        <img src="assets/icons/customer-form.png" alt="">
+                                    </button>
+                                    <button type="button" class="shortcutBtn">
+                                        Supplier Form
+                                        <img src="assets/icons/supplier-form.png" alt="">
+                                    </button>
+                                    <button type="button" class="shortcutBtn">
+                                        Customer Form
+                                        <img src="assets/icons/customer-form.png" alt="">
+                                    </button>
+                                    <button type="button" class="shortcutBtn">
+                                        Profile
+                                        <img src="assets/icons/profile.png" alt="">
+                                    </button>
+                                </div>
+
                             </div>
                         </div>
 
@@ -149,9 +226,39 @@
                                 <!-- </div> -->
                             </div>
                             <div class="pane flex-grow">
-                                <!-- <div class="col pane"> -->
-                                    Notifications
-                                <!-- </div> -->
+                                <h4 class="text-center">Notifications</h4>
+                                <div class="notifications px-1">
+
+                                    <div class="notification">
+                                        <i class="fa-solid fa-triangle-exclamation notifi-danger"></i>
+                                        <div class="body">
+                                            <h6>Item FSM03456 color Black SIZE_5 stock low!</h6>
+                                            <span>Sunday, 6:15 p.m.</span>
+                                        </div>
+                                    </div>
+                                    <div class="notification">
+                                        <i class="fa-solid fa-info notifi-info"></i>
+                                        <div class="body">
+                                            <h6>Restocked item FSW02344.</h6>
+                                            <span>Sunday, 6:15 p.m.</span>
+                                        </div>
+                                    </div>
+                                    <div class="notification">
+                                        <i class="fa-solid fa-info notifi-info"></i>
+                                        <div class="body">
+                                            <h6>Refunded 2 items.</h6>
+                                            <span>Sunday, 6:15 p.m.</span>
+                                        </div>
+                                    </div>
+                                    <div class="notification">
+                                        <i class="fa-solid fa-thumbs-up notifi-success"></i>
+                                        <div class="body">
+                                            <h6>Item FSM03456 color Black SIZE_5 stock low!</h6>
+                                            <span>Sunday, 6:15 p.m.</span>
+                                        </div>
+                                    </div>
+
+                                </div>
                             </div>
                         </div>
 
@@ -1477,6 +1584,66 @@
         <!-- <div id="sidePane" class="col-2 bg-theme m-0">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto quis impedit, ipsum magni nulla accusamus at placeat dicta laborum atque rem tenetur, alias minima sed nesciunt reiciendis eveniet beatae quibusdam. Itaque placeat eaque ad odio quos modi tenetur, quod ipsa. Eius necessitatibus quibusdam cupiditate esse magnam earum perspiciatis voluptates ex ullam pariatur expedita quod aut, illo fugit explicabo optio reiciendis non ipsam vel? Earum dolores pariatur nemo quaerat animi saepe voluptates ullam enim explicabo illum reiciendis ex veritatis ratione, eveniet aliquam repellat quo fugit officiis odit cupiditate nisi! Ab tempore obcaecati amet dolores vero perspiciatis officia quo aperiam consectetur ad!
         </div> -->
+        <div class="notification-pane">
+            <div class="notifications">
+                <div class="notification">
+                    <i class="fa-solid fa-triangle-exclamation notifi-danger"></i>
+                    <div class="body">
+                        <h6>Item FSM03456 color Black SIZE_5 stock low!</h6>
+                        <span>Sunday, 6:15 p.m.</span>
+                    </div>
+                </div>
+                <div class="notification">
+                    <i class="fa-solid fa-info notifi-info"></i>
+                    <div class="body">
+                        <h6>Restocked item FSW02344.</h6>
+                        <span>Sunday, 6:15 p.m.</span>
+                    </div>
+                </div>
+                <div class="notification">
+                    <i class="fa-solid fa-info notifi-info"></i>
+                    <div class="body">
+                        <h6>Refunded 2 items.</h6>
+                        <span>Sunday, 6:15 p.m.</span>
+                    </div>
+                </div>
+                <div class="notification">
+                    <i class="fa-solid fa-thumbs-up notifi-success"></i>
+                    <div class="body">
+                        <h6>Item FSM03456 color Black SIZE_5 stock low!</h6>
+                        <span>Sunday, 6:15 p.m.</span>
+                    </div>
+                </div>
+                <div class="notification">
+                    <i class="fa-solid fa-triangle-exclamation notifi-danger"></i>
+                    <div class="body">
+                        <h6>Item FSM03456 color Black SIZE_5 stock low!</h6>
+                        <span>Sunday, 6:15 p.m.</span>
+                    </div>
+                </div>
+                <div class="notification">
+                    <i class="fa-solid fa-info notifi-info"></i>
+                    <div class="body">
+                        <h6>Restocked item FSW02344.</h6>
+                        <span>Sunday, 6:15 p.m.</span>
+                    </div>
+                </div>
+                <div class="notification">
+                    <i class="fa-solid fa-info notifi-info"></i>
+                    <div class="body">
+                        <h6>Refunded 2 items.</h6>
+                        <span>Sunday, 6:15 p.m.</span>
+                    </div>
+                </div>
+                <div class="notification">
+                    <i class="fa-solid fa-thumbs-up notifi-success"></i>
+                    <div class="body">
+                        <h6>Item FSM03456 color Black SIZE_5 stock low!</h6>
+                        <span>Sunday, 6:15 p.m.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
     
     </main>
 
