@@ -11,7 +11,7 @@ $("#salesBtn").on('click', function(){
     $("#sectionTitle").text("New Purchase")
 })
 
-$("#salesBtn").dblclick(function() {
+$("#salesHistoryBtn").click(function() {
     setBtnActive("#salesHistory", this);
     $("#sectionTitle").text("Sales History")
 })
@@ -99,7 +99,7 @@ const setBtnActive = (element, btn) => {
 }
 
 // $("#inventoryBtn").dblclick();
-$("#salesBtn").click();
+$("#inventoryBtn").click();
 
 const encode = text =>{
     // for(let i=0; i<10; i++){

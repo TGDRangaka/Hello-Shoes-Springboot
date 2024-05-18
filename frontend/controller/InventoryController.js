@@ -38,8 +38,21 @@ const getAllItems = ()=>{
 
 const loadItemTable = (allItems) => {
 
+    // if have a sort value
+    if($("#inventorySort").val() !== 'NONE'){
+        sortItems();
+    }
+
     $("#inventoryItems").empty();
+    let rowIndex = 0;
     allItems.map((item, i) => {
+
+        // if have filter values
+        if(!isInSelectedCategory(item)) return;
+        if(!isInSelectedGender(item)) return;
+        if(!isInSelectedOccasion(item)) return;
+        if(!isInSelectedSupplier(item)) return;
+        if(!isInSearchedKeyword(item)) return;
 
         let category = item.category;
         let colors = [];
@@ -130,7 +143,7 @@ const loadItemTable = (allItems) => {
         let header = `
         <div class="row align-items-center">
             <div class="col-1 d-flex justify-content-center align-items-center gap-3">
-                <span class="">${i+1}</span>
+                <span class="">${++rowIndex}</span>
                 <img src="${img}" class="img-fluid table-img" alt="">
             </div>
             <div class="col">${item.description}</div>
@@ -159,38 +172,38 @@ const loadItemTable = (allItems) => {
                     </div>
                     <div class="col row">
                         <div class="input col-12">
-                            <label class="label">Product Name</label>
-                            <h4>Nike Air 2</h4>
+                            <label class="label">Description</label>
+                            <h4>${item.description}</h4>
                         </div>
 
                         <div class="input col-4">
-                            <label class="label">Product ID</label>
-                            <h4>FSW00045</h4>
+                            <label class="label">Item Code</label>
+                            <h4>${item.itemCode}</h4>
                         </div>
                         <div class="input col-4">
                             <label class="label">Category</label>
-                            <h4>Shoe</h4>
+                            <h4>${getCategory(item.category)}</h4>
                         </div>
                         <div class="input col-4">
                             <label class="label">Supplier</label>
-                            <h4>Nike</h4>
+                            <h4>${item.supplierName}</h4>
                         </div>
 
                         <div class="input col-3">
                             <label class="label">Sale Price</label>
-                            <h4>Rs.2000</h4>
+                            <h4>Rs.${item.unitPriceSale}</h4>
                         </div>
                         <div class="input col-3">
                             <label class="label">Buy Price</label>
-                            <h4>Rs.1800</h4>
+                            <h4>Rs.${item.unitPriceBuy}</h4>
                         </div>
                         <div class="input col-3">
                             <label class="label">Profit Margin</label>
-                            <h4>10%</h4>
+                            <h4>${item.profitMargin}%</h4>
                         </div>
                         <div class="input col-3">
                             <label class="label">Expected Profit</label>
-                            <h4>Rs.200</h4>
+                            <h4>Rs.${item.expectedProfit}</h4>
                         </div>
                         ${category === 'ACC' ? accessoriesData : ''}
                     </div>
@@ -740,3 +753,76 @@ const checkImage = (img, colorName) =>{
     }
     return true;
 }
+
+// sorting
+$("#inventorySort").on('change', function(){
+    loadItemTable(allItems);
+});
+
+const sortItems = () => {
+    let sortValue = $("#inventorySort").val();
+
+    if(sortValue === 'A-Z'){
+        allItems.sort((a, b) => a.description.localeCompare(b.description));
+    }else if(sortValue === 'Z-A'){
+        allItems.sort((a, b) => b.description.localeCompare(a.description));
+    }else if(sortValue === 'LOW-HIGH'){
+        allItems.sort((a, b) => a.unitPriceSale - b.unitPriceSale);
+    }else if(sortValue === 'HIGH-LOW'){
+        allItems.sort((a, b) => b.unitPriceSale - a.unitPriceSale);
+    }
+}
+
+// filters
+
+$("#inventory select").on('change', function(){
+    loadItemTable(allItems);
+});
+const isInSelectedCategory = (item) => {
+    let category = $("#inventoryCateforyFilter").val();
+    if(category === 'ALL' || category === item.category){
+        return true;
+    }else{
+        return false;
+    }
+}
+
+const isInSelectedGender = (item) => {
+    let gender = $("#inventoryGenderFilter").val();
+    let letter = item.itemCode.split('').reverse().join('').charAt(5)
+    if(gender === 'ALL' || gender === letter && item.category !== 'ACC'){
+        return true;
+    }else{
+        return false;
+    }
+}
+
+const isInSelectedOccasion = (item) => {
+    let occasion = $("#inventoryOccasionFilter").val();
+    if(occasion === 'ALL' || occasion === item.itemCode.charAt(0) && item.category !== 'ACC'){
+        return true;
+    }else{
+        return false;
+    }
+}
+
+const isInSelectedSupplier = (item) => {
+    let supplier = $("#inventorySupplierFilter").val();
+    if(supplier === 'ALL' || supplier === item.supplierName){
+        return true;
+    }else{
+        return false;
+    }
+}
+
+const isInSearchedKeyword = (item) => {
+    let keyword = $("#inventorySearch").val();
+    if(keyword === '' || item.description.toLowerCase().includes(keyword.toLowerCase())){
+        return true;
+    }else{
+        return false;
+    }
+}
+$("#inventorySearchBtn").click(()=> {
+    loadItemTable(allItems);
+})

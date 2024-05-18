@@ -69,9 +69,11 @@
                     </div>
                 </div>
 
-                <button id="salesBtn" type="button" class="nav-btn-theme"><i
-                        class="fa-solid fa-hand-holding-dollar"></i>
+                <button id="salesBtn" type="button" class="nav-btn-theme"><i class="fa-solid fa-hand-holding-dollar"></i>
                     <h3>Sales</h3>
+                </button>
+                <button id="salesHistoryBtn" type="button" class="nav-btn-theme"><i class="fa-solid fa-clock-rotate-left"></i>
+                    <h3>Sales History</h3>
                 </button>
                 <button id="inventoryBtn" type="button" class="nav-btn-theme"><i class="fa-solid fa-warehouse"></i>
                     <h3>Inventory</h3>
@@ -321,29 +323,7 @@
                         </div>
                     </div>
                     <hr>
-                    <div class="row mt-4">
-                        <!-- <h3 class="">Items</h3>
-
-                        <div class="container">
-                            <div class="row mb-3 p-0">
-                                <div class="input col-6">
-                                    <label for="saleItemCode" class="import label" >Item Code</label>
-                                    <input type="text" id="saleItemCode" placeholder="Type to search..." autocomplete="off">
-                                
-                                    <div id="suggest-items-list" class="w-100 suggest-items-list"></div>
-                                </div>
-                
-                                <div class="input col-3">
-                                    <label for="itemsQty" class="import label">Qty</label>
-                                    <input type="number" id="itemsQty" value="1">
-                                </div>
-
-                                <div class="input col-3">
-                                    <label class="hidden label">NULL</label>
-                                    <button id="addSuggestItemBtn" type="button" class="btn btn-primary pb-1">Add</button>
-                                </div>
-                            </div> -->
-
+                    <div class="row mt-4 bg-white py-2 rounded">
                         <div class="w-100">
                             <div class="input-group search">
                                 <input id="saleItemCode" type="text" class="form-control" placeholder="Item Code">
@@ -351,22 +331,6 @@
                                     id="button-addon2">Search</button>
                             </div>
                             <div class="choosItems">
-                                <div class="chooseItemCard">
-                                    <div class="img"></div>
-                                    <div class="body p-1 gap-2 flex-grow d-flex flex-column">
-                                        <h4>FSM34564</h4>
-                                        <label class="flex-grow">Nike Air 23423423234</label>
-                                        <h3>Rs.2500</h3>
-                                    </div>
-                                </div>
-                                <div class="chooseItemCard">
-                                    <div class="img"></div>
-                                    <div class="body p-1 gap-2 flex-grow d-flex flex-column">
-                                        <h4>FSM34564</h4>
-                                        <label class="flex-grow">Nike Air 23423423234</label>
-                                        <h3>Rs.2500</h3>
-                                    </div>
-                                </div>
                                 <div class="chooseItemCard">
                                     <div class="img"></div>
                                     <div class="body p-1 gap-2 flex-grow d-flex flex-column">
@@ -623,12 +587,12 @@
 
                 <header class="mb-3 rounded row">
                     <div class="input-group search col">
-                        <input type="text" class="form-control" placeholder="Item Code">
-                        <button class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
+                        <input id="inventorySearch" type="text" class="form-control" placeholder="Item Code">
+                        <button class="btn btn-outline-secondary" type="button" id="inventorySearchBtn">Search</button>
                     </div>
-                    <div class="col-2">
+                    <div class="col-1">
                         <label class="label">Category</label>
-                        <select class="form-select" aria-label="Default select example">
+                        <select id="inventoryCateforyFilter" class="form-select" aria-label="Default select example">
                             <option value="ALL" selected>All</option>
                             <option value="H">Heel</option>
                             <option value="F">Flats</option>
@@ -637,15 +601,48 @@
                             <option value="SD">Sandals</option>
                             <option value="S">Shoes</option>
                             <option value="SL">Slippers</option>
+                            <option value="ACC">Accessories</option>
+                        </select>
+                    </div>
+                    <div class="col-1">
+                        <label class="label">Gender</label>
+                        <select id="inventoryGenderFilter" class="form-select" aria-label="Default select example">
+                            <option value="ALL" selected>All</option>
+                            <option value="M">Men</option>
+                            <option value="W">Women</option>
+                        </select>
+                    </div>
+                    <div class="col-1">
+                        <label class="label">Occasion</label>
+                        <select id="inventoryOccasionFilter" class="form-select" aria-label="Default select example">
+                            <option value="ALL" selected>All</option>
+                            <option value="F">Formal</option>
+                            <option value="C">Casual</option>
+                            <option value="I">Industrial</option>
+                            <option value="S">Sport</option>
+                        </select>
+                    </div>
+                    <div class="col-1">
+                        <label class="label">Sory By</label>
+                        <select id="inventorySort" class="form-select" aria-label="Default select example">
+                            <option value="NONE" selected>None</option>
+                            <option value="A-Z">Name: A-Z</option>
+                            <option value="Z-A">Name: Z-A</option>
+                            <option value="LOW-HIGH">Price: Low-High</option>
+                            <option value="HIGH-LOW">Price: High-Low</option>
+                            <!-- <option value="MAN">Men</option>
+                            <option value="WOMEN">Women</option>
+                            <option value="FORMAL">Formal</option>
+                            <option value="CASUAL">Casual</option> -->
                         </select>
                     </div>
                     <div class="col-2">
                         <label class="label">Brand</label>
-                        <select class="form-select" aria-label="Default select example">
-                            <option value="ALL" selected>All Brands</option>
+                        <select id="inventorySupplierFilter" class="form-select" aria-label="Default select example">
+                            <option value="ALL" selected>All Suppliers</option>
                             <optgroup label="International Brands">
                                 <option value="International">All International</option>
-                                <option value="Nike">Nike</option>
+                                <option value="NIKE">Nike</option>
                                 <option value="Adidas">Adidas</option>
                                 <option value="Puma">Puma</option>
                                 <option value="Converse">Converse</option>
@@ -679,20 +676,6 @@
                                 <option value="Stoneridge">Stoneridge</option>
                                 <option value="UL Wickramasinghe & Company">UL Wickramasinghe & Company</option>
                             </optgroup>
-                        </select>
-                    </div>
-                    <div class="col-2">
-                        <label class="label">Sory By</label>
-                        <select class="form-select" aria-label="Default select example">
-                            <option value="NONE" selected>None</option>
-                            <option value="A-Z">Name: A-Z</option>
-                            <option value="Z-A">Name: Z-A</option>
-                            <option value="LOW-HIGH">Price: Low-High</option>
-                            <option value="HIGH-LOW">Price: High-Low</option>
-                            <option value="MAN">Men</option>
-                            <option value="WOMEN">Women</option>
-                            <option value="FORMAL">Formal</option>
-                            <option value="CASUAL">Casual</option>
                         </select>
                     </div>
                     <div class="col-2">

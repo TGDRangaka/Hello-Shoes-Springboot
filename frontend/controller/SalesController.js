@@ -18,6 +18,9 @@ let selectedItemByColors = [];
 $("#salesBtn").click(function () {
     getAllItems();
     getAllCustomers();
+})
+
+$("#salesHistoryBtn").click(()=> {
     getSoldItems();
 })
 
