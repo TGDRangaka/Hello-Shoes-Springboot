@@ -99,7 +99,7 @@ const setBtnActive = (element, btn) => {
 }
 
 // $("#inventoryBtn").dblclick();
-$("#dashboardBtn").click();
+$("#salesBtn").click();
 
 const encode = text =>{
     // for(let i=0; i<10; i++){
@@ -116,7 +116,7 @@ const settings = {
         "Content-Type": "application/json"
     },
     "data": JSON.stringify({
-        "email": encode("dilshan@gmail.com"),
+        "email": encode("rangaka@gmail.com"),
         "password": encode("dilshan1234")
     }),
 };

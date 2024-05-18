@@ -1,5 +1,6 @@
-import {token} from '../db/data.js';
-import {Sale} from '../model/Sale.js';
+import { token } from '../db/data.js';
+import { Sale } from '../model/Sale.js';
+import { setAsInvalid, setAsValid, clearValidations } from '../util/UtilMatter.js';
 
 $("#paymentPanel").hide();
 let isPaymentPanelOpened = false;
@@ -9,47 +10,47 @@ let allCustomers = [];
 let selectedItems = [];
 let allSoldItems = [];
 let subTotal = 0;
+let isSelectSaleItemPaneOpened = false;
+let selectedItemId = null;
+let selectedItemByColors = [];
 
 // on section load
-$("#salesBtn").click(function(){
+$("#salesBtn").click(function () {
     getAllItems();
     getAllCustomers();
     getSoldItems();
 })
 
 // api
-const getAllItems = ()=>{
+const getAllItems = () => {
     var settings = {
-        "url": "http://localhost:8080/api/v1/inventory/available",
+        "url": "http://localhost:8080/api/v1/item",
         "method": "GET",
         "timeout": 0,
         "headers": {
-          "Authorization": "Bearer " + token
+            "Authorization": "Bearer " + token
         },
-      };
-      
-      $.ajax(settings).done(function (response) {
+    };
+
+    $.ajax(settings).done(function (response) {
         inventoryItems = response;
-        inventoryItems.map(item => {
-            let img = new Image();
-            img.src = item.itemImage.image
-            item.itemImage = img;
-        })
-      });
+        $(".choosItems").empty();
+        inventoryItems.map(item => addSuggestItemToList(item));
+    });
 }
 
 // api
-const getAllCustomers = ()=>{
+const getAllCustomers = () => {
     var settings = {
         "url": "http://localhost:8080/api/v1/customer",
         "method": "GET",
         "timeout": 0,
         "headers": {
-          "Authorization": "Bearer " + token
+            "Authorization": "Bearer " + token
         },
-      };
-      
-      $.ajax(settings).done(function (response) {
+    };
+
+    $.ajax(settings).done(function (response) {
         console.log(response);
         allCustomers = response;
         $("#customerDataList").empty();
@@ -58,20 +59,20 @@ const getAllCustomers = ()=>{
                 <option value="${customer.name}">${customer.email}</option>
             `)
         })
-      });
+    });
 }
 
 // payment api call
-$("#salePayBtn, #saleConfirmBtn").click(()=>{
+$("#salePayBtn, #saleConfirmBtn").click(() => {
     let sale = new Sale(
         "", subTotal, paymentMethod.toUpperCase(),
         subTotal >= 800 ? 1 : 0, null,
-        {name: $("#saleCustomerName").val(), email: $("#saleCustomerEmail").val()},
+        { name: $("#saleCustomerName").val(), email: $("#saleCustomerEmail").val() },
         []
     )
     selectedItems.map(item => {
         sale.saleItems.push({
-            saleItemId: {item: {inventoryCode: item.inventoryCode}},
+            saleItemId: { item: { inventoryCode: item.inventoryCode } },
             qty: item.qty,
             unitPrice: item.item.unitPriceSale
         });
@@ -82,15 +83,15 @@ $("#salePayBtn, #saleConfirmBtn").click(()=>{
         "method": "POST",
         "timeout": 0,
         "headers": {
-          "Authorization": "Bearer " + token,
-          "Content-Type": "application/json"
+            "Authorization": "Bearer " + token,
+            "Content-Type": "application/json"
         },
         "data": JSON.stringify(sale)
     };
 
-    $.ajax(settings).done(function (response){
+    $.ajax(settings).done(function (response) {
         console.log(response);
-    }).fail((error)=>{
+    }).fail((error) => {
         console.log(error);
     })
 
@@ -102,15 +103,15 @@ const getSoldItems = () => {
         "method": "GET",
         "timeout": 0,
         "headers": {
-          "Authorization": "Bearer " + token
+            "Authorization": "Bearer " + token
         },
-      };
-      
-      $.ajax(settings).done(function (response) {
+    };
+
+    $.ajax(settings).done(function (response) {
         console.log(response);
         allSoldItems = response;
         loadSoldItemsTable(allSoldItems);
-      });
+    });
 }
 
 const loadSoldItemsTable = (soldItems) => {
@@ -121,7 +122,7 @@ const loadSoldItemsTable = (soldItems) => {
         sale.saleItems.map((saleItem, i) => {
             saleItemsRows += `
                 <tr class="align-middle">
-                    <td class="text-center">${i+1}</td>
+                    <td class="text-center">${i + 1}</td>
                     <td>${saleItem.saleItemId.item.inventoryCode}</td>
                     <td>${saleItem.unitPrice}</td>
                     <td class="text-center">${saleItem.qty}</td>
@@ -138,7 +139,7 @@ const loadSoldItemsTable = (soldItems) => {
                 
                 <div class="sale-accordion container-fluid w-100">
                     <div class="row">
-                        <label class="col-1">${i+1}</label>
+                        <label class="col-1">${i + 1}</label>
                         <label class="col-2">${sale.orderDate}</label>
                         <label class="col-2">${sale.paymentMethod}</label>
                         <label class="col-2">${sale.totalPrice}</label>
@@ -171,16 +172,16 @@ const loadSoldItemsTable = (soldItems) => {
     })
 }
 
-$("#payBtn").on("click", ()=>{
+$("#payBtn").on("click", () => {
     paymentMethod = $('input[name="paymentMethod"]:checked').val();
-    if(paymentMethod !== 'card' && !isPaymentPanelOpened) return;
-    if(!isPaymentPanelOpened){
+    if (paymentMethod !== 'card' && !isPaymentPanelOpened) return;
+    if (!isPaymentPanelOpened) {
         $("#cardPaymentPopup").css("display", "flex");
         isPaymentPanelOpened = true;
     }
 })
 
-$("#cardPayment, #cashPayment").on("click", ()=>{
+$("#cardPayment, #cashPayment").on("click", () => {
     paymentMethod = $('input[name="paymentMethod"]:checked').val();
     if (paymentMethod === "cash") {
         $("#cashAndBalance").show();
@@ -190,107 +191,111 @@ $("#cardPayment, #cashPayment").on("click", ()=>{
     }
 });
 
-$("#saleConfirmBtn").on("click", ()=> {
+$("#saleConfirmBtn").on("click", () => {
     isPaymentPanelOpened && $("#cardPaymentPopup").css("display", "none");
     isPaymentPanelOpened = false;
 })
 
-$("#saleItemsDetails").on('change', '#saleCustomerName', function(){
+$("#saleItemsDetails").on('change', '#saleCustomerName', function () {
     let input = $(this).val();
     console.log(input);
     allCustomers.filter(customer => {
-        if(customer.name === input){
+        if (customer.name === input) {
             $("#saleCustomerEmail").val(customer.email);
         }
     })
 })
 
 
-$("#saleItemCode").on('input',function(){
+$("#saleItemCode").on('input', function () {
     let input = $(this).val().toUpperCase();
-        $("#suggest-items-list").empty();
-    if(input.length > 1){
-        $("#suggest-items-list").show();
-
+    $(".choosItems").empty();
+    if (input.length > 1) {
         inventoryItems.map(item => {
-            (item.item.itemCode.indexOf(input) >= 0) && addSuggestItemToList(item);
+            (item.itemCode.indexOf(input) >= 0) && addSuggestItemToList(item);
         })
-
-    }else{
-        $("#suggest-items-list").hide();
     }
 })
 
-$("#saleCash").on('input', function() {
+$("#saleCash").on('input', function () {
     let cash = parseFloat($(this).val());
     $("#saleCashBalance").text("Rs." + parseFloat(cash - subTotal));
 })
 
 const addSuggestItemToList = (item) => {
-    $("#suggest-items-list").append(`
-    <div id=${item.inventoryCode} class="suggest-item-card d-flex justify-content-between align-items-center">
-        <div class="d-flex h-100 gap-3">
-            <img src="${item.itemImage.src}" alt="shoe" class="h-100">
-            <div class="d-flex flex-column justify-content-center quicksand-thin">
-                <h5 class="quicksand-bold m-0">${item.item.itemCode}</h5>
-                <label>C: ${item.colors}</label>
-                <label>S: ${item.size}</label>
-            </div>
-        </div>
-        <div class="h-100 d-flex flex-column align-items-end justify-content-center quicksand-thin">
-            <h5>Rs.${item.item.unitPriceSale}</h5>
-            <label>Stock: ${item.currentQty}</label>
+    $(".choosItems").append(`
+    <div id=${item.itemCode} class="chooseItemCard">
+        <div class="img" style="background-image: url(${item.inventoryItems[0].itemImage.image})"></div>
+        <div class="body p-1 gap-2 flex-grow d-flex flex-column">
+            <h4>${item.itemCode}</h4>
+            <label class="flex-grow">${item.description}</label>
+            <h3>Rs.${item.unitPriceSale}</h3>
         </div>
     </div>
     `)
 }
 
-$("#suggest-items-list").on("click", ".suggest-item-card", function(){
-    let selectedItemId = $(this).attr('id')
-    $("#suggest-items-list").empty();
-    $("#suggest-items-list").hide();
-    $("#saleItemCode").val(selectedItemId)
+$(".choosItems").on("click", ".chooseItemCard", function () {
+    selectedItemId = $(this).attr('id')
+    // 
+    selectedItemByColors = getItemByColors(selectedItemId);
+    $("#selectSize").empty();
+    $("#selectSize").append('<option value="" selected>Select</option>');
+    $("#saleItemStock").html(0);
+    $("#selectColor").empty();
+    $("#selectColor").append('<option value="" selected>Select color</option>');
+    selectedItemByColors.forEach(color => {
+        $("#selectColor").append(`<option value="${color.color}">${color.color}</option>`)
+    })
+    $("#selectSaleItemPane").show();
 })
 
-$("#addSuggestItemBtn").click(()=> {
-    let itemCode = $("#saleItemCode").val();
-    let itemsQty = parseInt($("#itemsQty").val());
-    // if(!itemCode || !itemsQty || itemsQty <= 0) return;
-
-    inventoryItems.filter(item => {
-        if(item.inventoryCode === itemCode) {
-            selectedItems.push({...item, qty: itemsQty});
-            $("#saleItemCode").val("");
-            $("#itemsQty").val(1);
+$("#selectSaleItemPane .body").on('change', '#selectColor', function () {
+    let selectedColor = $(this).val();
+    selectedItemByColors.map(color => {
+        if (color.color === selectedColor) {
+            $("#selectSize").empty();
+            $("#selectSize").append('<option value="" selected>Select</option>');
+            $("#saleItemStock").html(0);
+            color.items.map(itm => {
+                $("#selectSize").append(`<option value="${itm.size}">${itm.size.substring(5)}</option>`)
+            })
         }
-    });
+    })
+});
 
-    loadTable();
-})
+$("#selectSaleItemPane .body").on('change', '#selectSize', function () {
+    let selectedSize = $('#selectSize').val();
+    selectedItemByColors.filter(color => {
+        if (color.color === $('#selectColor').val()) {
+            color.items.map(itm => {
+                if (itm.size === selectedSize) {
+                    $("#saleItemStock").html(itm.currentQty);
+                }
+            })
+        }
+    })
+});
 
 // load table
 const loadTable = () => {
     subTotal = 0;
-    $("#saleItemTableBody").empty();
+    $(".saleItems").empty();
     selectedItems.map((item, i) => {
-        $("#saleItemTableBody").append(`
-            <tr id="${item.inventoryCode}Tr" class="align-middle">
-                <td>
-                    <div class="table-img">
-                        <img src="${item.itemImage.src}" alt="shoe">
+        $(".saleItems").append(`
+            <div class="saleItemCard">
+                <div class="img" style="background-image: url(${item.itemImage.image})"></div>
+                <div class="body flex-grow">
+                    <h6 class="m-0 quicksand-bold">${item.inventoryCode}</h6>
+                    <label class="flex-grow mb-1 label p-0">${item.item.description}</label>
+                    <div class="qtyPrices">
+                        <span class="me-3">${item.item.unitPriceSale}</span>
+                        <span class="flex-grow">x${item.qty}</span>
+                        <span class="quicksand-bold">Rs.${item.item.unitPriceSale * item.qty}</span>
                     </div>
-                </td>
-                <td>
-                    <div class="">
-                        <label class="quicksand-bold m-0 d-block">${item.item.description}</label>
-                        <label class="label">${item.inventoryCode}</label>
-                    </div>
-                </td>
-                <td>${item.item.unitPriceSale}</td>
-                <td>${item.qty}</td>
-                <td>${item.item.unitPriceSale * item.qty}</td>
-                <td class="text-center"><i data-index="${i}" class="fa-solid fa-trash col-1 text-center"></i></td>
-            </tr>
+                    <i data-index="${i}" class="fa-solid fa-trash"></i>
+                </div>
+            </div>
         `)
         subTotal += item.item.unitPriceSale * item.qty;
         $("#saleSubTotal").text(subTotal.toFixed(2));
@@ -298,8 +303,69 @@ const loadTable = () => {
 }
 
 // remove row by deleting
-$("#saleItemTableBody").on('click', 'i', function(){
+$(".saleItems").on('click', 'i', function () {
     let index = $(this).data('index');
     selectedItems.splice(index, 1);
     loadTable();
 })
+
+$("#selectSaleItemPane").hide();
+$("#selectSaleItemPane button:first-child").click(() => {
+    $("#selectSaleItemPane").hide();
+})
+
+$("#selectSaleItemPane button:nth-child(2)").click(() => {
+
+    // validations
+    let isOk = itemSelectingValidations();
+    if (isOk) {
+        clearValidations("#selectSaleItemPane form")
+        let itemCode = selectedItemId + '_' + $("#selectSize").val() + '_' + $("#selectColor").val();
+        let itemsQty = parseInt($("#saleItemQty").val());
+        console.log(itemCode, itemsQty);
+
+        let item = inventoryItems.find(item => item.itemCode === selectedItemId);
+        let inventoryItem = item.inventoryItems.find(item => item.inventoryCode === itemCode);
+
+        let index = selectedItems.findIndex(item => item.inventoryCode === itemCode);
+        if (index >= 0) {
+            selectedItems[index].qty += itemsQty;
+        } else {
+            selectedItems.push({ ...inventoryItem, qty: itemsQty, item: item });
+        }
+        console.log(selectedItems);
+        loadTable();
+    }
+
+
+})
+
+// filter item by colors
+const getItemByColors = selectedItemCode => {
+    let item = inventoryItems.find(item => item.itemCode === selectedItemCode);
+
+    let colors = []
+    item.inventoryItems.map(inv => colors.push(inv.colors))
+    colors = [...new Set(colors)];
+    let colorItems = []
+    colors.map(color => {
+        colorItems.push({
+            color: color,
+            items: item.inventoryItems.filter(item => item.colors === color)
+        })
+    })
+
+    return colorItems;
+}
+
+// check validations
+const itemSelectingValidations = () => {
+    return ($("#selectColor").val() ? setAsValid("#selectColor", "Color Selected") : setAsInvalid("#selectColor", "Select a Color"))
+        &
+        ($("#selectSize").val() ? setAsValid("#selectSize", "Size Selected") : setAsInvalid("#selectSize", "Select a Size"))
+        &
+        (
+            ($("#saleItemQty").val() > 0 && ($("#saleItemQty").val() < parseInt($("#saleItemStock").html())))
+                ? setAsValid("#saleItemQty", "Looks Good!") : setAsInvalid("#saleItemQty", "Please select valid quantity")
+        );
+}
