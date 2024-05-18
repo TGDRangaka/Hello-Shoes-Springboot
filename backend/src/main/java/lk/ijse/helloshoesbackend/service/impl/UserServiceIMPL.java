@@ -2,6 +2,7 @@ package lk.ijse.helloshoesbackend.service.impl;
 
 import lk.ijse.helloshoesbackend.dto.UserDTO;
 import lk.ijse.helloshoesbackend.entity.UserEntity;
+import lk.ijse.helloshoesbackend.repo.EmployeeRepo;
 import lk.ijse.helloshoesbackend.repo.UserRepo;
 import lk.ijse.helloshoesbackend.service.UserService;
 import lombok.RequiredArgsConstructor;

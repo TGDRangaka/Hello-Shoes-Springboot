@@ -11,6 +11,7 @@ import lk.ijse.helloshoesbackend.reqAndResp.response.JwtAuthResponse;
 import lk.ijse.helloshoesbackend.service.AuthenticationService;
 import lk.ijse.helloshoesbackend.util.UtilMatter;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.Errors;
@@ -26,6 +27,7 @@ import java.util.Date;
 @RequestMapping("/api/v1/auth")
 @RequiredArgsConstructor
 @CrossOrigin
+@Slf4j
 public class UserAPI {
 
     private final AuthenticationBO authenticationBO;
@@ -38,6 +40,7 @@ public class UserAPI {
 //    SignIn
     @PutMapping
     public ResponseEntity signIn(@RequestBody SignIn signIn){
+        log.info("User sign in by email: " + signIn.getEmail());
         try{
             return ResponseEntity.accepted().body(authenticationBO.signIn(signIn));
         }catch (Exception e){
@@ -48,6 +51,7 @@ public class UserAPI {
 //    SignUp
     @PostMapping
     public ResponseEntity signUp(@RequestBody SignUp signUp){
+        log.info("User sign up by email: " + signUp.getEmail());
         try{
             return ResponseEntity.accepted().body(authenticationBO.signUp(signUp));
         }catch (DataDuplicationException e){

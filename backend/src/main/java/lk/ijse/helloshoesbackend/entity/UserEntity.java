@@ -19,6 +19,7 @@ import java.util.Set;
 @Entity(name = "User")
 public class UserEntity implements UserDetails {
     @Id
+    private String id;
     private String email;
     private String password;
     @Enumerated(EnumType.STRING)

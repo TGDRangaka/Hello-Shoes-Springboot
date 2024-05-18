@@ -2,8 +2,10 @@ package lk.ijse.helloshoesbackend.service.impl;
 
 import lk.ijse.helloshoesbackend.dto.EmployeeDTO;
 import lk.ijse.helloshoesbackend.entity.EmployeeEntity;
+import lk.ijse.helloshoesbackend.entity.UserEntity;
 import lk.ijse.helloshoesbackend.exception.NotFoundException;
 import lk.ijse.helloshoesbackend.repo.EmployeeRepo;
+import lk.ijse.helloshoesbackend.repo.UserRepo;
 import lk.ijse.helloshoesbackend.service.EmployeeService;
 import lk.ijse.helloshoesbackend.util.Conversion;
 import lombok.RequiredArgsConstructor;
@@ -20,6 +22,7 @@ import java.util.Optional;
 public class EmployeeServiceIMPL implements EmployeeService {
 
     private final EmployeeRepo employeeRepo;
+    private final UserRepo userRepo;
 
     @Override
     public List<EmployeeDTO> getAllEmployees() {
@@ -46,6 +49,16 @@ public class EmployeeServiceIMPL implements EmployeeService {
         Optional<EmployeeEntity> byId = employeeRepo.findById(employeeCode);
         if(byId.isPresent()){
             EmployeeEntity entity = byId.get();
+
+            Optional<UserEntity> byEmployee = userRepo.findByEmployee(entity);
+            if(byEmployee.isPresent()){
+                UserEntity userEntity = byEmployee.get();
+                userEntity.setEmail(employee.getEmail());
+                userRepo.save(userEntity);
+            }else{
+                throw new NotFoundException("Not Found User : " + employeeCode);
+            }
+
             entity.setName(employee.getName());
             entity.setProfilePic(employee.getProfilePic());
             entity.setGender(employee.getGender());
@@ -57,6 +70,7 @@ public class EmployeeServiceIMPL implements EmployeeService {
             entity.setAddressNo(employee.getAddressNo());
             entity.setAddressLane(employee.getAddressLane());
             entity.setAddressCity(employee.getAddressCity());
+            entity.setAddressState(employee.getAddressState());
             entity.setPostalCode(employee.getPostalCode());
             entity.setEmail(employee.getEmail());
             entity.setPhone(employee.getPhone());

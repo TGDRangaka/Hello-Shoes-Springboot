@@ -52,6 +52,7 @@ public class AuthenticationServiceIMPL implements AuthenticationService {
         if(userRepo.existsById(dto.getEmail())) throw new DataDuplicationException("User already exists");
 
         UserEntity userEntity = new ModelMapper().map(dto, UserEntity.class);
+        userEntity.setId(UtilMatter.generateUUID());
         userEntity.setPassword(passwordEncoder.encode(dto.getPassword()));
 
         UserEntity save = userRepo.save(userEntity);
