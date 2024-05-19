@@ -115,6 +115,7 @@ const loadAllResupplies = (resupplies) => {
     }
 
     $("#resupplyItemsAccordion").empty();
+    let rowCount = 0;
     resupplies.map((resupply, i) => {
         // filter
         if (!isInSelectedSupplier(resupply)) return;
@@ -146,7 +147,7 @@ const loadAllResupplies = (resupplies) => {
                 
                 <div class="container-fluid w-100">
                     <div class="row">
-                        <label class="col-1">${i + 1}</label>
+                        <label class="col-1">${++rowCount}</label>
                         <label class="col">${itemCode}</label>
                         <label class="col">${itemName}</label>
                         <label class="col">${resupply.supplier.name}</label>

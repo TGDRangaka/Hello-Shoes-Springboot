@@ -28,6 +28,37 @@
 <body class="container-fluid vw-100 vh-100 bg-theme p-0">
     <div class="position-absolute vw-100 vh-100" id="bg"></div>
 
+    <!-- Login -->
+    <div id="loginPage">
+        <span class="bg bg-img w-100 h-100 position-absolute" style="background-image: url(assets/imgs/login-bg.jpg);"></span>
+
+        <img src="assets/imgs/logo.png" alt="">
+        <div class="login-pane">
+            <h1 class="poppins-bold log-reg-text">LOGIN</h1>
+            <p class="mt-5 mb-2 poppins-regular">Login and sart managing with ShoeEase Manager</p>
+            <form>
+                <div class="input mt-5">
+                    <label for="loginUser" class="text-white">username</label>
+                    <input type="text" id="loginUser" class="form-control" placeholder="example@mail.com" value="rangaka@gmail.com">
+                </div>
+                <div class="input">
+                    <label for="loginPass" class="text-white">password</label>
+                    <input type="password" id="loginPassward" class="form-control" placeholder="xxxxxxx" value="dilshan1234">
+                </div>
+                <div class="remeberMe-input mt-2">
+                    <input type="checkbox" name="remeberMe" id="rememberMe">
+                    <label for="remeberMe" class="text-white">Remember me</label>
+                </div>
+
+                <button id="loginBtn" type="button" class="btn w-100 log-reg-text">LOGIN</button>
+                <div class="d-flex justify-content-center align-items-center">
+                    <span id="login-desc" class="text-center mt-1">Don't have an account?</span><span class="pt-1 register-login">REGISTER</span>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
     <main class="row wv-100 h-100">
         <nav class="col-2 nav p-0">
             <div class="d-flex align-items-center justify-content-center gap-4 w-100">
@@ -39,11 +70,11 @@
             </div>
 
             <div class="nav-buttons mt-3">
-                <button id="dashboardBtn" type="button" class="nav-btn-theme"><i class="fa-solid fa-house"></i>
+                <button id="dashboardBtn" type="button" class="nav-btn-theme admin-view"><i class="fa-solid fa-house"></i>
                     <h3 class="align-middle">Home</h3>
                 </button>
 
-                <div class="formBtnsDown w-100">
+                <div class="formBtnsDown w-100 admin-view">
                     <button id="btnsDropdown" class="header">
                         <i class="fa-regular fa-rectangle-list"></i>
                         <h3>Registrations</h3>
@@ -87,13 +118,13 @@
                 <button id="suppliersBtn" type="button" class="nav-btn-theme"><i class="fa-solid fa-truck"></i>
                     <h3>Suppliers</h3>
                 </button>
-                <button id="restockBtn" type="button" class="nav-btn-theme"><i class="fa-solid fa-box-open"></i>
+                <button id="restockBtn" type="button" class="nav-btn-theme admin-view"><i class="fa-solid fa-box-open"></i>
                     <h3>Restock Items</h3>
                 </button>
                 <button id="resupplysBtn" type="button" class="nav-btn-theme"><i class="fa-solid fa-truck-arrow-right"></i>
                     <h3>Resupply History</h3>
                 </button>
-                <button id="refundBtn" type="button" class="nav-btn-theme"><i class="fa-solid fa-reply-all"></i>
+                <button id="refundBtn" type="button" class="nav-btn-theme admin-view"><i class="fa-solid fa-reply-all"></i>
                     <h3>Refund</h3>
                 </button>
                 <button id="refundHistoryBtn" type="button" class="nav-btn-theme"><i class="fa-solid fa-book"></i>
@@ -125,7 +156,7 @@
                 </button>
 
                 <button type="button" class="d-flex align-items-center gap-2 user">
-                    <div id="loginBtn" class="user-img">
+                    <div class="user-img">
                     </div>
                     <div class="d-flex flex-column text-start">
                         <label class="userName">Dilshan Rangaka</label>
@@ -312,7 +343,7 @@
 
             <!-- Sales Section -->
             <section id="sales" class="text-theme bg-theme flex-row gap-2">
-                <div id="saleItemsDetails" class="flex-grow h-100 rounded p-3">
+                <div id="saleItemsDetails" class="flex-grow h-100 rounded p-3 bg-white">
                     <div class="mb-4 row">
                         <h3>Customer Details</h3>
 
@@ -329,7 +360,7 @@
                         </div>
                     </div>
                     <hr>
-                    <div class="mt-4 bg-white py-2 rounded row">
+                    <div class="mt-4 py-2 rounded row">
                         <div class="">
                             <div class="input-group search">
                                 <input id="saleItemCode" type="text" class="form-control" placeholder="Item Code">
@@ -577,11 +608,11 @@
             <section id="inventory" class="bg-theme text-theme vh-100">
 
                 <header class="mb-3 rounded row">
-                    <div class="input-group search col">
+                    <div class="input-group search col-4">
                         <input id="inventorySearch" type="text" class="form-control" placeholder="Item Code">
                         <button class="btn btn-outline-secondary" type="button" id="inventorySearchBtn">Search</button>
                     </div>
-                    <div class="col-1">
+                    <div class="col">
                         <label class="label">Category</label>
                         <select id="inventoryCateforyFilter" class="form-select" aria-label="Default select example">
                             <option value="ALL" selected>All</option>
@@ -595,7 +626,7 @@
                             <option value="ACC">Accessories</option>
                         </select>
                     </div>
-                    <div class="col-1">
+                    <div class="col">
                         <label class="label">Gender</label>
                         <select id="inventoryGenderFilter" class="form-select" aria-label="Default select example">
                             <option value="ALL" selected>All</option>
@@ -603,7 +634,7 @@
                             <option value="W">Women</option>
                         </select>
                     </div>
-                    <div class="col-1">
+                    <div class="col">
                         <label class="label">Occasion</label>
                         <select id="inventoryOccasionFilter" class="form-select" aria-label="Default select example">
                             <option value="ALL" selected>All</option>
@@ -613,7 +644,7 @@
                             <option value="S">Sport</option>
                         </select>
                     </div>
-                    <div class="col-1">
+                    <div class="col">
                         <label class="label">Sory By</label>
                         <select id="inventorySort" class="form-select" aria-label="Default select example">
                             <option value="NONE" selected>None</option>
@@ -669,7 +700,7 @@
                             </optgroup>
                         </select>
                     </div>
-                    <div class="col-2">
+                    <div class="col-2 admin-view">
                         <label class="hidden"></label>
                         <button id="addNewProductBtn" type="button" class="btn btn-primary w-100">Add New
                             Product</button>
@@ -1023,7 +1054,7 @@
                             <option value="Oldest-JOINED">JOINED: Oldest</option>
                         </select>
                     </div>
-                    <div class="col-2">
+                    <div class="col-2 admin-view">
                         <label class="hidden"></label>
                         <button id="customerFormBtn" type="button" class="btn btn-primary w-100">Join As
                             Layalty</button>
@@ -1160,7 +1191,7 @@
                             <option value="Oldest-JOINED">JOINED: Oldest</option>
                         </select>
                     </div>
-                    <div class="col-2">
+                    <div class="col-2 admin-view">
                         <label class="hidden"></label>
                         <button id="registerEmployeeBtn" type="button" class="btn btn-primary w-100">Register New
                             Employee</button>
@@ -1431,7 +1462,7 @@
                             <option value="Z-A">Name: Z-A</option>
                         </select>
                     </div>
-                    <div class="col-2">
+                    <div class="col-2 admin-view">
                         <label class="hidden"></label>
                         <button id="addNewProductBtn" type="button" class="btn btn-primary w-100">Register
                             Supplier</button>
@@ -1650,7 +1681,7 @@
                             <option value="Oldest">DATE: Oldest</option>
                         </select>
                     </div>
-                    <div class="col-2">
+                    <div class="col-2 admin-view">
                         <label class="hidden"></label>
                         <button id="addNewProductBtn" type="button" class="btn btn-primary w-100">Add New
                             Product</button>
@@ -1730,7 +1761,7 @@
                             <option value="Oldest">DATE: Oldest</option>
                         </select>
                     </div>
-                    <div class="col-2">
+                    <div class="col-2 admin-view">
                         <label class="hidden"></label>
                         <button id="addNewProductBtn" type="button" class="btn btn-primary w-100">Add New
                             Product</button>
@@ -1758,10 +1789,6 @@
 
         </div>
 
-
-        <!-- <div id="sidePane" class="col-2 bg-theme m-0">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto quis impedit, ipsum magni nulla accusamus at placeat dicta laborum atque rem tenetur, alias minima sed nesciunt reiciendis eveniet beatae quibusdam. Itaque placeat eaque ad odio quos modi tenetur, quod ipsa. Eius necessitatibus quibusdam cupiditate esse magnam earum perspiciatis voluptates ex ullam pariatur expedita quod aut, illo fugit explicabo optio reiciendis non ipsam vel? Earum dolores pariatur nemo quaerat animi saepe voluptates ullam enim explicabo illum reiciendis ex veritatis ratione, eveniet aliquam repellat quo fugit officiis odit cupiditate nisi! Ab tempore obcaecati amet dolores vero perspiciatis officia quo aperiam consectetur ad!
-        </div> -->
         <div class="notification-pane">
             <div class="notifications">
                 <div class="notification">
@@ -1885,6 +1912,8 @@
     <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
+
+    <script type="module" src="controller/LoginController.js"></script>
     <script type="module" src="controller/IndexController.js"></script>
     <script type="module" src="controller/AdminPanelController.js"></script>
     <script type="module" src="controller/SalesController.js"></script>

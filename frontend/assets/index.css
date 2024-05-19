@@ -170,11 +170,129 @@ select:focus {
     flex-grow: 1;
 }
 
-.bg-img{
+.bg-img {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     aspect-ratio: 1;
+}
+
+/* /////////////////////////////////////////////////////////////////////////////////////// */
+/* Login Pages */
+
+#loginPage {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* background-color: #793FDF; */
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#loginPage>img {
+    width: 400px;
+}
+
+#loginPage .bg-img {
+    filter: hue-rotate(330deg);
+}
+
+.login-pane {
+    width: 500px;
+    height: 700px;
+    /* From https://css.glass */
+    /* From https://css.glass */
+    background: rgba(196, 163, 255, 0.02);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(11.8px);
+    -webkit-backdrop-filter: blur(11.8px);
+    border: 1px solid rgba(196, 163, 255, 0.26);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: space-between; */
+    color: white;
+    padding: 20px;
+
+    transition-duration: .6s;
+    /* animation: rotate 1s ease-in-out; */
+}
+
+/* rotate animation */
+@keyframes rotate {
+    0% {
+        transform: rotateY(0deg);
+    }
+    100% {
+        transform: rotateY(360deg);
+    }
+}
+
+.login-pane h1 {
+    font-size: 50px;
+}
+
+.login-pane form {
+    width: 350px;
+    height: fit-content;
+}
+
+.login-pane .input {
+    margin-top: 20px;
+}
+
+.login-pane label {
+    font-weight: 300;
+    color: rgb(223, 223, 223);
+}
+
+.login-pane .input input {
+    background-color: rgba(255, 255, 255, 0.05);
+    height: 50px;
+    border: 1px solid rgb(160, 160, 160) !important;
+    border-radius: 50px;
+    color: white;
+}
+
+.login-pane input::placeholder{
+    color: rgb(160, 160, 160);
+}
+
+#remeberMe{
+    background-color: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgb(245, 0, 0) !important;
+}
+
+#loginBtn {
+    margin-top: 120px;
+    height: 50px;
+    background-color: #793FDF;
+    color: white;
+    font-weight: 700;
+    border: 1px solid rgb(182, 182, 182);
+    border-radius: 50px;
+    transition-duration: .1s;
+}
+
+#loginBtn:hover{
+    background-color: #8747f5;
+}
+
+.register-login{
+    color: #3fdf94;
+    font-weight: 700;
+    margin-left: 10px;
+    cursor: pointer;
+    /* underling text */
+    text-decoration: none;
+    border-bottom: 1px solid #3fdf94;
 }
 
 /* ////////////////////////////////////////////////////////////////////////////////////// */
@@ -784,7 +902,7 @@ section header {
 
 .chooseItemCard {
     width: 170px;
-    height: 300px;
+    height: 280px;
     border: 1px solid #d8d8d8;
     border-radius: 8px;
     margin-right: 24px;
@@ -792,7 +910,7 @@ section header {
     cursor: pointer;
     display: flex;
     flex-direction: column;
-    background-color: var(--second-bg-color);
+    background-color: var(--light-bg-color);
     overflow: hidden;
     transition-duration: .1s;
     box-shadow: 0 0 20px #100d2418;
@@ -815,6 +933,7 @@ section header {
     font-size: 20px;
     font-weight: 700;
     margin: 0;
+    margin-left: 10px;
 }
 
 .chooseItemCard label {
@@ -823,6 +942,7 @@ section header {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    margin-left: 10px;
 }
 
 .chooseItemCard h3 {
@@ -830,8 +950,9 @@ section header {
     color: var(--highlight-color);
     font-weight: 700;
     text-align: justify;
-    margin: 0;
-    text-align: end;
+    margin: 0; 
+    margin-left: 10px;
+    /* text-align: end; */
 }
 
 .saleItems {
@@ -948,7 +1069,7 @@ section header {
     cursor: pointer;
 }
 
-.payment-radio input[type="radio"]:checked + label {
+.payment-radio input[type="radio"]:checked+label {
     background-color: var(--second-bg-color);
     color: var(--highlight-color);
     border: 1px solid var(--highlight-color);
@@ -1180,7 +1301,7 @@ input[type="radio"] {
     height: 40px;
 }
 
-.customer-points div{
+.customer-points div {
     width: 40px;
     aspect-ratio: 1;
     /* background-color: gold; */
@@ -1193,19 +1314,22 @@ input[type="radio"] {
     border: 1px solid rgb(196, 196, 196);
 }
 
-.level-g div{
+.level-g div {
     background-color: gold;
     color: #303030;
 }
-.level-s div{
+
+.level-s div {
     background-color: silver;
     color: #303030;
 }
-.level-b div{
+
+.level-b div {
     background-color: #CD7F32;
     color: #ffffff;
 }
-.level-n div{
+
+.level-n div {
     background-color: #ffffff;
     color: #8f8f8f;
 }

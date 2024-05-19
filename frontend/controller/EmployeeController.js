@@ -398,7 +398,7 @@ function dataURLtoFile(dataurl, filename) {
 // var file = dataURLtoFile('data:text/plain;base64,aGVsbG8=','hello.txt');
 // console.log(file);
 
-$("#loginBtn").click(() => {
+$(".user-img").click(() => {
     console.log(user);
     isEmployeeSelected = true;
     employeeData = user;

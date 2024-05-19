@@ -105,36 +105,6 @@ const setBtnActive = (element, btn) => {
 
 $("#salesHistoryBtn").click();
 
-const encode = text =>{
-    // for(let i=0; i<10; i++){
-    //     text = btoa(text);
-    // }
-    return text;
-}
-
-const settings = {
-    "url": "http://localhost:8080/api/v1/auth",
-    "method": "PUT",
-    "timeout": 0,
-    "headers": {
-        "Content-Type": "application/json"
-    },
-    "data": JSON.stringify({
-        "email": encode("rangaka@gmail.com"),
-        "password": encode("dilshan1234")
-    }),
-};
-  
-$.ajax(settings).done(function (response) {
-    if(response.token) console.log("Token has been received!")
-    setToken(response.token);
-    setUser(response.user.employee);
-    $(".userName").text(user.name);
-    $(".userEmail").text(user.email);
-    // let profilePic = user.profilePic.replace(/(\r\n|\n|\r)/gm, "")
-    $(".user-img").css('background-image', `url(data:image/jpeg;base64,${user.profilePic})`);
-});
-
 let isBtnsDropdowned = false;
 $("#btnsDropdown").click(function(){
     if(!isBtnsDropdowned){
