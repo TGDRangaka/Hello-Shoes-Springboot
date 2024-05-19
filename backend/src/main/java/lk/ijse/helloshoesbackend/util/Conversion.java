@@ -243,11 +243,11 @@ public class Conversion {
         return entities.stream().map(entity -> {
             InventoryEntity dbTempInventory = entity.getSaleItem().getSaleItemId().getItem();
             InventoryEntity tempInventory = new InventoryEntity();
-            EmployeeDTO tempEmployee = new EmployeeDTO();
+            SaleEntity tempSale = new SaleEntity();
 
             tempInventory.setInventoryCode(dbTempInventory.getInventoryCode());
             tempInventory.setItemImage(dbTempInventory.getItemImage());
-            tempEmployee.setName(entity.getEmployee().getName());
+            tempSale.setOrderId(entity.getSaleItem().getSaleItemId().getSale().getOrderId());
 
             RefundDTO refundDTO = new RefundDTO(
                     entity.getRefundId(),
@@ -255,10 +255,10 @@ public class Conversion {
                     entity.getRefundDate(),
                     entity.getQty(),
                     entity.getRefundTotal(),
-                    tempEmployee,
+                    new EmployeeDTO(),
                     new SaleItemDTO(
                             new SaleItemId(
-                                    null,
+                                    tempSale,
                                     tempInventory
                             ),
                             null, null
