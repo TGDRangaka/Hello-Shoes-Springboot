@@ -48,7 +48,7 @@ $("#employeeFormBtn").on('click', function(){
 
 $("#suppliersBtn").on('click', function(){
     setBtnActive("#supplier", this);
-    $("#sectionTitle").text("Supplier Form")
+    $("#sectionTitle").text("Suppliers")
 })
 
 $("#supplierFormBtn").on('click', function(){
@@ -99,7 +99,7 @@ const setBtnActive = (element, btn) => {
 }
 
 // $("#inventoryBtn").dblclick();
-$("#employeesBtn").click();
+$("#suppliersBtn").click();
 
 const encode = text =>{
     // for(let i=0; i<10; i++){

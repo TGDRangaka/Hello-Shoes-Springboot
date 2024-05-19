@@ -104,8 +104,18 @@ const setSupplierData = (supplier) => {
 }
 
 const loadTable = (suppliers) => {
+  // sort
+  if($("#supplierSortSelect").val() !== 'NONE'){
+    sortSupplierTable();
+  }
+
   $("#supplierTbody").empty();
   suppliers.map((supplier, i) => {
+
+    // filter
+    if(!isInSelectedCategory(supplier)) return;
+    if(!isInSearchedKeyword(supplier)) return;
+
     $("#supplierTbody").append(`
     <tr>
         <td>${i + 1}</td>
@@ -175,3 +185,44 @@ $("#supplierTbody").on('click', 'button', function(){
   $("#supplierForm").toggle();
   setSupplierData(selectedSupplier);
 })
+
+// sorting
+$("#supplier header select").on('change', function(){
+  loadTable(allSuppliers);
+});
+
+const sortSupplierTable = () => {
+  let sortValue = $("#supplierSortSelect").val();
+
+  if(sortValue === 'A-Z'){
+    allSuppliers = allSuppliers.sort((a, b) => a.name.localeCompare(b.name));
+  }else if(sortValue === 'Z-A'){
+    allSuppliers = allSuppliers.sort((a, b) => b.name.localeCompare(a.name));
+  }
+}
+
+// filter
+const isInSelectedCategory = (supplier) => {
+  let category = $("#supplierCategorySelect").val();
+  return category === 'All'? true : supplier.category === category;
+}
+
+// search 
+$("#supplierSearchBtn").click(()=> {
+  loadTable(allSuppliers);
+})
+const isInSearchedKeyword = (supplier) => {
+  let keyword = $("#supplierSearchInput").val().toLowerCase();
+  if(keyword === ''){
+    return true;
+  }else{
+    return supplier.name.toLowerCase().includes(keyword)
+    || supplier.email.toLowerCase().includes(keyword)
+    || supplier.contactNo1.toLowerCase().includes(keyword)
+    || supplier.contactNo2.toLowerCase().includes(keyword)
+    || supplier.originCountry.toLowerCase().includes(keyword)
+    || supplier.addressLane.toLowerCase().includes(keyword)
+    || supplier.addressCity.toLowerCase().includes(keyword)
+    || supplier.addressState.toLowerCase().includes(keyword);
+  }
+}
