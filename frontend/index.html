@@ -1156,29 +1156,17 @@
             <section id="employee" class="bg-theme text-theme mh-100">
                 <header class="row mb-3">
                     <div class="input-group search col">
-                        <input type="text" class="form-control" placeholder="Item Code">
-                        <button class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
+                        <input id="employeeSearchInput" type="text" class="form-control" placeholder="Type here...">
+                        <button class="btn btn-primary" type="button" id="employeeSearchBtn">Search</button>
                     </div>
-                    <div class="col-2">
-                        <label class="label">Level</label>
-                        <select class="form-select" aria-label="Default select example">
-                            <option value="ALL" selected>All</option>
-                            <option value="G">Gold</option>
-                            <option value="S">Silver</option>
-                            <option value="B">Bronze</option>
-                            <option value="N">New</option>
-                        </select>
-                    </div>
-                    <div class="col-2">
+                    <div class="col-3">
                         <label class="label">Sory By</label>
-                        <select class="form-select" aria-label="Default select example">
+                        <select id="employeeSortSelect" class="form-select" aria-label="Default select example">
                             <option value="NONE" selected>None</option>
                             <option value="A-Z">Name: A-Z</option>
                             <option value="Z-A">Name: Z-A</option>
-                            <option value="LOW-HIGH">Level: NEW-GOLD</option>
-                            <option value="HIGH-LOW">Level: GOLD-NEW</option>
-                            <option value="MAN">Male</option>
-                            <option value="WOMEN">Female</option>
+                            <option value="Latest-JOINED">JOINED: Latest</option>
+                            <option value="Oldest-JOINED">JOINED: Oldest</option>
                         </select>
                     </div>
                     <div class="col-2">
