@@ -10,55 +10,59 @@ let itemsAvailableBrands = [];
 let selectedSupplier = null;
 let selectedItems = [];
 
-$("#resupplysBtn").click(()=>{
+$("#resupplysBtn").click(() => {
     // getAllResupplies();
-    getAllItems();
-    getAllSuppliers();
 
     getAllResupplies();
 })
 
-const getAllSuppliers = ()=> {
+$("#restockBtn").click(() => {
+    getAllItems();
+    getAllSuppliers();
+})
+
+const getAllSuppliers = () => {
     var settings = {
         "url": "http://localhost:8080/api/v1/supplier",
         "method": "GET",
         "timeout": 0,
         "headers": {
-          "Authorization": "Bearer " + token
+            "Authorization": "Bearer " + token
         },
-      };
-      
-      $.ajax(settings).done(function (response) {
+    };
+
+    $.ajax(settings).done(function (response) {
         allSuppliers = response;
-      });
+    });
 }
 
-$("#resupplySupplier").on('change',function(){
+$("#resupplySupplier").on('change', function () {
     selectedSupplier = $(this).val();
-    if(selectedSupplier !== '-'){
-        $("#resupplyItem").prop('disabled',false);
+    if (selectedSupplier !== '-') {
+        $("#resupplyItem").prop('disabled', false);
         setItemDataList(selectedSupplier);
-    }else{
-        $("#resupplyItem").prop('disabled',true);
+    } else {
+        $("#resupplyItem").prop('disabled', true);
     }
 })
 
 const saveResupplieDetails = (resupply) => {
     console.log(resupply);
+    // return;
     var settings = {
         "url": "http://localhost:8080/api/v1/resupply",
         "method": "POST",
         "timeout": 0,
         "headers": {
-          "Content-Type": "application/json",
-          "Authorization": "Bearer " + token
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + token
         },
         "data": JSON.stringify(resupply),
-      };
-      
-      $.ajax(settings).done(function (response) {
+    };
+
+    $.ajax(settings).done(function (response) {
         console.log(response);
-      });
+    });
 }
 
 const getAllResupplies = () => {
@@ -84,11 +88,11 @@ const getAllItems = () => {
         "method": "GET",
         "timeout": 0,
         "headers": {
-          "Authorization": "Bearer " + token
+            "Authorization": "Bearer " + token
         },
-      };
-      
-      $.ajax(settings).done(function (response) {
+    };
+
+    $.ajax(settings).done(function (response) {
         allItems = response;
         allItems.filter(item => item.inventoryItems.length > 0)
         itemsAvailableBrands = allItems.map(item => item.supplierName);
@@ -102,12 +106,21 @@ const getAllItems = () => {
             <option value="${supplier}">${supplier}</option>
             `)
         })
-      });
+    });
 }
 
 const loadAllResupplies = (resupplies) => {
+    // sort
+    if ($("#resupplySortSelect").val() !== 'NONE') {
+        sortResupplyTable();
+    }
+
     $("#resupplyItemsAccordion").empty();
     resupplies.map((resupply, i) => {
+        // filter
+        if (!isInSelectedSupplier(resupply)) return;
+        if (!isInSearchedKeyword(resupply)) return;
+
         let resupplyItemRows = '';
         let itemCode = null;
         let itemName = null;
@@ -116,7 +129,7 @@ const loadAllResupplies = (resupplies) => {
             itemCode = resupplyItem.resupplyItemId.inventory.item.itemCode;
             resupplyItemRows += `
             <tr>
-                <td class="text-center">${i+1}</td>
+                <td class="text-center">${i + 1}</td>
                 <td>
                     <img src="${resupplyItem.resupplyItemId.inventory.itemImage.image}" alt="" class="img-fluid">
                 </td>
@@ -134,7 +147,7 @@ const loadAllResupplies = (resupplies) => {
                 
                 <div class="container-fluid w-100">
                     <div class="row">
-                        <label class="col-1">${i+1}</label>
+                        <label class="col-1">${i + 1}</label>
                         <label class="col">${itemCode}</label>
                         <label class="col">${itemName}</label>
                         <label class="col">${resupply.supplier.name}</label>
@@ -166,40 +179,40 @@ const loadAllResupplies = (resupplies) => {
     })
 }
 
-$("#resupplySubmitBtn").click(()=> {
+$("#resupplySubmitBtn").click(() => {
     let resupply = collectResupplieData();
     saveResupplieDetails(resupply);
 })
 
 const collectResupplieData = () => {
-    let supplierId = allSuppliers.filter(supplier => supplier.name === selectedSupplier)[0].code;
+    let supplierId = allSuppliers.find(supplier => supplier.name.toLowerCase() === selectedSupplier.toLowerCase()).code;
 
-    let resupply = new Resupply("","", 0, {code: supplierId}, null);
+    let resupply = new Resupply("", "", 0, { code: supplierId }, null);
     let resupplyItems = [];
 
     selectedItems.map(resupplyItem => {
         let qty = parseInt($(`#${resupplyItem.inventoryCode}`).val());
-        resupply.totalQty += qty
-        resupplyItems.push(new ResupplyItem(
-            {
-                inventory: {
-                    inventoryCode: resupplyItem.inventoryCode
+        if (qty > 0) {
+            resupply.totalQty += qty
+            resupplyItems.push(new ResupplyItem(
+                {
+                    inventory: {
+                        inventoryCode: resupplyItem.inventoryCode
+                    },
+                    resupply: {
+                        supplyId: ""
+                    }
                 },
-                resupply: {
-                    supplyId: ""
-                }
-            },
-            qty
-        ));
+                qty
+            ));
+        }
     })
     resupply.resupplyItems = resupplyItems;
-    console.log(resupply);
     return resupply;
 }
 
 const setItemDataList = (supplier) => {
     let items = allItems.filter(item => item.supplierName === supplier);
-    console.log(items);
     $(".supplier-items").empty();
     items.map(item => {
         let img = item.inventoryItems[0].itemImage.image;
@@ -222,7 +235,7 @@ const setItemDataList = (supplier) => {
     // })
 }
 
-$(".supplier-items").on('click', '.supplier-item-card', function(){
+$(".supplier-items").on('click', '.supplier-item-card', function () {
     let itemCode = $(this).data("code");
     $(".supplier-item-card").removeClass("supplier-item-card-selected");
     $(this).addClass("supplier-item-card-selected");
@@ -230,29 +243,26 @@ $(".supplier-items").on('click', '.supplier-item-card', function(){
 })
 
 const getSelectedItemData = selectedItemCode => {
-    console.log("selected item",selectedItemCode);
     allItems.map(item => {
-        if(item.itemCode === selectedItemCode) {
+        if (item.itemCode === selectedItemCode) {
             let colors = []
             item.inventoryItems.map(inv => colors.push(inv.colors))
             colors = [...new Set(colors)];
             let colorItems = []
-            console.log(colors);
             colors.map(color => {
                 colorItems.push({
-                    color: color, 
+                    color: color,
                     items: item.inventoryItems.filter(item => item.colors === color)
                 })
             })
 
-            
+
             $(".resupplyInputs").empty();
             selectedItems = [];
             colorItems.forEach(colorItem => {
                 addResupplyComponent(colorItem)
                 selectedItems.push(...colorItem.items);
             });
-            console.log(colorItems);
         }
     })
 }
@@ -266,7 +276,7 @@ const addResupplyComponent = (colorItems) => {
     colorItems.items.map(item => {
         theads += `<th class="table-input">${item.size}</th>`;
         let perQty = item.currentQty !== 0 ? item.currentQty / item.originalQty * 100 : 0
-        currentQtys += `<td>${item.currentQty}<span class="bg-${perQty > 50? 'success' : perQty > 0 ? 'warning' : 'danger'} p-1 rounded text-white bg-opacity-75 ms-1">${parseInt(perQty)}%</span></td>`;
+        currentQtys += `<td>${item.currentQty}<span class="bg-${perQty > 50 ? 'success' : perQty > 0 ? 'warning' : 'danger'} p-1 rounded text-white bg-opacity-75 ms-1">${parseInt(perQty)}%</span></td>`;
         inputs += `<td><input type="number" name="qty" id="${item.inventoryCode}" placeholder="qty"></td>`;
     })
 
@@ -293,4 +303,41 @@ const addResupplyComponent = (colorItems) => {
         </tbody>
     </table>
     `);
+}
+
+// sorting
+$("#resupplyData header select").on('change', () => {
+    loadAllResupplies(allResupplies);
+})
+
+const sortResupplyTable = () => {
+    let soryValue = $("#resupplySortSelect").val();
+
+    if (soryValue === 'A-Z') {
+        allResupplies = allResupplies.sort((a, b) => a.supplier.name.localeCompare(b.supplier.name));
+    } else if (soryValue === 'Z-A') {
+        allResupplies = allResupplies.sort((a, b) => b.supplier.name.localeCompare(a.supplier.name));
+    } else if (soryValue === 'Latest') {
+        allResupplies = allResupplies.sort((a, b) => new Date(b.suppliedDate) - new Date(a.suppliedDate));
+    } else if (soryValue === 'Oldest') {
+        allResupplies = allResupplies.sort((a, b) => new Date(a.suppliedDate) - new Date(b.suppliedDate));
+    }
+}
+
+// filter
+const isInSelectedSupplier = (resupply) => {
+    let value = $("#resupplySupplierSelect").val();
+    return (value === 'ALL') ? true : resupply.supplier.name === value;
+}
+
+// search
+$("#resupplySearchBtn").click(() => {
+    loadAllResupplies(allResupplies);
+})
+const isInSearchedKeyword = (resupply) => {
+    let value = $("#resupplySearchInput").val().toLowerCase();
+    return (value === '') ? true
+        : resupply.supplier.name.toLowerCase().includes(value)
+        || resupply.resupplyItems[0].resupplyItemId.inventory.item.description.toLowerCase().includes(value)
+        || resupply.resupplyItems[0].resupplyItemId.inventory.item.itemCode.toLowerCase().includes(value);
 }

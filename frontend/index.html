@@ -87,11 +87,17 @@
                 <button id="suppliersBtn" type="button" class="nav-btn-theme"><i class="fa-solid fa-truck"></i>
                     <h3>Suppliers</h3>
                 </button>
-                <button id="resupplysBtn" type="button" class="nav-btn-theme"><i class="fa-solid fa-box-open"></i>
-                    <h3>Resupply</h3>
+                <button id="restockBtn" type="button" class="nav-btn-theme"><i class="fa-solid fa-box-open"></i>
+                    <h3>Restock Items</h3>
+                </button>
+                <button id="resupplysBtn" type="button" class="nav-btn-theme"><i class="fa-solid fa-truck-arrow-right"></i>
+                    <h3>Resupply History</h3>
                 </button>
                 <button id="refundBtn" type="button" class="nav-btn-theme"><i class="fa-solid fa-reply-all"></i>
                     <h3>Refund</h3>
+                </button>
+                <button id="refundHistoryBtn" type="button" class="nav-btn-theme"><i class="fa-solid fa-book"></i>
+                    <h3>Refunds History</h3>
                 </button>
             </div>
 
@@ -305,9 +311,9 @@
             </section>
 
             <!-- Sales Section -->
-            <section id="sales" class="text-theme bg-theme flex-row gap-3">
+            <section id="sales" class="text-theme bg-theme flex-row gap-2">
                 <div id="saleItemsDetails" class="flex-grow h-100 rounded p-3">
-                    <div class="row mb-4">
+                    <div class="mb-4 row">
                         <h3>Customer Details</h3>
 
                         <div class="input col-6">
@@ -323,8 +329,8 @@
                         </div>
                     </div>
                     <hr>
-                    <div class="row mt-4 bg-white py-2 rounded">
-                        <div class="w-100">
+                    <div class="mt-4 bg-white py-2 rounded row">
+                        <div class="">
                             <div class="input-group search">
                                 <input id="saleItemCode" type="text" class="form-control" placeholder="Item Code">
                                 <button class="btn btn-outline-secondary" type="button"
@@ -372,21 +378,6 @@
                 </div>
 
                 <div id="payment-details" class="d-flex flex-column justify-content-between h-100 rounded p-1">
-                    <!-- <table class="table table-bordered">
-                                <thead>
-                                    <th class="table-img">Image</th>
-                                    <th>Product</th>
-                                    <th>Unit Price</th>
-                                    <th>Qty.</th>
-                                    <th>Total</th>
-                                    <th class="table-action">Action</th>
-                                </thead>
-                                <tbody id="saleItemTableBody">
-                                    <tr>
-                                        <td colspan="6" class="text-center">No Items Added</td>
-                                    </tr>
-                                </tbody>
-                            </table> -->
 
                     <div class="d-flex justify-content-between px-2">
                         <h5 class="m-0">Date</h5>
@@ -1606,28 +1597,14 @@
             <section id="resupplyData" class="bg-theme text-theme">
                 <header class="mb-3 rounded row">
                     <div class="input-group search col">
-                        <input type="text" class="form-control" placeholder="Item Code">
-                        <button class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
+                        <input id="resupplySearchInput" type="text" class="form-control" placeholder="Item Code">
+                        <button class="btn btn-outline-secondary" type="button" id="resupplySearchBtn">Search</button>
                     </div>
                     <div class="col-2">
-                        <label class="label">Category</label>
-                        <select class="form-select" aria-label="Default select example">
+                        <label class="label">Supplier</label>
+                        <select id="resupplySupplierSelect" class="form-select" aria-label="Default select example">
                             <option value="ALL" selected>All</option>
-                            <option value="H">Heel</option>
-                            <option value="F">Flats</option>
-                            <option value="W">Wedges</option>
-                            <option value="FF">Flip Flops</option>
-                            <option value="SD">Sandals</option>
-                            <option value="S">Shoes</option>
-                            <option value="SL">Slippers</option>
-                        </select>
-                    </div>
-                    <div class="col-2">
-                        <label class="label">Brand</label>
-                        <select class="form-select" aria-label="Default select example">
-                            <option value="ALL" selected>All Brands</option>
                             <optgroup label="International Brands">
-                                <option value="International">All International</option>
                                 <option value="Nike">Nike</option>
                                 <option value="Adidas">Adidas</option>
                                 <option value="Puma">Puma</option>
@@ -1645,7 +1622,6 @@
                                 <option value="Salomon">Salomon</option>
                             </optgroup>
                             <optgroup label="Local Brands">
-                                <option value="Local">All Local</option>
                                 <option value="DSI">DSI</option>
                                 <option value="Bata">Bata</option>
                                 <option value="Gihan Shoe Mart">Gihan Shoe Mart</option>
@@ -1666,10 +1642,10 @@
                     </div>
                     <div class="col-2">
                         <label class="label">Sory By</label>
-                        <select class="form-select" aria-label="Default select example">
+                        <select id="resupplySortSelect" class="form-select" aria-label="Default select example">
                             <option value="NONE" selected>None</option>
-                            <option value="A-Z">Name: A-Z</option>
-                            <option value="Z-A">Name: Z-A</option>
+                            <option value="A-Z">Supplier: A-Z</option>
+                            <option value="Z-A">Supplier: Z-A</option>
                             <option value="Latest">DATE: Latest</option>
                             <option value="Oldest">DATE: Oldest</option>
                         </select>

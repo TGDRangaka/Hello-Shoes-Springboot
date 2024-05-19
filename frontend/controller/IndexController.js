@@ -56,12 +56,12 @@ $("#supplierFormBtn").on('click', function(){
     $("#sectionTitle").text("Supplier Form")
 })
 
-$("#resupplysBtn").on('click', function(){
+$("#restockBtn").on('click', function(){
     setBtnActive("#resupply", this);
-    $("#sectionTitle").text("Resupplies")
+    $("#sectionTitle").text("Restock Items")
 })
 
-$("#resupplysBtn").on('dblclick', function(){
+$("#resupplysBtn").on('click', function(){
     setBtnActive("#resupplyData", this);
     $("#sectionTitle").text("Resupply History")
 })
@@ -98,8 +98,7 @@ const setBtnActive = (element, btn) => {
     $(element).show();
 }
 
-// $("#inventoryBtn").dblclick();
-$("#suppliersBtn").click();
+$("#resupplysBtn").click();
 
 const encode = text =>{
     // for(let i=0; i<10; i++){

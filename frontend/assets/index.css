@@ -760,20 +760,19 @@ section header {
 
 /*  */
 .choosItems {
-    width: 100%;
     max-height: 570px;
     display: flex;
     flex-wrap: wrap;
-    /* grid-template-columns: repeat(4, 1fr); */
     overflow-y: auto;
     overflow-x: hidden;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
     justify-content: space-around;
-    /* justify-items: center; */
-    /* align-content: space-evenly; */
+    justify-items: center;
+    align-content: space-evenly;
     align-items: center;
     gap: 20px;
     padding-top: 20px;
-
 }
 
 .chooseItemCard {
@@ -954,6 +953,7 @@ section header {
 }
 
 #payment-details {
+    /* flex-grow: 1; */
     width: 400px;
     background-color: var(--light-bg-color);
 }
