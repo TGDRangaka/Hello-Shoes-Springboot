@@ -118,14 +118,24 @@ const getSoldItems = () => {
 }
 
 const loadSoldItemsTable = (soldItems) => {
-    $("#saleItemsAccordion").empty();
+    // sort
+    if($("#sortSalesSelect").val() !== 'NONE'){
+        sortSoldTable();
+    }
 
+    $("#saleItemsAccordion").empty();
+    let rowCount = 0;
     soldItems.map((sale, i) => {
+
+        // filter & search
+        if(!isInSelectedPayementMethod(sale)) return;
+        if(!isInSearchedKeyword(sale)) return;
+
         let saleItemsRows = "";
         sale.saleItems.map((saleItem, i) => {
             saleItemsRows += `
                 <tr class="align-middle">
-                    <td class="text-center">${i + 1}</td>
+                    <td class="text-center">${i+1}</td>
                     <td>${saleItem.saleItemId.item.inventoryCode}</td>
                     <td>${saleItem.unitPrice}</td>
                     <td class="text-center">${saleItem.qty}</td>
@@ -142,13 +152,13 @@ const loadSoldItemsTable = (soldItems) => {
                 
                 <div class="sale-accordion container-fluid w-100">
                     <div class="row">
-                        <label class="col-1">${i + 1}</label>
+                        <label class="col-1">${++rowCount}</label>
+                        <label class="col-2">${sale.orderId}</label>
                         <label class="col-2">${sale.orderDate}</label>
                         <label class="col-2">${sale.paymentMethod}</label>
-                        <label class="col-2">${sale.totalPrice}</label>
+                        <label class="col-1">${sale.totalPrice}</label>
                         <label class="col-2">${sale.customer.name}</label>
                         <label class="col-2">${sale.employee.name}</label>
-                        <label class="col-1">${sale.saleItems.length}</label>
                     </div>
                 </div>
 
@@ -371,4 +381,43 @@ const itemSelectingValidations = () => {
             ($("#saleItemQty").val() > 0 && ($("#saleItemQty").val() < parseInt($("#saleItemStock").html())))
                 ? setAsValid("#saleItemQty", "Looks Good!") : setAsInvalid("#saleItemQty", "Please select valid quantity")
         );
+}
+
+// sort
+$("#salesHistory header select").on('change', function(){
+    loadSoldItemsTable(allSoldItems);
+})
+
+const sortSoldTable = () => {
+    let sortType = $("#sortSalesSelect").val();
+    if (sortType === "LOW-HIGH") {
+        allSoldItems.sort((a,b) => a.totalPrice - b.totalPrice);
+    } else if (sortType === "HIGH-LOW") {
+        allSoldItems.sort((a,b) => b.totalPrice - a.totalPrice);
+    } else if (sortType === "Latest") {
+        allSoldItems.sort((a,b) => new Date(b.orderDate) - new Date(a.orderDate));
+    }else if (sortType === "Oldest") {
+        allSoldItems.sort((a,b) => new Date(a.orderDate) - new Date(b.orderDate));
+    }
+}
+
+// filter
+const isInSelectedPayementMethod = (sale) => {
+    let value = $("#salePaymentSelect").val();
+
+    return value === 'ALL' ? true : sale.paymentMethod === value;
+}
+
+// search
+$("#saleSearchBtn").click(()=> {
+    loadSoldItemsTable(allSoldItems);
+})
+
+const isInSearchedKeyword = (sale) => {
+    let keyword = $("#saleSearchInput").val().toLowerCase();
+    return keyword === '' ? true 
+    : sale.orderId.toLowerCase().includes(keyword)
+    || sale.customer.name.toLowerCase().includes(keyword)
+    || sale.customer.email.toLowerCase().includes(keyword)
+    || sale.employee.name.toLowerCase().includes(keyword);
 }

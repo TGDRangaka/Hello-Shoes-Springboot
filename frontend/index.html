@@ -468,12 +468,12 @@
             <section id="salesHistory" class="bg-theme text-theme mh-100">
                 <header class="mb-3 rounded row">
                     <div class="input-group search col">
-                        <input type="text" class="form-control" placeholder="Item Code">
-                        <button class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
+                        <input id="saleSearchInput" type="text" class="form-control" placeholder="Item Code">
+                        <button class="btn btn-primary" type="button" id="saleSearchBtn">Search</button>
                     </div>
                     <div class="col-2">
                         <label class="label">Payment</label>
-                        <select class="form-select" aria-label="Default select example">
+                        <select id="salePaymentSelect" class="form-select" aria-label="Default select example">
                             <option value="ALL" selected>All</option>
                             <option value="CASH">Cash</option>
                             <option value="CARD">Card</option>
@@ -481,12 +481,12 @@
                     </div>
                     <div class="col-2">
                         <label class="label">Sory By</label>
-                        <select class="form-select" aria-label="Default select example">
+                        <select id="sortSalesSelect" class="form-select" aria-label="Default select example">
                             <option value="NONE" selected>None</option>
                             <option value="LOW-HIGH">Total: Low-High</option>
                             <option value="HIGH-LOW">Total: High-Low</option>
-                            <option value="LOW-HIGH">Date: Latest</option>
-                            <option value="HIGH-LOW">Date: Oldest</option>
+                            <option value="Latest">Date: Latest</option>
+                            <option value="Oldest">Date: Oldest</option>
                         </select>
                     </div>
                     <div class="col-2">
@@ -499,12 +499,12 @@
                 <div class="accordion-list-header container-fluid">
                     <div class="row">
                         <label class="col-1">#</label>
+                        <label class="col-2">Order ID</label>
                         <label class="col-2">Sold Date</label>
                         <label class="col-2">Payment</label>
-                        <label class="col-2">Sub Total</label>
+                        <label class="col-1">Sub Total</label>
                         <label class="col-2">Customer</label>
                         <label class="col-2">Employee</label>
-                        <label class="col-1">Sold Items</label>
                     </div>
                 </div>
 
@@ -519,12 +519,12 @@
                                 <div class="sale-accordion container-fluid w-100">
                                     <div class="row">
                                         <label class="col-1">1</label>
+                                        <label class="col">OD345252</label>
                                         <label class="col-2">Sold Date</label>
                                         <label class="col-2">Payment</label>
                                         <label class="col-2">Sub Total</label>
                                         <label class="col-2">Customer</label>
                                         <label class="col-2">Employee</label>
-                                        <label class="col-1">Sold Items</label>
                                     </div>
                                 </div>
 

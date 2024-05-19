@@ -103,7 +103,7 @@ const setBtnActive = (element, btn) => {
     $(element).show();
 }
 
-$("#refundHistoryBtn").click();
+$("#salesHistoryBtn").click();
 
 const encode = text =>{
     // for(let i=0; i<10; i++){
