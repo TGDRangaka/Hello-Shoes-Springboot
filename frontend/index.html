@@ -1007,29 +1007,29 @@
             <section id="customer" class="bg-theme text-theme mh-100">
                 <header class="row mb-3">
                     <div class="input-group search col">
-                        <input type="text" class="form-control" placeholder="Item Code">
-                        <button class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
+                        <input id="customerSearchInput" type="text" class="form-control" placeholder="Item Code">
+                        <button class="btn btn-primary" type="button" id="customerSearchBtn">Search</button>
                     </div>
                     <div class="col-2">
                         <label class="label">Level</label>
-                        <select class="form-select" aria-label="Default select example">
+                        <select id="customerLeevlSelect" class="form-select" aria-label="Default select example">
                             <option value="ALL" selected>All</option>
-                            <option value="G">Gold</option>
-                            <option value="S">Silver</option>
-                            <option value="B">Bronze</option>
-                            <option value="N">New</option>
+                            <option value="GOLD">Gold</option>
+                            <option value="SILVER">Silver</option>
+                            <option value="BRONZE">Bronze</option>
+                            <option value="NEW">New</option>
                         </select>
                     </div>
                     <div class="col-2">
                         <label class="label">Sory By</label>
-                        <select class="form-select" aria-label="Default select example">
+                        <select id="customerSortSelect" class="form-select" aria-label="Default select example">
                             <option value="NONE" selected>None</option>
                             <option value="A-Z">Name: A-Z</option>
                             <option value="Z-A">Name: Z-A</option>
-                            <option value="LOW-HIGH">Level: NEW-GOLD</option>
-                            <option value="HIGH-LOW">Level: GOLD-NEW</option>
-                            <option value="MAN">Male</option>
-                            <option value="WOMEN">Female</option>
+                            <option value="LOW-HIGH">Points: LOW-HIGH</option>
+                            <option value="HIGH-LOW">Points: HIGH-LOW</option>
+                            <option value="Latest-JOINED">JOINED: Latest</option>
+                            <option value="Oldest-JOINED">JOINED: Oldest</option>
                         </select>
                     </div>
                     <div class="col-2">
@@ -1040,22 +1040,20 @@
                 </header>
                 <table class="table">
                     <thead>
-                        <tr class="text-center">
-                            <th scope="col" class="table-img">Level</th>
+                        <tr>
+                            <th scope="col">Points</th>
                             <th id="trun" scope="col">Customer Name</th>
                             <th scope="col">Contact No.</th>
                             <th scope="col">Email</th>
                             <th scope="col">DOB</th>
                             <th scope="col">Joined Date</th>
                             <th scope="col">Gender</th>
-                            <th scope="col">Recent Purchase D/T</th>
+                            <th scope="col" class="text-center">Recent Purchase D/T</th>
                             <th scope="col" class="table-action">Edit</th>
                         </tr>
                     </thead>
                     <tbody id="customersTBody">
-                        <tr>
-                            <td colspan="9" class="text-center">No Data Available</td>
-                        </tr>
+                        <tr><td colspan="9" class="text-center">No Data Available</td></tr>
                     </tbody>
                 </table>
             </section>

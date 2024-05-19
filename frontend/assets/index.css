@@ -882,18 +882,27 @@ section header {
 #selectSaleItemPane {
     width: 100vw;
     height: 100vh;
-    position: absolute;
     background-color: rgba(0, 0, 0, 0.425);
     z-index: 20;
-    left: 12px;
+    position: absolute;
+    left: 0;
     top: 0;
-    display: flex;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    display: none;
     align-items: center;
     justify-content: center;
     backdrop-filter: blur(4px);
 }
 
 #selectSaleItemPane form {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
     width: 400px;
     height: fit-content;
     background-color: var(--light-bg-color);
@@ -1162,6 +1171,36 @@ input[type="radio"] {
 
 #customersTBody {
     height: 40px;
+}
+
+.customer-points div{
+    width: 40px;
+    aspect-ratio: 1;
+    /* background-color: gold; */
+    border-radius: 50%;
+    /* color: white; */
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgb(196, 196, 196);
+}
+
+.level-g div{
+    background-color: gold;
+    color: #303030;
+}
+.level-s div{
+    background-color: silver;
+    color: #303030;
+}
+.level-b div{
+    background-color: #CD7F32;
+    color: #ffffff;
+}
+.level-n div{
+    background-color: #ffffff;
+    color: #8f8f8f;
 }
 
 /* /////////////////////////////////////////////////////////////////////////////////////////////////// */

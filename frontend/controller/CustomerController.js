@@ -77,24 +77,33 @@ $("#customerSubmitBtn").click(()=>{
 })
 
 const loadCustomerTable = customers => {
+
+    // sort customer table if have a value
+    if($("#customerSortSelect").val() !== 'NONE'){
+        sortCustomerTable();
+    }
+
     $("#customersTBody").empty();
     const getData = data =>{
         return data ? data : 'N/A';
     }
     customers.map((cus,i) => {
+
+        // filter customer if have a value
+        if(!isInSelectedLevel(cus)) return;
+        // search
+        if(!isInSearchedKeyword(cus)) return;
+
         $("#customersTBody").append(`
-        <tr class="text-center align-middle">
-            <td class="d-flex flex-column align-items-center">
-                <img src="assets/icons/${cus.level}-level.png" alt="" class="">
-                <label class="label">${cus.totalPoints}</label>
-            </td>
+        <tr class="align-middle">
+            <td class="customer-points level-${cus.level.toLowerCase().charAt(0)}"><div>${cus.totalPoints}</div></td>
             <td>${cus.name}</td>
             <td>${getData(cus.phone)}</td>
             <td>${getData(cus.email)}</td>
             <td>${getData(cus.dob)}</td>
             <td>${getData(cus.joinedDateAsLoyalty)}</td>
             <td>${getData(cus.gender)}</td>
-            <td>${getData(cus.recentPurchaseDateTime)}</td>
+            <td class="text-center">${getData(cus.recentPurchaseDateTime)}</td>
             <td class="table-action"><button data-index=${i} class="btn"><i class="fa-solid fa-pen"></i></button></i></td>
         </tr>
         `)
@@ -194,4 +203,53 @@ const checkValidations = (customer) => {
     &
     (getRegex('email').test(customer.email) ? setAsValid("#customerEmail", 'Looks Good!')
     : setAsInvalid("#customerEmail", 'Please enter valid email'));
+}
+
+// sorting
+$("#customer header select").on('change', function(){
+    loadCustomerTable(allCustomers);
+})
+const sortCustomerTable = () => {
+    let sortType = $("#customerSortSelect").val();
+
+    if(sortType === 'A-Z'){
+        allCustomers.sort((a,b) => a.name.localeCompare(b.name));
+    }else if(sortType === 'Z-A'){
+        allCustomers.sort((a,b) => b.name.localeCompare(a.name));
+    }else if(sortType === 'LOW-HIGH'){
+        allCustomers.sort((a,b) => a.totalPoints - b.totalPoints);
+    }else if(sortType === 'HIGH-LOW'){
+        allCustomers.sort((a,b) => b.totalPoints - a.totalPoints);
+    }else if(sortType === 'Latest-JOINED'){
+        allCustomers.sort((a,b) => new Date(b.joinedDateAsLoyalty) - new Date(a.joinedDateAsLoyalty));
+    }else if(sortType === 'Oldest-JOINED'){
+        allCustomers.sort((a,b) => new Date(a.joinedDateAsLoyalty) - new Date(b.joinedDateAsLoyalty));
+    }
+}
+
+// filter out
+const isInSelectedLevel = (customer) => {
+    let selectedLevel = $("#customerLeevlSelect").val();
+    if(selectedLevel === 'ALL'){
+        return true;
+    }
+    return customer.level === selectedLevel;
+}
+
+// search
+$("#customerSearchBtn").click(function(){
+    loadCustomerTable(allCustomers);
+});
+const isInSearchedKeyword = (customer) => {
+    let keyword = $("#customerSearchInput").val();
+    keyword = keyword.toLowerCase();
+    if(keyword === ''){
+        return true;
+    }
+    return customer.name.toLowerCase().includes(keyword) || 
+    customer.phone.toLowerCase().includes(keyword) || 
+    customer.email.toLowerCase().includes(keyword) || 
+    customer.addressNo.toLowerCase().includes(keyword) || 
+    customer.addressLane.toLowerCase().includes(keyword) || 
+    customer.addressCity.toLowerCase().includes(keyword);
 }
