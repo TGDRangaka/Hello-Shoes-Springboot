@@ -1713,6 +1713,49 @@
                 </form>
             </section>
 
+            <!-- Refund History -->
+            <section id="refundHistory" class="bg-theme text-theme mh-100">
+                <header class="mb-3 rounded row">
+                    <div class="input-group search col">
+                        <input id="refundSearchInput" type="text" class="form-control" placeholder="Item Code">
+                        <button class="btn btn-primary" type="button" id="refundSearchBtn">Search</button>
+                    </div>
+                    <div class="col-2">
+                        <label class="label">Sory By</label>
+                        <select id="refundSortSelect" class="form-select" aria-label="Default select example">
+                            <option value="NONE" selected>None</option>
+                            <option value="LOW">Total: LOW-HIGH</option>
+                            <option value="HIGH">Total: HIGH-LOW</option>
+                            <option value="Latest">DATE: Latest</option>
+                            <option value="Oldest">DATE: Oldest</option>
+                        </select>
+                    </div>
+                    <div class="col-2">
+                        <label class="hidden"></label>
+                        <button id="addNewProductBtn" type="button" class="btn btn-primary w-100">Add New
+                            Product</button>
+                    </div>
+                </header>
+
+                <table class="table">
+                    <thead>
+                        <th class="table-action text-center">#</th>
+                        <th class="table-img">Image</th>
+                        <th>Order ID</th>
+                        <th>Item Code</th>
+                        <th class="table-img">Qty</th>
+                        <th class="text-center">Description</th>
+                        <th class="text-end">Total Refund</th>
+                        <th class="text-end">Date</th>
+                    </thead>
+                    <tbody id="refundsTableBody">
+                        <tr class="align-middle">
+                            <td colspan="8" class="text-center">No Data Available.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
         </div>
 
 

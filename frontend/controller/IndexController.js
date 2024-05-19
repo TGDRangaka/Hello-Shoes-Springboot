@@ -81,6 +81,11 @@ $("#refundBtn").on('click', ()=>{
     $("#sectionTitle").text("Refund Item")
 })
 
+$("#refundHistoryBtn").on('click', function(){
+    setBtnActive("#refundHistory", this)
+    $("#sectionTitle").text("Refund History")
+})
+
 $("#loginBtn").click(()=>{
     setBtnActive("#profile", "#loginBtn")
     $("#sectionTitle").text("Profile")
@@ -98,7 +103,7 @@ const setBtnActive = (element, btn) => {
     $(element).show();
 }
 
-$("#resupplysBtn").click();
+$("#refundHistoryBtn").click();
 
 const encode = text =>{
     // for(let i=0; i<10; i++){

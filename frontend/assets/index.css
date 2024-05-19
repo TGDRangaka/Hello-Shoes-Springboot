@@ -170,6 +170,13 @@ select:focus {
     flex-grow: 1;
 }
 
+.bg-img{
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    aspect-ratio: 1;
+}
+
 /* ////////////////////////////////////////////////////////////////////////////////////// */
 
 nav {

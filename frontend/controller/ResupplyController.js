@@ -12,7 +12,6 @@ let selectedItems = [];
 
 $("#resupplysBtn").click(() => {
     // getAllResupplies();
-
     getAllResupplies();
 })
 
