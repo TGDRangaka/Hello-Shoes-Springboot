@@ -1,11 +1,15 @@
 package lk.ijse.helloshoesbackend.service.impl;
 
+import lk.ijse.helloshoesbackend.dto.AlertDTO;
 import lk.ijse.helloshoesbackend.dto.projection.DailySalesProjection;
 import lk.ijse.helloshoesbackend.dto.projection.MostSoldItemProjection;
 import lk.ijse.helloshoesbackend.dto.projection.SaleItemProjection;
+import lk.ijse.helloshoesbackend.repo.AlertRepo;
 import lk.ijse.helloshoesbackend.repo.SaleItemRepo;
 import lk.ijse.helloshoesbackend.repo.SaleRepo;
 import lk.ijse.helloshoesbackend.service.AdminPanelService;
+import lk.ijse.helloshoesbackend.util.Conversion;
+import lk.ijse.helloshoesbackend.util.UtilMatter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,6 +24,7 @@ import java.util.List;
 public class AdminPanelServiceIMPL implements AdminPanelService {
     private final SaleRepo saleRepo;
     private final SaleItemRepo saleItemRepo;
+    private final AlertRepo alertRepo;
 
 
     @Override
@@ -61,5 +66,17 @@ public class AdminPanelServiceIMPL implements AdminPanelService {
     @Override
     public List<MostSoldItemProjection> getMostSoldItems(LocalDate date) {
         return saleItemRepo.findMostSoldItems(date);
+    }
+
+    @Override
+    public List<AlertDTO> saveAlert(AlertDTO alertDTO){
+        alertDTO.setId(UtilMatter.generateUUID());
+        alertRepo.save(Conversion.toAlertEntity(alertDTO));
+        return Conversion.toAlertDTOList(alertRepo.findAll());
+    }
+
+    @Override
+    public List<AlertDTO> getAllAlerts() {
+        return Conversion.toAlertDTOList(alertRepo.findAll());
     }
 }

@@ -1,6 +1,7 @@
 package lk.ijse.helloshoesbackend.api;
 
 import lk.ijse.helloshoesbackend.bo.AdminPanelBO;
+import lk.ijse.helloshoesbackend.dto.AlertDTO;
 import lk.ijse.helloshoesbackend.service.AdminPanelService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -25,6 +26,26 @@ public class AdminPanelAPI {
         try {
             date = date.replaceAll("(\\b\\d\\b)", "0$1");
             return ResponseEntity.accepted().body(adminPanelBO.getAdminPanelDate(LocalDate.parse(date)));
+        }catch (Exception e){
+            e.printStackTrace();
+            return ResponseEntity.internalServerError().body(e.getMessage());
+        }
+    }
+
+    @PostMapping("/alert")
+    public ResponseEntity recordAlert(@RequestBody AlertDTO alertDTO){
+        try{
+            return ResponseEntity.ok(adminPanelBO.recordAlert(alertDTO));
+        }catch (Exception e){
+            e.printStackTrace();
+            return ResponseEntity.internalServerError().body(e.getMessage());
+        }
+    }
+
+    @GetMapping("/alert")
+    public ResponseEntity getAllAlerts(){
+        try{
+            return ResponseEntity.ok(adminPanelBO.getAllAlerts());
         }catch (Exception e){
             e.printStackTrace();
             return ResponseEntity.internalServerError().body(e.getMessage());

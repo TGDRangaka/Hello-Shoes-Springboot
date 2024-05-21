@@ -267,4 +267,12 @@ public class Conversion {
             return refundDTO;
         }).collect(Collectors.toList());
     }
+
+    public static AlertEntity toAlertEntity(AlertDTO alertDTO){
+        return modelMapper.map(alertDTO, AlertEntity.class);
+    }
+
+    public static List<AlertDTO> toAlertDTOList(List<AlertEntity> list){
+        return modelMapper.map(list, new TypeToken<List<AlertDTO>>(){}.getType());
+    }
 }

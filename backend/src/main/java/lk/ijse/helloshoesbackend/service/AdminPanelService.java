@@ -1,5 +1,6 @@
 package lk.ijse.helloshoesbackend.service;
 
+import lk.ijse.helloshoesbackend.dto.AlertDTO;
 import lk.ijse.helloshoesbackend.dto.projection.DailySalesProjection;
 import lk.ijse.helloshoesbackend.dto.projection.MostSoldItemProjection;
 
@@ -13,4 +14,8 @@ public interface AdminPanelService {
     List<DailySalesProjection> getDailyTotalSales(LocalDate date);
     List<Object[]> getStocksCounts(LocalDate date);
     List<MostSoldItemProjection> getMostSoldItems(LocalDate date);
+
+    List<AlertDTO> saveAlert(AlertDTO alertDTO);
+
+    List<AlertDTO> getAllAlerts();
 }
