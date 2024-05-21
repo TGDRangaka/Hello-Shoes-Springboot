@@ -1,6 +1,6 @@
 import { token } from '../db/data.js';
 import { Sale } from '../model/Sale.js';
-import { setAsInvalid, setAsValid, clearValidations } from '../util/UtilMatter.js';
+import { setAsInvalid, setAsValid, clearValidations, saveAlert, showSuccessAlert } from '../util/UtilMatter.js';
 
 $("#paymentPanel").hide();
 let isPaymentPanelOpened = false;
@@ -93,7 +93,11 @@ $("#salePayBtn, #saleConfirmBtn").click(() => {
     };
 
     $.ajax(settings).done(function (response) {
-        console.log(response);
+        showSuccessAlert("Order saved successfully")
+        for(const [itemName, precentage] of Object.entries(response)){
+            // console.log(itemName + " --- " + precentage);
+            precentage < 51 && saveAlert(`Item: ${itemName} is stock low!(${precentage}%)`, 'warning');
+        }
     }).fail((error) => {
         console.log(error);
     })

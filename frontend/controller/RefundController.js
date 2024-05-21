@@ -1,5 +1,6 @@
 import { token, setToken } from "../db/data.js";
 import { Refund } from "../model/Refund.js";
+import { showSuccessAlert } from "../util/UtilMatter.js";
 
 let allRefunds = [];
 let orderItems = [];
@@ -78,6 +79,7 @@ const submitRefund = (refunds) => {
 
     $.ajax(settings).done(function (response) {
         console.log(response);
+        showSuccessAlert("Refund recorded successfully")
         $("#refundCancelBtn").click();
     });
 }

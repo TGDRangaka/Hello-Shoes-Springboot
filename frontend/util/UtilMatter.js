@@ -1,3 +1,5 @@
+import { addAlert, token } from "../db/data.js";
+
 // Name regex
 const nameRegex = /^[A-Za-z.'-]+(?: [A-Za-z.'-]+)?$/;
 
@@ -14,7 +16,7 @@ const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 const moneyRegex = /^\d+(\.\d{2})?$/;
 
 export const getRegex = (field) => {
-    switch(field){
+    switch (field) {
         case 'name':
             return nameRegex;
         case 'address':
@@ -23,7 +25,7 @@ export const getRegex = (field) => {
             return phoneRegex;
         case 'email':
             return emailRegex;
-        case'money':
+        case 'money':
             return moneyRegex;
         default:
             return null;
@@ -51,7 +53,7 @@ export const clearValidations = (form) => {
 }
 
 export const getCategory = value => {
-    switch(value){
+    switch (value) {
         case 'S': return 'Shoe';
         case 'FF': return 'Flip Flop';
         case 'H': return 'Heel';
@@ -62,4 +64,77 @@ export const getCategory = value => {
         case 'ACC': return 'Accessory';
         default: return null;
     }
+}
+
+// save alert and load alerts to notification panel
+export const saveAlert = (message, type) => {
+
+    if (type.toLowerCase() === 'warning') {
+        Swal.fire({
+            position: "top-end",
+            icon: "warning",
+            title: message,
+            showConfirmButton: false,
+            timer: 2500
+        });
+    }
+
+    var settings = {
+        "url": "http://localhost:8080/api/v1/admin-panel/alert",
+        "method": "POST",
+        "timeout": 0,
+        "headers": {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + token
+        },
+        "data": JSON.stringify({
+            "message": message,
+            "type": type.toUpperCase()
+        }),
+    };
+
+    $.ajax(settings).done(function (response) {
+        console.log(response);
+        addAlert(response);
+        $(".notifications").empty();
+        response.map(alert => {
+            $(".notifications").append(`
+            <div class="notification">
+                <i class="fa-solid fa-${alert.type === 'GENERAL' ? 'thumbs-up'
+                    : alert.type === 'WARNING' ? 'triangle-exclamation'
+                        : 'info'
+                } notifi-${alert.type.toLowerCase()}"></i>
+                <div class="body">
+                    <h6>${alert.message}</h6>
+                    <span>${alert.date}, ${alert.time}</span>
+                </div>
+            </div>
+            `);
+        });
+    });
+}
+
+// export const getAllAlerts = () => {
+//     var settings = {
+//         "url": "http://localhost:8080/api/v1/admin-panel/alert",
+//         "method": "GET",
+//         "timeout": 0,
+//         "headers": {
+//           "Authorization": "Bearer " + token
+//         },
+//       };
+
+//       $.ajax(settings).done(function (response) {
+//         console.log(response);
+//       });
+// }
+
+export const showSuccessAlert = (message) => {
+    Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: message,
+        showConfirmButton: false,
+        timer: 2000
+    });
 }

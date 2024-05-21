@@ -1,7 +1,7 @@
 import {Item} from '../model/Item.js'
 import {Inventory} from '../model/Inventory.js'
 import {token} from '../db/data.js'
-import { getCategory, setAsInvalid, setAsValid, clearValidations } from '../util/UtilMatter.js';
+import { getCategory, setAsInvalid, setAsValid, clearValidations, showSuccessAlert } from '../util/UtilMatter.js';
 
 let otherBtnCount = 0;
 let allItems = [];
@@ -381,6 +381,7 @@ const saveProduct = async () => {
       
       $.ajax(settings).done(function (response) {
         console.log(response);
+        showSuccessAlert("Product saved successfully")
       });
 }
 
@@ -477,6 +478,7 @@ const updateProduct = async () => {
       
       $.ajax(settings).done(function (response) {
         console.log(response);
+        showSuccessAlert("Product updated successfully")
       });
 }
 

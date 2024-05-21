@@ -817,11 +817,11 @@ section header {
     color: var(--light-text);
 }
 
-.notifi-danger {
+.notifi-warning {
     background-color: rgb(255, 108, 108);
 }
 
-.notifi-success {
+.notifi-general {
     background-color: rgb(90, 223, 90);
 }
 
@@ -891,7 +891,7 @@ section header {
     overflow-y: auto;
     overflow-x: hidden;
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     justify-content: space-around;
     justify-items: center;
     align-content: space-evenly;

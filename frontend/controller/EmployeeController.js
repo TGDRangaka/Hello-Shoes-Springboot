@@ -1,6 +1,6 @@
 import { token, user, setUser } from '../db/data.js';
 import { Employee } from '../model/Employee.js'
-import { getRegex, setAsInvalid, setAsValid, clearValidations } from '../util/UtilMatter.js';
+import { getRegex, setAsInvalid, setAsValid, clearValidations, showSuccessAlert } from '../util/UtilMatter.js';
 
 let allEmployees = [];
 let employeeData = new Employee();
@@ -86,6 +86,7 @@ function saveEmployee() {
     };
 
     $.ajax(settings).done(function (response) {
+        showSuccessAlert("Employee saved successfully")
         console.log(response);
         clearValidations("#addEmployee form");
     });
@@ -107,6 +108,7 @@ function updateEmployee(formData) {
     };
 
     $.ajax(settings).done(function (response) {
+        showSuccessAlert("Employee updated successfully")
         console.log(JSON.parse(response));
         clearValidations("#addEmployee form");
     });
@@ -360,6 +362,7 @@ $('#submitProfileBtn').on('click', () => {
         };
 
         $.ajax(settings).done(function (response) {
+            showSuccessAlert("Profile updated successfully")
             console.log(JSON.parse(response));
             setUser(JSON.parse(response));
             clearValidations("#profile form");

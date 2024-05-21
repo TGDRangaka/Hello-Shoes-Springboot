@@ -1,6 +1,6 @@
 import { token } from "../db/data.js";
 import { Supplier } from "../model/Supplier.js";
-import { setAsInvalid, setAsValid, getRegex, clearValidations } from "../util/UtilMatter.js";
+import { setAsInvalid, setAsValid, getRegex, clearValidations, showSuccessAlert } from "../util/UtilMatter.js";
 
 let allSuppliers = [];
 let selectedSupplier = null;
@@ -45,6 +45,7 @@ const saveSupplier = (supplier) => {
   $.ajax(settings).done(function (response) {
     // console.log(response);
     clearValidations("#supplierForm form");
+    showSuccessAlert("Supplier saved successfully")
   });
 }
 
@@ -63,6 +64,7 @@ const updateSupplier = (supplier) => {
   $.ajax(settings).done(function (response) {
     console.log(response);
     clearValidations("#supplierForm form");
+    showSuccessAlert("Supplier updated successfully")
   });
 }
 

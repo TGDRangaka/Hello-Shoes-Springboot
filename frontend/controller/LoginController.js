@@ -1,4 +1,5 @@
-import { user, setToken, setUser, setUserRole, userRole } from "../db/data.js";
+import { user, setToken, setUser, setUserRole, userRole, token } from "../db/data.js";
+import { saveAlert, showSuccessAlert } from "../util/UtilMatter.js";
 
 let isRegisterState = false;
 
@@ -83,9 +84,10 @@ const registerUser = (username, password) => {
 
 // handle user login
 const handleUserLoginToSystem = (response) => {
+    showSuccessAlert("Logged in successfully!");
+    
     setTimeout(() => {
         adminViewHandle(response.user.role);
-
         // hide login pane
         $("#loginPage").hide();
         $("main").show();
@@ -107,6 +109,9 @@ const handleUserLoginToSystem = (response) => {
     $(".userName").text(user.name);
     $(".userEmail").text(user.email);
     $(".user-img").css('background-image', `url(data:image/jpeg;base64,${user.profilePic})`);
+
+    // save login record
+    saveAlert(`${response.user.employee.name} logged in`, 'INFO');
 }
 
 // manage admin view

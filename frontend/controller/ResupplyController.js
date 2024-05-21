@@ -1,7 +1,7 @@
 import { token } from "../db/data.js";
 import { Resupply } from "../model/Resupply.js";
 import { ResupplyItem } from "../model/ResupplyItem.js"
-import { getCategory } from "../util/UtilMatter.js";
+import { getCategory, saveAlert, showSuccessAlert } from "../util/UtilMatter.js";
 
 let allResupplies = [];
 let allItems = [];
@@ -60,7 +60,8 @@ const saveResupplieDetails = (resupply) => {
     };
 
     $.ajax(settings).done(function (response) {
-        console.log(response);
+        showSuccessAlert('Successfully saved resupply details');
+        saveAlert(`Item: ${resupply.resupplyItems[0].resupplyItemId.inventory.inventoryCode.split('_')[0]} is been resupplied!`, 'general')
     });
 }
 

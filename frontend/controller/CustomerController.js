@@ -1,5 +1,5 @@
 import {token} from '../db/data.js';
-import { getRegex, setAsValid, setAsInvalid } from '../util/UtilMatter.js';
+import { getRegex, setAsValid, setAsInvalid, showSuccessAlert } from '../util/UtilMatter.js';
 import { Customer } from '../model/Customer.js';
 
 let allCustomers = [];
@@ -42,6 +42,7 @@ const saveCustomer = (customer) => {
       
       $.ajax(settings).done(function (response) {
         console.log(response);
+        showSuccessAlert("Customer saved successfully")
         $("#customerFormBtn").click();
       });
 }
@@ -60,6 +61,7 @@ const updateCustomer = (customer) => {
       
       $.ajax(settings).done(function (response) {
         console.log(response);
+        showSuccessAlert("Customer updated successfully!")
         $("#customerFormBtn").click();
       });
 }
