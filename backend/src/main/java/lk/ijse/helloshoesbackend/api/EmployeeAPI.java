@@ -5,11 +5,13 @@ import jakarta.servlet.http.HttpServletRequest;
 import lk.ijse.helloshoesbackend.bo.EmployeeBO;
 import lk.ijse.helloshoesbackend.dto.EmployeeDTO;
 import lk.ijse.helloshoesbackend.entity.enums.Gender;
+import lk.ijse.helloshoesbackend.reqAndResp.request.SignIn;
 import lk.ijse.helloshoesbackend.util.UtilMatter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -36,6 +38,17 @@ public class EmployeeAPI {
     public ResponseEntity<EmployeeDTO> getEmployee(HttpServletRequest request){
         String token = request.getHeader("Authorization").substring(7);
         return ResponseEntity.ok(employeeBO.getEmployee(token));
+    }
+
+    @RolesAllowed("ADMIN")
+    @GetMapping("/validate/{email}/{password}")
+    public ResponseEntity isValidCredentials(@PathVariable String email, @PathVariable String password, Authentication authentication){
+        try {
+            return ResponseEntity.ok(employeeBO.isEmployeeCredentialsValid(email, password, authentication));
+        }catch (Exception e){
+            e.printStackTrace();
+            return ResponseEntity.internalServerError().body(e.getMessage());
+        }
     }
 
     @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)

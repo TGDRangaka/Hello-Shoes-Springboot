@@ -1,13 +1,9 @@
 package lk.ijse.helloshoesbackend.service.impl;
 
 import lk.ijse.helloshoesbackend.dto.UserDTO;
-import lk.ijse.helloshoesbackend.entity.EmployeeEntity;
 import lk.ijse.helloshoesbackend.entity.UserEntity;
 import lk.ijse.helloshoesbackend.exception.DataDuplicationException;
-import lk.ijse.helloshoesbackend.repo.EmployeeRepo;
 import lk.ijse.helloshoesbackend.repo.UserRepo;
-import lk.ijse.helloshoesbackend.reqAndResp.request.SignIn;
-import lk.ijse.helloshoesbackend.reqAndResp.request.SignUp;
 import lk.ijse.helloshoesbackend.reqAndResp.response.JwtAuthResponse;
 import lk.ijse.helloshoesbackend.service.AuthenticationService;
 import lk.ijse.helloshoesbackend.service.JWTService;
@@ -17,6 +13,7 @@ import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -44,6 +41,14 @@ public class AuthenticationServiceIMPL implements AuthenticationService {
         String token = jwtService.generateToken(byEmail);
 
         return new JwtAuthResponse(token, Conversion.toUserDTO(byEmail));
+    }
+
+    @Override
+    public boolean isCredentialsValid(String email, String password) {
+        UserEntity byEmail = userRepo.findByEmail(email)
+                .orElseThrow(()-> new UsernameNotFoundException("User Not Found"));
+
+        return (byEmail != null) && passwordEncoder.matches(password, byEmail.getPassword());
     }
 
     @Override
