@@ -177,6 +177,10 @@ select:focus {
     aspect-ratio: 1;
 }
 
+option:disabled {
+    color: #cecece;
+}
+
 /* /////////////////////////////////////////////////////////////////////////////////////// */
 /* Login Pages */
 

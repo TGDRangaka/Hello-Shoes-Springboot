@@ -1,7 +1,7 @@
 import {Item} from '../model/Item.js'
 import {Inventory} from '../model/Inventory.js'
 import {token} from '../db/data.js'
-import { getCategory, setAsInvalid, setAsValid, clearValidations, showSuccessAlert } from '../util/UtilMatter.js';
+import { getCategory, setAsInvalid, setAsValid, clearValidations, showSuccessAlert, showErrorAlert } from '../util/UtilMatter.js';
 
 let otherBtnCount = 0;
 let allItems = [];
@@ -382,7 +382,10 @@ const saveProduct = async () => {
       $.ajax(settings).done(function (response) {
         console.log(response);
         showSuccessAlert("Product saved successfully")
-      });
+      }).fail(function (jqXHR, textStatus, errorThrown) {
+        showErrorAlert("An error occurred while saving product");
+        console.error("Error details:", textStatus, errorThrown, jqXHR);
+    });
 }
 
 const updateProduct = async () => {
@@ -479,7 +482,10 @@ const updateProduct = async () => {
       $.ajax(settings).done(function (response) {
         console.log(response);
         showSuccessAlert("Product updated successfully")
-      });
+      }).fail(function (jqXHR, textStatus, errorThrown) {
+        showErrorAlert("An error occurred while updating the product");
+        console.error("Error details:", textStatus, errorThrown, jqXHR);
+    });
 }
 
 const getFileToBase64 = async file => {

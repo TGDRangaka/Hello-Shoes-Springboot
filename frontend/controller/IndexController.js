@@ -1,92 +1,92 @@
 
 import { user, setUser, setToken } from "../db/data.js";
 
-$("#dashboardBtn").on('click', function(){
+$("#dashboardBtn").on('click', function () {
     setBtnActive("#dashboard", this);
     $("#sectionTitle").text("Dashboard")
 })
 
-$("#salesBtn").on('click', function(){
+$("#salesBtn").on('click', function () {
     setBtnActive("#sales", this);
     $("#sectionTitle").text("New Purchase")
 })
 
-$("#salesHistoryBtn").click(function() {
+$("#salesHistoryBtn").click(function () {
     setBtnActive("#salesHistory", this);
     $("#sectionTitle").text("Sales History")
 })
 
-$("#inventoryBtn").on('click', function(){
+$("#inventoryBtn").on('click', function () {
     setBtnActive("#inventory", this);
     $("#sectionTitle").text("Inventory")
 })
 
-$("#inventoryFormBtn").click(function() {
+$("#inventoryFormBtn").click(function () {
     setBtnActive("#addProduct", this);
     $("#sectionTitle").text("New Product")
 })
 
-$("#customerBtn").on('click', function(){
+$("#customerBtn").on('click', function () {
     setBtnActive("#customer", this);
     $("#sectionTitle").text("Customers")
 })
 
-$("#customerFormBtn").on('click', function() {
+$("#customerFormBtn").on('click', function () {
     setBtnActive("#customer", this);
     $("#sectionTitle").text("Customer Form")
 })
 
-$("#employeesBtn").on('click', function(){
+$("#employeesBtn").on('click', function () {
     setBtnActive("#employee", this);
     $("#sectionTitle").text("Employees")
 })
 
-$("#employeeFormBtn").on('click', function(){
+$("#employeeFormBtn").on('click', function () {
     setBtnActive("#addEmployee", this);
     $("#sectionTitle").text("Employee Form")
 })
 
-$("#suppliersBtn").on('click', function(){
+$("#suppliersBtn").on('click', function () {
     setBtnActive("#supplier", this);
     $("#sectionTitle").text("Suppliers")
 })
 
-$("#supplierFormBtn").on('click', function(){
+$("#supplierFormBtn").on('click', function () {
     setBtnActive("#supplierForm", this);
     $("#sectionTitle").text("Supplier Form")
 })
 
-$("#restockBtn").on('click', function(){
+$("#restockBtn").on('click', function () {
     setBtnActive("#resupply", this);
     $("#sectionTitle").text("Restock Items")
 })
 
-$("#resupplysBtn").on('click', function(){
+$("#resupplysBtn").on('click', function () {
     setBtnActive("#resupplyData", this);
     $("#sectionTitle").text("Resupply History")
 })
 
-$("#notificationsBtn").on('click', function(){
+$("#notificationsBtn").on('click', function () {
     setBtnActive("#notification", this);
     $("#sectionTitle").text("Notifications")
 })
 
-$("#addNewProductBtn").on('click', ()=>{
+$("#addNewProductBtn").on('click', () => {
     setBtnActive("#addProduct", "#inventoryBtn")
     $("#sectionTitle").text("New Product")
 })
 
-$("#refundBtn").on('click', ()=>{
+$("#refundBtn").on('click', () => {
     setBtnActive("#refund", "#refundBtn")
     $("#sectionTitle").text("Refund Item")
 })
 
-$("#refundHistoryBtn").on('click', function(){
+$("#refundHistoryBtn").on('click', function () {
     setBtnActive("#refundHistory", this)
     $("#sectionTitle").text("Refund History")
 })
 
-$("#loginBtn").click(()=>{
+$("#loginBtn").click(() => {
     setBtnActive("#profile", "#loginBtn")
     $("#sectionTitle").text("Profile")
 })
@@ -98,7 +98,7 @@ const hideAllSections = () => {
 
 const setBtnActive = (element, btn) => {
     hideAllSections();
-    $(btn).removeClass('nav-button-inactive'); 
+    $(btn).removeClass('nav-button-inactive');
     $(btn).addClass('nav-button-active');
     $(element).show();
 }
@@ -106,15 +106,15 @@ const setBtnActive = (element, btn) => {
 $("#salesHistoryBtn").click();
 
 let isBtnsDropdowned = false;
-$("#btnsDropdown").click(function(){
-    if(!isBtnsDropdowned){
+$("#btnsDropdown").click(function () {
+    if (!isBtnsDropdowned) {
         $(".formBtnsDown .body").css({
             'height': '200px',
             'opacity': '1',
         })
         $(this).find('.down').css('rotate', '180deg')
         isBtnsDropdowned = true;
-    }else{
+    } else {
         $(".formBtnsDown .body").css({
             'height': '0px',
             'opacity': '0',
@@ -125,6 +125,6 @@ $("#btnsDropdown").click(function(){
 })
 
 // $(".notification-pane").hide();
-$("#notificationBtn").click(()=>{
+$("#notificationBtn").click(() => {
     $(".notification-pane").toggle();
 })

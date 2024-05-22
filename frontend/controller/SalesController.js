@@ -1,6 +1,6 @@
 import { token } from '../db/data.js';
 import { Sale } from '../model/Sale.js';
-import { setAsInvalid, setAsValid, clearValidations, saveAlert, showSuccessAlert } from '../util/UtilMatter.js';
+import { setAsInvalid, setAsValid, clearValidations, saveAlert, showSuccessAlert, showErrorAlert } from '../util/UtilMatter.js';
 
 $("#paymentPanel").hide();
 let isPaymentPanelOpened = false;
@@ -20,7 +20,7 @@ $("#salesBtn").click(function () {
     getAllCustomers();
 })
 
-$("#salesHistoryBtn").click(()=> {
+$("#salesHistoryBtn").click(() => {
     getSoldItems();
 })
 
@@ -57,20 +57,19 @@ const getAllCustomers = () => {
         console.log(response);
         allCustomers = response;
         $("#customerDataList").empty();
-        allCustomers.map(customer => {
+        allCustomers.map((customer, i) => {
             $("#customerDataList").append(`
-                <option value="${customer.name}">${customer.email}</option>
+                <option value="${customer.email}">${customer.name}</option>
             `)
         })
     });
 }
 
-// payment api call
-$("#salePayBtn, #saleConfirmBtn").click(() => {
+const saveSale = () => {
     let sale = new Sale(
         "", subTotal, paymentMethod.toUpperCase(),
         subTotal >= 800 ? 1 : 0, null,
-        { name: $("#saleCustomerName").val(), email: $("#saleCustomerEmail").val() },
+        { name: $("#saleCustomerName").val(), email: $("#saleCustomerSearchInput").val() },
         []
     )
     selectedItems.map(item => {
@@ -94,14 +93,53 @@ $("#salePayBtn, #saleConfirmBtn").click(() => {
 
     $.ajax(settings).done(function (response) {
         showSuccessAlert("Order saved successfully")
-        for(const [itemName, precentage] of Object.entries(response)){
+        for (const [itemName, precentage] of Object.entries(response)) {
             // console.log(itemName + " --- " + precentage);
             precentage < 51 && saveAlert(`Item: ${itemName} is stock low!(${precentage}%)`, 'warning');
         }
-    }).fail((error) => {
-        console.log(error);
-    })
+    }).fail(function (jqXHR, textStatus, errorThrown) {
+        showErrorAlert("An error occurred while saving purchase");
+        console.error("Error details:", textStatus, errorThrown, jqXHR);
+    });
+}
 
+$("#salePayBtn").click(() => {
+
+    if (selectedItemByColors.length == 0) {
+        showSuccessAlert("Please select items to order.")
+        return;
+    }
+
+    if (paymentMethod === 'card') {
+        $("#cardPaymentPopup").css("display", "flex");
+        isPaymentPanelOpened = true;
+        return;
+    }
+
+    saveSale();
+})
+
+$("#saleConfirmBtn").click(() => {
+    if (!(($("#cardLasDigits").val().length === 4) ? setAsValid("#cardLasDigits", "Looks Good!") : setAsInvalid("#cardLasDigits", "Please enter card last 4 digits!"))
+        | !($("#cardBankName").val() ? setAsValid("#cardBankName", "Looks Good!") : setAsInvalid("#cardBankName", "Please provide card bank name"))) {
+        return;
+    }
+
+    $("#cardLasDigits").val("");
+    $("#cardBankName").val("");
+    clearValidations("#cardPaymentPopup")
+    isPaymentPanelOpened && $("#cardPaymentPopup").css("display", "none");
+    isPaymentPanelOpened = false;
+
+    saveSale();
+})
+
+$("#saleCancelBtn").click(() => {
+    $("#cardLasDigits").val("");
+    $("#cardBankName").val("");
+    clearValidations("#cardPaymentPopup")
+    isPaymentPanelOpened && $("#cardPaymentPopup").css("display", "none");
+    isPaymentPanelOpened = false;
 })
 
 const getSoldItems = () => {
@@ -123,7 +161,7 @@ const getSoldItems = () => {
 
 const loadSoldItemsTable = (soldItems) => {
     // sort
-    if($("#sortSalesSelect").val() !== 'NONE'){
+    if ($("#sortSalesSelect").val() !== 'NONE') {
         sortSoldTable();
     }
 
@@ -132,14 +170,14 @@ const loadSoldItemsTable = (soldItems) => {
     soldItems.map((sale, i) => {
 
         // filter & search
-        if(!isInSelectedPayementMethod(sale)) return;
-        if(!isInSearchedKeyword(sale)) return;
+        if (!isInSelectedPayementMethod(sale)) return;
+        if (!isInSearchedKeyword(sale)) return;
 
         let saleItemsRows = "";
         sale.saleItems.map((saleItem, i) => {
             saleItemsRows += `
                 <tr class="align-middle">
-                    <td class="text-center">${i+1}</td>
+                    <td class="text-center">${i + 1}</td>
                     <td>${saleItem.saleItemId.item.inventoryCode}</td>
                     <td>${saleItem.unitPrice}</td>
                     <td class="text-center">${saleItem.qty}</td>
@@ -161,7 +199,7 @@ const loadSoldItemsTable = (soldItems) => {
                         <label class="col-2">${sale.orderDate}</label>
                         <label class="col-2">${sale.paymentMethod}</label>
                         <label class="col-1">${sale.totalPrice}</label>
-                        <label class="col-2">${sale.customer.name}</label>
+                        <label class="col-2">${sale.customer ? sale.customer.name : 'Non Loyalty customer'}</label>
                         <label class="col-2">${sale.employee.name}</label>
                     </div>
                 </div>
@@ -208,25 +246,49 @@ $("#cardPayment, #cashPayment").on("click", () => {
     }
 });
 
-$("#saleConfirmBtn").on("click", () => {
-    isPaymentPanelOpened && $("#cardPaymentPopup").css("display", "none");
-    isPaymentPanelOpened = false;
-})
-
-$("#saleItemsDetails").on('change', '#saleCustomerName', function () {
-    let input = $(this).val();
-    console.log(input);
+$("#saleCustomerSearchBtn").click(() => {
+    let input = $("#saleCustomerSearchInput").val();
     allCustomers.filter(customer => {
-        if (customer.name === input) {
-            $("#saleCustomerEmail").val(customer.email);
+        if (customer.email === input) {
+            $("#saleCustomerName").val(customer.name);
+            setCustomerDetails(customer);
         }
     })
 })
+
+$("#customerDetails .input").on('change', '#saleCustomerName', function () {
+    let email = $(this).val();
+
+    console.log(email);
+
+    for (let i = 0; i < allCustomers.length; i++) {
+        if (allCustomers[i].email === email) {
+            $("#saleCustomerName").val(allCustomers[i].name);
+            $("#saleCustomerSearchInput").val(allCustomers[i].email);
+            setCustomerDetails(allCustomers[i]);
+            return;
+        }
+    }
+})
+
+function setCustomerDetails(customer) {
+    $("#saleCusLevel").text(customer.level);
+    $("#saleCusPoints").text(customer.totalPoints);
+    $("#saleCusJoinedDate").text(customer.joinedDateAsLoyalty);
+    $("#saleCusRecendPurchase").text(customer.recentPurchaseDateTime ? customer.recentPurchaseDateTime : 'Not Purchased yet');
+}
 
 
 $("#saleItemCode").on('input', function () {
     let input = $(this).val().toUpperCase();
     $(".choosItems").empty();
+    if (input == "") {
+        inventoryItems.map(item => {
+            addSuggestItemToList(item);
+        })
+        return;
+    }
+
     if (input.length > 1) {
         inventoryItems.map(item => {
             (item.itemCode.indexOf(input) >= 0) && addSuggestItemToList(item);
@@ -262,7 +324,9 @@ $(".choosItems").on("click", ".chooseItemCard", function () {
     $("#selectColor").empty();
     $("#selectColor").append('<option value="" selected>Select color</option>');
     selectedItemByColors.forEach(color => {
-        $("#selectColor").append(`<option value="${color.color}">${color.color}</option>`)
+        let itemQtyTot = 0;
+        color.items.map(item => itemQtyTot += item.currentQty);
+        $("#selectColor").append(`<option value="${color.color}" ${itemQtyTot == 0 ? 'disabled' : ''}>${color.color}</option>`)
     })
     $("#selectSaleItemPane").show();
 })
@@ -275,7 +339,7 @@ $("#selectSaleItemPane .body").on('change', '#selectColor', function () {
             $("#selectSize").append('<option value="" selected>Select</option>');
             $("#saleItemStock").html(0);
             color.items.map(itm => {
-                $("#selectSize").append(`<option value="${itm.size}">${itm.size.substring(5)}</option>`)
+                $("#selectSize").append(`<option value="${itm.size}" ${itm.currentQty == 0 ? 'disabled' : ''}>${itm.size.substring(5)}</option>`)
             })
         }
     })
@@ -328,6 +392,7 @@ $(".saleItems").on('click', 'i', function () {
 
 $("#selectSaleItemPane").hide();
 $("#selectSaleItemPane button:first-child").click(() => {
+    clearValidations("#selectSaleItemPane");
     $("#selectSaleItemPane").hide();
 })
 
@@ -388,20 +453,20 @@ const itemSelectingValidations = () => {
 }
 
 // sort
-$("#salesHistory header select").on('change', function(){
+$("#salesHistory header select").on('change', function () {
     loadSoldItemsTable(allSoldItems);
 })
 
 const sortSoldTable = () => {
     let sortType = $("#sortSalesSelect").val();
     if (sortType === "LOW-HIGH") {
-        allSoldItems.sort((a,b) => a.totalPrice - b.totalPrice);
+        allSoldItems.sort((a, b) => a.totalPrice - b.totalPrice);
     } else if (sortType === "HIGH-LOW") {
-        allSoldItems.sort((a,b) => b.totalPrice - a.totalPrice);
+        allSoldItems.sort((a, b) => b.totalPrice - a.totalPrice);
     } else if (sortType === "Latest") {
-        allSoldItems.sort((a,b) => new Date(b.orderDate) - new Date(a.orderDate));
-    }else if (sortType === "Oldest") {
-        allSoldItems.sort((a,b) => new Date(a.orderDate) - new Date(b.orderDate));
+        allSoldItems.sort((a, b) => new Date(b.orderDate) - new Date(a.orderDate));
+    } else if (sortType === "Oldest") {
+        allSoldItems.sort((a, b) => new Date(a.orderDate) - new Date(b.orderDate));
     }
 }
 
@@ -413,15 +478,15 @@ const isInSelectedPayementMethod = (sale) => {
 }
 
 // search
-$("#saleSearchBtn").click(()=> {
+$("#saleSearchBtn").click(() => {
     loadSoldItemsTable(allSoldItems);
 })
 
 const isInSearchedKeyword = (sale) => {
     let keyword = $("#saleSearchInput").val().toLowerCase();
-    return keyword === '' ? true 
-    : sale.orderId.toLowerCase().includes(keyword)
-    || sale.customer.name.toLowerCase().includes(keyword)
-    || sale.customer.email.toLowerCase().includes(keyword)
-    || sale.employee.name.toLowerCase().includes(keyword);
+    return keyword === '' ? true
+        : sale.orderId.toLowerCase().includes(keyword)
+        || sale.customer.name.toLowerCase().includes(keyword)
+        || sale.customer.email.toLowerCase().includes(keyword)
+        || sale.employee.name.toLowerCase().includes(keyword);
 }

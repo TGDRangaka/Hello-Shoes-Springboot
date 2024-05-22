@@ -1,6 +1,6 @@
 import { token, user, setUser } from '../db/data.js';
 import { Employee } from '../model/Employee.js'
-import { getRegex, setAsInvalid, setAsValid, clearValidations, showSuccessAlert } from '../util/UtilMatter.js';
+import { getRegex, setAsInvalid, setAsValid, clearValidations, showSuccessAlert, showErrorAlert } from '../util/UtilMatter.js';
 
 let allEmployees = [];
 let employeeData = new Employee();
@@ -42,7 +42,7 @@ const loadEmployeeTable = (employees) => {
     employees.map((employee, i) => {
 
         // filter employees if have value
-        if(!isInSearchedKeyword(employee)) return;
+        if (!isInSearchedKeyword(employee)) return;
 
         let img = employee.profilePic;
         $("#employeesTBody").append(`
@@ -86,9 +86,11 @@ function saveEmployee() {
     };
 
     $.ajax(settings).done(function (response) {
-        showSuccessAlert("Employee saved successfully")
-        console.log(response);
+        showSuccessAlert("Employee saved successfully");
         clearValidations("#addEmployee form");
+    }).fail(function (jqXHR, textStatus, errorThrown) {
+        showErrorAlert("An error occurred while saving the employee");
+        console.error("Error details:", textStatus, errorThrown, jqXHR);
     });
 }
 
@@ -111,6 +113,10 @@ function updateEmployee(formData) {
         showSuccessAlert("Employee updated successfully")
         console.log(JSON.parse(response));
         clearValidations("#addEmployee form");
+    })
+    .fail(function (jqXHR, textStatus, errorThrown) {
+        showErrorAlert("An error occurred while updating the employee");
+        console.error("Error details:", textStatus, errorThrown, jqXHR);
     });
 }
 
@@ -232,9 +238,6 @@ const checkValidations = () => {
         (!isNaN(Date.parse($('#employeeDob').val())) ? setAsValid("#employeeDob", 'Looks Good!')
             : setAsInvalid("#employeeDob", 'Please select a valid date.'))
         &
-        ($('#employeeProfilePic')[0].files[0] ? setAsValid("#employeeProfilePic", 'Photo selected')
-            : setAsInvalid("#employeeProfilePic", 'Please select employee profile picture.'))
-        &
         ($('#employeeGender').val() ? setAsValid("#employeeGender", 'Looks Good!')
             : setAsInvalid("#employeeGender", 'Please select a gender.'))
         &
@@ -336,7 +339,11 @@ $('#submitEmployeeBtn').on('click', () => {
             }
             updateEmployee(formData);
         } else {
-            saveEmployee(formData);
+            if ($('#employeeProfilePic')[0].files[0]) {
+                saveEmployee(formData);
+            } else {
+                setAsInvalid("#employeeProfilePic", 'Please select employee profile picture.')
+            }
         }
     }
 });

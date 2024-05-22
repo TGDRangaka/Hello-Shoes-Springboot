@@ -29,7 +29,7 @@
     <div class="position-absolute vw-100 vh-100" id="bg"></div>
 
     <!-- Login -->
-    <div id="loginPage">
+    <div id="loginPage" class="">
         <span class="bg bg-img w-100 h-100 position-absolute" style="background-image: url(assets/imgs/login-bg.jpg);"></span>
 
         <img src="assets/imgs/logo.png" alt="">
@@ -343,29 +343,55 @@
 
             <!-- Sales Section -->
             <section id="sales" class="text-theme bg-theme flex-row gap-2">
-                <div id="saleItemsDetails" class="flex-grow h-100 rounded p-3 bg-white">
-                    <div class="mb-4 row">
-                        <h3>Customer Details</h3>
+                <div id="saleItemsDetails" class="flex-grow h-100 rounded ">
+                    <div class="row bg-white p-2 m-1 mb-2 rounded">
 
-                        <div class="input col-6">
-                            <label for="saleCustomerName" class="import label">Name</label>
-                            <input list="customerDataList" id="saleCustomerName" name="saleCustomerName"
-                                placeholder="Type to search..." autocomplete="off">
-                            <datalist id="customerDataList"></datalist>
+                        <div id="customerDetails" class="col">
+                            <h3>Customer Details</h3>
+
+                            <div class="input-group search w-100">
+                                <input id="saleCustomerSearchInput" type="text" class="form-control" placeholder="Customer Email">
+                                <button class="btn btn-primary" type="button" id="saleCustomerSearchBtn">Search</button>
+                            </div>
+
+                            <div class="input mt-2">
+                                <label for="saleCustomerName" class="import label">Name</label>
+                                <input list="customerDataList" id="saleCustomerName" name="saleCustomerName"
+                                    placeholder="Type to search..." autocomplete="off">
+                                <datalist id="customerDataList"></datalist>
+                            </div>
+
                         </div>
 
-                        <div class="input col-6">
-                            <label for="saleCustomerEmail" class="import label">Email</label>
-                            <input type="email" id="saleCustomerEmail">
+                        <div class="col-1"></div>
+
+                        <div class="col d-flex flex-column justify-content-around">
+                            <div class="d-flex gap-2">
+                                <span>Level :</span>
+                                <span id="saleCusLevel">GOLD</span>
+                            </div>
+                            <div class="d-flex gap-2">
+                                <span>Points :</span>
+                                <span id="saleCusPoints">34</span>
+                            </div>
+                            <div class="d-flex gap-2">
+                                <span>Joinded Date :</span>
+                                <span id="saleCusJoinedDate">06/05/2024</span>
+                            </div>
+                            <div class="d-flex gap-2">
+                                <span>Recent Purchased :</span>
+                                <span id="saleCusRecendPurchase">23/05/2024</span>
+                            </div>
                         </div>
+
                     </div>
-                    <hr>
-                    <div class="mt-4 py-2 rounded row">
+                    <div class="mt-1 py-2 rounded row bg-white p-2 m-1 mt-0 rounded">
                         <div class="">
-                            <div class="input-group search">
-                                <input id="saleItemCode" type="text" class="form-control" placeholder="Item Code">
-                                <button class="btn btn-outline-secondary" type="button"
-                                    id="button-addon2">Search</button>
+                            <div class="d-flex w-100 justify-content-center">
+                                <div class="input-group search w-50">
+                                    <input id="saleItemCode" type="text" class="form-control" placeholder="Item Code">
+                                    <button class="btn btn-primary" type="button" id="button-addon2">Search</button>
+                                </div>
                             </div>
                             <div class="choosItems">
                                 <div class="chooseItemCard">
@@ -485,12 +511,21 @@
                         <div>
                             <h3>Bank Details</h3>
                             <hr>
-                            <label for="lastDigits" class="import mt-3">Card Last Digits 4</label>
-                            <input type="number"><br>
-                            <label for="bankName" class="import mt-3">Bank Name</label>
-                            <input type="text">
+                            <div class="input">
+                                <label for="bankName" class="import mt-3">Card Last Digits 4</label>
+                                <input id="cardLasDigits" type="number">
+                                <div class="validation"></div>
+                            </div>
+                            <div class="input">
+                                <label for="bankName" class="import mt-3">Bank Name</label>
+                                <input id="cardBankName" type="text">
+                                <div class="validation"></div>
+                            </div>
                         </div>
-                        <button id="saleConfirmBtn" type="button" class="btn btn-success mt-5 w-50">Confirm</button>
+                        <div class="d-flex gap-4 mt-5 w-100">
+                            <button id="saleCancelBtn" type="button" class="btn btn-dark flex-grow">Cancel</button>
+                            <button id="saleConfirmBtn" type="button" class="btn btn-primary flex-grow">Confirm</button>
+                        </div>
                     </div>
                 </div>
             </section>

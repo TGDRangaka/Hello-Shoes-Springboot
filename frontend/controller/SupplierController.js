@@ -1,17 +1,17 @@
 import { token } from "../db/data.js";
 import { Supplier } from "../model/Supplier.js";
-import { setAsInvalid, setAsValid, getRegex, clearValidations, showSuccessAlert } from "../util/UtilMatter.js";
+import { setAsInvalid, setAsValid, getRegex, clearValidations, showSuccessAlert, showErrorAlert } from "../util/UtilMatter.js";
 
 let allSuppliers = [];
 let selectedSupplier = null;
 let isSupplierSelected = false;
 
-$("#suppliersBtn").click(()=>{
-    getAllSuppliers();
+$("#suppliersBtn").click(() => {
+  getAllSuppliers();
 })
 
-const getAllSuppliers = ()=>{
-  if(token){
+const getAllSuppliers = () => {
+  if (token) {
     var settings = {
       "url": "http://localhost:8080/api/v1/supplier",
       "method": "GET",
@@ -21,7 +21,7 @@ const getAllSuppliers = ()=>{
         "Authorization": "Bearer " + token
       },
     };
-    
+
     $.ajax(settings).done(function (response) {
       // console.log(response);
       allSuppliers = response;
@@ -41,11 +41,14 @@ const saveSupplier = (supplier) => {
     },
     "data": JSON.stringify(supplier),
   };
-  
+
   $.ajax(settings).done(function (response) {
     // console.log(response);
     clearValidations("#supplierForm form");
     showSuccessAlert("Supplier saved successfully")
+  }).fail(function (jqXHR, textStatus, errorThrown) {
+    showErrorAlert("An error occurred while saving supplier");
+    console.error("Error details:", textStatus, errorThrown, jqXHR);
   });
 }
 
@@ -60,35 +63,38 @@ const updateSupplier = (supplier) => {
     },
     "data": JSON.stringify(supplier),
   };
-  
+
   $.ajax(settings).done(function (response) {
     console.log(response);
     clearValidations("#supplierForm form");
     showSuccessAlert("Supplier updated successfully")
+  }).fail(function (jqXHR, textStatus, errorThrown) {
+    showErrorAlert("An error occurred while updating the supplier");
+    console.error("Error details:", textStatus, errorThrown, jqXHR);
   });
 }
 
 const getSupplierData = () => {
-    let supplierData = new Supplier();
+  let supplierData = new Supplier();
 
-    // Collect identity data
-    supplierData.name = $('#supplierName').val();
-    supplierData.category = $('#supplierCategory').val();
+  // Collect identity data
+  supplierData.name = $('#supplierName').val();
+  supplierData.category = $('#supplierCategory').val();
 
-    // Collect address data
-    supplierData.addressNo = $('#supplierAddressNo').val();
-    supplierData.addressLane = $('#supplierAddressLane').val();
-    supplierData.addressCity = $('#supplierAddressCity').val();
-    supplierData.addressState = $('#supplierAddressState').val();
-    supplierData.postalCode = $('#supplierAddressPostalCode').val();
-    supplierData.originCountry = $('#supplierAddressCountry').val();
+  // Collect address data
+  supplierData.addressNo = $('#supplierAddressNo').val();
+  supplierData.addressLane = $('#supplierAddressLane').val();
+  supplierData.addressCity = $('#supplierAddressCity').val();
+  supplierData.addressState = $('#supplierAddressState').val();
+  supplierData.postalCode = $('#supplierAddressPostalCode').val();
+  supplierData.originCountry = $('#supplierAddressCountry').val();
 
-    // Collect contact data
-    supplierData.contactNo1 = $('#supplierContactNo1').val();
-    supplierData.contactNo2 = $('#supplierContactNo2').val();
-    supplierData.email = $('#supplierEmail').val();
+  // Collect contact data
+  supplierData.contactNo1 = $('#supplierContactNo1').val();
+  supplierData.contactNo2 = $('#supplierContactNo2').val();
+  supplierData.email = $('#supplierEmail').val();
 
-    return supplierData;
+  return supplierData;
 }
 
 const setSupplierData = (supplier) => {
@@ -107,7 +113,7 @@ const setSupplierData = (supplier) => {
 
 const loadTable = (suppliers) => {
   // sort
-  if($("#supplierSortSelect").val() !== 'NONE'){
+  if ($("#supplierSortSelect").val() !== 'NONE') {
     sortSupplierTable();
   }
 
@@ -115,8 +121,8 @@ const loadTable = (suppliers) => {
   suppliers.map((supplier, i) => {
 
     // filter
-    if(!isInSelectedCategory(supplier)) return;
-    if(!isInSearchedKeyword(supplier)) return;
+    if (!isInSelectedCategory(supplier)) return;
+    if (!isInSearchedKeyword(supplier)) return;
 
     $("#supplierTbody").append(`
     <tr>
@@ -136,50 +142,50 @@ const loadTable = (suppliers) => {
 const checkValidations = (supplier) => {
   // General
   return (getRegex('name').test(supplier.name) ? setAsValid("#supplierName", 'Looks Good!')
-  : setAsInvalid("#supplierName", 'Name is required!'))
-  &
-  (supplier.category ? setAsValid("#supplierCategory", 'Looks Good!')
-  : setAsInvalid("#supplierCategory", 'Please select category'))
-  &
+    : setAsInvalid("#supplierName", 'Name is required!'))
+    &
+    (supplier.category ? setAsValid("#supplierCategory", 'Looks Good!')
+      : setAsInvalid("#supplierCategory", 'Please select category'))
+    &
 
-  // Address
-  (getRegex('address').test(supplier.addressNo) ? setAsValid("#supplierAddressNo", 'Looks Good!')
-  : setAsInvalid("#supplierAddressNo", 'Please enter valid address no.'))
-  &
-  (getRegex('address').test(supplier.addressLane) ? setAsValid("#supplierAddressLane", 'Looks Good!')
-  : setAsInvalid("#supplierAddressLane", 'Please enter valid address lane'))
-  &
-  (getRegex('address').test(supplier.addressCity) ? setAsValid("#supplierAddressCity", 'Looks Good!')
-  : setAsInvalid("#supplierAddressCity", 'Please enter valid address city'))
-  &
-  (getRegex('address').test(supplier.addressState) ? setAsValid("#supplierAddressState", 'Looks Good!')
-  : setAsInvalid("#supplierAddressState", 'Please enter valid address state'))
-  &
-  (getRegex('address').test(supplier.postalCode) ? setAsValid("#supplierAddressPostalCode", 'Looks Good!')
-  : setAsInvalid("#supplierAddressPostalCode", 'Please enter valid address postalcode'))
-  &
-  (getRegex('address').test(supplier.originCountry) ? setAsValid("#supplierAddressCountry", 'Looks Good!')
-  : setAsInvalid("#supplierAddressCountry", 'Please enter valid address Country'))
-  &
+    // Address
+    (getRegex('address').test(supplier.addressNo) ? setAsValid("#supplierAddressNo", 'Looks Good!')
+      : setAsInvalid("#supplierAddressNo", 'Please enter valid address no.'))
+    &
+    (getRegex('address').test(supplier.addressLane) ? setAsValid("#supplierAddressLane", 'Looks Good!')
+      : setAsInvalid("#supplierAddressLane", 'Please enter valid address lane'))
+    &
+    (getRegex('address').test(supplier.addressCity) ? setAsValid("#supplierAddressCity", 'Looks Good!')
+      : setAsInvalid("#supplierAddressCity", 'Please enter valid address city'))
+    &
+    (getRegex('address').test(supplier.addressState) ? setAsValid("#supplierAddressState", 'Looks Good!')
+      : setAsInvalid("#supplierAddressState", 'Please enter valid address state'))
+    &
+    (getRegex('address').test(supplier.postalCode) ? setAsValid("#supplierAddressPostalCode", 'Looks Good!')
+      : setAsInvalid("#supplierAddressPostalCode", 'Please enter valid address postalcode'))
+    &
+    (getRegex('address').test(supplier.originCountry) ? setAsValid("#supplierAddressCountry", 'Looks Good!')
+      : setAsInvalid("#supplierAddressCountry", 'Please enter valid address Country'))
+    &
 
-  // Contacts
-  (getRegex('phone').test(supplier.contactNo1) ? setAsValid("#supplierContactNo1", 'Looks Good!')
-  : setAsInvalid("#supplierContactNo1", 'Please enter valid number'))
-  &
-  (getRegex('phone').test(supplier.contactNo2) ? setAsValid("#supplierContactNo2", 'Looks Good!')
-  : setAsInvalid("#supplierContactNo2", 'Please enter valid number'))
-  &
-  (getRegex('email').test(supplier.email) ? setAsValid("#supplierEmail", 'Looks Good!')
-  : setAsInvalid("#supplierEmail", 'Please enter valid email'));
+    // Contacts
+    (getRegex('phone').test(supplier.contactNo1) ? setAsValid("#supplierContactNo1", 'Looks Good!')
+      : setAsInvalid("#supplierContactNo1", 'Please enter valid number'))
+    &
+    (getRegex('phone').test(supplier.contactNo2) ? setAsValid("#supplierContactNo2", 'Looks Good!')
+      : setAsInvalid("#supplierContactNo2", 'Please enter valid number'))
+    &
+    (getRegex('email').test(supplier.email) ? setAsValid("#supplierEmail", 'Looks Good!')
+      : setAsInvalid("#supplierEmail", 'Please enter valid email'));
 }
 
-$("#submitSupplierBtn").click(()=> {
-    let supplierData = getSupplierData();
-    if(!checkValidations(supplierData)) return;
-    !isSupplierSelected ? saveSupplier(supplierData) : updateSupplier(supplierData);
+$("#submitSupplierBtn").click(() => {
+  let supplierData = getSupplierData();
+  if (!checkValidations(supplierData)) return;
+  !isSupplierSelected ? saveSupplier(supplierData) : updateSupplier(supplierData);
 })
 
-$("#supplierTbody").on('click', 'button', function(){
+$("#supplierTbody").on('click', 'button', function () {
   let index = $(this).data('index');
   isSupplierSelected = true;
   selectedSupplier = allSuppliers[index];
@@ -189,16 +195,16 @@ $("#supplierTbody").on('click', 'button', function(){
 })
 
 // sorting
-$("#supplier header select").on('change', function(){
+$("#supplier header select").on('change', function () {
   loadTable(allSuppliers);
 });
 
 const sortSupplierTable = () => {
   let sortValue = $("#supplierSortSelect").val();
 
-  if(sortValue === 'A-Z'){
+  if (sortValue === 'A-Z') {
     allSuppliers = allSuppliers.sort((a, b) => a.name.localeCompare(b.name));
-  }else if(sortValue === 'Z-A'){
+  } else if (sortValue === 'Z-A') {
     allSuppliers = allSuppliers.sort((a, b) => b.name.localeCompare(a.name));
   }
 }
@@ -206,25 +212,25 @@ const sortSupplierTable = () => {
 // filter
 const isInSelectedCategory = (supplier) => {
   let category = $("#supplierCategorySelect").val();
-  return category === 'All'? true : supplier.category === category;
+  return category === 'All' ? true : supplier.category === category;
 }
 
 // search 
-$("#supplierSearchBtn").click(()=> {
+$("#supplierSearchBtn").click(() => {
   loadTable(allSuppliers);
 })
 const isInSearchedKeyword = (supplier) => {
   let keyword = $("#supplierSearchInput").val().toLowerCase();
-  if(keyword === ''){
+  if (keyword === '') {
     return true;
-  }else{
+  } else {
     return supplier.name.toLowerCase().includes(keyword)
-    || supplier.email.toLowerCase().includes(keyword)
-    || supplier.contactNo1.toLowerCase().includes(keyword)
-    || supplier.contactNo2.toLowerCase().includes(keyword)
-    || supplier.originCountry.toLowerCase().includes(keyword)
-    || supplier.addressLane.toLowerCase().includes(keyword)
-    || supplier.addressCity.toLowerCase().includes(keyword)
-    || supplier.addressState.toLowerCase().includes(keyword);
+      || supplier.email.toLowerCase().includes(keyword)
+      || supplier.contactNo1.toLowerCase().includes(keyword)
+      || supplier.contactNo2.toLowerCase().includes(keyword)
+      || supplier.originCountry.toLowerCase().includes(keyword)
+      || supplier.addressLane.toLowerCase().includes(keyword)
+      || supplier.addressCity.toLowerCase().includes(keyword)
+      || supplier.addressState.toLowerCase().includes(keyword);
   }
 }

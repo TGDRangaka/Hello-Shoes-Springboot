@@ -1,6 +1,6 @@
 import { token, setToken } from "../db/data.js";
 import { Refund } from "../model/Refund.js";
-import { showSuccessAlert } from "../util/UtilMatter.js";
+import { showErrorAlert, showSuccessAlert } from "../util/UtilMatter.js";
 
 let allRefunds = [];
 let orderItems = [];
@@ -81,6 +81,9 @@ const submitRefund = (refunds) => {
         console.log(response);
         showSuccessAlert("Refund recorded successfully")
         $("#refundCancelBtn").click();
+    }).fail(function (jqXHR, textStatus, errorThrown) {
+        showErrorAlert("An error occurred while refunding the items");
+        console.error("Error details:", textStatus, errorThrown, jqXHR);
     });
 }
 

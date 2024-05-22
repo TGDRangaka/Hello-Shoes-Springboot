@@ -36,6 +36,7 @@ const displayData = (data) => {
 
     // set bar chart
     let barLabels = [];
+
     let barData = [];
     data.dailySales.map(dailySale => {
         barLabels.push(dailySale.date)
@@ -44,6 +45,16 @@ const displayData = (data) => {
     barChartData.labels = barLabels;
     barChartData.datasets[0].data = barData;
     bc.update();
+
+    // set line chart
+    let lineData = [];
+    data.dailyProfits.map(dailyProfit => {
+        lineData.push(dailyProfit.profit)
+    })
+    lineChartData.labels = barLabels;
+    lineChartData.datasets[0].data = lineData;
+    lc.update();
+
 }
 
 setCalender(currentYear, currentMonth, currentDay);
@@ -115,8 +126,8 @@ let bc = new Chart(barChart, {
     }
 });
 
-// Line Chart
-const data = {
+// Line Chart data
+const lineChartData = {
     labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
     datasets: [{
         label: 'Sales',
@@ -145,7 +156,7 @@ const lineChart = document.getElementById('lineChart');
 // Create the line chart
 const lc = new Chart(lineChart, {
     type: 'line',
-    data: data,
+    data: lineChartData,
     options: options
 });
 

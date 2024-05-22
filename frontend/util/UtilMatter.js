@@ -138,3 +138,11 @@ export const showSuccessAlert = (message) => {
         timer: 2000
     });
 }
+
+export const showErrorAlert = (message) => {
+    Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: message
+    });
+}

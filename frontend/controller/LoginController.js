@@ -1,5 +1,5 @@
 import { user, setToken, setUser, setUserRole, userRole, token } from "../db/data.js";
-import { saveAlert, showSuccessAlert } from "../util/UtilMatter.js";
+import { saveAlert, showErrorAlert, showSuccessAlert } from "../util/UtilMatter.js";
 
 let isRegisterState = false;
 
@@ -60,6 +60,9 @@ const loginUser = (username, password) => {
 
     $.ajax(settings).done(function (response) {
         handleUserLoginToSystem(response);
+    }).fail(function (jqXHR, textStatus, errorThrown) {
+        showErrorAlert("Please provide a valid username and password");
+        console.error("Error details:", textStatus, errorThrown, jqXHR);
     });
 }
 
@@ -79,6 +82,9 @@ const registerUser = (username, password) => {
 
     $.ajax(settings).done(function (response) {
         handleUserLoginToSystem(response);
+    }).fail(function (jqXHR, textStatus, errorThrown) {
+        showErrorAlert("An error occurred while registering");
+        console.error("Error details:", textStatus, errorThrown, jqXHR);
     });
 }
 
@@ -91,7 +97,7 @@ const handleUserLoginToSystem = (response) => {
         // hide login pane
         $("#loginPage").hide();
         $("main").show();
-    }, 1000)
+    }, 300)
 
     // is user checked remember me
     if ($("#rememberMe").is(":checked")) {
@@ -117,7 +123,7 @@ const handleUserLoginToSystem = (response) => {
 // manage admin view
 const adminViewHandle = (role) => {
     if (role === "ADMIN") {
-        $("#dashboardBtn").click();
+        $("#salesBtn").click();
         $(".admin-view").show();
     } else {
         $("#salesBtn").click();
@@ -131,3 +137,5 @@ const encode = (text) => {
     // }
     return text;
 }
+
+// loginUser('rangaka@gmail.com', 'dilshan1234');

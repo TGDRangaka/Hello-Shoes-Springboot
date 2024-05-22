@@ -1,30 +1,30 @@
-import {token} from '../db/data.js';
-import { getRegex, setAsValid, setAsInvalid, showSuccessAlert } from '../util/UtilMatter.js';
+import { token } from '../db/data.js';
+import { getRegex, setAsValid, setAsInvalid, showSuccessAlert, showErrorAlert } from '../util/UtilMatter.js';
 import { Customer } from '../model/Customer.js';
 
 let allCustomers = [];
 let customerData = new Customer();
 let isCustomerSelected = false;
 
-$("#customerBtn").click(()=>{
+$("#customerBtn").click(() => {
     getAllCustomers();
 })
 
-const getAllCustomers = ()=>{
-    if(token){
+const getAllCustomers = () => {
+    if (token) {
         var settings = {
             "url": "http://localhost:8080/api/v1/customer",
             "method": "GET",
             "timeout": 0,
             "headers": {
-              "Authorization": `Bearer ${token}`
+                "Authorization": `Bearer ${token}`
             },
-          };
-          
-          $.ajax(settings).done(function (response) {
+        };
+
+        $.ajax(settings).done(function (response) {
             allCustomers = response;
             loadCustomerTable(allCustomers);
-          });
+        });
     }
 }
 
@@ -34,17 +34,20 @@ const saveCustomer = (customer) => {
         "method": "POST",
         "timeout": 0,
         "headers": {
-          "Authorization": `Bearer ${token}`,
-          "Content-Type": "application/json"
+            "Authorization": `Bearer ${token}`,
+            "Content-Type": "application/json"
         },
         "data": JSON.stringify(customer),
-      };
-      
-      $.ajax(settings).done(function (response) {
+    };
+
+    $.ajax(settings).done(function (response) {
         console.log(response);
         showSuccessAlert("Customer saved successfully")
         $("#customerFormBtn").click();
-      });
+    }).fail(function (jqXHR, textStatus, errorThrown) {
+        showErrorAlert("An error occurred while saving customer");
+        console.error("Error details:", textStatus, errorThrown, jqXHR);
+    });
 }
 
 const updateCustomer = (customer) => {
@@ -53,26 +56,29 @@ const updateCustomer = (customer) => {
         "method": "PUT",
         "timeout": 0,
         "headers": {
-          "Authorization": `Bearer ${token}`,
-          "Content-Type": "application/json"
+            "Authorization": `Bearer ${token}`,
+            "Content-Type": "application/json"
         },
         "data": JSON.stringify(customer),
-      };
-      
-      $.ajax(settings).done(function (response) {
+    };
+
+    $.ajax(settings).done(function (response) {
         console.log(response);
         showSuccessAlert("Customer updated successfully!")
         $("#customerFormBtn").click();
-      });
+    }).fail(function (jqXHR, textStatus, errorThrown) {
+        showErrorAlert("An error occurred while updating the customer");
+        console.error("Error details:", textStatus, errorThrown, jqXHR);
+    });
 }
 
-$("#customerSubmitBtn").click(()=>{
+$("#customerSubmitBtn").click(() => {
     let customer = collectCustomerData();
     let isValidData = checkValidations(customer);
-    if(isValidData){
-        if(isCustomerSelected){
+    if (isValidData) {
+        if (isCustomerSelected) {
             updateCustomer(customer);
-        }else{
+        } else {
             saveCustomer(customer);
         }
     }
@@ -81,20 +87,20 @@ $("#customerSubmitBtn").click(()=>{
 const loadCustomerTable = customers => {
 
     // sort customer table if have a value
-    if($("#customerSortSelect").val() !== 'NONE'){
+    if ($("#customerSortSelect").val() !== 'NONE') {
         sortCustomerTable();
     }
 
     $("#customersTBody").empty();
-    const getData = data =>{
+    const getData = data => {
         return data ? data : 'N/A';
     }
-    customers.map((cus,i) => {
+    customers.map((cus, i) => {
 
         // filter customer if have a value
-        if(!isInSelectedLevel(cus)) return;
+        if (!isInSelectedLevel(cus)) return;
         // search
-        if(!isInSearchedKeyword(cus)) return;
+        if (!isInSearchedKeyword(cus)) return;
 
         $("#customersTBody").append(`
         <tr class="align-middle">
@@ -151,107 +157,107 @@ const setCustomerData = customer => {
     $('#customerEmail').val(customer.email);
 }
 
-$("#customersTBody").on('click', '.btn', function() {
+$("#customersTBody").on('click', '.btn', function () {
     let index = $(this).data('index');
     let customer = allCustomers[index];
-    
+
     customerData = customer;
     isCustomerSelected = true;
     setCustomerData(customer);
     $("#customerFormBtn").click();
 })
 
-$("#customerFormBtn").click(function(){
+$("#customerFormBtn").click(function () {
     $("#customer").toggle();
     $("#addCustomer").toggle();
 })
 
-$("#customerCancelBtn").click(function(){
+$("#customerCancelBtn").click(function () {
     customerData = new Customer();
     isCustomerSelected = false;
 })
 
 const checkValidations = (customer) => {
-    
+
     // General
     return (getRegex('name').test(customer.name) ? setAsValid("#customerName", 'Looks Good!')
-    : setAsInvalid("#customerName", 'Name is required!'))
-    &
-    (!isNaN(Date.parse(customer.dob)) ? setAsValid("#customerDOB", 'Looks Good!')
-    : setAsInvalid("#customerDOB", 'Please select a valid date.'))
-    &
-    (customer.gender ? setAsValid("#customerGender", 'Looks Good!')
-    : setAsInvalid("#customerGender", 'Please select a gender.'))
-    &
-    // Address
-    (getRegex('address').test(customer.addressNo) ? setAsValid("#customerAddressNo", 'Looks Good!')
-    : setAsInvalid("#customerAddressNo", 'Please enter valid address no.'))
-    &
-    (getRegex('address').test(customer.addressLane) ? setAsValid("#customerAddressLane", 'Looks Good!')
-    : setAsInvalid("#customerAddressLane", 'Please enter valid address lane'))
-    &
-    (getRegex('address').test(customer.addressCity) ? setAsValid("#customerAddressCity", 'Looks Good!')
-    : setAsInvalid("#customerAddressCity", 'Please enter valid address city'))
-    &
-    (getRegex('address').test(customer.addressState) ? setAsValid("#customerAddressState", 'Looks Good!')
-    : setAsInvalid("#customerAddressState", 'Please enter valid address state'))
-    &
-    (Number.isInteger(parseInt(customer.postalCode)) ? setAsValid("#customerAddressPostcode", 'Looks Good!')
-    : setAsInvalid("#customerAddressPostcode", 'Please enter valid address postalcode'))
-    &
-    // Contacts
-    (getRegex('phone').test(customer.phone) ? setAsValid("#customerContactNo", 'Looks Good!')
-    : setAsInvalid("#customerContactNo", 'Please enter valid number'))
-    &
-    (getRegex('email').test(customer.email) ? setAsValid("#customerEmail", 'Looks Good!')
-    : setAsInvalid("#customerEmail", 'Please enter valid email'));
+        : setAsInvalid("#customerName", 'Name is required!'))
+        &
+        (!isNaN(Date.parse(customer.dob)) ? setAsValid("#customerDOB", 'Looks Good!')
+            : setAsInvalid("#customerDOB", 'Please select a valid date.'))
+        &
+        (customer.gender ? setAsValid("#customerGender", 'Looks Good!')
+            : setAsInvalid("#customerGender", 'Please select a gender.'))
+        &
+        // Address
+        (getRegex('address').test(customer.addressNo) ? setAsValid("#customerAddressNo", 'Looks Good!')
+            : setAsInvalid("#customerAddressNo", 'Please enter valid address no.'))
+        &
+        (getRegex('address').test(customer.addressLane) ? setAsValid("#customerAddressLane", 'Looks Good!')
+            : setAsInvalid("#customerAddressLane", 'Please enter valid address lane'))
+        &
+        (getRegex('address').test(customer.addressCity) ? setAsValid("#customerAddressCity", 'Looks Good!')
+            : setAsInvalid("#customerAddressCity", 'Please enter valid address city'))
+        &
+        (getRegex('address').test(customer.addressState) ? setAsValid("#customerAddressState", 'Looks Good!')
+            : setAsInvalid("#customerAddressState", 'Please enter valid address state'))
+        &
+        (Number.isInteger(parseInt(customer.postalCode)) ? setAsValid("#customerAddressPostcode", 'Looks Good!')
+            : setAsInvalid("#customerAddressPostcode", 'Please enter valid address postalcode'))
+        &
+        // Contacts
+        (getRegex('phone').test(customer.phone) ? setAsValid("#customerContactNo", 'Looks Good!')
+            : setAsInvalid("#customerContactNo", 'Please enter valid number'))
+        &
+        (getRegex('email').test(customer.email) ? setAsValid("#customerEmail", 'Looks Good!')
+            : setAsInvalid("#customerEmail", 'Please enter valid email'));
 }
 
 // sorting
-$("#customer header select").on('change', function(){
+$("#customer header select").on('change', function () {
     loadCustomerTable(allCustomers);
 })
 const sortCustomerTable = () => {
     let sortType = $("#customerSortSelect").val();
 
-    if(sortType === 'A-Z'){
-        allCustomers.sort((a,b) => a.name.localeCompare(b.name));
-    }else if(sortType === 'Z-A'){
-        allCustomers.sort((a,b) => b.name.localeCompare(a.name));
-    }else if(sortType === 'LOW-HIGH'){
-        allCustomers.sort((a,b) => a.totalPoints - b.totalPoints);
-    }else if(sortType === 'HIGH-LOW'){
-        allCustomers.sort((a,b) => b.totalPoints - a.totalPoints);
-    }else if(sortType === 'Latest-JOINED'){
-        allCustomers.sort((a,b) => new Date(b.joinedDateAsLoyalty) - new Date(a.joinedDateAsLoyalty));
-    }else if(sortType === 'Oldest-JOINED'){
-        allCustomers.sort((a,b) => new Date(a.joinedDateAsLoyalty) - new Date(b.joinedDateAsLoyalty));
+    if (sortType === 'A-Z') {
+        allCustomers.sort((a, b) => a.name.localeCompare(b.name));
+    } else if (sortType === 'Z-A') {
+        allCustomers.sort((a, b) => b.name.localeCompare(a.name));
+    } else if (sortType === 'LOW-HIGH') {
+        allCustomers.sort((a, b) => a.totalPoints - b.totalPoints);
+    } else if (sortType === 'HIGH-LOW') {
+        allCustomers.sort((a, b) => b.totalPoints - a.totalPoints);
+    } else if (sortType === 'Latest-JOINED') {
+        allCustomers.sort((a, b) => new Date(b.joinedDateAsLoyalty) - new Date(a.joinedDateAsLoyalty));
+    } else if (sortType === 'Oldest-JOINED') {
+        allCustomers.sort((a, b) => new Date(a.joinedDateAsLoyalty) - new Date(b.joinedDateAsLoyalty));
     }
 }
 
 // filter out
 const isInSelectedLevel = (customer) => {
     let selectedLevel = $("#customerLeevlSelect").val();
-    if(selectedLevel === 'ALL'){
+    if (selectedLevel === 'ALL') {
         return true;
     }
     return customer.level === selectedLevel;
 }
 
 // search
-$("#customerSearchBtn").click(function(){
+$("#customerSearchBtn").click(function () {
     loadCustomerTable(allCustomers);
 });
 const isInSearchedKeyword = (customer) => {
     let keyword = $("#customerSearchInput").val();
     keyword = keyword.toLowerCase();
-    if(keyword === ''){
+    if (keyword === '') {
         return true;
     }
-    return customer.name.toLowerCase().includes(keyword) || 
-    customer.phone.toLowerCase().includes(keyword) || 
-    customer.email.toLowerCase().includes(keyword) || 
-    customer.addressNo.toLowerCase().includes(keyword) || 
-    customer.addressLane.toLowerCase().includes(keyword) || 
-    customer.addressCity.toLowerCase().includes(keyword);
+    return customer.name.toLowerCase().includes(keyword) ||
+        customer.phone.toLowerCase().includes(keyword) ||
+        customer.email.toLowerCase().includes(keyword) ||
+        customer.addressNo.toLowerCase().includes(keyword) ||
+        customer.addressLane.toLowerCase().includes(keyword) ||
+        customer.addressCity.toLowerCase().includes(keyword);
 }
