@@ -195,7 +195,7 @@ const loadSoldItemsTable = (soldItems) => {
                 <div class="sale-accordion container-fluid w-100">
                     <div class="row">
                         <label class="col-1">${++rowCount}</label>
-                        <label class="col-2">${sale.orderId}</label>
+                        <label class="col-2"><i class="fa-regular fa-copy"></i>${sale.orderId}</label>
                         <label class="col-2">${sale.orderDate}</label>
                         <label class="col-2">${sale.paymentMethod}</label>
                         <label class="col-1">${sale.totalPrice}</label>

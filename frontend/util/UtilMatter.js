@@ -146,3 +146,64 @@ export const showErrorAlert = (message) => {
         text: message
     });
 }
+
+export const showWarningAlert = (message) => {
+    Swal.fire({
+        icon: "warning",
+        title: "Oops...",
+        text: message
+    });
+}
+
+// password
+let pwHidden = 'fa-regular fa-eye-slash';
+let pwShow = 'fa-regular fa-eye';
+
+$(".password-input").append('<i class="fa-regular fa-eye"></i>');
+
+$(".password-input").on('click', 'i', function () {
+    if ($(this).hasClass(pwHidden)) {
+        $(this).removeClass(pwHidden);
+        $(this).addClass(pwShow);
+        $(this).parent().find('input').attr('type', 'password');
+    } else {
+        $(this).removeClass(pwShow);
+        $(this).addClass(pwHidden);
+        $(this).parent().find('input').attr('type', 'text');
+    }
+})
+
+// copy text
+$("body").on('click', '.fa-copy', function () {
+    let text = $(this).parent().text().trim();
+    
+    // Create a temporary textarea element
+    let tempInput = $("<textarea>");
+    $("body").append(tempInput);
+    tempInput.val(text).select();
+    
+    try {
+        document.execCommand("copy");
+        // alert("Copied the text: " + text);
+        Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Copied the text: " + text,
+            showConfirmButton: false,
+            timer: 1500
+        });
+    } catch (err) {
+        console.error("Failed to copy text: ", err);
+        // alert("Failed to copy text");
+        Swal.fire({
+            position: "top-end",
+            icon: "error",
+            title: "Failed to copy text",
+            showConfirmButton: false,
+            timer: 1000
+        });
+    }
+    
+    // Remove the temporary element
+    tempInput.remove();
+});

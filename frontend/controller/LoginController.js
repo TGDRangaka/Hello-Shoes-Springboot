@@ -117,13 +117,13 @@ const handleUserLoginToSystem = (response) => {
     $(".user-img").css('background-image', `url(data:image/jpeg;base64,${user.profilePic})`);
 
     // save login record
-    saveAlert(`${response.user.employee.name} logged in`, 'INFO');
+    // saveAlert(`${response.user.employee.name} logged in`, 'INFO');
 }
 
 // manage admin view
 const adminViewHandle = (role) => {
     if (role === "ADMIN") {
-        $("#salesBtn").click();
+        $("#refundBtn").click();
         $(".admin-view").show();
     } else {
         $("#salesBtn").click();
@@ -138,4 +138,4 @@ const encode = (text) => {
     return text;
 }
 
-// loginUser('rangaka@gmail.com', 'dilshan1234');
+loginUser('rangaka@gmail.com', 'dilshan1234');

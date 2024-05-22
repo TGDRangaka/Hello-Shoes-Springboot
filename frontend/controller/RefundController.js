@@ -1,6 +1,6 @@
-import { token, setToken } from "../db/data.js";
+import { token, setToken, user } from "../db/data.js";
 import { Refund } from "../model/Refund.js";
-import { showErrorAlert, showSuccessAlert } from "../util/UtilMatter.js";
+import { clearValidations, setAsInvalid, setAsValid, showErrorAlert, showSuccessAlert, showWarningAlert } from "../util/UtilMatter.js";
 
 let allRefunds = [];
 let orderItems = [];
@@ -29,9 +29,54 @@ $("#searchOrderBtn").click(() => {
 })
 
 $("#refundSubmitBtn").click(() => {
+    $("#verificationPopUp").show();
+})
+
+$("#verificationCancelBtn").click(() => {
+    $("#verificationPopUp").hide();
+    clearValidations("#verificationPopUp form");
+    $("#verificationUsername").val("");
+    $("#verificationPassword").val("");
+})
+
+$("#verificationSubmitBtn").click(() => {
+    let username = $("#verificationUsername").val();
+    let password = $("#verificationPassword").val();
+    if ((username ? setAsValid("#verificationUsername", 'Looks Good!') : setAsInvalid("#verificationUsername", 'Please enter your username'))
+        & (password ? setAsValid("#verificationPassword", 'Looks Good!') : setAsInvalid("#verificationPassword", 'Please enter your password'))) {
+        var settings = {
+            "url": `http://localhost:8080/api/v1/employee/validate/${username}/${password}`,
+            "method": "GET",
+            "timeout": 0,
+            "headers": {
+                "Authorization": "Bearer " + token
+            },
+        };
+
+        $.ajax(settings).done(function (response) {
+            // console.log(response);
+
+            $("#verificationUsername").val("");
+            $("#verificationPassword").val("");
+            if(response){
+                $("#verificationPopUp").hide();
+                clearValidations("#verificationPopUp form");
+                let refunds = getRefundDetails();
+                refunds.length > 0 && submitRefund(refunds);
+            }
+        });
+
+    }
+})
+
+const getRefundDetails = () => {
     let refunds = [];
     selectedOrderItems.map(refundItem => {
         let refund = new Refund();
+        if(!refundItem.description){
+            showWarningAlert("Please provide a description for order item: " + refundItem.inventoryCode);
+            return [];
+        }
         refund.description = refundItem.description;
         refund.qty = refundItem.refundQty;
         refund.refundTotal = refundItem.total;
@@ -43,9 +88,8 @@ $("#refundSubmitBtn").click(() => {
         }
         refunds.push(refund);
     })
-
-    submitRefund(refunds);
-})
+    return refunds;
+}
 
 const getAllRefunds = () => {
     var settings = {
@@ -105,12 +149,15 @@ const getOrderItems = (orderId) => {
         selectedOrderItems = [];
         refundSubTotal = 0;
         addOrderItemsToTable(orderItems);
+    }).fail(function (jqXHR, textStatus, errorThrown) {
+        showErrorAlert("An error occurred while searching for order");
+        console.error("Error details:", textStatus, errorThrown, jqXHR);
     });
 }
 
 const loadAllRefunds = (allRefunds) => {
     // sort
-    if($("#refundSortSelect").val() !== 'NONE'){
+    if ($("#refundSortSelect").val() !== 'NONE') {
         sortRefundTable();
     }
 
@@ -118,7 +165,7 @@ const loadAllRefunds = (allRefunds) => {
     let rowCount = 0;
     allRefunds.map((refund, i) => {
         // filter
-        if(!isInSearchedKeyword(refund)) return;
+        if (!isInSearchedKeyword(refund)) return;
 
         $("#refundsTableBody").append(`
         <tr class="align-middle">
@@ -126,8 +173,8 @@ const loadAllRefunds = (allRefunds) => {
             <td class="table-img">
                 <div class="bg-img" style="background-image: url(${refund.saleItem.saleItemId.item.itemImage.image})"></div>
             </td>
-            <td>${refund.saleItem.saleItemId.sale.orderId}</td>
-            <td>${refund.saleItem.saleItemId.item.inventoryCode}</td>
+            <td><i class="fa-regular fa-copy"></i>${refund.saleItem.saleItemId.sale.orderId}</td>
+            <td><i class="fa-regular fa-copy"></i>${refund.saleItem.saleItemId.item.inventoryCode}</td>
             <td>${refund.qty}</td>
             <td>${refund.description}</td>
             <td class="text-end">${refund.refundTotal}</td>
@@ -209,7 +256,7 @@ const addRefundItemInput = (refundItem, i) => {
         <div class="col mb-3">
             <div class="input">
                 <label for="refundDescription${i}">Description</label>
-                <textarea data-index="${i}" name="Description" id="refundDescription${i}">${refundItem.description}</textarea>
+                <textarea class="p-2" data-index="${i}" name="Description" id="refundDescription${i}">${refundItem.description}</textarea>
             </div>
             <div class="row mt-3">
                 <div class="col input">
@@ -273,14 +320,14 @@ $("#refundHistory header select").on('change', () => {
 
 const sortRefundTable = () => {
     let sortBy = $("#refundSortSelect").val();
-    
-    if(sortBy === 'LOW') {
+
+    if (sortBy === 'LOW') {
         allRefunds.sort((a, b) => a.refundTotal - b.refundTotal);
-    }else if(sortBy === 'HIGH'){
+    } else if (sortBy === 'HIGH') {
         allRefunds.sort((a, b) => b.refundTotal - a.refundTotal);
-    }else if(sortBy === 'Latest'){
+    } else if (sortBy === 'Latest') {
         allRefunds.sort((a, b) => new Date(b.refundDate) - new Date(a.refundDate));
-    }else if(sortBy === 'Oldest'){
+    } else if (sortBy === 'Oldest') {
         allRefunds.sort((a, b) => new Date(a.refundDate) - new Date(b.refundDate));
     }
 }
@@ -294,6 +341,6 @@ const isInSearchedKeyword = (refund) => {
     let keyword = $("#refundSearchInput").val().toLowerCase();
 
     return keyword === '' ? true
-    : refund.saleItem.saleItemId.item.inventoryCode.toLowerCase().includes(keyword)
-    || refund.saleItem.saleItemId.sale.orderId.toLowerCase().includes(keyword);
+        : refund.saleItem.saleItemId.item.inventoryCode.toLowerCase().includes(keyword)
+        || refund.saleItem.saleItemId.sale.orderId.toLowerCase().includes(keyword);
 }
