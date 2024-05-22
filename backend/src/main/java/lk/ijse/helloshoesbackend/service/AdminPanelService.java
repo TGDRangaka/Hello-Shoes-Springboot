@@ -1,6 +1,7 @@
 package lk.ijse.helloshoesbackend.service;
 
 import lk.ijse.helloshoesbackend.dto.AlertDTO;
+import lk.ijse.helloshoesbackend.dto.projection.DailyProfitProjection;
 import lk.ijse.helloshoesbackend.dto.projection.DailySalesProjection;
 import lk.ijse.helloshoesbackend.dto.projection.MostSoldItemProjection;
 
@@ -12,6 +13,9 @@ public interface AdminPanelService {
     Double getTotalProfits(LocalDate date);
     int getTotalSoldProductsCount(LocalDate date);
     List<DailySalesProjection> getDailyTotalSales(LocalDate date);
+
+    List<DailyProfitProjection> getDailyTotalProfits(LocalDate date);
+
     List<Object[]> getStocksCounts(LocalDate date);
     List<MostSoldItemProjection> getMostSoldItems(LocalDate date);
 

@@ -55,8 +55,6 @@ public class EmployeeServiceIMPL implements EmployeeService {
                 UserEntity userEntity = byEmployee.get();
                 userEntity.setEmail(employee.getEmail());
                 userRepo.save(userEntity);
-            }else{
-                throw new NotFoundException("Not Found User : " + employeeCode);
             }
 
             entity.setName(employee.getName());

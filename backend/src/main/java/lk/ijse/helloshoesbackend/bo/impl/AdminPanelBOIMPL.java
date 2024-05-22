@@ -27,7 +27,7 @@ public class AdminPanelBOIMPL implements AdminPanelBO{
                 0,
                 adminPanelService.getMostSoldItems(date),
                 adminPanelService.getDailyTotalSales(date),
-                null
+                adminPanelService.getDailyTotalProfits(date)
         );
     }
 

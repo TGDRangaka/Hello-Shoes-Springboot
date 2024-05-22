@@ -119,7 +119,7 @@ public class Conversion {
         return modelMapper.map(entity, CustomerDTO.class);
     }
     public static CustomerEntity toCustomerEntity(CustomerDTO dto){
-        return modelMapper.map(dto, CustomerEntity.class);
+        return dto == null ? null : modelMapper.map(dto, CustomerEntity.class);
     }
     public static List<CustomerDTO> toCustomerDTOList(List<CustomerEntity> entities){
         return entities.stream()
@@ -156,7 +156,7 @@ public class Conversion {
                             entity.getOrderDate(),
                             entity.getOrderTime(),
                             new EmployeeDTO(entity.getEmployee().getName()),
-                            modelMapper.map(entity.getCustomer(), CustomerDTO.class),
+                            entity.getCustomer() == null ? null : modelMapper.map(entity.getCustomer(), CustomerDTO.class),
                             toSaleItemDTOList(entity.getSaleItems())
 //                            entity.getSaleItems().stream().map(saleItem -> {
 //                                InventoryEntity dbInventory = saleItem.getSaleItemId().getItem();

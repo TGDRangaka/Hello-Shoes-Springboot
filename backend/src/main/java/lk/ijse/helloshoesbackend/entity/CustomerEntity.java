@@ -33,6 +33,7 @@ public class CustomerEntity {
     private String addressCity;
     private String addressState;
     private String postalCode;
+    @Column(unique = true)
     private String email;
     private String phone;
     private LocalDateTime recentPurchaseDateTime;

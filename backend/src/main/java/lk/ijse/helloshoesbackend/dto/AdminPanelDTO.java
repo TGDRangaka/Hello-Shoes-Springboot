@@ -1,5 +1,6 @@
 package lk.ijse.helloshoesbackend.dto;
 
+import lk.ijse.helloshoesbackend.dto.projection.DailyProfitProjection;
 import lk.ijse.helloshoesbackend.dto.projection.DailySalesProjection;
 import lk.ijse.helloshoesbackend.dto.projection.MostSoldItemProjection;
 import lombok.AllArgsConstructor;
@@ -18,5 +19,5 @@ public class AdminPanelDTO {
     private int tot;
     private List<MostSoldItemProjection> mostSoldItems;
     private List<DailySalesProjection> dailySales;
-    private List<Object[]> stocks;
+    private List<DailyProfitProjection> dailyProfits;
 }

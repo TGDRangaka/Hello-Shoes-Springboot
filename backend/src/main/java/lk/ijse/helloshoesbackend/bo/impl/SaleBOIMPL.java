@@ -39,17 +39,22 @@ public class SaleBOIMPL implements SaleBO {
 
 //        Set Customer
         CustomerDTO customer = customerService.findByNameAndEmail(saleDTO.getCustomer().getName(), saleDTO.getCustomer().getEmail());
-        saleDTO.setCustomer((customer != null) ? customer : new CustomerDTO(
-                UtilMatter.generateUUID(), saleDTO.getCustomer().getName(), null, null, CustomerLevel.NEW, 0, null, null, null, null, null, null, saleDTO.getCustomer().getEmail(), null, null
-            ));
-        int cusTotalPoints = saleDTO.getCustomer().getTotalPoints() + saleDTO.getAddedPoints();
-        saleDTO.getCustomer().setTotalPoints(cusTotalPoints);
-        saleDTO.getCustomer().setLevel(
-                (cusTotalPoints >= 200) ? CustomerLevel.GOLD
-                : (cusTotalPoints >= 100) ? CustomerLevel.SILVER
-                : (cusTotalPoints >= 50) ? CustomerLevel.BRONZE
-                : CustomerLevel.NEW
-        );
+        saleDTO.setCustomer(customer);
+        if(customer != null){
+//            saleDTO.setCustomer((customer != null) ? customer : new CustomerDTO(
+//                    UtilMatter.generateUUID(), saleDTO.getCustomer().getName(), null, null, CustomerLevel.NEW, 0, null, null, null, null, null, null, saleDTO.getCustomer().getEmail(), null, null
+//            ));
+            int cusTotalPoints = saleDTO.getCustomer().getTotalPoints() + saleDTO.getAddedPoints();
+            saleDTO.getCustomer().setTotalPoints(cusTotalPoints);
+            saleDTO.getCustomer().setRecentPurchaseDateTime(LocalDateTime.now());
+            saleDTO.getCustomer().setLevel(
+                    (cusTotalPoints >= 200) ? CustomerLevel.GOLD
+                            : (cusTotalPoints >= 100) ? CustomerLevel.SILVER
+                            : (cusTotalPoints >= 50) ? CustomerLevel.BRONZE
+                            : CustomerLevel.NEW
+            );
+        }
+
 
 //        Set order id and order datetime
         String orderId = "OD" + (new Random().nextInt(900000) + 100000);
