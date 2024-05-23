@@ -30,7 +30,8 @@
 
     <!-- Login -->
     <div id="loginPage" class="hidden">
-        <span class="bg bg-img w-100 h-100 position-absolute" style="background-image: url(assets/imgs/login-bg.jpg);"></span>
+        <span class="bg bg-img w-100 h-100 position-absolute"
+            style="background-image: url(assets/imgs/login-bg.jpg);"></span>
 
         <img src="assets/imgs/logo.png" alt="">
         <div class="login-pane">
@@ -39,11 +40,13 @@
             <form>
                 <div class="input mt-5">
                     <label for="loginUser" class="text-white">username</label>
-                    <input type="text" id="loginUser" class="form-control" placeholder="example@mail.com" value="rangaka@gmail.com">
+                    <input type="text" id="loginUser" class="form-control" placeholder="example@mail.com"
+                        value="rangaka@gmail.com">
                 </div>
                 <div class="input">
                     <label for="loginPass" class="text-white password-input">password</label>
-                    <input type="password" id="loginPassward" class="form-control" placeholder="xxxxxxx" value="dilshan1234">
+                    <input type="password" id="loginPassward" class="form-control" placeholder="xxxxxxx"
+                        value="dilshan1234">
                 </div>
                 <div class="remeberMe-input mt-2">
                     <input type="checkbox" name="remeberMe" id="rememberMe">
@@ -52,7 +55,8 @@
 
                 <button id="loginBtn" type="button" class="btn w-100 log-reg-text">LOGIN</button>
                 <div class="d-flex justify-content-center align-items-center">
-                    <span id="login-desc" class="text-center mt-1">Don't have an account?</span><span class="pt-1 register-login">REGISTER</span>
+                    <span id="login-desc" class="text-center mt-1">Don't have an account?</span><span
+                        class="pt-1 register-login">REGISTER</span>
                 </div>
             </form>
         </div>
@@ -70,7 +74,8 @@
             </div>
 
             <div class="nav-buttons mt-3">
-                <button id="dashboardBtn" type="button" class="nav-btn-theme admin-view"><i class="fa-solid fa-house"></i>
+                <button id="dashboardBtn" type="button" class="nav-btn-theme admin-view"><i
+                        class="fa-solid fa-house"></i>
                     <h3 class="align-middle">Home</h3>
                 </button>
 
@@ -100,10 +105,12 @@
                     </div>
                 </div>
 
-                <button id="salesBtn" type="button" class="nav-btn-theme"><i class="fa-solid fa-hand-holding-dollar"></i>
+                <button id="salesBtn" type="button" class="nav-btn-theme"><i
+                        class="fa-solid fa-hand-holding-dollar"></i>
                     <h3>Sales</h3>
                 </button>
-                <button id="salesHistoryBtn" type="button" class="nav-btn-theme"><i class="fa-solid fa-clock-rotate-left"></i>
+                <button id="salesHistoryBtn" type="button" class="nav-btn-theme"><i
+                        class="fa-solid fa-clock-rotate-left"></i>
                     <h3>Sales History</h3>
                 </button>
                 <button id="inventoryBtn" type="button" class="nav-btn-theme"><i class="fa-solid fa-warehouse"></i>
@@ -118,13 +125,16 @@
                 <button id="suppliersBtn" type="button" class="nav-btn-theme"><i class="fa-solid fa-truck"></i>
                     <h3>Suppliers</h3>
                 </button>
-                <button id="restockBtn" type="button" class="nav-btn-theme admin-view"><i class="fa-solid fa-box-open"></i>
+                <button id="restockBtn" type="button" class="nav-btn-theme admin-view"><i
+                        class="fa-solid fa-box-open"></i>
                     <h3>Restock Items</h3>
                 </button>
-                <button id="resupplysBtn" type="button" class="nav-btn-theme"><i class="fa-solid fa-truck-arrow-right"></i>
+                <button id="resupplysBtn" type="button" class="nav-btn-theme"><i
+                        class="fa-solid fa-truck-arrow-right"></i>
                     <h3>Resupply History</h3>
                 </button>
-                <button id="refundBtn" type="button" class="nav-btn-theme admin-view"><i class="fa-solid fa-reply-all"></i>
+                <button id="refundBtn" type="button" class="nav-btn-theme admin-view"><i
+                        class="fa-solid fa-reply-all"></i>
                     <h3>Refund</h3>
                 </button>
                 <button id="refundHistoryBtn" type="button" class="nav-btn-theme"><i class="fa-solid fa-book"></i>
@@ -343,168 +353,116 @@
 
             <!-- Sales Section -->
             <section id="sales" class="text-theme bg-theme flex-row gap-2">
-                <div id="saleItemsDetails" class="flex-grow h-100 rounded ">
-                    <div class="row bg-white p-2 m-1 mb-2 rounded">
+                <form class="d-flex flex-grow w-100 h-100">
+                    <div id="saleItemsDetails" class="flex-grow h-100 rounded ">
+                        <div class="row bg-white p-2 me-2 mb-2 rounded">
 
-                        <div id="customerDetails" class="col">
-                            <h3>Customer Details</h3>
+                            <div id="customerDetails" class="col">
+                                <h3>Customer Details</h3>
 
-                            <div class="input-group search w-100">
-                                <input id="saleCustomerSearchInput" type="text" class="form-control" placeholder="Customer Email">
-                                <button class="btn btn-primary" type="button" id="saleCustomerSearchBtn">Search</button>
+                                <div class="input-group search w-100">
+                                    <input id="saleCustomerSearchInput" type="text" class="form-control"
+                                        placeholder="Customer Email">
+                                    <button class="btn btn-primary" type="button"
+                                        id="saleCustomerSearchBtn">Search</button>
+                                </div>
+
+                                <div class="input mt-2">
+                                    <label for="saleCustomerName" class="import label">Name</label>
+                                    <input list="customerDataList" id="saleCustomerName" name="saleCustomerName"
+                                        placeholder="Type to search..." autocomplete="off">
+                                    <datalist id="customerDataList"></datalist>
+                                </div>
+
                             </div>
 
-                            <div class="input mt-2">
-                                <label for="saleCustomerName" class="import label">Name</label>
-                                <input list="customerDataList" id="saleCustomerName" name="saleCustomerName"
-                                    placeholder="Type to search..." autocomplete="off">
-                                <datalist id="customerDataList"></datalist>
-                            </div>
+                            <div class="col-1"></div>
 
-                        </div>
-
-                        <div class="col-1"></div>
-
-                        <div class="col d-flex flex-column justify-content-around">
-                            <div class="d-flex gap-2">
-                                <span>Level :</span>
-                                <span id="saleCusLevel">GOLD</span>
-                            </div>
-                            <div class="d-flex gap-2">
-                                <span>Points :</span>
-                                <span id="saleCusPoints">34</span>
-                            </div>
-                            <div class="d-flex gap-2">
-                                <span>Joinded Date :</span>
-                                <span id="saleCusJoinedDate">06/05/2024</span>
-                            </div>
-                            <div class="d-flex gap-2">
-                                <span>Recent Purchased :</span>
-                                <span id="saleCusRecendPurchase">23/05/2024</span>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="mt-1 py-2 rounded row bg-white p-2 m-1 mt-0 rounded">
-                        <div class="">
-                            <div class="d-flex w-100 justify-content-center">
-                                <div class="input-group search w-50">
-                                    <input id="saleItemCode" type="text" class="form-control" placeholder="Item Code">
-                                    <button class="btn btn-primary" type="button" id="button-addon2">Search</button>
+                            <div class="col d-flex flex-column justify-content-around">
+                                <div class="d-flex gap-2">
+                                    <span>Level :</span>
+                                    <span id="saleCusLevel"></span>
+                                </div>
+                                <div class="d-flex gap-2">
+                                    <span>Points :</span>
+                                    <span id="saleCusPoints"></span>
+                                </div>
+                                <div class="d-flex gap-2">
+                                    <span>Joinded Date :</span>
+                                    <span id="saleCusJoinedDate"></span>
+                                </div>
+                                <div class="d-flex gap-2">
+                                    <span>Recent Purchased :</span>
+                                    <span id="saleCusRecendPurchase"></span>
                                 </div>
                             </div>
-                            <div class="choosItems">
-                                <div class="chooseItemCard">
-                                    <div class="img"></div>
-                                    <div class="body p-1 gap-2 flex-grow d-flex flex-column">
-                                        <h4>FSM34564</h4>
-                                        <label class="flex-grow">Nike Air 23423423234</label>
-                                        <h3>Rs.2500</h3>
+
+                        </div>
+                        <div class="mt-1 py-2 rounded row bg-white p-2 me-2 rounded">
+                            <div class="">
+                                <div class="d-flex w-100 justify-content-center">
+                                    <div class="input-group search w-50">
+                                        <input id="saleItemCode" type="text" class="form-control"
+                                            placeholder="Item Code">
+                                        <button class="btn btn-primary" type="button" id="button-addon2">Search</button>
                                     </div>
                                 </div>
-                                <div class="chooseItemCard">
-                                    <div class="img"></div>
-                                    <div class="body p-1 gap-2 flex-grow d-flex flex-column">
-                                        <h4>FSM34564</h4>
-                                        <label class="flex-grow">Nike Air 23423423234</label>
-                                        <h3>Rs.2500</h3>
-                                    </div>
-                                </div>
-                                <div class="chooseItemCard">
-                                    <div class="img"></div>
-                                    <div class="body p-1 gap-2 flex-grow d-flex flex-column">
-                                        <h4>FSM34564</h4>
-                                        <label class="flex-grow">Nike Air 23423423234</label>
-                                        <h3>Rs.2500</h3>
-                                    </div>
-                                </div>
-                                <div class="chooseItemCard">
-                                    <div class="img"></div>
-                                    <div class="body p-1 gap-2 flex-grow d-flex flex-column">
-                                        <h4>FSM34564</h4>
-                                        <label class="flex-grow">Nike Air 23423423234</label>
-                                        <h3>Rs.2500</h3>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-
-
-                    </div>
-                </div>
-
-                <div id="payment-details" class="d-flex flex-column justify-content-between h-100 rounded p-1">
-
-                    <div class="d-flex justify-content-between px-2">
-                        <h5 class="m-0">Date</h5>
-                        <h5 class="m-0">Time</h5>
-                    </div>
-                    <div class="d-flex justify-content-between px-2">
-                        <span>2024-05-21</span>
-                        <span>10:34 AM</span>
-                    </div>
-                    <hr class="m-0 mb-1">
-
-                    <div class="saleItems w-100">
-                        <div class="saleItemCard">
-                            <div class="img"></div>
-                            <div class="body flex-grow">
-                                <h6 class="m-0 quicksand-bold">FSM34564</h6>
-                                <label class="flex-grow mb-1 label p-0">Nike Air 23423423234</label>
-                                <div class="qtyPrices">
-                                    <span class="me-3">Rs.2500</span>
-                                    <span class="flex-grow">x4</span>
-                                    <span class="quicksand-bold">Rs.10000</span>
-                                </div>
-                                <i class="fa-solid fa-trash"></i>
-                            </div>
-                        </div>
-                        <div class="saleItemCard">
-                            <div class="img"></div>
-                            <div class="body flex-grow">
-                                <h6 class="m-0 quicksand-bold">FSM34564</h6>
-                                <label class="flex-grow mb-1 label p-0">Nike Air 23423423234</label>
-                                <div class="qtyPrices">
-                                    <span class="me-3">Rs.2500</span>
-                                    <span class="flex-grow">x4</span>
-                                    <span class="quicksand-bold">Rs.10000</span>
-                                </div>
-                                <i class="fa-solid fa-trash"></i>
+                                <div class="choosItems"></div>
                             </div>
                         </div>
                     </div>
 
-                    <hr class="m-0 my-1">
+                    <div id="payment-details" class="d-flex flex-column justify-content-between h-100 rounded p-1">
 
-                    <div id="saleTotal" class="d-flex justify-content-between">
-                        <h4>Total</h4>
-                        <h4 id="saleSubTotal">Rs. 00.00</h4>
-                    </div>
-                    <div id="cashAndBalance">
-                        <div class="mt-3 d-flex justify-content-between">
-                            <h5 class="import">Cash</h5>
-                            <input type="number" name="saleCash" id="saleCash">
+                        <div class="d-flex justify-content-between px-2">
+                            <h5 class="m-0">Date</h5>
+                            <h5 class="m-0">Time</h5>
                         </div>
-                        <div class="mt-3 d-flex justify-content-between">
-                            <h4>Balance</h4>
-                            <label id="saleCashBalance">Rs. 00</label>
+                        <div class="d-flex justify-content-between px-2">
+                            <span>2024-05-21</span>
+                            <span>10:34 AM</span>
                         </div>
-                    </div>
+                        <hr class="m-0 mb-1">
 
-                    <h4 class="mt-5 mb-0">Payment Method</h4>
-                    <div class="d-flex gap-2 p-2">
-                        <div class="payment-radio flex-grow">
-                            <input type="radio" name="paymentMethod" id="cardPayment" value="card">
-                            <label for="cardPayment"><i class="fa-regular fa-credit-card me-1"></i>Card</label>
+                        <div class="saleItems w-100"></div>
+
+                        <hr class="m-0 my-1">
+
+                        <div id="saleTotal" class="d-flex justify-content-between">
+                            <h4>Total</h4>
+                            <h4 id="saleSubTotal">Rs. 00.00</h4>
                         </div>
-                        <div class="payment-radio flex-grow">
-                            <input type="radio" name="paymentMethod" id="cashPayment" value="cash" checked>
-                            <label for="cashPayment"><i class="fa-regular fa-money-bill-1 me-1"></i>Cash</label>
+                        <div id="cashAndBalance">
+                            <div class="mt-3 d-flex justify-content-between">
+                                <h5 class="import">Cash</h5>
+                                <input type="number" name="saleCash" id="saleCash">
+                            </div>
+                            <div class="mt-3 d-flex justify-content-between">
+                                <h5>Balance</h5>
+                                <label id="saleCashBalance">Rs. 00</label>
+                            </div>
+                        </div>
+
+                        <h4 class="mt-5 mb-0">Payment Method</h4>
+                        <div class="d-flex gap-2 p-2">
+                            <div class="payment-radio flex-grow">
+                                <input type="radio" name="paymentMethod" id="cardPayment" value="card">
+                                <label for="cardPayment"><i class="fa-regular fa-credit-card me-1"></i>Card</label>
+                            </div>
+                            <div class="payment-radio flex-grow">
+                                <input type="radio" name="paymentMethod" id="cashPayment" value="cash" checked>
+                                <label for="cashPayment"><i class="fa-regular fa-money-bill-1 me-1"></i>Cash</label>
+                            </div>
+                        </div>
+                        <div class="d-flex mt-5 gap-3">
+                            <button id="saleCancelBtn" type="reset"
+                                class="btn flex-grow btn-dark w-100 mb-3">Cancel</button>
+                            <button id="salePayBtn" type="button"
+                                class="btn flex-grow btn-primary w-100 mb-3">Pay</button>
                         </div>
                     </div>
-                    <button id="salePayBtn" type="button" class="btn btn-primary w-100 mt-5 mb-3">Pay</button>
-                </div>
+                </form>
+
 
                 <div id="cardPaymentPopup" class="">
                     <div class="input d-flex flex-column justify-content-around">
@@ -557,8 +515,8 @@
                     </div>
                     <div class="col-2">
                         <label class="hidden"></label>
-                        <button id="addNewProductBtn" type="button" class="btn btn-primary w-100">Add New
-                            Product</button>
+                        <button id="addSaleBtn" type="button" class="btn btn-primary w-100">
+                            New Sale</button>
                     </div>
                 </header>
 
@@ -645,7 +603,7 @@
                 <header class="mb-3 rounded row">
                     <div class="input-group search col-4">
                         <input id="inventorySearch" type="text" class="form-control" placeholder="Item Code">
-                        <button class="btn btn-outline-secondary" type="button" id="inventorySearchBtn">Search</button>
+                        <button class="btn btn-primary" type="button" id="inventorySearchBtn">Search</button>
                     </div>
                     <div class="col">
                         <label class="label">Category</label>
@@ -748,8 +706,9 @@
                             <span>#</span>
                             <span>Image</span>
                         </div>
+                        <div class="col">Item Code</div>
                         <div class="col">Description</div>
-                        <div class="col">Category</div>
+                        <div class="col-1">Category</div>
                         <div class="col">Suppllier</div>
                         <div class="col-1">Sale Price</div>
                         <div class="col-1">Buy Price</div>
@@ -901,12 +860,12 @@
                         <div class="col p-3">
                             <div class="input">
                                 <label for="productName" class="label import">Product Name</label>
-                                <input id="productName" name="productName" type="text" value="Valid">
+                                <input id="productName" name="productName" type="text">
                                 <div class="validation"></div>
                             </div>
                             <div class="input mt-3">
                                 <label for="productByCategory" class="label import">Category</label>
-                                <select id="productByCategory" class="form-select" aria-label="Default select example">
+                                <select id="productByCategory" class="form-select">
                                     <option value="H">Heel</option>
                                     <option value="F">Flats</option>
                                     <option value="W">Wedges</option>
@@ -919,11 +878,11 @@
                             </div>
                             <div class="input mt-3">
                                 <label for="productBySupplier" class="label import">Supplier</label>
-                                <select id="productBySupplier" class="form-select" aria-label="Default select example">
+                                <select id="productBySupplier" class="form-select">
                                     <option value="" selected>(Select Supplier)</option>
                                     <optgroup label="International Brands">
                                         <option value="International">All International</option>
-                                        <option value="NIKE" selected>Nike</option>
+                                        <option value="NIKE">Nike</option>
                                         <option value="Adidas">Adidas</option>
                                         <option value="Puma">Puma</option>
                                         <option value="Converse">Converse</option>
@@ -968,14 +927,14 @@
                         <div class="col p-3">
                             <div class="input">
                                 <label for="typesByGender" class="label import">Gender</label>
-                                <select id="typesByGender" class="form-select" aria-label="Default select example">
+                                <select id="typesByGender" class="form-select">
                                     <option value="M" selected>Men</option>
                                     <option value="W">Women</option>
                                 </select>
                             </div>
                             <div class="input mt-3">
                                 <label for="typesByOccasion" class="label import">Types By Occasion</label>
-                                <select id="typesByOccasion" class="form-select" aria-label="Default select example">
+                                <select id="typesByOccasion" class="form-select">
                                     <option value="FS">Formal Shoes</option>
                                     <option value="CS" selected>Casual Shoes</option>
                                     <option id="is" value="IS">Industrial Flops Shoes</option>
@@ -1006,22 +965,22 @@
                         <div class="col p-3">
                             <div class="input">
                                 <label for="productSellPrice" class="label import">Sell Price</label>
-                                <input id="productSellPrice" name="productSellPrice" type="number" value="2000">
+                                <input id="productSellPrice" name="productSellPrice" type="number">
                                 <div class="validation"></div>
                             </div>
                             <div class="input mt-4">
                                 <label for="productBuyPrice" class="label import">Buy Price</label>
-                                <input id="productBuyPrice" name="productBuyPrice" type="number" value="1800">
+                                <input id="productBuyPrice" name="productBuyPrice" type="number">
                                 <div class="validation"></div>
                             </div>
                             <div class="input mt-4">
                                 <label for="productExpectProfit" class="label import">Expected Profit</label>
-                                <input id="productExpectProfit" name="productExpectProfit" type="number" value="200">
+                                <input id="productExpectProfit" name="productExpectProfit" type="number">
                                 <div class="validation"></div>
                             </div>
                             <div class="input mt-4">
                                 <label for="productProfitMargin" class="label import">Profit Margin</label>
-                                <input id="productProfitMargin" name="productProfitMargin" type="number" value="10">
+                                <input id="productProfitMargin" name="productProfitMargin" type="number">
                                 <div class="validation"></div>
                             </div>
                         </div>
@@ -1053,7 +1012,7 @@
                     </div>
                     <div class="row">
                         <div class="col d-flex justify-content-end gap-4 mb-4">
-                            <button type="reset" class="btn btn-dark">Cancel</button>
+                            <button id="cancelProductBtn" type="reset" class="btn btn-dark">Cancel</button>
                             <button id="addProductBtn" type="button" class="btn btn-primary">Submit</button>
                         </div>
                     </div>
@@ -1091,8 +1050,8 @@
                     </div>
                     <div class="col-2 admin-view">
                         <label class="hidden"></label>
-                        <button id="customerFormBtn" type="button" class="btn btn-primary w-100">Join As
-                            Layalty</button>
+                        <button id="joinAsLoyaltyBtn" type="button" class="btn btn-primary w-100">
+                            Join As Layalty</button>
                     </div>
                 </header>
                 <table class="table">
@@ -1110,7 +1069,9 @@
                         </tr>
                     </thead>
                     <tbody id="customersTBody">
-                        <tr><td colspan="9" class="text-center">No Data Available</td></tr>
+                        <tr>
+                            <td colspan="9" class="text-center">No Data Available</td>
+                        </tr>
                     </tbody>
                 </table>
             </section>
@@ -1390,7 +1351,7 @@
                     <hr>
                     <div class="row mt-4 p-3 mb-3">
                         <div class="col-12 d-flex justify-content-end gap-3">
-                            <button type="button" class="btn btn-dark">Cancel</button>
+                            <button id="cancelEmployeeBtn" type="reset" class="btn btn-dark">Cancel</button>
                             <button id="submitEmployeeBtn" type="button" class="btn btn-primary">Submit</button>
                         </div>
                     </div>
@@ -1480,7 +1441,7 @@
                 <header class="row mb-3">
                     <div class="input-group search col">
                         <input id="supplierSearchInput" type="text" class="form-control" placeholder="Type here...">
-                        <button class="btn btn-outline-secondary" type="button" id="supplierSearchBtn">Search</button>
+                        <button class="btn btn-primary" type="button" id="supplierSearchBtn">Search</button>
                     </div>
                     <div class="col-2">
                         <label class="label">Category</label>
@@ -1499,7 +1460,7 @@
                     </div>
                     <div class="col-2 admin-view">
                         <label class="hidden"></label>
-                        <button id="addNewProductBtn" type="button" class="btn btn-primary w-100">Register
+                        <button id="addSuppllierBtn" type="button" class="btn btn-primary w-100">Register
                             Supplier</button>
                     </div>
                 </header>
@@ -1614,7 +1575,7 @@
                     <hr>
                     <div class="row mt-4 bg-light p-3 mb-3">
                         <div class="col-12 d-flex justify-content-end gap-3">
-                            <button type="reset" class="btn btn-dark">Cancel</button>
+                            <button id="cancelSupplierBtn" type="reset" class="btn btn-dark">Cancel</button>
                             <button id="submitSupplierBtn" type="button" class="btn btn-primary">Submit</button>
                         </div>
                     </div>
@@ -1625,7 +1586,7 @@
             <section id="resupply" class="bg-theme text-theme mh-100">
                 <form class="d-flex gap-3">
 
-                    <div class="">
+                    <div class="bg-white p-2 rounded">
                         <div class="row">
                             <div class="input col">
                                 <label for="resupplySupplier">Supplier</label>
@@ -1636,23 +1597,16 @@
 
                         <!-- Selected Supplier items -->
                         <div class="supplier-items">
-
-                            <div class="supplier-item-card">
-                                <div class="img" style="background-image: url(assets/imgs/shoe1.png)"></div>
-                                <div class="info">
-                                    <h5 class="m-0">FSW00342</h5>
-                                    <label class="m-0">Nike Air 2</label>
-                                    <span>Shoe</span>
-                                </div>
-                            </div>
                         </div>
                     </div>
 
-                    <div class="flex-grow mt-4">
-                        <div class="resupplyInputs"></div>
+                    <div class="flex-grow bg-white p-2 rounded">
+                        <div class="resupplyInputs">
+                            <h5 class="text-center">Not Selected Item.</h5>
+                        </div>
 
                         <div class="d-flex justify-content-end gap-4 mt-3">
-                            <button class="btn btn-dark" type="reset">Cancel</button>
+                            <button id="resupplyCancelBtn" class="btn btn-dark" type="reset">Cancel</button>
                             <button id="resupplySubmitBtn" class="btn btn-primary" type="button">Submit</button>
                         </div>
                     </div>
@@ -1664,7 +1618,7 @@
                 <header class="mb-3 rounded row">
                     <div class="input-group search col">
                         <input id="resupplySearchInput" type="text" class="form-control" placeholder="Item Code">
-                        <button class="btn btn-outline-secondary" type="button" id="resupplySearchBtn">Search</button>
+                        <button class="btn btn-primary" type="button" id="resupplySearchBtn">Search</button>
                     </div>
                     <div class="col-2">
                         <label class="label">Supplier</label>
@@ -1718,8 +1672,8 @@
                     </div>
                     <div class="col-2 admin-view">
                         <label class="hidden"></label>
-                        <button id="addNewProductBtn" type="button" class="btn btn-primary w-100">Add New
-                            Product</button>
+                        <button id="resupplyItemBtn" type="button" class="btn btn-primary w-100">
+                            Resupply Item</button>
                     </div>
                 </header>
 
@@ -1782,7 +1736,8 @@
                         <h3 class="m-0 quicksand-bold text-center mb-3 text-danger">Need Credetials</h3>
                         <div class="input">
                             <label for="verificationUsername">username</label>
-                            <input type="text" class="form-control" id="verificationUsername" placeholder="example@gmail.com">
+                            <input type="text" class="form-control" id="verificationUsername"
+                                placeholder="example@gmail.com">
                             <div class="validation"></div>
                         </div>
                         <div class="input password-input mt-3 mb-2">
@@ -1791,8 +1746,10 @@
                             <div class="validation"></div>
                         </div>
                         <div class="d-flex gap-3 mt-4">
-                            <button type="button" class="btn btn-dark flex-grow" id="verificationCancelBtn">Cancel</button>
-                            <button type="button" class="btn btn-primary flex-grow" id="verificationSubmitBtn">Submit</button>
+                            <button type="button" class="btn btn-dark flex-grow"
+                                id="verificationCancelBtn">Cancel</button>
+                            <button type="button" class="btn btn-primary flex-grow"
+                                id="verificationSubmitBtn">Submit</button>
                         </div>
                     </form>
                 </div>
@@ -1802,7 +1759,7 @@
             <section id="refundHistory" class="bg-theme text-theme mh-100">
                 <header class="mb-3 rounded row">
                     <div class="input-group search col">
-                        <input id="refundSearchInput" type="text" class="form-control" placeholder="Item Code">
+                        <input id="refundSearchInput" type="text" class="form-control" placeholder="Type here">
                         <button class="btn btn-primary" type="button" id="refundSearchBtn">Search</button>
                     </div>
                     <div class="col-2">
@@ -1817,8 +1774,8 @@
                     </div>
                     <div class="col-2 admin-view">
                         <label class="hidden"></label>
-                        <button id="addNewProductBtn" type="button" class="btn btn-primary w-100">Add New
-                            Product</button>
+                        <button id="refundFormBtn" type="button" class="btn btn-primary w-100">
+                            Refund Order Item</button>
                     </div>
                 </header>
 
@@ -1938,7 +1895,8 @@
                     </div>
                     <div class="input flex-grow">
                         <label class="hidden">asdf</label>
-                        <label class="d-flex align-items-center justify-content-center mt-2">Stock: <span id="saleItemStock" class="ms-1">23</span></label>
+                        <label class="d-flex align-items-center justify-content-center mt-2">Stock: <span
+                                id="saleItemStock" class="ms-1">23</span></label>
                     </div>
                 </div>
 

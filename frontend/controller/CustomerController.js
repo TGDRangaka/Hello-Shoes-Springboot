@@ -1,5 +1,5 @@
 import { token } from '../db/data.js';
-import { getRegex, setAsValid, setAsInvalid, showSuccessAlert, showErrorAlert } from '../util/UtilMatter.js';
+import { getRegex, setAsValid, setAsInvalid, showSuccessAlert, showErrorAlert, clearValidations } from '../util/UtilMatter.js';
 import { Customer } from '../model/Customer.js';
 
 let allCustomers = [];
@@ -43,7 +43,8 @@ const saveCustomer = (customer) => {
     $.ajax(settings).done(function (response) {
         console.log(response);
         showSuccessAlert("Customer saved successfully")
-        $("#customerFormBtn").click();
+        $("#customerCancelBtn").click();
+        $("#customerBtn").click();
     }).fail(function (jqXHR, textStatus, errorThrown) {
         showErrorAlert("An error occurred while saving customer");
         console.error("Error details:", textStatus, errorThrown, jqXHR);
@@ -65,7 +66,8 @@ const updateCustomer = (customer) => {
     $.ajax(settings).done(function (response) {
         console.log(response);
         showSuccessAlert("Customer updated successfully!")
-        $("#customerFormBtn").click();
+        $("#customerCancelBtn").click();
+        $("#customerBtn").click();
     }).fail(function (jqXHR, textStatus, errorThrown) {
         showErrorAlert("An error occurred while updating the customer");
         console.error("Error details:", textStatus, errorThrown, jqXHR);
@@ -167,14 +169,14 @@ $("#customersTBody").on('click', '.btn', function () {
     $("#customerFormBtn").click();
 })
 
-$("#customerFormBtn").click(function () {
-    $("#customer").toggle();
-    $("#addCustomer").toggle();
+$("#joinAsLoyaltyBtn").click(function () {
+    $("#customerFormBtn").click();
 })
 
 $("#customerCancelBtn").click(function () {
     customerData = new Customer();
     isCustomerSelected = false;
+    clearValidations("#addCustomer form");
 })
 
 const checkValidations = (customer) => {

@@ -32,7 +32,7 @@ $("#customerBtn").on('click', function () {
 })
 
 $("#customerFormBtn").on('click', function () {
-    setBtnActive("#customer", this);
+    setBtnActive("#addCustomer", this);
     $("#sectionTitle").text("Customer Form")
 })
 

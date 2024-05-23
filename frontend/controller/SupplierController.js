@@ -44,8 +44,9 @@ const saveSupplier = (supplier) => {
 
   $.ajax(settings).done(function (response) {
     // console.log(response);
-    clearValidations("#supplierForm form");
     showSuccessAlert("Supplier saved successfully")
+    $("#cancelSupplierBtn").click();
+    $("#suppliersBtn").click();
   }).fail(function (jqXHR, textStatus, errorThrown) {
     showErrorAlert("An error occurred while saving supplier");
     console.error("Error details:", textStatus, errorThrown, jqXHR);
@@ -66,8 +67,9 @@ const updateSupplier = (supplier) => {
 
   $.ajax(settings).done(function (response) {
     console.log(response);
-    clearValidations("#supplierForm form");
-    showSuccessAlert("Supplier updated successfully")
+    showSuccessAlert("Supplier updated successfully");
+    $("#cancelSupplierBtn").click();
+    $("#suppliersBtn").click();
   }).fail(function (jqXHR, textStatus, errorThrown) {
     showErrorAlert("An error occurred while updating the supplier");
     console.error("Error details:", textStatus, errorThrown, jqXHR);
@@ -184,6 +186,16 @@ $("#submitSupplierBtn").click(() => {
   if (!checkValidations(supplierData)) return;
   !isSupplierSelected ? saveSupplier(supplierData) : updateSupplier(supplierData);
 })
+
+$("#cancelSupplierBtn").click(() => {
+  clearValidations("#supplierForm form");
+  selectedSupplier = null;
+  isSupplierSelected = false;
+});
+
+$("#addSuppllierBtn").click(()=> {
+  $("#supplierFormBtn").click();
+});
 
 $("#supplierTbody").on('click', 'button', function () {
   let index = $(this).data('index');

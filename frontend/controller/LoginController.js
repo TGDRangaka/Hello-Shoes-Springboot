@@ -123,7 +123,7 @@ const handleUserLoginToSystem = (response) => {
 // manage admin view
 const adminViewHandle = (role) => {
     if (role === "ADMIN") {
-        $("#refundBtn").click();
+        $("#inventoryBtn").click();
         $(".admin-view").show();
     } else {
         $("#salesBtn").click();

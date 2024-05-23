@@ -125,6 +125,7 @@ const submitRefund = (refunds) => {
         console.log(response);
         showSuccessAlert("Refund recorded successfully")
         $("#refundCancelBtn").click();
+        $("#refundHistoryBtn").click();
     }).fail(function (jqXHR, textStatus, errorThrown) {
         showErrorAlert("An error occurred while refunding the items");
         console.error("Error details:", textStatus, errorThrown, jqXHR);
@@ -311,6 +312,10 @@ $("#refundCancelBtn").click(() => {
     $("#refundSubTotal").text(refundSubTotal);
     $("#refundItems").empty();
     $("#refundOrderItemsTbody").empty();
+})
+
+$("#refundFormBtn").click(() => {
+    $("#refundBtn").click();
 })
 
 // sort

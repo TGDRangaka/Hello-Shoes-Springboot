@@ -1414,6 +1414,7 @@ form {
 }
 
 .supplier-items {
+    min-width: 450px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: 100px;
@@ -1433,9 +1434,10 @@ form {
 }
 
 .supplier-item-card {
+    width: 100%;
     height: 100px;
     border: 1px solid rgb(224, 224, 224);
-    aspect-ratio: 3.2;
+    /* aspect-ratio: 3.2; */
     display: flex;
     gap: 5px;
     background-color: var(--light-bg-color);

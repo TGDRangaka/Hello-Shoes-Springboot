@@ -88,6 +88,7 @@ function saveEmployee() {
     $.ajax(settings).done(function (response) {
         showSuccessAlert("Employee saved successfully");
         clearValidations("#addEmployee form");
+        $("#employeesBtn").click();
     }).fail(function (jqXHR, textStatus, errorThrown) {
         showErrorAlert("An error occurred while saving the employee");
         console.error("Error details:", textStatus, errorThrown, jqXHR);
@@ -113,11 +114,12 @@ function updateEmployee(formData) {
         showSuccessAlert("Employee updated successfully")
         console.log(JSON.parse(response));
         clearValidations("#addEmployee form");
+        $("#employeesBtn").click();
     })
-    .fail(function (jqXHR, textStatus, errorThrown) {
-        showErrorAlert("An error occurred while updating the employee");
-        console.error("Error details:", textStatus, errorThrown, jqXHR);
-    });
+        .fail(function (jqXHR, textStatus, errorThrown) {
+            showErrorAlert("An error occurred while updating the employee");
+            console.error("Error details:", textStatus, errorThrown, jqXHR);
+        });
 }
 
 const collectEmployeeData = () => {
@@ -348,6 +350,12 @@ $('#submitEmployeeBtn').on('click', () => {
     }
 });
 
+$("#cancelEmployeeBtn").click(() => {
+    employeeData = new Employee();
+    isEmployeeSelected = false;
+    clearValidations("#addEmployee form");
+});
+
 $('#submitProfileBtn').on('click', () => {
     if (checkProfileValidations() && isEmployeeSelected) {
         let formData = collectProfileData();
@@ -388,8 +396,7 @@ $("#employeesTBody").on('click', '.edit', function () {
 })
 
 $("#registerEmployeeBtn").click(() => {
-    $("#employee").toggle();
-    $("#addEmployee").toggle();
+    $("#employeeFormBtn").click();
 })
 
 function dataURLtoFile(dataurl, filename) {

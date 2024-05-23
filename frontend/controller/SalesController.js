@@ -7,10 +7,9 @@ let isPaymentPanelOpened = false;
 let paymentMethod = "cash";
 let inventoryItems = [];
 let allCustomers = [];
-let selectedItems = [];
 let allSoldItems = [];
 let subTotal = 0;
-let isSelectSaleItemPaneOpened = false;
+let selectedItems = [];
 let selectedItemId = null;
 let selectedItemByColors = [];
 
@@ -97,6 +96,8 @@ const saveSale = () => {
             // console.log(itemName + " --- " + precentage);
             precentage < 51 && saveAlert(`Item: ${itemName} is stock low!(${precentage}%)`, 'warning');
         }
+        $("#saleCancelBtn").click();
+        $("#salesHistoryBtn").click();
     }).fail(function (jqXHR, textStatus, errorThrown) {
         showErrorAlert("An error occurred while saving purchase");
         console.error("Error details:", textStatus, errorThrown, jqXHR);
@@ -106,7 +107,7 @@ const saveSale = () => {
 $("#salePayBtn").click(() => {
 
     if (selectedItemByColors.length == 0) {
-        showSuccessAlert("Please select items to order.")
+        showErrorAlert("Please add items to order.")
         return;
     }
 
@@ -117,6 +118,15 @@ $("#salePayBtn").click(() => {
     }
 
     saveSale();
+})
+
+$("#saleCancelBtn").click(()=> {
+    clearCustomerFields();
+    subTotal = 0;
+    selectedItems = [];
+    selectedItemId = null;
+    selectedItemByColors = [];
+    $(".saleItems").empty();
 })
 
 $("#saleConfirmBtn").click(() => {
@@ -178,7 +188,7 @@ const loadSoldItemsTable = (soldItems) => {
             saleItemsRows += `
                 <tr class="align-middle">
                     <td class="text-center">${i + 1}</td>
-                    <td>${saleItem.saleItemId.item.inventoryCode}</td>
+                    <td><i class="fa-regular fa-copy"></i>${saleItem.saleItemId.item.inventoryCode}</td>
                     <td>${saleItem.unitPrice}</td>
                     <td class="text-center">${saleItem.qty}</td>
                     <td>${saleItem.qty * saleItem.unitPrice}</td>
@@ -276,6 +286,13 @@ function setCustomerDetails(customer) {
     $("#saleCusPoints").text(customer.totalPoints);
     $("#saleCusJoinedDate").text(customer.joinedDateAsLoyalty);
     $("#saleCusRecendPurchase").text(customer.recentPurchaseDateTime ? customer.recentPurchaseDateTime : 'Not Purchased yet');
+}
+
+function clearCustomerFields(){
+    $("#saleCusLevel").text("");
+    $("#saleCusPoints").text("");
+    $("#saleCusJoinedDate").text("");
+    $("#saleCusRecendPurchase").text("");
 }
 
 
@@ -421,6 +438,10 @@ $("#selectSaleItemPane button:nth-child(2)").click(() => {
 
 
 })
+
+$("#addSaleBtn").click(()=>{
+    $("#salesBtn").click();
+});
 
 // filter item by colors
 const getItemByColors = selectedItemCode => {

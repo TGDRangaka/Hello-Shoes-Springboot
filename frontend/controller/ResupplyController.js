@@ -62,6 +62,8 @@ const saveResupplieDetails = (resupply) => {
     $.ajax(settings).done(function (response) {
         showSuccessAlert('Successfully saved resupply details');
         saveAlert(`Item: ${resupply.resupplyItems[0].resupplyItemId.inventory.inventoryCode.split('_')[0]} is been resupplied!`, 'general')
+        $("#resupplyCancelBtn").click();
+        $("#resupplysBtn").click();
     }).fail(function (jqXHR, textStatus, errorThrown) {
         showErrorAlert("An error occurred while saving resupply details");
         console.error("Error details:", textStatus, errorThrown, jqXHR);
@@ -185,7 +187,7 @@ const loadAllResupplies = (resupplies) => {
 
 $("#resupplySubmitBtn").click(() => {
     let resupply = collectResupplieData();
-    saveResupplieDetails(resupply);
+    resupply != null && saveResupplieDetails(resupply);
 })
 
 const collectResupplieData = () => {
@@ -211,6 +213,10 @@ const collectResupplieData = () => {
             ));
         }
     })
+    if(resupplyItems.length == 0){
+        showErrorAlert("Please enter a quantity for minimum one item")
+        return null;
+    }
     resupply.resupplyItems = resupplyItems;
     return resupply;
 }
@@ -308,6 +314,17 @@ const addResupplyComponent = (colorItems) => {
     </table>
     `);
 }
+
+$("#resupplyItemBtn").click(() => {
+    $("#restockBtn").click();
+})
+
+$("#resupplyCancelBtn").click(() => {
+    $(".supplier-items").empty();
+    $(".resupplyInputs").html('<h5 class="text-center">Not Selected Item.</h5>');
+    selectedSupplier = null;
+    selectedItems = [];
+})
 
 // sorting
 $("#resupplyData header select").on('change', () => {

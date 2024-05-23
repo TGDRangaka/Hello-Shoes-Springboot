@@ -3,8 +3,8 @@ import {Inventory} from '../model/Inventory.js'
 import {token} from '../db/data.js'
 import { getCategory, setAsInvalid, setAsValid, clearValidations, showSuccessAlert, showErrorAlert } from '../util/UtilMatter.js';
 
-let otherBtnCount = 0;
 let allItems = [];
+let otherBtnCount = 0;
 let selectedItem = null;
 let isItemSelected = false;
 let shoeColors = ['Black', 'White', 'Red', 'Blue', 'Brown', 'Gray'];
@@ -146,8 +146,9 @@ const loadItemTable = (allItems) => {
                 <span class="">${++rowIndex}</span>
                 <img src="${img}" class="img-fluid table-img" alt="">
             </div>
-            <div class="col">${item.description}</div>
-            <div class="col">${getCategory(item.category)}</div>
+            <div class="col"><i class="fa-regular fa-copy"></i>${item.itemCode}</div>
+            <div class="col"><i class="fa-regular fa-copy"></i>${item.description}</div>
+            <div class="col-1">${getCategory(item.category)}</div>
             <div class="col">${item.supplierName}</div>
             <div class="col-1">${item.unitPriceSale}</div>
             <div class="col-1">${item.unitPriceBuy}</div>
@@ -382,6 +383,8 @@ const saveProduct = async () => {
       $.ajax(settings).done(function (response) {
         console.log(response);
         showSuccessAlert("Product saved successfully")
+        $("#cancelProductBtn").click();
+        $("#inventoryBtn").click();
       }).fail(function (jqXHR, textStatus, errorThrown) {
         showErrorAlert("An error occurred while saving product");
         console.error("Error details:", textStatus, errorThrown, jqXHR);
@@ -482,6 +485,9 @@ const updateProduct = async () => {
       $.ajax(settings).done(function (response) {
         console.log(response);
         showSuccessAlert("Product updated successfully")
+        $("#cancelProductBtn").click();
+        $("#inventoryBtn").click();
+
       }).fail(function (jqXHR, textStatus, errorThrown) {
         showErrorAlert("An error occurred while updating the product");
         console.error("Error details:", textStatus, errorThrown, jqXHR);
@@ -714,14 +720,14 @@ $("#productSellPrice").on('input', function(){
     let sell = $(this).val() ? $(this).val() : 0;
     let buy = $("#productBuyPrice").val() ? $("#productBuyPrice").val() : 0;
     $("#productExpectProfit").val(sell - buy);
-    $("#productProfitMargin").val((sell == 0 & buy == 0) ? 0 : (sell - buy) / buy * 100);
+    $("#productProfitMargin").val(((sell == 0 & buy == 0) ? 0 : (sell - buy) / buy * 100).toFixed(2));
 })
 
 $("#productBuyPrice").on('input', function(){
     let sell = $("#productSellPrice").val() ? $("#productSellPrice").val() : 0;
     let buy = $(this).val() ? $(this).val() : 0;
     $("#productExpectProfit").val(sell - buy);
-    $("#productProfitMargin").val((sell == 0 & buy == 0) ? 0 : (sell - buy) / buy * 100);
+    $("#productProfitMargin").val(((sell == 0 & buy == 0) ? 0 : (sell - buy) / buy * 100).toFixed(2));
 });
 
 $("#productExpectProfit").on('input', function(){
@@ -729,7 +735,7 @@ $("#productExpectProfit").on('input', function(){
     let profit = $(this).val() ? $(this).val() : 0;
     let sell = parseInt(buy) + parseInt(profit);
     $("#productSellPrice").val(sell)
-    $("#productProfitMargin").val((sell == 0 & buy == 0) ? 0 : profit / buy * 100);
+    $("#productProfitMargin").val(((sell == 0 & buy == 0) ? 0 : profit / buy * 100).toFixed(2));
 });
 
 $("#productProfitMargin").on('input', function(){
@@ -786,6 +792,7 @@ const sortItems = () => {
 $("#inventory select").on('change', function(){
     loadItemTable(allItems);
 });
+
 const isInSelectedCategory = (item) => {
     let category = $("#inventoryCateforyFilter").val();
     if(category === 'ALL' || category === item.category){
@@ -825,12 +832,22 @@ const isInSelectedSupplier = (item) => {
 
 const isInSearchedKeyword = (item) => {
     let keyword = $("#inventorySearch").val();
-    if(keyword === '' || item.description.toLowerCase().includes(keyword.toLowerCase())){
-        return true;
-    }else{
-        return false;
-    }
+    return keyword === ''
+    || item.description.toLowerCase().includes(keyword.toLowerCase())
+    || item.itemCode.toLowerCase().includes(keyword.toLowerCase())
+    || item.supplierName.toLowerCase().includes(keyword.toLowerCase())
+    || item.category.toLowerCase().includes(keyword.toLowerCase());
 }
 $("#inventorySearchBtn").click(()=> {
     loadItemTable(allItems);
+})
+
+$("#cancelProductBtn").click(() => {
+    otherBtnCount = 0;
+    selectedItem = null;
+    isItemSelected = false;
+    $("#colorInputs").empty();
+    $("#otherColorInputs").empty();
+    clearValidations("#addProduct form");
+    setShoeColorButtons();
 })

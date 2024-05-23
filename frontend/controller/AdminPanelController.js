@@ -39,7 +39,7 @@ const displayData = (data) => {
 
     let barData = [];
     data.dailySales.map(dailySale => {
-        barLabels.push(dailySale.date)
+        barLabels.push(dailySale.date.substring(2,10))
         barData.push(dailySale.totalSales)
     })
     barChartData.labels = barLabels;
@@ -106,7 +106,7 @@ $("#dates").on('click', '.btn-date', function(){
 let barChartData = {
     labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange', 'Yellow'],
     datasets: [{
-        label: '# of Votes',
+        label: 'Sales',
         data: [12, 19, 3, 5, 2, 3, 15],
         backgroundColor: ['rgba(153, 102, 255, 0.4)'],
         borderColor: ['rgba(153, 102, 255, 1)'],
@@ -130,7 +130,7 @@ let bc = new Chart(barChart, {
 const lineChartData = {
     labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
     datasets: [{
-        label: 'Sales',
+        label: 'Profit',
         backgroundColor: 'rgba(153, 102, 255, 0.5)',
         borderColor: 'rgba(153, 102, 255, 1)',
         borderWidth: 1,
