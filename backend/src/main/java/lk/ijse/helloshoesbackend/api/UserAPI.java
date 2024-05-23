@@ -33,11 +33,7 @@ public class UserAPI {
         log.info("SignIn request received for email: {}", signIn.getEmail());
         try {
             return ResponseEntity.accepted().body(authenticationBO.signIn(signIn));
-        } catch (UsernameNotFoundException e) {
-            log.warn("Username not found error during sign in: {}", e.getMessage());
-            throw e;
-        } catch (Exception e) {
-            log.error("Unexpected error during sign in", e);
+        }catch (Exception e) {
             throw e;
         }
     }
@@ -48,11 +44,7 @@ public class UserAPI {
         log.info("SignUp request received for email: {}", signUp.getEmail());
         try {
             return ResponseEntity.accepted().body(authenticationBO.signUp(signUp));
-        } catch (DataDuplicationException e) {
-            log.warn("Data duplication error during sign up: {}", e.getMessage());
-            throw e;
-        } catch (Exception e) {
-            log.error("Unexpected error during sign up", e);
+        }catch (Exception e) {
             throw e;
         }
     }

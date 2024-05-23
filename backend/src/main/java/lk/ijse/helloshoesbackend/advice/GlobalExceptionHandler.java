@@ -21,14 +21,14 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<Map<String, String>> handleValidationExceptions(MethodArgumentNotValidException ex) {
         Map<String, String> errors = new HashMap<>();
-//        final StringBuilder logMessage = new StringBuilder();
+        final StringBuilder logMessage = new StringBuilder();
         ex.getBindingResult().getAllErrors().forEach((error) -> {
             String fieldName = ((FieldError) error).getField();
             String errorMessage = error.getDefaultMessage();
             errors.put(fieldName, errorMessage);
-//            logMessage.append(fieldName).append(": ").append(errorMessage).append("\n");
+            logMessage.append(fieldName).append(": ").append(errorMessage).append(", ");
         });
-//        log.error("Validation exception: " + logMessage.toString());
+        log.error("Validation exception occurred: {}", logMessage.toString());
         return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
     }
 

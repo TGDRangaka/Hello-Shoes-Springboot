@@ -4,6 +4,7 @@ import lk.ijse.helloshoesbackend.dto.*;
 import lk.ijse.helloshoesbackend.entity.*;
 import lk.ijse.helloshoesbackend.entity.keys.ResupplyItemId;
 import lk.ijse.helloshoesbackend.entity.keys.SaleItemId;
+import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.modelmapper.convention.MatchingStrategies;
@@ -14,35 +15,44 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Component
+@Slf4j
 public class Conversion {
 
     private static ModelMapper modelMapper = new ModelMapper();
 
     public static UserDTO toUserDTO(UserEntity entity){
+        log.info("Converting UserEntity to UserDTO");
         return modelMapper.map(entity, UserDTO.class);
     }
     public static UserEntity toUserEntity(UserDTO dto){
+        log.info("Converting UserDTO to UserEntity");
         return modelMapper.map(dto, UserEntity.class);
     }
 
     public static EmployeeDTO toEmployeeDTO(EmployeeEntity entity){
+        log.info("Converting EmployeeEntity to EmployeeDTO");
         return modelMapper.map(entity, EmployeeDTO.class);
     }
     public static EmployeeEntity toEmployeeEntity(EmployeeDTO dto){
+        log.info("Converting EmployeeDTO to EmployeeEntity");
         return modelMapper.map(dto, EmployeeEntity.class);
     }
     public static List<EmployeeDTO> toEmployeeDTOList(List<EmployeeEntity> entities){
+        log.info("Converting List<EmployeeEntity> to List<EmployeeDTO>");
         return modelMapper.map(entities, new TypeToken<List<EmployeeDTO>>(){}.getType());
     }
 
     public static ItemDTO toItemDTO(ItemEntity entity){
+        log.info("Converting ItemEntity to ItemDTO");
         return modelMapper.map(entity, ItemDTO.class);
     }
     public static ItemEntity toItemEntity(ItemDTO dto){
+        log.info("Converting ItemDTO to ItemEntity");
         ItemEntity entity = modelMapper.map(dto, ItemEntity.class);
         return entity;
     }
     public static List<ItemDTO> toItemDTOList(List<ItemEntity> items){
+        log.info("Converting List<ItemEntity> to List<ItemDTO>");
         modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
         return items.stream()
                 .map(entity -> {
@@ -78,6 +88,7 @@ public class Conversion {
     }
 
     public static List<InventoryDTO> toInventoryDTOList(List<InventoryEntity> entities){
+        log.info("Converting List<InventoryEntity> to List<InventoryDTO>");
         modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
         entities.forEach(entity -> {
 //            entity.setItem(null);
@@ -93,6 +104,7 @@ public class Conversion {
         return list;
     }
     public static List<InventoryEntity> toInventoryEntityList(List<InventoryDTO> dtos){
+        log.info("Converting List<InventoryDTO> to List<InventoryEntity>");
         modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
         List<InventoryEntity> list = new ArrayList();
         for(InventoryDTO dto : dtos){
@@ -104,35 +116,37 @@ public class Conversion {
     }
 
     public static SupplierDTO toSupplierDTO(SupplierEntity entity){
+        log.info("Converting SupplierEntity to SupplierDTO");
         return modelMapper.map(entity, SupplierDTO.class);
     }
     public static SupplierEntity toSupplierEntity(SupplierDTO dto){
+        log.info("Converting SupplierDTO to SupplierEntity");
         return modelMapper.map(dto, SupplierEntity.class);
     }
     public static List<SupplierDTO> toSupplierDTOList(List<SupplierEntity> entities){
+        log.info("Converting List<SupplierEntity> to List<SupplierDTO>");
         return entities.stream()
                 .map(entity -> modelMapper.map(entity, SupplierDTO.class))
                 .collect(Collectors.toList());
     }
 
     public static CustomerDTO toCustomerDTO(CustomerEntity entity){
+        log.info("Converting CustomerEntity to CustomerDTO");
         return modelMapper.map(entity, CustomerDTO.class);
     }
     public static CustomerEntity toCustomerEntity(CustomerDTO dto){
+        log.info("Converting CustomerDTO to CustomerEntity");
         return dto == null ? null : modelMapper.map(dto, CustomerEntity.class);
     }
     public static List<CustomerDTO> toCustomerDTOList(List<CustomerEntity> entities){
+        log.info("Converting List<CustomerEntity> to List<CustomerDTO>");
         return entities.stream()
                 .map(entity -> modelMapper.map(entity, CustomerDTO.class))
                 .collect(Collectors.toList());
     }
-    public static List<CustomerEntity> toCustomerEntityList(List<CustomerDTO> dtos){
-        return dtos.stream()
-                .map(dto -> modelMapper.map(dto, CustomerEntity.class))
-                .collect(Collectors.toList());
-    }
 
     public static SaleEntity toSaleEntity(SaleDTO dto){
+        log.info("Converting SaleDTO to SaleEntity");
         SaleEntity entity = modelMapper.map(dto, SaleEntity.class);
         entity.setEmployee(toEmployeeEntity(dto.getEmployee()));
         entity.setCustomer(toCustomerEntity(dto.getCustomer()));
@@ -145,6 +159,7 @@ public class Conversion {
     }
 
     public static List<SaleDTO> toSaleDTOList(List<SaleEntity> entities){
+        log.info("Converting List<SaleEntity> to List<SaleDTO>");
         modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
         return entities.stream()
                 .map(entity -> {
@@ -172,6 +187,7 @@ public class Conversion {
     }
 
     public static List<SaleItemDTO> toSaleItemDTOList(List<SaleItemEntity> entities){
+        log.info("Converting List<SaleItemEntity> to List<SaleItemDTO>");
         return entities.stream().map(saleItem -> {
             InventoryEntity dbInventory = saleItem.getSaleItemId().getItem();
             InventoryEntity inventory = new InventoryEntity();
@@ -185,17 +201,8 @@ public class Conversion {
         }).collect(Collectors.toList());
     }
 
-    public static ResupplyDTO toResupplyDTO(ResupplyEntity entity){
-        modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
-        List<ResupplyItemDTO> dtoList = new ArrayList<>();
-        for(ResupplyItemEntity resupplyItemEntity : entity.getResupplyItems()){
-            dtoList.add(modelMapper.map(resupplyItemEntity, ResupplyItemDTO.class));
-        }
-        ResupplyDTO dto = modelMapper.map(entity, ResupplyDTO.class);
-        dto.setResupplyItems(dtoList);
-        return dto;
-    }
     public static ResupplyEntity toResupplyEntity(ResupplyDTO dto){
+        log.info("Converting ResupplyDTO to ResupplyEntity");
 //        modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
         List<ResupplyItemEntity> entityList = new ArrayList<>();
         for(ResupplyItemDTO resupplyItemDTO : dto.getResupplyItems()){
@@ -206,6 +213,7 @@ public class Conversion {
         return entity;
     }
     public static List<ResupplyDTO> toResupplyDTOList(List<ResupplyEntity> entities){
+        log.info("Converting List<ResupplyEntity> to List<ResupplyDTO>");
         return entities.stream().map(
                 entity -> {
                     ResupplyDTO resupplyDTO = new ResupplyDTO(
@@ -236,10 +244,12 @@ public class Conversion {
     }
 
     public static RefundEntity toRefundEntity(RefundDTO refundDTO){
+        log.info("Converting RefundDTO to RefundEntity");
         return modelMapper.map(refundDTO, RefundEntity.class);
     }
 
     public static List<RefundDTO> toRefundDTOList(List<RefundEntity> entities){
+        log.info("Converting List<RefundEntity> to List<RefundDTO>");
         return entities.stream().map(entity -> {
             InventoryEntity dbTempInventory = entity.getSaleItem().getSaleItemId().getItem();
             InventoryEntity tempInventory = new InventoryEntity();
@@ -269,10 +279,12 @@ public class Conversion {
     }
 
     public static AlertEntity toAlertEntity(AlertDTO alertDTO){
+        log.info("Converting AlertDTO to AlertEntity");
         return modelMapper.map(alertDTO, AlertEntity.class);
     }
 
     public static List<AlertDTO> toAlertDTOList(List<AlertEntity> list){
+        log.info("Converting List<AlertEntity> to List<AlertDTO>");
         return modelMapper.map(list, new TypeToken<List<AlertDTO>>(){}.getType());
     }
 }

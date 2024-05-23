@@ -11,43 +11,61 @@ import lk.ijse.helloshoesbackend.reqAndResp.response.JwtAuthResponse;
 import lk.ijse.helloshoesbackend.service.AuthenticationService;
 import lk.ijse.helloshoesbackend.service.EmployeeService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 
-import java.util.Base64;
-import java.util.Locale;
-
 @Component
 @RequiredArgsConstructor
+@Slf4j
 public class AuthenticationBOIMPL implements AuthenticationBO {
 
     private final AuthenticationService authenticationService;
     private final EmployeeService employeeService;
+    private final ModelMapper modelMapper = new ModelMapper();
 
-    public JwtAuthResponse signIn(SignIn signIn){
-        JwtAuthResponse jwtAuthResponse = authenticationService.signIn(new ModelMapper().map(signIn, UserDTO.class));
-        jwtAuthResponse.getUser().setPassword(null);
-        return jwtAuthResponse;
+    @Override
+    public JwtAuthResponse signIn(SignIn signIn) {
+        log.info("Attempting to sign in user with email: {}", signIn.getEmail());
+        try {
+            JwtAuthResponse jwtAuthResponse = authenticationService.signIn(modelMapper.map(signIn, UserDTO.class));
+            jwtAuthResponse.getUser().setPassword(null);
+            return jwtAuthResponse;
+        } catch (Exception e) {
+            log.error("Error during sign in for user: {}", signIn.getEmail());
+            throw e; // Ensure you have appropriate exception handling in the controller
+        }
     }
 
+    @Override
     public JwtAuthResponse signUp(SignUp signUp) {
-        UserDTO userDTO = new ModelMapper().map(signUp, UserDTO.class);
+        log.info("Attempting to sign up user with email: {}", signUp.getEmail());
+        try {
+            UserDTO userDTO = modelMapper.map(signUp, UserDTO.class);
 
-//        Get Employee if exist
-        EmployeeDTO employee = employeeService.getEmployee(userDTO.getEmail());
+            // Get Employee if exists
+            EmployeeDTO employee = employeeService.getEmployee(userDTO.getEmail());
+            if (employee == null) {
+                log.warn("Employee not found for email: {}", userDTO.getEmail());
+                throw new IllegalArgumentException("Employee not found for email: " + userDTO.getEmail());
+            }
 
-//        Set Role
-        if(employee.getDesignation().toLowerCase().equals("manager")){
-            userDTO.setRole(UserRole.ADMIN);
-        }else{
-            userDTO.setRole(UserRole.USER);
+            // Set Role
+            if ("manager".equalsIgnoreCase(employee.getDesignation())) {
+                userDTO.setRole(UserRole.ADMIN);
+            } else {
+                userDTO.setRole(UserRole.USER);
+            }
+
+            // Set relationship
+            userDTO.setEmployee(employee);
+
+            JwtAuthResponse jwtAuthResponse = authenticationService.signUp(userDTO);
+            jwtAuthResponse.getUser().setPassword(null);
+            return jwtAuthResponse;
+        } catch (Exception e) {
+            log.error("Error during sign up for user: {}", signUp.getEmail());
+            throw e; // Ensure you have appropriate exception handling in the controller
         }
-
-//        Ser relationship
-        userDTO.setEmployee(employee);
-
-        JwtAuthResponse jwtAuthResponse = authenticationService.signUp(userDTO);
-        jwtAuthResponse.getUser().setPassword(null);
-        return jwtAuthResponse;
     }
 }

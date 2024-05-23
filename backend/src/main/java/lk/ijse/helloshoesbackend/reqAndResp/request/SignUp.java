@@ -16,7 +16,6 @@ public class SignUp {
     private String email;
 
     @NotNull(message = "Password must be provided")
-    @Size(min = 6, message = "Password must be at least 6 characters long")
     @Pattern(regexp = "^.{6,}$", message = "Password must be at least 6 characters long")
     private String password;
 }

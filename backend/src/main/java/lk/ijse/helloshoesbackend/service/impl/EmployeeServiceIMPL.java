@@ -9,6 +9,7 @@ import lk.ijse.helloshoesbackend.repo.UserRepo;
 import lk.ijse.helloshoesbackend.service.EmployeeService;
 import lk.ijse.helloshoesbackend.util.Conversion;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,6 +20,7 @@ import java.util.Optional;
 @Service
 @Transactional
 @RequiredArgsConstructor
+@Slf4j
 public class EmployeeServiceIMPL implements EmployeeService {
 
     private final EmployeeRepo employeeRepo;
@@ -26,35 +28,45 @@ public class EmployeeServiceIMPL implements EmployeeService {
 
     @Override
     public List<EmployeeDTO> getAllEmployees() {
-        return Conversion.toEmployeeDTOList(employeeRepo.findAll());
+        log.info("Fetching all employees");
+        List<EmployeeDTO> employees = Conversion.toEmployeeDTOList(employeeRepo.findAll());
+        log.info("Fetched {} employees", employees.size());
+        return employees;
     }
 
     @Override
     public EmployeeDTO getEmployee(String email) {
+        log.info("Fetching employee with email: {}", email);
         Optional<EmployeeEntity> byEmail = employeeRepo.findByEmail(email);
-        if(byEmail.isPresent()){
+        if (byEmail.isPresent()) {
+            log.info("Found employee with email: {}", email);
             return new ModelMapper().map(byEmail.get(), EmployeeDTO.class);
         }
+        log.error("Employee not found with email: {}", email);
         throw new NotFoundException("Not Found Employee : " + email);
     }
 
     @Override
     public String saveEmployee(EmployeeDTO employee) {
-        EmployeeEntity save = employeeRepo.save(Conversion.toEmployeeEntity(employee));
-        return save.getEmployeeCode();
+        log.info("Saving employee: {}", employee);
+        EmployeeEntity savedEmployee = employeeRepo.save(Conversion.toEmployeeEntity(employee));
+        log.info("Saved employee with code: {}", savedEmployee.getEmployeeCode());
+        return savedEmployee.getEmployeeCode();
     }
 
     @Override
     public EmployeeDTO updateEmployee(EmployeeDTO employee, String employeeCode) {
+        log.info("Updating employee with code: {}", employeeCode);
         Optional<EmployeeEntity> byId = employeeRepo.findById(employeeCode);
-        if(byId.isPresent()){
+        if (byId.isPresent()) {
             EmployeeEntity entity = byId.get();
 
             Optional<UserEntity> byEmployee = userRepo.findByEmployee(entity);
-            if(byEmployee.isPresent()){
+            if (byEmployee.isPresent()) {
                 UserEntity userEntity = byEmployee.get();
                 userEntity.setEmail(employee.getEmail());
                 userRepo.save(userEntity);
+                log.info("Updated user email for employee with code: {}", employeeCode);
             }
 
             entity.setName(employee.getName());
@@ -75,8 +87,11 @@ public class EmployeeServiceIMPL implements EmployeeService {
             entity.setGuardianOrNominatedPerson(employee.getGuardianOrNominatedPerson());
             entity.setEmergencyContact(employee.getEmergencyContact());
 
-            return Conversion.toEmployeeDTO(entity);
+            EmployeeDTO updatedEmployee = Conversion.toEmployeeDTO(entity);
+            log.info("Updated employee with code: {}", employeeCode);
+            return updatedEmployee;
         }
+        log.error("Employee not found with code: {}", employeeCode);
         throw new NotFoundException("Not Found Employee : " + employeeCode);
     }
 }
