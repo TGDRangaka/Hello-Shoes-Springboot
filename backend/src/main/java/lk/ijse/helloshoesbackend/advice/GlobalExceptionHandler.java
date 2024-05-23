@@ -36,7 +36,7 @@ public class GlobalExceptionHandler {
     public ResponseEntity<Map<String, String>> handleDataDuplicationExceptions(DataDuplicationException ex) {
         Map<String, String> errors = new HashMap<>();
         errors.put("errorMessage", ex.getMessage());
-//        log.error("Data duplication exception: " + ex.getMessage());
+        log.error("Data duplication exception occurred: " + ex.getMessage());
 
         return new ResponseEntity<>(errors, HttpStatus.CONFLICT);
     }
@@ -44,7 +44,7 @@ public class GlobalExceptionHandler {
     public ResponseEntity<Map<String, String>> handleInvalidDataExceptions(InvalidDataException ex) {
         Map<String, String> errors = new HashMap<>();
         errors.put("errorMessage", ex.getMessage());
-//        log.error("Invalid data exception: " + ex.getMessage());
+        log.error("Invalid data exception occurred: " + ex.getMessage());
 
         return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
     }
@@ -52,7 +52,7 @@ public class GlobalExceptionHandler {
     public ResponseEntity<Map<String, String>> handleNotFoundExceptions(NotFoundException ex) {
         Map<String, String> errors = new HashMap<>();
         errors.put("errorMessage", ex.getMessage());
-//        log.error("Not found exception: " + ex.getMessage());
+        log.error("Not found exception occurred: " + ex.getMessage());
 
         return new ResponseEntity<>(errors, HttpStatus.NOT_FOUND);
     }
@@ -61,7 +61,7 @@ public class GlobalExceptionHandler {
     public ResponseEntity<Map<String, String>> handleExceptions(Exception ex) {
         Map<String, String> errors = new HashMap<>();
         errors.put("errorMessage", ex.getMessage());
-//        log.error("Exception: " + ex.getMessage());
+        log.error("Exception occurred: " + ex.getMessage());
 
         return new ResponseEntity<>(errors, HttpStatus.INTERNAL_SERVER_ERROR);
     }

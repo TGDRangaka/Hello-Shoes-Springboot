@@ -29,23 +29,15 @@ public class UserAPI {
 
     // SignIn
     @PutMapping
-    public ResponseEntity<JwtAuthResponse> signIn(@Valid @RequestBody SignIn signIn) {
+    public ResponseEntity signIn(@Valid @RequestBody SignIn signIn) {
         log.info("SignIn request received for email: {}", signIn.getEmail());
-        try {
-            return ResponseEntity.accepted().body(authenticationBO.signIn(signIn));
-        }catch (Exception e) {
-            throw e;
-        }
+        return ResponseEntity.accepted().body(authenticationBO.signIn(signIn));
     }
 
     // SignUp
     @PostMapping
-    public ResponseEntity<JwtAuthResponse> signUp(@Valid @RequestBody SignUp signUp) {
+    public ResponseEntity signUp(@Valid @RequestBody SignUp signUp) {
         log.info("SignUp request received for email: {}", signUp.getEmail());
-        try {
-            return ResponseEntity.accepted().body(authenticationBO.signUp(signUp));
-        }catch (Exception e) {
-            throw e;
-        }
+        return ResponseEntity.accepted().body(authenticationBO.signUp(signUp));
     }
 }

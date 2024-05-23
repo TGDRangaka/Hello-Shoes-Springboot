@@ -989,3 +989,1109 @@ lk.ijse.helloshoesbackend.exception.NotFoundException: Not Found Employee : rang
 2024-05-24T00:57:38.021+05:30  INFO 3624 --- [Hello-Shoes-Springboot] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2024-05-24T00:57:38.023+05:30  INFO 3624 --- [Hello-Shoes-Springboot] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2024-05-24T00:57:38.031+05:30  INFO 3624 --- [Hello-Shoes-Springboot] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-05-24T00:57:42.740+05:30  INFO 13628 --- [Hello-Shoes-Springboot] [main] l.i.h.HelloShoesSpringbootApplication    : Starting HelloShoesSpringbootApplication using Java 21.0.1 with PID 13628 (D:\Github\Hello-Shoes-Springboot\backend\target\classes started by USER in D:\Github\Hello-Shoes-Springboot\backend)
+2024-05-24T00:57:42.742+05:30  INFO 13628 --- [Hello-Shoes-Springboot] [main] l.i.h.HelloShoesSpringbootApplication    : No active profile set, falling back to 1 default profile: "default"
+2024-05-24T00:57:43.439+05:30  INFO 13628 --- [Hello-Shoes-Springboot] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-05-24T00:57:43.523+05:30  INFO 13628 --- [Hello-Shoes-Springboot] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 79 ms. Found 12 JPA repository interfaces.
+2024-05-24T00:57:43.915+05:30  INFO 13628 --- [Hello-Shoes-Springboot] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-05-24T00:57:43.922+05:30  INFO 13628 --- [Hello-Shoes-Springboot] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-05-24T00:57:43.922+05:30  INFO 13628 --- [Hello-Shoes-Springboot] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.20]
+2024-05-24T00:57:43.958+05:30  INFO 13628 --- [Hello-Shoes-Springboot] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-05-24T00:57:43.959+05:30  INFO 13628 --- [Hello-Shoes-Springboot] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1174 ms
+2024-05-24T00:57:44.086+05:30  INFO 13628 --- [Hello-Shoes-Springboot] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-05-24T00:57:44.133+05:30  INFO 13628 --- [Hello-Shoes-Springboot] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-05-24T00:57:44.155+05:30  INFO 13628 --- [Hello-Shoes-Springboot] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-05-24T00:57:44.255+05:30  INFO 13628 --- [Hello-Shoes-Springboot] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-05-24T00:57:44.268+05:30  INFO 13628 --- [Hello-Shoes-Springboot] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-05-24T00:57:44.504+05:30  INFO 13628 --- [Hello-Shoes-Springboot] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7254838
+2024-05-24T00:57:44.505+05:30  INFO 13628 --- [Hello-Shoes-Springboot] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-05-24T00:57:45.386+05:30  INFO 13628 --- [Hello-Shoes-Springboot] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-05-24T00:57:45.494+05:30  INFO 13628 --- [Hello-Shoes-Springboot] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-05-24T00:57:45.761+05:30  INFO 13628 --- [Hello-Shoes-Springboot] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-05-24T00:57:46.373+05:30  WARN 13628 --- [Hello-Shoes-Springboot] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-05-24T00:57:46.618+05:30  INFO 13628 --- [Hello-Shoes-Springboot] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@50f6eb17, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7bc3e36b, org.springframework.security.web.context.SecurityContextHolderFilter@2620d0dc, org.springframework.security.web.header.HeaderWriterFilter@24a29d8, org.springframework.web.filter.CorsFilter@335aac7a, org.springframework.security.web.authentication.logout.LogoutFilter@2de526f9, lk.ijse.helloshoesbackend.config.JWTConfigurationFilter$$SpringCGLIB$$0@2723b0d0, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1ff9d66b, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1e2c701, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4f347aae, org.springframework.security.web.session.SessionManagementFilter@3da068e8, org.springframework.security.web.access.ExceptionTranslationFilter@339de67e, org.springframework.security.web.access.intercept.AuthorizationFilter@70bca957]
+2024-05-24T00:57:46.820+05:30  INFO 13628 --- [Hello-Shoes-Springboot] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-05-24T00:57:46.828+05:30  INFO 13628 --- [Hello-Shoes-Springboot] [main] l.i.h.HelloShoesSpringbootApplication    : Started HelloShoesSpringbootApplication in 4.397 seconds (process running for 4.921)
+2024-05-24T00:57:55.252+05:30  INFO 13628 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-05-24T00:57:55.254+05:30  INFO 13628 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-05-24T00:57:55.255+05:30  INFO 13628 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-05-24T00:57:55.256+05:30  INFO 13628 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] l.i.h.config.AccessLogFilter             : -------- POST --- /api/v1/auth 
+2024-05-24T00:57:55.382+05:30  INFO 13628 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] lk.ijse.helloshoesbackend.api.UserAPI    : SignUp request received for email: rangacxvxcka@gmail.com
+2024-05-24T00:57:55.387+05:30  INFO 13628 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] l.i.h.bo.impl.AuthenticationBOIMPL       : Attempting to sign up user with email: rangacxvxcka@gmail.com
+2024-05-24T00:57:55.404+05:30  INFO 13628 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] l.i.h.service.impl.EmployeeServiceIMPL   : Fetching employee with email: rangacxvxcka@gmail.com
+2024-05-24T00:57:55.466+05:30 ERROR 13628 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] l.i.h.service.impl.EmployeeServiceIMPL   : Employee not found with email: rangacxvxcka@gmail.com
+2024-05-24T00:57:55.469+05:30 ERROR 13628 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] l.i.h.bo.impl.AuthenticationBOIMPL       : Error during sign up for user: rangacxvxcka@gmail.com
+2024-05-24T00:59:29.033+05:30  INFO 13628 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-5] l.i.h.config.AccessLogFilter             : -------- POST --- /api/v1/auth 
+2024-05-24T00:59:29.037+05:30  INFO 13628 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-5] lk.ijse.helloshoesbackend.api.UserAPI    : SignUp request received for email: rangaka@gmail.com
+2024-05-24T00:59:29.038+05:30  INFO 13628 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-5] l.i.h.bo.impl.AuthenticationBOIMPL       : Attempting to sign up user with email: rangaka@gmail.com
+2024-05-24T00:59:29.039+05:30  INFO 13628 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-5] l.i.h.service.impl.EmployeeServiceIMPL   : Fetching employee with email: rangaka@gmail.com
+2024-05-24T00:59:29.060+05:30  INFO 13628 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-5] l.i.h.service.impl.EmployeeServiceIMPL   : Found employee with email: rangaka@gmail.com
+2024-05-24T00:59:29.076+05:30  INFO 13628 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-5] l.i.h.s.impl.AuthenticationServiceIMPL   : Attempting to sign up user: rangaka@gmail.com
+2024-05-24T00:59:29.083+05:30 ERROR 13628 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-5] l.i.h.bo.impl.AuthenticationBOIMPL       : Error during sign up for user: rangaka@gmail.com
+2024-05-24T01:00:43.324+05:30  INFO 13628 --- [Hello-Shoes-Springboot] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-05-24T01:00:43.326+05:30  INFO 13628 --- [Hello-Shoes-Springboot] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-05-24T01:00:43.334+05:30  INFO 13628 --- [Hello-Shoes-Springboot] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-05-24T01:00:47.700+05:30  INFO 14688 --- [Hello-Shoes-Springboot] [main] l.i.h.HelloShoesSpringbootApplication    : Starting HelloShoesSpringbootApplication using Java 21.0.1 with PID 14688 (D:\Github\Hello-Shoes-Springboot\backend\target\classes started by USER in D:\Github\Hello-Shoes-Springboot\backend)
+2024-05-24T01:00:47.702+05:30  INFO 14688 --- [Hello-Shoes-Springboot] [main] l.i.h.HelloShoesSpringbootApplication    : No active profile set, falling back to 1 default profile: "default"
+2024-05-24T01:00:48.381+05:30  INFO 14688 --- [Hello-Shoes-Springboot] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-05-24T01:00:48.454+05:30  INFO 14688 --- [Hello-Shoes-Springboot] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 69 ms. Found 12 JPA repository interfaces.
+2024-05-24T01:00:48.862+05:30  INFO 14688 --- [Hello-Shoes-Springboot] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-05-24T01:00:48.870+05:30  INFO 14688 --- [Hello-Shoes-Springboot] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-05-24T01:00:48.870+05:30  INFO 14688 --- [Hello-Shoes-Springboot] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.20]
+2024-05-24T01:00:48.906+05:30  INFO 14688 --- [Hello-Shoes-Springboot] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-05-24T01:00:48.906+05:30  INFO 14688 --- [Hello-Shoes-Springboot] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1158 ms
+2024-05-24T01:00:49.027+05:30  INFO 14688 --- [Hello-Shoes-Springboot] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-05-24T01:00:49.068+05:30  INFO 14688 --- [Hello-Shoes-Springboot] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-05-24T01:00:49.090+05:30  INFO 14688 --- [Hello-Shoes-Springboot] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-05-24T01:00:49.197+05:30  INFO 14688 --- [Hello-Shoes-Springboot] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-05-24T01:00:49.210+05:30  INFO 14688 --- [Hello-Shoes-Springboot] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-05-24T01:00:49.427+05:30  INFO 14688 --- [Hello-Shoes-Springboot] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@65fc8edc
+2024-05-24T01:00:49.429+05:30  INFO 14688 --- [Hello-Shoes-Springboot] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-05-24T01:00:50.266+05:30  INFO 14688 --- [Hello-Shoes-Springboot] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-05-24T01:00:50.377+05:30  INFO 14688 --- [Hello-Shoes-Springboot] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-05-24T01:00:50.656+05:30  INFO 14688 --- [Hello-Shoes-Springboot] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-05-24T01:00:51.268+05:30  WARN 14688 --- [Hello-Shoes-Springboot] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-05-24T01:00:51.496+05:30  INFO 14688 --- [Hello-Shoes-Springboot] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@6b127d96, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5a4929f5, org.springframework.security.web.context.SecurityContextHolderFilter@3593e8dd, org.springframework.security.web.header.HeaderWriterFilter@6fc1d215, org.springframework.web.filter.CorsFilter@4146577c, org.springframework.security.web.authentication.logout.LogoutFilter@42e7e12f, lk.ijse.helloshoesbackend.config.JWTConfigurationFilter$$SpringCGLIB$$0@75d61b62, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@6ac93b87, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@71af3c7, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5afaa87a, org.springframework.security.web.session.SessionManagementFilter@4aebd384, org.springframework.security.web.access.ExceptionTranslationFilter@5c9844a4, org.springframework.security.web.access.intercept.AuthorizationFilter@92537b5]
+2024-05-24T01:00:51.696+05:30  INFO 14688 --- [Hello-Shoes-Springboot] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-05-24T01:00:51.704+05:30  INFO 14688 --- [Hello-Shoes-Springboot] [main] l.i.h.HelloShoesSpringbootApplication    : Started HelloShoesSpringbootApplication in 4.317 seconds (process running for 5.032)
+2024-05-24T01:00:57.881+05:30  INFO 14688 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-3] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-05-24T01:00:57.881+05:30  INFO 14688 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-05-24T01:00:57.883+05:30  INFO 14688 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2024-05-24T01:00:57.885+05:30  INFO 14688 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-3] l.i.h.config.AccessLogFilter             : -------- POST --- /api/v1/auth 
+2024-05-24T01:00:58.019+05:30  INFO 14688 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-3] lk.ijse.helloshoesbackend.api.UserAPI    : SignUp request received for email: rangaka@gmail.com
+2024-05-24T01:00:58.020+05:30  INFO 14688 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-3] l.i.h.bo.impl.AuthenticationBOIMPL       : Attempting to sign up user with email: rangaka@gmail.com
+2024-05-24T01:00:58.035+05:30  INFO 14688 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-3] l.i.h.service.impl.EmployeeServiceIMPL   : Fetching employee with email: rangaka@gmail.com
+2024-05-24T01:00:58.112+05:30  INFO 14688 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-3] l.i.h.service.impl.EmployeeServiceIMPL   : Found employee with email: rangaka@gmail.com
+2024-05-24T01:00:58.128+05:30  INFO 14688 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-3] l.i.h.s.impl.AuthenticationServiceIMPL   : Attempting to sign up user: rangaka@gmail.com
+2024-05-24T01:00:58.135+05:30 ERROR 14688 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-3] l.i.h.bo.impl.AuthenticationBOIMPL       : Error during sign up for user: rangaka@gmail.com
+2024-05-24T01:02:24.658+05:30  INFO 14688 --- [Hello-Shoes-Springboot] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-05-24T01:02:24.660+05:30  INFO 14688 --- [Hello-Shoes-Springboot] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-05-24T01:02:24.668+05:30  INFO 14688 --- [Hello-Shoes-Springboot] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-05-24T01:02:29.261+05:30  INFO 12512 --- [Hello-Shoes-Springboot] [main] l.i.h.HelloShoesSpringbootApplication    : Starting HelloShoesSpringbootApplication using Java 21.0.1 with PID 12512 (D:\Github\Hello-Shoes-Springboot\backend\target\classes started by USER in D:\Github\Hello-Shoes-Springboot\backend)
+2024-05-24T01:02:29.263+05:30  INFO 12512 --- [Hello-Shoes-Springboot] [main] l.i.h.HelloShoesSpringbootApplication    : No active profile set, falling back to 1 default profile: "default"
+2024-05-24T01:02:29.936+05:30  INFO 12512 --- [Hello-Shoes-Springboot] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-05-24T01:02:30.014+05:30  INFO 12512 --- [Hello-Shoes-Springboot] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 73 ms. Found 12 JPA repository interfaces.
+2024-05-24T01:02:30.430+05:30  INFO 12512 --- [Hello-Shoes-Springboot] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-05-24T01:02:30.437+05:30  INFO 12512 --- [Hello-Shoes-Springboot] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-05-24T01:02:30.438+05:30  INFO 12512 --- [Hello-Shoes-Springboot] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.20]
+2024-05-24T01:02:30.475+05:30  INFO 12512 --- [Hello-Shoes-Springboot] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-05-24T01:02:30.475+05:30  INFO 12512 --- [Hello-Shoes-Springboot] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1168 ms
+2024-05-24T01:02:30.594+05:30  INFO 12512 --- [Hello-Shoes-Springboot] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-05-24T01:02:30.634+05:30  INFO 12512 --- [Hello-Shoes-Springboot] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-05-24T01:02:30.658+05:30  INFO 12512 --- [Hello-Shoes-Springboot] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-05-24T01:02:30.759+05:30  INFO 12512 --- [Hello-Shoes-Springboot] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-05-24T01:02:30.773+05:30  INFO 12512 --- [Hello-Shoes-Springboot] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-05-24T01:02:30.985+05:30  INFO 12512 --- [Hello-Shoes-Springboot] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@353b0719
+2024-05-24T01:02:30.987+05:30  INFO 12512 --- [Hello-Shoes-Springboot] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-05-24T01:02:31.808+05:30  INFO 12512 --- [Hello-Shoes-Springboot] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-05-24T01:02:31.908+05:30  INFO 12512 --- [Hello-Shoes-Springboot] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-05-24T01:02:32.183+05:30  INFO 12512 --- [Hello-Shoes-Springboot] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-05-24T01:02:32.791+05:30  WARN 12512 --- [Hello-Shoes-Springboot] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-05-24T01:02:33.024+05:30  INFO 12512 --- [Hello-Shoes-Springboot] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@1233f419, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5271c49b, org.springframework.security.web.context.SecurityContextHolderFilter@57fd93f9, org.springframework.security.web.header.HeaderWriterFilter@1e2c701, org.springframework.web.filter.CorsFilter@66b65360, org.springframework.security.web.authentication.logout.LogoutFilter@7bc3e36b, lk.ijse.helloshoesbackend.config.JWTConfigurationFilter$$SpringCGLIB$$0@255482cb, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1a7f6678, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3b47178c, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@92537b5, org.springframework.security.web.session.SessionManagementFilter@2765c3fc, org.springframework.security.web.access.ExceptionTranslationFilter@72bd8702, org.springframework.security.web.access.intercept.AuthorizationFilter@227ca700]
+2024-05-24T01:02:33.232+05:30  INFO 12512 --- [Hello-Shoes-Springboot] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-05-24T01:02:33.241+05:30  INFO 12512 --- [Hello-Shoes-Springboot] [main] l.i.h.HelloShoesSpringbootApplication    : Started HelloShoesSpringbootApplication in 4.296 seconds (process running for 4.782)
+2024-05-24T01:02:36.763+05:30  INFO 12512 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-05-24T01:02:36.763+05:30  INFO 12512 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-05-24T01:02:36.765+05:30  INFO 12512 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2024-05-24T01:02:36.767+05:30  INFO 12512 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] l.i.h.config.AccessLogFilter             : -------- POST --- /api/v1/auth 
+2024-05-24T01:02:36.902+05:30  INFO 12512 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] lk.ijse.helloshoesbackend.api.UserAPI    : SignUp request received for email: rangaka@gmail.com
+2024-05-24T01:02:36.903+05:30  INFO 12512 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] l.i.h.bo.impl.AuthenticationBOIMPL       : Attempting to sign up user with email: rangaka@gmail.com
+2024-05-24T01:02:36.918+05:30  INFO 12512 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] l.i.h.service.impl.EmployeeServiceIMPL   : Fetching employee with email: rangaka@gmail.com
+2024-05-24T01:02:36.994+05:30  INFO 12512 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] l.i.h.service.impl.EmployeeServiceIMPL   : Found employee with email: rangaka@gmail.com
+2024-05-24T01:02:37.007+05:30  INFO 12512 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] l.i.h.s.impl.AuthenticationServiceIMPL   : Attempting to sign up user: rangaka@gmail.com
+2024-05-24T01:02:37.014+05:30 ERROR 12512 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] l.i.h.bo.impl.AuthenticationBOIMPL       : Error during sign up for user: rangaka@gmail.com
+2024-05-24T01:03:56.963+05:30  INFO 12512 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-3] l.i.h.config.AccessLogFilter             : -------- POST --- /api/v1/auth 
+2024-05-24T01:03:56.966+05:30  INFO 12512 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-3] lk.ijse.helloshoesbackend.api.UserAPI    : SignUp request received for email: rangaka@gmail.com
+2024-05-24T01:03:56.966+05:30  INFO 12512 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-3] l.i.h.bo.impl.AuthenticationBOIMPL       : Attempting to sign up user with email: rangaka@gmail.com
+2024-05-24T01:03:56.968+05:30  INFO 12512 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-3] l.i.h.service.impl.EmployeeServiceIMPL   : Fetching employee with email: rangaka@gmail.com
+2024-05-24T01:03:56.974+05:30  INFO 12512 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-3] l.i.h.service.impl.EmployeeServiceIMPL   : Found employee with email: rangaka@gmail.com
+2024-05-24T01:03:56.977+05:30  INFO 12512 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-3] l.i.h.s.impl.AuthenticationServiceIMPL   : Attempting to sign up user: rangaka@gmail.com
+2024-05-24T01:03:56.980+05:30 ERROR 12512 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-3] l.i.h.bo.impl.AuthenticationBOIMPL       : Error during sign up for user: rangaka@gmail.com
+2024-05-24T01:10:47.080+05:30  INFO 12512 --- [Hello-Shoes-Springboot] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-05-24T01:10:47.082+05:30  INFO 12512 --- [Hello-Shoes-Springboot] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-05-24T01:10:47.091+05:30  INFO 12512 --- [Hello-Shoes-Springboot] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-05-24T01:10:52.950+05:30  INFO 16964 --- [Hello-Shoes-Springboot] [main] l.i.h.HelloShoesSpringbootApplication    : Starting HelloShoesSpringbootApplication using Java 21.0.1 with PID 16964 (D:\Github\Hello-Shoes-Springboot\backend\target\classes started by USER in D:\Github\Hello-Shoes-Springboot\backend)
+2024-05-24T01:10:52.953+05:30  INFO 16964 --- [Hello-Shoes-Springboot] [main] l.i.h.HelloShoesSpringbootApplication    : No active profile set, falling back to 1 default profile: "default"
+2024-05-24T01:10:53.681+05:30  INFO 16964 --- [Hello-Shoes-Springboot] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-05-24T01:10:53.758+05:30  INFO 16964 --- [Hello-Shoes-Springboot] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 71 ms. Found 12 JPA repository interfaces.
+2024-05-24T01:10:54.218+05:30  INFO 16964 --- [Hello-Shoes-Springboot] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-05-24T01:10:54.229+05:30  INFO 16964 --- [Hello-Shoes-Springboot] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-05-24T01:10:54.229+05:30  INFO 16964 --- [Hello-Shoes-Springboot] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.20]
+2024-05-24T01:10:54.286+05:30  INFO 16964 --- [Hello-Shoes-Springboot] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-05-24T01:10:54.286+05:30  INFO 16964 --- [Hello-Shoes-Springboot] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1285 ms
+2024-05-24T01:10:54.419+05:30  INFO 16964 --- [Hello-Shoes-Springboot] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-05-24T01:10:54.498+05:30  INFO 16964 --- [Hello-Shoes-Springboot] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-05-24T01:10:54.543+05:30  INFO 16964 --- [Hello-Shoes-Springboot] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-05-24T01:10:54.736+05:30  INFO 16964 --- [Hello-Shoes-Springboot] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-05-24T01:10:54.754+05:30  INFO 16964 --- [Hello-Shoes-Springboot] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-05-24T01:10:55.061+05:30  INFO 16964 --- [Hello-Shoes-Springboot] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@13234ac9
+2024-05-24T01:10:55.062+05:30  INFO 16964 --- [Hello-Shoes-Springboot] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-05-24T01:10:56.168+05:30  INFO 16964 --- [Hello-Shoes-Springboot] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-05-24T01:10:56.292+05:30  INFO 16964 --- [Hello-Shoes-Springboot] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-05-24T01:10:56.655+05:30  INFO 16964 --- [Hello-Shoes-Springboot] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-05-24T01:10:57.341+05:30  WARN 16964 --- [Hello-Shoes-Springboot] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-05-24T01:10:57.629+05:30  INFO 16964 --- [Hello-Shoes-Springboot] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@4cc1f8d3, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@2a9eb44d, org.springframework.security.web.context.SecurityContextHolderFilter@711329fe, org.springframework.security.web.header.HeaderWriterFilter@686a08f4, org.springframework.web.filter.CorsFilter@46135aba, org.springframework.security.web.authentication.logout.LogoutFilter@4e4d6172, lk.ijse.helloshoesbackend.config.JWTConfigurationFilter$$SpringCGLIB$$0@6de2344a, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@37c5e2e6, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@342cc706, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@25a218a, org.springframework.security.web.session.SessionManagementFilter@1ff9d66b, org.springframework.security.web.access.ExceptionTranslationFilter@55af9b48, org.springframework.security.web.access.intercept.AuthorizationFilter@1edad178]
+2024-05-24T01:10:57.826+05:30  INFO 16964 --- [Hello-Shoes-Springboot] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-05-24T01:10:57.833+05:30  INFO 16964 --- [Hello-Shoes-Springboot] [main] l.i.h.HelloShoesSpringbootApplication    : Started HelloShoesSpringbootApplication in 5.224 seconds (process running for 6.139)
+2024-05-24T01:11:01.860+05:30  INFO 16964 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-7] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-05-24T01:11:01.860+05:30  INFO 16964 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-05-24T01:11:01.861+05:30  INFO 16964 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-05-24T01:11:01.863+05:30  INFO 16964 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-7] l.i.h.config.AccessLogFilter             : -------- POST --- /api/v1/auth 
+2024-05-24T01:11:01.973+05:30  INFO 16964 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-7] lk.ijse.helloshoesbackend.api.UserAPI    : SignUp request received for email: rangaka@gmail.com
+2024-05-24T01:11:01.973+05:30  INFO 16964 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-7] l.i.h.bo.impl.AuthenticationBOIMPL       : Attempting to sign up user with email: rangaka@gmail.com
+2024-05-24T01:11:01.988+05:30  INFO 16964 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-7] l.i.h.service.impl.EmployeeServiceIMPL   : Fetching employee with email: rangaka@gmail.com
+2024-05-24T01:11:02.066+05:30  INFO 16964 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-7] l.i.h.service.impl.EmployeeServiceIMPL   : Found employee with email: rangaka@gmail.com
+2024-05-24T01:11:02.081+05:30  INFO 16964 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-7] l.i.h.s.impl.AuthenticationServiceIMPL   : Attempting to sign up user: rangaka@gmail.com
+2024-05-24T01:11:02.089+05:30  INFO 16964 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-7] l.i.h.s.impl.AuthenticationServiceIMPL   : User already exists for email: rangaka@gmail.com
+2024-05-24T01:11:02.091+05:30 ERROR 16964 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-7] l.i.h.advice.GlobalExceptionHandler      : Data duplication exception occurred: User already exists
+2024-05-24T01:11:02.113+05:30 ERROR 16964 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-7] l.i.h.advice.GlobalExceptionHandler      : Exception occurred: Required request body is missing: public org.springframework.http.ResponseEntity lk.ijse.helloshoesbackend.api.UserAPI.signUp(lk.ijse.helloshoesbackend.reqAndResp.request.SignUp)
+2024-05-24T01:12:54.214+05:30  INFO 16964 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-5] l.i.h.config.AccessLogFilter             : -------- GET --- /api/v1/customer 
+2024-05-24T01:12:54.318+05:30  INFO 16964 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-5] l.i.helloshoesbackend.util.Conversion    : Converting List<CustomerEntity> to List<CustomerDTO>
+2024-05-24T01:12:54.348+05:30  INFO 16964 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-5] l.i.helloshoesbackend.util.Conversion    : Converting List<CustomerEntity> to List<CustomerDTO>
+2024-05-24T01:19:21.343+05:30  INFO 16964 --- [Hello-Shoes-Springboot] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-05-24T01:19:21.365+05:30  INFO 16964 --- [Hello-Shoes-Springboot] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-05-24T01:19:21.395+05:30  INFO 16964 --- [Hello-Shoes-Springboot] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-05-24T01:19:26.972+05:30  INFO 1128 --- [Hello-Shoes-Springboot] [main] l.i.h.HelloShoesSpringbootApplication    : Starting HelloShoesSpringbootApplication using Java 21.0.1 with PID 1128 (D:\Github\Hello-Shoes-Springboot\backend\target\classes started by USER in D:\Github\Hello-Shoes-Springboot\backend)
+2024-05-24T01:19:26.974+05:30  INFO 1128 --- [Hello-Shoes-Springboot] [main] l.i.h.HelloShoesSpringbootApplication    : No active profile set, falling back to 1 default profile: "default"
+2024-05-24T01:19:27.700+05:30  INFO 1128 --- [Hello-Shoes-Springboot] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-05-24T01:19:27.784+05:30  INFO 1128 --- [Hello-Shoes-Springboot] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 78 ms. Found 12 JPA repository interfaces.
+2024-05-24T01:19:28.220+05:30  INFO 1128 --- [Hello-Shoes-Springboot] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-05-24T01:19:28.231+05:30  INFO 1128 --- [Hello-Shoes-Springboot] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-05-24T01:19:28.231+05:30  INFO 1128 --- [Hello-Shoes-Springboot] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.20]
+2024-05-24T01:19:28.273+05:30  INFO 1128 --- [Hello-Shoes-Springboot] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-05-24T01:19:28.274+05:30  INFO 1128 --- [Hello-Shoes-Springboot] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1235 ms
+2024-05-24T01:19:28.396+05:30  INFO 1128 --- [Hello-Shoes-Springboot] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-05-24T01:19:28.467+05:30  INFO 1128 --- [Hello-Shoes-Springboot] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-05-24T01:19:28.511+05:30  INFO 1128 --- [Hello-Shoes-Springboot] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-05-24T01:19:28.668+05:30  INFO 1128 --- [Hello-Shoes-Springboot] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-05-24T01:19:28.688+05:30  INFO 1128 --- [Hello-Shoes-Springboot] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-05-24T01:19:28.975+05:30  INFO 1128 --- [Hello-Shoes-Springboot] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@50bf795f
+2024-05-24T01:19:28.977+05:30  INFO 1128 --- [Hello-Shoes-Springboot] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-05-24T01:19:29.982+05:30  INFO 1128 --- [Hello-Shoes-Springboot] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-05-24T01:19:30.109+05:30  INFO 1128 --- [Hello-Shoes-Springboot] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-05-24T01:19:30.410+05:30  INFO 1128 --- [Hello-Shoes-Springboot] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-05-24T01:19:31.065+05:30  WARN 1128 --- [Hello-Shoes-Springboot] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-05-24T01:19:31.319+05:30  INFO 1128 --- [Hello-Shoes-Springboot] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@6c8590f4, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1945b6db, org.springframework.security.web.context.SecurityContextHolderFilter@2765c3fc, org.springframework.security.web.header.HeaderWriterFilter@2620d0dc, org.springframework.web.filter.CorsFilter@a1cac17, org.springframework.security.web.authentication.logout.LogoutFilter@1edad178, lk.ijse.helloshoesbackend.config.JWTConfigurationFilter$$SpringCGLIB$$0@77e1b84c, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3e43fb40, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@57fd93f9, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@1233f419, org.springframework.security.web.session.SessionManagementFilter@234ad505, org.springframework.security.web.access.ExceptionTranslationFilter@3a8dd899, org.springframework.security.web.access.intercept.AuthorizationFilter@1efdaec0]
+2024-05-24T01:19:31.528+05:30  INFO 1128 --- [Hello-Shoes-Springboot] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-05-24T01:19:31.535+05:30  INFO 1128 --- [Hello-Shoes-Springboot] [main] l.i.h.HelloShoesSpringbootApplication    : Started HelloShoesSpringbootApplication in 4.939 seconds (process running for 5.583)
+2024-05-24T01:22:34.156+05:30  INFO 1128 --- [Hello-Shoes-Springboot] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-05-24T01:22:34.159+05:30  INFO 1128 --- [Hello-Shoes-Springboot] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-05-24T01:22:34.167+05:30  INFO 1128 --- [Hello-Shoes-Springboot] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-05-24T01:22:38.794+05:30  INFO 2204 --- [Hello-Shoes-Springboot] [main] l.i.h.HelloShoesSpringbootApplication    : Starting HelloShoesSpringbootApplication using Java 21.0.1 with PID 2204 (D:\Github\Hello-Shoes-Springboot\backend\target\classes started by USER in D:\Github\Hello-Shoes-Springboot\backend)
+2024-05-24T01:22:38.796+05:30  INFO 2204 --- [Hello-Shoes-Springboot] [main] l.i.h.HelloShoesSpringbootApplication    : No active profile set, falling back to 1 default profile: "default"
+2024-05-24T01:22:39.490+05:30  INFO 2204 --- [Hello-Shoes-Springboot] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-05-24T01:22:39.580+05:30  INFO 2204 --- [Hello-Shoes-Springboot] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 85 ms. Found 12 JPA repository interfaces.
+2024-05-24T01:22:39.966+05:30  INFO 2204 --- [Hello-Shoes-Springboot] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-05-24T01:22:39.974+05:30  INFO 2204 --- [Hello-Shoes-Springboot] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-05-24T01:22:39.974+05:30  INFO 2204 --- [Hello-Shoes-Springboot] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.20]
+2024-05-24T01:22:40.009+05:30  INFO 2204 --- [Hello-Shoes-Springboot] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-05-24T01:22:40.009+05:30  INFO 2204 --- [Hello-Shoes-Springboot] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1172 ms
+2024-05-24T01:22:40.132+05:30  INFO 2204 --- [Hello-Shoes-Springboot] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-05-24T01:22:40.176+05:30  INFO 2204 --- [Hello-Shoes-Springboot] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-05-24T01:22:40.198+05:30  INFO 2204 --- [Hello-Shoes-Springboot] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-05-24T01:22:40.307+05:30  INFO 2204 --- [Hello-Shoes-Springboot] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-05-24T01:22:40.322+05:30  INFO 2204 --- [Hello-Shoes-Springboot] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-05-24T01:22:40.543+05:30  INFO 2204 --- [Hello-Shoes-Springboot] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2a4e939a
+2024-05-24T01:22:40.546+05:30  INFO 2204 --- [Hello-Shoes-Springboot] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-05-24T01:22:41.367+05:30  INFO 2204 --- [Hello-Shoes-Springboot] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-05-24T01:22:41.488+05:30  INFO 2204 --- [Hello-Shoes-Springboot] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-05-24T01:22:41.758+05:30  INFO 2204 --- [Hello-Shoes-Springboot] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-05-24T01:22:42.366+05:30  WARN 2204 --- [Hello-Shoes-Springboot] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-05-24T01:22:42.614+05:30  INFO 2204 --- [Hello-Shoes-Springboot] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@5271c49b, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@66b65360, org.springframework.security.web.context.SecurityContextHolderFilter@5e8ec0d9, org.springframework.security.web.header.HeaderWriterFilter@21e441d1, org.springframework.web.filter.CorsFilter@92537b5, org.springframework.security.web.authentication.logout.LogoutFilter@335aac7a, lk.ijse.helloshoesbackend.config.JWTConfigurationFilter$$SpringCGLIB$$0@12d8e6b6, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3b47178c, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@9e2946, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@43b89b4, org.springframework.security.web.session.SessionManagementFilter@52f2d8e8, org.springframework.security.web.access.ExceptionTranslationFilter@2620d0dc, org.springframework.security.web.access.intercept.AuthorizationFilter@51049621]
+2024-05-24T01:22:42.851+05:30  INFO 2204 --- [Hello-Shoes-Springboot] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-05-24T01:22:42.858+05:30  INFO 2204 --- [Hello-Shoes-Springboot] [main] l.i.h.HelloShoesSpringbootApplication    : Started HelloShoesSpringbootApplication in 4.38 seconds (process running for 4.877)
+2024-05-24T01:22:47.483+05:30  INFO 2204 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-3] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-05-24T01:22:47.484+05:30  INFO 2204 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-05-24T01:22:47.485+05:30  INFO 2204 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-05-24T01:22:47.487+05:30  INFO 2204 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-3] l.i.h.config.AccessLogFilter             : -------- POST --- /api/v1/customer 
+2024-05-24T01:22:47.579+05:30 ERROR 2204 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-3] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception
+
+io.jsonwebtoken.ExpiredJwtException: JWT expired at 2024-05-02T13:26:47Z. Current time: 2024-05-23T19:52:47Z, a difference of 1837560575 milliseconds.  Allowed clock skew: 0 milliseconds.
+	at io.jsonwebtoken.impl.DefaultJwtParser.parse(DefaultJwtParser.java:427) ~[jjwt-impl-0.11.5.jar:0.11.5]
+	at io.jsonwebtoken.impl.DefaultJwtParser.parse(DefaultJwtParser.java:529) ~[jjwt-impl-0.11.5.jar:0.11.5]
+	at io.jsonwebtoken.impl.DefaultJwtParser.parseClaimsJws(DefaultJwtParser.java:589) ~[jjwt-impl-0.11.5.jar:0.11.5]
+	at io.jsonwebtoken.impl.ImmutableJwtParser.parseClaimsJws(ImmutableJwtParser.java:173) ~[jjwt-impl-0.11.5.jar:0.11.5]
+	at lk.ijse.helloshoesbackend.service.impl.JWTServiceIMPL.getAllClaims(JWTServiceIMPL.java:78) ~[classes/:na]
+	at lk.ijse.helloshoesbackend.service.impl.JWTServiceIMPL.extractClaim(JWTServiceIMPL.java:49) ~[classes/:na]
+	at lk.ijse.helloshoesbackend.service.impl.JWTServiceIMPL.extractUsername(JWTServiceIMPL.java:32) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:354) ~[spring-aop-6.1.6.jar:6.1.6]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:196) ~[spring-aop-6.1.6.jar:6.1.6]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-6.1.6.jar:6.1.6]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:768) ~[spring-aop-6.1.6.jar:6.1.6]
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:123) ~[spring-tx-6.1.6.jar:6.1.6]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:392) ~[spring-tx-6.1.6.jar:6.1.6]
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119) ~[spring-tx-6.1.6.jar:6.1.6]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.6.jar:6.1.6]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:768) ~[spring-aop-6.1.6.jar:6.1.6]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:720) ~[spring-aop-6.1.6.jar:6.1.6]
+	at lk.ijse.helloshoesbackend.service.impl.JWTServiceIMPL$$SpringCGLIB$$0.extractUsername(<generated>) ~[classes/:na]
+	at lk.ijse.helloshoesbackend.config.JWTConfigurationFilter.doFilterInternal(JWTConfigurationFilter.java:43) ~[classes/:na]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$3(HandlerMappingIntrospector.java:195) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:230) ~[spring-security-config-6.2.4.jar:6.2.4]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:352) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:268) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at lk.ijse.helloshoesbackend.config.AccessLogFilter.doFilterInternal(AccessLogFilter.java:23) ~[classes/:na]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:391) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:896) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1736) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
+
+2024-05-24T01:23:06.766+05:30  INFO 2204 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-2] l.i.h.config.AccessLogFilter             : -------- POST --- /api/v1/customer 
+2024-05-24T01:23:06.774+05:30 ERROR 2204 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-2] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception
+
+io.jsonwebtoken.ExpiredJwtException: JWT expired at 2024-05-02T13:26:47Z. Current time: 2024-05-23T19:53:06Z, a difference of 1837579771 milliseconds.  Allowed clock skew: 0 milliseconds.
+	at io.jsonwebtoken.impl.DefaultJwtParser.parse(DefaultJwtParser.java:427) ~[jjwt-impl-0.11.5.jar:0.11.5]
+	at io.jsonwebtoken.impl.DefaultJwtParser.parse(DefaultJwtParser.java:529) ~[jjwt-impl-0.11.5.jar:0.11.5]
+	at io.jsonwebtoken.impl.DefaultJwtParser.parseClaimsJws(DefaultJwtParser.java:589) ~[jjwt-impl-0.11.5.jar:0.11.5]
+	at io.jsonwebtoken.impl.ImmutableJwtParser.parseClaimsJws(ImmutableJwtParser.java:173) ~[jjwt-impl-0.11.5.jar:0.11.5]
+	at lk.ijse.helloshoesbackend.service.impl.JWTServiceIMPL.getAllClaims(JWTServiceIMPL.java:78) ~[classes/:na]
+	at lk.ijse.helloshoesbackend.service.impl.JWTServiceIMPL.extractClaim(JWTServiceIMPL.java:49) ~[classes/:na]
+	at lk.ijse.helloshoesbackend.service.impl.JWTServiceIMPL.extractUsername(JWTServiceIMPL.java:32) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:354) ~[spring-aop-6.1.6.jar:6.1.6]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:196) ~[spring-aop-6.1.6.jar:6.1.6]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-6.1.6.jar:6.1.6]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:768) ~[spring-aop-6.1.6.jar:6.1.6]
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:123) ~[spring-tx-6.1.6.jar:6.1.6]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:392) ~[spring-tx-6.1.6.jar:6.1.6]
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119) ~[spring-tx-6.1.6.jar:6.1.6]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.6.jar:6.1.6]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:768) ~[spring-aop-6.1.6.jar:6.1.6]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:720) ~[spring-aop-6.1.6.jar:6.1.6]
+	at lk.ijse.helloshoesbackend.service.impl.JWTServiceIMPL$$SpringCGLIB$$0.extractUsername(<generated>) ~[classes/:na]
+	at lk.ijse.helloshoesbackend.config.JWTConfigurationFilter.doFilterInternal(JWTConfigurationFilter.java:43) ~[classes/:na]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191) ~[spring-security-web-6.2.4.jar:6.2.4]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$3(HandlerMappingIntrospector.java:195) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:230) ~[spring-security-config-6.2.4.jar:6.2.4]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:352) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:268) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at lk.ijse.helloshoesbackend.config.AccessLogFilter.doFilterInternal(AccessLogFilter.java:23) ~[classes/:na]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:391) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:896) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1736) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
+
+2024-05-24T01:23:34.950+05:30  INFO 2204 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-4] l.i.h.config.AccessLogFilter             : -------- POST --- /api/v1/customer 
+2024-05-24T01:23:35.219+05:30 ERROR 2204 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-4] l.i.h.advice.GlobalExceptionHandler      : Validation exception occurred: name: name shouldn't be null, 
+2024-05-24T01:23:35.240+05:30 ERROR 2204 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-4] l.i.h.advice.GlobalExceptionHandler      : Exception occurred: Required request body is missing: public org.springframework.http.ResponseEntity<lk.ijse.helloshoesbackend.dto.CustomerDTO> lk.ijse.helloshoesbackend.api.CustomerAPI.saveCustomer(lk.ijse.helloshoesbackend.dto.CustomerDTO)
+2024-05-24T01:23:54.459+05:30  INFO 2204 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-6] l.i.h.config.AccessLogFilter             : -------- POST --- /api/v1/customer 
+2024-05-24T01:23:54.488+05:30 ERROR 2204 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-6] l.i.h.advice.GlobalExceptionHandler      : Validation exception occurred: addressNo: addressNo shouldn't be null, 
+2024-05-24T01:23:54.491+05:30 ERROR 2204 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-6] l.i.h.advice.GlobalExceptionHandler      : Exception occurred: Required request body is missing: public org.springframework.http.ResponseEntity<lk.ijse.helloshoesbackend.dto.CustomerDTO> lk.ijse.helloshoesbackend.api.CustomerAPI.saveCustomer(lk.ijse.helloshoesbackend.dto.CustomerDTO)
+2024-05-24T01:24:25.830+05:30  INFO 2204 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-8] l.i.h.config.AccessLogFilter             : -------- POST --- /api/v1/customer 
+2024-05-24T01:24:25.857+05:30 ERROR 2204 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-8] l.i.h.advice.GlobalExceptionHandler      : Validation exception occurred: email: must be valid email address, 
+2024-05-24T01:24:25.859+05:30 ERROR 2204 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-8] l.i.h.advice.GlobalExceptionHandler      : Exception occurred: Required request body is missing: public org.springframework.http.ResponseEntity<lk.ijse.helloshoesbackend.dto.CustomerDTO> lk.ijse.helloshoesbackend.api.CustomerAPI.saveCustomer(lk.ijse.helloshoesbackend.dto.CustomerDTO)
+2024-05-24T01:24:35.093+05:30  INFO 2204 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-10] l.i.h.config.AccessLogFilter             : -------- POST --- /api/v1/customer 
+2024-05-24T01:24:35.116+05:30  INFO 2204 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-10] l.i.helloshoesbackend.util.Conversion    : Converting CustomerDTO to CustomerEntity
+2024-05-24T01:24:35.164+05:30  INFO 2204 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-10] l.i.helloshoesbackend.util.Conversion    : Converting CustomerEntity to CustomerDTO
+2024-05-24T01:24:35.255+05:30 ERROR 2204 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-10] l.i.h.advice.GlobalExceptionHandler      : Exception occurred: Required request body is missing: public org.springframework.http.ResponseEntity<lk.ijse.helloshoesbackend.dto.CustomerDTO> lk.ijse.helloshoesbackend.api.CustomerAPI.saveCustomer(lk.ijse.helloshoesbackend.dto.CustomerDTO)
+2024-05-24T01:25:07.464+05:30  INFO 2204 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] l.i.h.config.AccessLogFilter             : -------- PUT --- /api/v1/customer/16794b24-ceae-4640-a2a5-37acc9089560 
+2024-05-24T01:25:07.513+05:30  INFO 2204 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] l.i.helloshoesbackend.util.Conversion    : Converting CustomerDTO to CustomerEntity
+2024-05-24T01:25:07.523+05:30 ERROR 2204 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] l.i.h.advice.GlobalExceptionHandler      : Exception occurred: Required request body is missing: public org.springframework.http.ResponseEntity lk.ijse.helloshoesbackend.api.CustomerAPI.updateCustomer(lk.ijse.helloshoesbackend.dto.CustomerDTO,java.lang.String)
+2024-05-24T01:25:07.524+05:30  WARN 2204 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] .m.m.a.ExceptionHandlerExceptionResolver : Failure in @ExceptionHandler lk.ijse.helloshoesbackend.advice.GlobalExceptionHandler#handleExceptions(Exception)
+
+org.springframework.http.converter.HttpMessageNotWritableException: No converter for [class java.util.HashMap] with preset Content-Type 'text/plain;charset=UTF-8'
+	at org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor.writeWithMessageConverters(AbstractMessageConverterMethodProcessor.java:319) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor.handleReturnValue(HttpEntityMethodProcessor.java:245) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.method.support.HandlerMethodReturnValueHandlerComposite.handleReturnValue(HandlerMethodReturnValueHandlerComposite.java:78) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:136) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver.doResolveHandlerMethodException(ExceptionHandlerExceptionResolver.java:432) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodExceptionResolver.doResolveException(AbstractHandlerMethodExceptionResolver.java:74) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver.resolveException(AbstractHandlerExceptionResolver.java:175) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.handler.HandlerExceptionResolverComposite.resolveException(HandlerExceptionResolverComposite.java:80) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.DispatcherServlet.processHandlerException(DispatcherServlet.java:1357) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1160) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1106) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.FrameworkServlet.doPut(FrameworkServlet.java:925) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:593) ~[tomcat-embed-core-10.1.20.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.20.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:206) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at lk.ijse.helloshoesbackend.config.AccessLogFilter.doFilterInternal(AccessLogFilter.java:25) ~[classes/:na]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:391) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:896) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1736) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
+
+2024-05-24T01:25:07.527+05:30  WARN 2204 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Ignoring exception, response committed already: org.springframework.http.converter.HttpMessageNotReadableException: Required request body is missing: public org.springframework.http.ResponseEntity lk.ijse.helloshoesbackend.api.CustomerAPI.updateCustomer(lk.ijse.helloshoesbackend.dto.CustomerDTO,java.lang.String)
+2024-05-24T01:25:07.529+05:30  WARN 2204 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: Required request body is missing: public org.springframework.http.ResponseEntity lk.ijse.helloshoesbackend.api.CustomerAPI.updateCustomer(lk.ijse.helloshoesbackend.dto.CustomerDTO,java.lang.String)]
+2024-05-24T01:25:15.160+05:30  INFO 2204 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-3] l.i.h.config.AccessLogFilter             : -------- PUT --- /api/v1/customer/16794b24-ceae-4640-a2a5-37acc9089560 
+2024-05-24T01:25:15.184+05:30  INFO 2204 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-3] l.i.helloshoesbackend.util.Conversion    : Converting CustomerDTO to CustomerEntity
+2024-05-24T01:25:15.214+05:30 ERROR 2204 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-3] l.i.h.advice.GlobalExceptionHandler      : Exception occurred: Required request body is missing: public org.springframework.http.ResponseEntity lk.ijse.helloshoesbackend.api.CustomerAPI.updateCustomer(lk.ijse.helloshoesbackend.dto.CustomerDTO,java.lang.String)
+2024-05-24T01:25:15.214+05:30  WARN 2204 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-3] .m.m.a.ExceptionHandlerExceptionResolver : Failure in @ExceptionHandler lk.ijse.helloshoesbackend.advice.GlobalExceptionHandler#handleExceptions(Exception)
+
+org.springframework.http.converter.HttpMessageNotWritableException: No converter for [class java.util.HashMap] with preset Content-Type 'text/plain;charset=UTF-8'
+	at org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor.writeWithMessageConverters(AbstractMessageConverterMethodProcessor.java:319) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor.handleReturnValue(HttpEntityMethodProcessor.java:245) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.method.support.HandlerMethodReturnValueHandlerComposite.handleReturnValue(HandlerMethodReturnValueHandlerComposite.java:78) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:136) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver.doResolveHandlerMethodException(ExceptionHandlerExceptionResolver.java:432) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodExceptionResolver.doResolveException(AbstractHandlerMethodExceptionResolver.java:74) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver.resolveException(AbstractHandlerExceptionResolver.java:175) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.handler.HandlerExceptionResolverComposite.resolveException(HandlerExceptionResolverComposite.java:80) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.DispatcherServlet.processHandlerException(DispatcherServlet.java:1357) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1160) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1106) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.FrameworkServlet.doPut(FrameworkServlet.java:925) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:593) ~[tomcat-embed-core-10.1.20.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.20.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:206) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at lk.ijse.helloshoesbackend.config.AccessLogFilter.doFilterInternal(AccessLogFilter.java:25) ~[classes/:na]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:391) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:896) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1736) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
+
+2024-05-24T01:25:15.215+05:30  WARN 2204 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-3] .w.s.m.s.DefaultHandlerExceptionResolver : Ignoring exception, response committed already: org.springframework.http.converter.HttpMessageNotReadableException: Required request body is missing: public org.springframework.http.ResponseEntity lk.ijse.helloshoesbackend.api.CustomerAPI.updateCustomer(lk.ijse.helloshoesbackend.dto.CustomerDTO,java.lang.String)
+2024-05-24T01:25:15.215+05:30  WARN 2204 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-3] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: Required request body is missing: public org.springframework.http.ResponseEntity lk.ijse.helloshoesbackend.api.CustomerAPI.updateCustomer(lk.ijse.helloshoesbackend.dto.CustomerDTO,java.lang.String)]
+2024-05-24T01:25:24.223+05:30  INFO 2204 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-2] l.i.h.config.AccessLogFilter             : -------- PUT --- /api/v1/customer/16794b24-ceae-4640-a2a5-37acc9089560 
+2024-05-24T01:25:24.249+05:30  INFO 2204 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-2] l.i.helloshoesbackend.util.Conversion    : Converting CustomerDTO to CustomerEntity
+2024-05-24T01:25:24.267+05:30 ERROR 2204 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-2] l.i.h.advice.GlobalExceptionHandler      : Exception occurred: Required request body is missing: public org.springframework.http.ResponseEntity lk.ijse.helloshoesbackend.api.CustomerAPI.updateCustomer(lk.ijse.helloshoesbackend.dto.CustomerDTO,java.lang.String)
+2024-05-24T01:25:24.268+05:30  WARN 2204 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-2] .m.m.a.ExceptionHandlerExceptionResolver : Failure in @ExceptionHandler lk.ijse.helloshoesbackend.advice.GlobalExceptionHandler#handleExceptions(Exception)
+
+org.springframework.http.converter.HttpMessageNotWritableException: No converter for [class java.util.HashMap] with preset Content-Type 'text/plain;charset=UTF-8'
+	at org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor.writeWithMessageConverters(AbstractMessageConverterMethodProcessor.java:319) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor.handleReturnValue(HttpEntityMethodProcessor.java:245) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.method.support.HandlerMethodReturnValueHandlerComposite.handleReturnValue(HandlerMethodReturnValueHandlerComposite.java:78) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:136) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver.doResolveHandlerMethodException(ExceptionHandlerExceptionResolver.java:432) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodExceptionResolver.doResolveException(AbstractHandlerMethodExceptionResolver.java:74) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver.resolveException(AbstractHandlerExceptionResolver.java:175) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.handler.HandlerExceptionResolverComposite.resolveException(HandlerExceptionResolverComposite.java:80) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.DispatcherServlet.processHandlerException(DispatcherServlet.java:1357) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1160) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1106) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.FrameworkServlet.doPut(FrameworkServlet.java:925) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:593) ~[tomcat-embed-core-10.1.20.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.20.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:206) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at lk.ijse.helloshoesbackend.config.AccessLogFilter.doFilterInternal(AccessLogFilter.java:25) ~[classes/:na]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:391) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:896) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1736) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
+
+2024-05-24T01:25:24.268+05:30  WARN 2204 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-2] .w.s.m.s.DefaultHandlerExceptionResolver : Ignoring exception, response committed already: org.springframework.http.converter.HttpMessageNotReadableException: Required request body is missing: public org.springframework.http.ResponseEntity lk.ijse.helloshoesbackend.api.CustomerAPI.updateCustomer(lk.ijse.helloshoesbackend.dto.CustomerDTO,java.lang.String)
+2024-05-24T01:25:24.269+05:30  WARN 2204 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-2] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: Required request body is missing: public org.springframework.http.ResponseEntity lk.ijse.helloshoesbackend.api.CustomerAPI.updateCustomer(lk.ijse.helloshoesbackend.dto.CustomerDTO,java.lang.String)]
+2024-05-24T01:25:32.040+05:30  INFO 2204 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-4] l.i.h.config.AccessLogFilter             : -------- PUT --- /api/v1/customer/16794b24-ceae-4640-a2a5-37acc9089560 
+2024-05-24T01:25:32.061+05:30 ERROR 2204 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-4] l.i.h.advice.GlobalExceptionHandler      : Validation exception occurred: name: name shouldn't be null, 
+2024-05-24T01:25:32.067+05:30 ERROR 2204 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-4] l.i.h.advice.GlobalExceptionHandler      : Exception occurred: Required request body is missing: public org.springframework.http.ResponseEntity lk.ijse.helloshoesbackend.api.CustomerAPI.updateCustomer(lk.ijse.helloshoesbackend.dto.CustomerDTO,java.lang.String)
+2024-05-24T01:27:00.246+05:30  INFO 2204 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-6] l.i.h.config.AccessLogFilter             : -------- PUT --- /api/v1/customer/16794b24-ceae-4640-a2a5-37acc9089560 
+2024-05-24T01:27:00.275+05:30  INFO 2204 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-6] l.i.helloshoesbackend.util.Conversion    : Converting CustomerDTO to CustomerEntity
+2024-05-24T01:27:00.292+05:30 ERROR 2204 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-6] l.i.h.advice.GlobalExceptionHandler      : Exception occurred: Required request body is missing: public org.springframework.http.ResponseEntity lk.ijse.helloshoesbackend.api.CustomerAPI.updateCustomer(lk.ijse.helloshoesbackend.dto.CustomerDTO,java.lang.String)
+2024-05-24T01:27:00.292+05:30  WARN 2204 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-6] .m.m.a.ExceptionHandlerExceptionResolver : Failure in @ExceptionHandler lk.ijse.helloshoesbackend.advice.GlobalExceptionHandler#handleExceptions(Exception)
+
+org.springframework.http.converter.HttpMessageNotWritableException: No converter for [class java.util.HashMap] with preset Content-Type 'text/plain;charset=UTF-8'
+	at org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor.writeWithMessageConverters(AbstractMessageConverterMethodProcessor.java:319) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor.handleReturnValue(HttpEntityMethodProcessor.java:245) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.method.support.HandlerMethodReturnValueHandlerComposite.handleReturnValue(HandlerMethodReturnValueHandlerComposite.java:78) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:136) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver.doResolveHandlerMethodException(ExceptionHandlerExceptionResolver.java:432) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodExceptionResolver.doResolveException(AbstractHandlerMethodExceptionResolver.java:74) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver.resolveException(AbstractHandlerExceptionResolver.java:175) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.handler.HandlerExceptionResolverComposite.resolveException(HandlerExceptionResolverComposite.java:80) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.DispatcherServlet.processHandlerException(DispatcherServlet.java:1357) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1160) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1106) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.FrameworkServlet.doPut(FrameworkServlet.java:925) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:593) ~[tomcat-embed-core-10.1.20.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.20.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:206) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at lk.ijse.helloshoesbackend.config.AccessLogFilter.doFilterInternal(AccessLogFilter.java:25) ~[classes/:na]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:391) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:896) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1736) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
+
+2024-05-24T01:27:00.294+05:30  WARN 2204 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-6] .w.s.m.s.DefaultHandlerExceptionResolver : Ignoring exception, response committed already: org.springframework.http.converter.HttpMessageNotReadableException: Required request body is missing: public org.springframework.http.ResponseEntity lk.ijse.helloshoesbackend.api.CustomerAPI.updateCustomer(lk.ijse.helloshoesbackend.dto.CustomerDTO,java.lang.String)
+2024-05-24T01:27:00.294+05:30  WARN 2204 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-6] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: Required request body is missing: public org.springframework.http.ResponseEntity lk.ijse.helloshoesbackend.api.CustomerAPI.updateCustomer(lk.ijse.helloshoesbackend.dto.CustomerDTO,java.lang.String)]
+2024-05-24T01:27:10.973+05:30  INFO 2204 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-7] l.i.h.config.AccessLogFilter             : -------- PUT --- /api/v1/customer/16794b24-ceae-4640-a2a5-37acc9089560 
+2024-05-24T01:27:11.000+05:30  INFO 2204 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-7] l.i.helloshoesbackend.util.Conversion    : Converting CustomerDTO to CustomerEntity
+2024-05-24T01:27:11.018+05:30 ERROR 2204 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-7] l.i.h.advice.GlobalExceptionHandler      : Exception occurred: Required request body is missing: public org.springframework.http.ResponseEntity lk.ijse.helloshoesbackend.api.CustomerAPI.updateCustomer(lk.ijse.helloshoesbackend.dto.CustomerDTO,java.lang.String)
+2024-05-24T01:27:11.018+05:30  WARN 2204 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-7] .m.m.a.ExceptionHandlerExceptionResolver : Failure in @ExceptionHandler lk.ijse.helloshoesbackend.advice.GlobalExceptionHandler#handleExceptions(Exception)
+
+org.springframework.http.converter.HttpMessageNotWritableException: No converter for [class java.util.HashMap] with preset Content-Type 'text/plain;charset=UTF-8'
+	at org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor.writeWithMessageConverters(AbstractMessageConverterMethodProcessor.java:319) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor.handleReturnValue(HttpEntityMethodProcessor.java:245) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.method.support.HandlerMethodReturnValueHandlerComposite.handleReturnValue(HandlerMethodReturnValueHandlerComposite.java:78) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:136) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver.doResolveHandlerMethodException(ExceptionHandlerExceptionResolver.java:432) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodExceptionResolver.doResolveException(AbstractHandlerMethodExceptionResolver.java:74) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver.resolveException(AbstractHandlerExceptionResolver.java:175) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.handler.HandlerExceptionResolverComposite.resolveException(HandlerExceptionResolverComposite.java:80) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.DispatcherServlet.processHandlerException(DispatcherServlet.java:1357) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1160) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1106) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.FrameworkServlet.doPut(FrameworkServlet.java:925) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:593) ~[tomcat-embed-core-10.1.20.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.20.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:206) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at lk.ijse.helloshoesbackend.config.AccessLogFilter.doFilterInternal(AccessLogFilter.java:25) ~[classes/:na]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:391) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:896) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1736) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
+
+2024-05-24T01:27:11.019+05:30  WARN 2204 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-7] .w.s.m.s.DefaultHandlerExceptionResolver : Ignoring exception, response committed already: org.springframework.http.converter.HttpMessageNotReadableException: Required request body is missing: public org.springframework.http.ResponseEntity lk.ijse.helloshoesbackend.api.CustomerAPI.updateCustomer(lk.ijse.helloshoesbackend.dto.CustomerDTO,java.lang.String)
+2024-05-24T01:27:11.019+05:30  WARN 2204 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-7] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: Required request body is missing: public org.springframework.http.ResponseEntity lk.ijse.helloshoesbackend.api.CustomerAPI.updateCustomer(lk.ijse.helloshoesbackend.dto.CustomerDTO,java.lang.String)]
+2024-05-24T01:28:15.973+05:30  INFO 2204 --- [Hello-Shoes-Springboot] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-05-24T01:28:15.977+05:30  INFO 2204 --- [Hello-Shoes-Springboot] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-05-24T01:28:15.990+05:30  INFO 2204 --- [Hello-Shoes-Springboot] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-05-24T01:28:21.018+05:30  INFO 14692 --- [Hello-Shoes-Springboot] [main] l.i.h.HelloShoesSpringbootApplication    : Starting HelloShoesSpringbootApplication using Java 21.0.1 with PID 14692 (D:\Github\Hello-Shoes-Springboot\backend\target\classes started by USER in D:\Github\Hello-Shoes-Springboot\backend)
+2024-05-24T01:28:21.019+05:30  INFO 14692 --- [Hello-Shoes-Springboot] [main] l.i.h.HelloShoesSpringbootApplication    : No active profile set, falling back to 1 default profile: "default"
+2024-05-24T01:28:21.721+05:30  INFO 14692 --- [Hello-Shoes-Springboot] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-05-24T01:28:21.801+05:30  INFO 14692 --- [Hello-Shoes-Springboot] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 74 ms. Found 12 JPA repository interfaces.
+2024-05-24T01:28:22.214+05:30  INFO 14692 --- [Hello-Shoes-Springboot] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-05-24T01:28:22.221+05:30  INFO 14692 --- [Hello-Shoes-Springboot] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-05-24T01:28:22.223+05:30  INFO 14692 --- [Hello-Shoes-Springboot] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.20]
+2024-05-24T01:28:22.264+05:30  INFO 14692 --- [Hello-Shoes-Springboot] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-05-24T01:28:22.265+05:30  INFO 14692 --- [Hello-Shoes-Springboot] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1189 ms
+2024-05-24T01:28:22.371+05:30  INFO 14692 --- [Hello-Shoes-Springboot] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-05-24T01:28:22.413+05:30  INFO 14692 --- [Hello-Shoes-Springboot] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-05-24T01:28:22.433+05:30  INFO 14692 --- [Hello-Shoes-Springboot] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-05-24T01:28:22.538+05:30  INFO 14692 --- [Hello-Shoes-Springboot] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-05-24T01:28:22.551+05:30  INFO 14692 --- [Hello-Shoes-Springboot] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-05-24T01:28:22.784+05:30  INFO 14692 --- [Hello-Shoes-Springboot] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2bfc8558
+2024-05-24T01:28:22.785+05:30  INFO 14692 --- [Hello-Shoes-Springboot] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-05-24T01:28:23.672+05:30  INFO 14692 --- [Hello-Shoes-Springboot] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-05-24T01:28:23.812+05:30  INFO 14692 --- [Hello-Shoes-Springboot] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-05-24T01:28:24.132+05:30  INFO 14692 --- [Hello-Shoes-Springboot] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-05-24T01:28:24.800+05:30  WARN 14692 --- [Hello-Shoes-Springboot] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-05-24T01:28:25.063+05:30  INFO 14692 --- [Hello-Shoes-Springboot] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@92537b5, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@43b89b4, org.springframework.security.web.context.SecurityContextHolderFilter@3b47178c, org.springframework.security.web.header.HeaderWriterFilter@2088e339, org.springframework.web.filter.CorsFilter@58b2c0b4, org.springframework.security.web.authentication.logout.LogoutFilter@287d9e0c, lk.ijse.helloshoesbackend.config.JWTConfigurationFilter$$SpringCGLIB$$0@222dc36c, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@283eb984, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@4913465d, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@c4ba591, org.springframework.security.web.session.SessionManagementFilter@57fd93f9, org.springframework.security.web.access.ExceptionTranslationFilter@1ff9d66b, org.springframework.security.web.access.intercept.AuthorizationFilter@2b867623]
+2024-05-24T01:28:25.279+05:30  INFO 14692 --- [Hello-Shoes-Springboot] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-05-24T01:28:25.286+05:30  INFO 14692 --- [Hello-Shoes-Springboot] [main] l.i.h.HelloShoesSpringbootApplication    : Started HelloShoesSpringbootApplication in 4.603 seconds (process running for 5.363)
+2024-05-24T01:28:27.811+05:30  INFO 14692 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-05-24T01:28:27.811+05:30  INFO 14692 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-05-24T01:28:27.813+05:30  INFO 14692 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-05-24T01:28:27.815+05:30  INFO 14692 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] l.i.h.config.AccessLogFilter             : -------- PUT --- /api/v1/customer/16794b24-ceae-4640-a2a5-37acc9089560 
+2024-05-24T01:28:28.111+05:30  INFO 14692 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] l.i.helloshoesbackend.util.Conversion    : Converting CustomerDTO to CustomerEntity
+2024-05-24T01:28:28.190+05:30 ERROR 14692 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] l.i.h.advice.GlobalExceptionHandler      : Exception occurred: Required request body is missing: public org.springframework.http.ResponseEntity lk.ijse.helloshoesbackend.api.CustomerAPI.updateCustomer(lk.ijse.helloshoesbackend.dto.CustomerDTO,java.lang.String)
+2024-05-24T01:28:28.191+05:30  WARN 14692 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] .m.m.a.ExceptionHandlerExceptionResolver : Failure in @ExceptionHandler lk.ijse.helloshoesbackend.advice.GlobalExceptionHandler#handleExceptions(Exception)
+
+org.springframework.http.converter.HttpMessageNotWritableException: No converter for [class java.util.HashMap] with preset Content-Type 'text/plain;charset=UTF-8'
+	at org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor.writeWithMessageConverters(AbstractMessageConverterMethodProcessor.java:319) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor.handleReturnValue(HttpEntityMethodProcessor.java:245) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.method.support.HandlerMethodReturnValueHandlerComposite.handleReturnValue(HandlerMethodReturnValueHandlerComposite.java:78) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:136) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver.doResolveHandlerMethodException(ExceptionHandlerExceptionResolver.java:432) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodExceptionResolver.doResolveException(AbstractHandlerMethodExceptionResolver.java:74) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver.resolveException(AbstractHandlerExceptionResolver.java:175) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.handler.HandlerExceptionResolverComposite.resolveException(HandlerExceptionResolverComposite.java:80) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.DispatcherServlet.processHandlerException(DispatcherServlet.java:1357) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1160) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1106) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.FrameworkServlet.doPut(FrameworkServlet.java:925) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:593) ~[tomcat-embed-core-10.1.20.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.20.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:206) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at lk.ijse.helloshoesbackend.config.AccessLogFilter.doFilterInternal(AccessLogFilter.java:25) ~[classes/:na]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:391) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:896) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1736) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
+
+2024-05-24T01:28:28.195+05:30  WARN 14692 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Ignoring exception, response committed already: org.springframework.http.converter.HttpMessageNotReadableException: Required request body is missing: public org.springframework.http.ResponseEntity lk.ijse.helloshoesbackend.api.CustomerAPI.updateCustomer(lk.ijse.helloshoesbackend.dto.CustomerDTO,java.lang.String)
+2024-05-24T01:28:28.197+05:30  WARN 14692 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: Required request body is missing: public org.springframework.http.ResponseEntity lk.ijse.helloshoesbackend.api.CustomerAPI.updateCustomer(lk.ijse.helloshoesbackend.dto.CustomerDTO,java.lang.String)]
+2024-05-24T01:28:31.789+05:30  INFO 14692 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-2] l.i.h.config.AccessLogFilter             : -------- PUT --- /api/v1/customer/16794b24-ceae-4640-a2a5-37acc9089560 
+2024-05-24T01:28:31.812+05:30  INFO 14692 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-2] l.i.helloshoesbackend.util.Conversion    : Converting CustomerDTO to CustomerEntity
+2024-05-24T01:28:31.818+05:30 ERROR 14692 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-2] l.i.h.advice.GlobalExceptionHandler      : Exception occurred: Required request body is missing: public org.springframework.http.ResponseEntity lk.ijse.helloshoesbackend.api.CustomerAPI.updateCustomer(lk.ijse.helloshoesbackend.dto.CustomerDTO,java.lang.String)
+2024-05-24T01:28:31.818+05:30  WARN 14692 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-2] .m.m.a.ExceptionHandlerExceptionResolver : Failure in @ExceptionHandler lk.ijse.helloshoesbackend.advice.GlobalExceptionHandler#handleExceptions(Exception)
+
+org.springframework.http.converter.HttpMessageNotWritableException: No converter for [class java.util.HashMap] with preset Content-Type 'text/plain;charset=UTF-8'
+	at org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor.writeWithMessageConverters(AbstractMessageConverterMethodProcessor.java:319) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor.handleReturnValue(HttpEntityMethodProcessor.java:245) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.method.support.HandlerMethodReturnValueHandlerComposite.handleReturnValue(HandlerMethodReturnValueHandlerComposite.java:78) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:136) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver.doResolveHandlerMethodException(ExceptionHandlerExceptionResolver.java:432) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodExceptionResolver.doResolveException(AbstractHandlerMethodExceptionResolver.java:74) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver.resolveException(AbstractHandlerExceptionResolver.java:175) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.handler.HandlerExceptionResolverComposite.resolveException(HandlerExceptionResolverComposite.java:80) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.DispatcherServlet.processHandlerException(DispatcherServlet.java:1357) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1160) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1106) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.FrameworkServlet.doPut(FrameworkServlet.java:925) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:593) ~[tomcat-embed-core-10.1.20.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.20.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:206) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at lk.ijse.helloshoesbackend.config.AccessLogFilter.doFilterInternal(AccessLogFilter.java:25) ~[classes/:na]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:391) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:896) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1736) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
+
+2024-05-24T01:28:31.819+05:30  WARN 14692 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-2] .w.s.m.s.DefaultHandlerExceptionResolver : Ignoring exception, response committed already: org.springframework.http.converter.HttpMessageNotReadableException: Required request body is missing: public org.springframework.http.ResponseEntity lk.ijse.helloshoesbackend.api.CustomerAPI.updateCustomer(lk.ijse.helloshoesbackend.dto.CustomerDTO,java.lang.String)
+2024-05-24T01:28:31.820+05:30  WARN 14692 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-2] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: Required request body is missing: public org.springframework.http.ResponseEntity lk.ijse.helloshoesbackend.api.CustomerAPI.updateCustomer(lk.ijse.helloshoesbackend.dto.CustomerDTO,java.lang.String)]
+2024-05-24T01:29:59.027+05:30  INFO 14692 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-6] l.i.h.config.AccessLogFilter             : -------- PUT --- /api/v1/customer/16794b24-ceae-4640-a2a5-37acc9089560 
+2024-05-24T01:29:59.052+05:30 ERROR 14692 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-6] l.i.h.advice.GlobalExceptionHandler      : Validation exception occurred: phone: must be 10 numbers , 
+2024-05-24T01:29:59.063+05:30 ERROR 14692 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-6] l.i.h.advice.GlobalExceptionHandler      : Exception occurred: Required request body is missing: public org.springframework.http.ResponseEntity lk.ijse.helloshoesbackend.api.CustomerAPI.updateCustomer(lk.ijse.helloshoesbackend.dto.CustomerDTO,java.lang.String)
+2024-05-24T01:30:07.179+05:30  INFO 14692 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-7] l.i.h.config.AccessLogFilter             : -------- PUT --- /api/v1/customer/16794b24-ceae-4640-a2a5-37acc9089560 
+2024-05-24T01:30:07.208+05:30 ERROR 14692 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-7] l.i.h.advice.GlobalExceptionHandler      : Validation exception occurred: name: name shouldn't be empty, 
+2024-05-24T01:30:07.211+05:30 ERROR 14692 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-7] l.i.h.advice.GlobalExceptionHandler      : Exception occurred: Required request body is missing: public org.springframework.http.ResponseEntity lk.ijse.helloshoesbackend.api.CustomerAPI.updateCustomer(lk.ijse.helloshoesbackend.dto.CustomerDTO,java.lang.String)
+2024-05-24T01:30:12.264+05:30  INFO 14692 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-10] l.i.h.config.AccessLogFilter             : -------- PUT --- /api/v1/customer/16794b24-ceae-4640-a2a5-37acc9089560 
+2024-05-24T01:30:12.284+05:30  INFO 14692 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-10] l.i.helloshoesbackend.util.Conversion    : Converting CustomerDTO to CustomerEntity
+2024-05-24T01:30:12.289+05:30 ERROR 14692 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-10] l.i.h.advice.GlobalExceptionHandler      : Exception occurred: Required request body is missing: public org.springframework.http.ResponseEntity lk.ijse.helloshoesbackend.api.CustomerAPI.updateCustomer(lk.ijse.helloshoesbackend.dto.CustomerDTO,java.lang.String)
+2024-05-24T01:30:12.291+05:30  WARN 14692 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-10] .m.m.a.ExceptionHandlerExceptionResolver : Failure in @ExceptionHandler lk.ijse.helloshoesbackend.advice.GlobalExceptionHandler#handleExceptions(Exception)
+
+org.springframework.http.converter.HttpMessageNotWritableException: No converter for [class java.util.HashMap] with preset Content-Type 'text/plain;charset=UTF-8'
+	at org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor.writeWithMessageConverters(AbstractMessageConverterMethodProcessor.java:319) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor.handleReturnValue(HttpEntityMethodProcessor.java:245) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.method.support.HandlerMethodReturnValueHandlerComposite.handleReturnValue(HandlerMethodReturnValueHandlerComposite.java:78) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:136) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver.doResolveHandlerMethodException(ExceptionHandlerExceptionResolver.java:432) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodExceptionResolver.doResolveException(AbstractHandlerMethodExceptionResolver.java:74) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver.resolveException(AbstractHandlerExceptionResolver.java:175) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.handler.HandlerExceptionResolverComposite.resolveException(HandlerExceptionResolverComposite.java:80) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.DispatcherServlet.processHandlerException(DispatcherServlet.java:1357) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1160) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1106) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.FrameworkServlet.doPut(FrameworkServlet.java:925) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:593) ~[tomcat-embed-core-10.1.20.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.20.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:206) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at lk.ijse.helloshoesbackend.config.AccessLogFilter.doFilterInternal(AccessLogFilter.java:25) ~[classes/:na]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:391) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:896) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1736) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
+
+2024-05-24T01:30:12.291+05:30  WARN 14692 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-10] .w.s.m.s.DefaultHandlerExceptionResolver : Ignoring exception, response committed already: org.springframework.http.converter.HttpMessageNotReadableException: Required request body is missing: public org.springframework.http.ResponseEntity lk.ijse.helloshoesbackend.api.CustomerAPI.updateCustomer(lk.ijse.helloshoesbackend.dto.CustomerDTO,java.lang.String)
+2024-05-24T01:30:12.291+05:30  WARN 14692 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-10] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: Required request body is missing: public org.springframework.http.ResponseEntity lk.ijse.helloshoesbackend.api.CustomerAPI.updateCustomer(lk.ijse.helloshoesbackend.dto.CustomerDTO,java.lang.String)]
+2024-05-24T01:31:23.575+05:30  INFO 14692 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-2] l.i.h.config.AccessLogFilter             : -------- PUT --- /api/v1/auth 
+2024-05-24T01:31:23.594+05:30  INFO 14692 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-2] lk.ijse.helloshoesbackend.api.UserAPI    : SignIn request received for email: rangaka@gmail.com
+2024-05-24T01:31:23.595+05:30  INFO 14692 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-2] l.i.h.bo.impl.AuthenticationBOIMPL       : Attempting to sign in user with email: rangaka@gmail.com
+2024-05-24T01:31:23.596+05:30  INFO 14692 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-2] l.i.h.s.impl.AuthenticationServiceIMPL   : Attempting to authenticate user: rangaka@gmail.com
+2024-05-24T01:31:23.771+05:30  INFO 14692 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-2] l.i.h.s.impl.AuthenticationServiceIMPL   : Authentication successful for user: rangaka@gmail.com
+2024-05-24T01:31:23.791+05:30  INFO 14692 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-2] l.i.h.s.impl.AuthenticationServiceIMPL   : Generated JWT token for user: rangaka@gmail.com
+2024-05-24T01:31:23.791+05:30  INFO 14692 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-2] l.i.helloshoesbackend.util.Conversion    : Converting UserEntity to UserDTO
+2024-05-24T01:31:23.808+05:30 ERROR 14692 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-2] l.i.h.advice.GlobalExceptionHandler      : Exception occurred: Required request body is missing: public org.springframework.http.ResponseEntity lk.ijse.helloshoesbackend.api.UserAPI.signIn(lk.ijse.helloshoesbackend.reqAndResp.request.SignIn)
+2024-05-24T01:31:30.531+05:30  INFO 14692 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-3] l.i.h.config.AccessLogFilter             : -------- GET --- /api/v1/customer 
+2024-05-24T01:31:30.560+05:30  INFO 14692 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-3] l.i.helloshoesbackend.util.Conversion    : Converting List<CustomerEntity> to List<CustomerDTO>
+2024-05-24T01:31:30.578+05:30  INFO 14692 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-3] l.i.helloshoesbackend.util.Conversion    : Converting List<CustomerEntity> to List<CustomerDTO>
+2024-05-24T01:37:05.833+05:30  INFO 14692 --- [Hello-Shoes-Springboot] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-05-24T01:37:05.853+05:30  INFO 14692 --- [Hello-Shoes-Springboot] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-05-24T01:37:05.878+05:30  INFO 14692 --- [Hello-Shoes-Springboot] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-05-24T01:37:11.313+05:30  INFO 12512 --- [Hello-Shoes-Springboot] [main] l.i.h.HelloShoesSpringbootApplication    : Starting HelloShoesSpringbootApplication using Java 21.0.1 with PID 12512 (D:\Github\Hello-Shoes-Springboot\backend\target\classes started by USER in D:\Github\Hello-Shoes-Springboot\backend)
+2024-05-24T01:37:11.316+05:30  INFO 12512 --- [Hello-Shoes-Springboot] [main] l.i.h.HelloShoesSpringbootApplication    : No active profile set, falling back to 1 default profile: "default"
+2024-05-24T01:37:12.035+05:30  INFO 12512 --- [Hello-Shoes-Springboot] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-05-24T01:37:12.123+05:30  INFO 12512 --- [Hello-Shoes-Springboot] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 82 ms. Found 12 JPA repository interfaces.
+2024-05-24T01:37:12.574+05:30  INFO 12512 --- [Hello-Shoes-Springboot] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-05-24T01:37:12.584+05:30  INFO 12512 --- [Hello-Shoes-Springboot] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-05-24T01:37:12.584+05:30  INFO 12512 --- [Hello-Shoes-Springboot] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.20]
+2024-05-24T01:37:12.632+05:30  INFO 12512 --- [Hello-Shoes-Springboot] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-05-24T01:37:12.633+05:30  INFO 12512 --- [Hello-Shoes-Springboot] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1266 ms
+2024-05-24T01:37:12.766+05:30  INFO 12512 --- [Hello-Shoes-Springboot] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-05-24T01:37:12.834+05:30  INFO 12512 --- [Hello-Shoes-Springboot] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-05-24T01:37:12.874+05:30  INFO 12512 --- [Hello-Shoes-Springboot] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-05-24T01:37:13.030+05:30  INFO 12512 --- [Hello-Shoes-Springboot] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-05-24T01:37:13.050+05:30  INFO 12512 --- [Hello-Shoes-Springboot] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-05-24T01:37:13.343+05:30  INFO 12512 --- [Hello-Shoes-Springboot] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6313b441
+2024-05-24T01:37:13.344+05:30  INFO 12512 --- [Hello-Shoes-Springboot] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-05-24T01:37:14.460+05:30  INFO 12512 --- [Hello-Shoes-Springboot] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-05-24T01:37:14.584+05:30  INFO 12512 --- [Hello-Shoes-Springboot] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-05-24T01:37:14.874+05:30  INFO 12512 --- [Hello-Shoes-Springboot] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-05-24T01:37:15.532+05:30  WARN 12512 --- [Hello-Shoes-Springboot] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-05-24T01:37:15.768+05:30  INFO 12512 --- [Hello-Shoes-Springboot] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@1efdaec0, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@42e7e12f, org.springframework.security.web.context.SecurityContextHolderFilter@3beee525, org.springframework.security.web.header.HeaderWriterFilter@1c83652d, org.springframework.web.filter.CorsFilter@11e2de88, org.springframework.security.web.authentication.logout.LogoutFilter@78c0fad6, lk.ijse.helloshoesbackend.config.JWTConfigurationFilter$$SpringCGLIB$$0@192b76a4, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@716205f9, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6fc1d215, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@227ca700, org.springframework.security.web.session.SessionManagementFilter@37c5e2e6, org.springframework.security.web.access.ExceptionTranslationFilter@60b90fd3, org.springframework.security.web.access.intercept.AuthorizationFilter@4f347aae]
+2024-05-24T01:37:15.969+05:30  INFO 12512 --- [Hello-Shoes-Springboot] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-05-24T01:37:15.975+05:30  INFO 12512 --- [Hello-Shoes-Springboot] [main] l.i.h.HelloShoesSpringbootApplication    : Started HelloShoesSpringbootApplication in 5.003 seconds (process running for 5.652)
+2024-05-24T01:37:31.228+05:30  INFO 12512 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-05-24T01:37:31.229+05:30  INFO 12512 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-05-24T01:37:31.230+05:30  INFO 12512 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-05-24T01:37:31.232+05:30  INFO 12512 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] l.i.h.config.AccessLogFilter             : -------- GET --- /api/v1/customer 
+2024-05-24T01:37:31.463+05:30  INFO 12512 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] l.i.h.bo.impl.CustomerBOIMPL             : Attempting to get all customers
+2024-05-24T01:37:31.468+05:30  INFO 12512 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] l.i.h.service.impl.CustomerServiceIMPL   : Fetching all customers
+2024-05-24T01:37:31.508+05:30  INFO 12512 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] l.i.helloshoesbackend.util.Conversion    : Converting List<CustomerEntity> to List<CustomerDTO>
+2024-05-24T01:37:31.658+05:30  INFO 12512 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] l.i.h.bo.impl.CustomerBOIMPL             : Attempting to get all customers
+2024-05-24T01:37:31.659+05:30  INFO 12512 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] l.i.h.service.impl.CustomerServiceIMPL   : Fetching all customers
+2024-05-24T01:37:31.663+05:30  INFO 12512 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] l.i.helloshoesbackend.util.Conversion    : Converting List<CustomerEntity> to List<CustomerDTO>
+2024-05-24T01:39:11.707+05:30  INFO 12512 --- [Hello-Shoes-Springboot] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-05-24T01:39:11.709+05:30  INFO 12512 --- [Hello-Shoes-Springboot] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-05-24T01:39:11.717+05:30  INFO 12512 --- [Hello-Shoes-Springboot] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-05-24T01:39:16.361+05:30  INFO 1140 --- [Hello-Shoes-Springboot] [main] l.i.h.HelloShoesSpringbootApplication    : Starting HelloShoesSpringbootApplication using Java 21.0.1 with PID 1140 (D:\Github\Hello-Shoes-Springboot\backend\target\classes started by USER in D:\Github\Hello-Shoes-Springboot\backend)
+2024-05-24T01:39:16.362+05:30  INFO 1140 --- [Hello-Shoes-Springboot] [main] l.i.h.HelloShoesSpringbootApplication    : No active profile set, falling back to 1 default profile: "default"
+2024-05-24T01:39:17.061+05:30  INFO 1140 --- [Hello-Shoes-Springboot] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-05-24T01:39:17.153+05:30  INFO 1140 --- [Hello-Shoes-Springboot] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 82 ms. Found 12 JPA repository interfaces.
+2024-05-24T01:39:17.544+05:30  INFO 1140 --- [Hello-Shoes-Springboot] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-05-24T01:39:17.551+05:30  INFO 1140 --- [Hello-Shoes-Springboot] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-05-24T01:39:17.552+05:30  INFO 1140 --- [Hello-Shoes-Springboot] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.20]
+2024-05-24T01:39:17.591+05:30  INFO 1140 --- [Hello-Shoes-Springboot] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-05-24T01:39:17.591+05:30  INFO 1140 --- [Hello-Shoes-Springboot] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1182 ms
+2024-05-24T01:39:17.706+05:30  INFO 1140 --- [Hello-Shoes-Springboot] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-05-24T01:39:17.744+05:30  INFO 1140 --- [Hello-Shoes-Springboot] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-05-24T01:39:17.766+05:30  INFO 1140 --- [Hello-Shoes-Springboot] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-05-24T01:39:17.877+05:30  INFO 1140 --- [Hello-Shoes-Springboot] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-05-24T01:39:17.890+05:30  INFO 1140 --- [Hello-Shoes-Springboot] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-05-24T01:39:18.112+05:30  INFO 1140 --- [Hello-Shoes-Springboot] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@47fa3671
+2024-05-24T01:39:18.115+05:30  INFO 1140 --- [Hello-Shoes-Springboot] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-05-24T01:39:18.964+05:30  INFO 1140 --- [Hello-Shoes-Springboot] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-05-24T01:39:19.092+05:30  INFO 1140 --- [Hello-Shoes-Springboot] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-05-24T01:39:19.357+05:30  INFO 1140 --- [Hello-Shoes-Springboot] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-05-24T01:39:19.960+05:30  WARN 1140 --- [Hello-Shoes-Springboot] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-05-24T01:39:20.200+05:30  INFO 1140 --- [Hello-Shoes-Springboot] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@2a9eb44d, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@46135aba, org.springframework.security.web.context.SecurityContextHolderFilter@2088e339, org.springframework.security.web.header.HeaderWriterFilter@60b90fd3, org.springframework.web.filter.CorsFilter@25a218a, org.springframework.security.web.authentication.logout.LogoutFilter@6b4d0be2, lk.ijse.helloshoesbackend.config.JWTConfigurationFilter$$SpringCGLIB$$0@192b76a4, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@342cc706, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5c9844a4, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@411e5672, org.springframework.security.web.session.SessionManagementFilter@1e2c701, org.springframework.security.web.access.ExceptionTranslationFilter@890196b, org.springframework.security.web.access.intercept.AuthorizationFilter@71c1ba6d]
+2024-05-24T01:39:20.392+05:30  INFO 1140 --- [Hello-Shoes-Springboot] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-05-24T01:39:20.399+05:30  INFO 1140 --- [Hello-Shoes-Springboot] [main] l.i.h.HelloShoesSpringbootApplication    : Started HelloShoesSpringbootApplication in 4.353 seconds (process running for 4.851)
+2024-05-24T01:39:34.699+05:30  INFO 1140 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-05-24T01:39:34.700+05:30  INFO 1140 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-05-24T01:39:34.702+05:30  INFO 1140 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2024-05-24T01:39:34.704+05:30  INFO 1140 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] l.i.h.config.AccessLogFilter             : -------- GET --- /api/v1/customer 
+2024-05-24T01:39:34.893+05:30  INFO 1140 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] l.i.h.bo.impl.CustomerBOIMPL             : Attempting to get all customers
+2024-05-24T01:39:34.894+05:30  INFO 1140 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] l.i.h.service.impl.CustomerServiceIMPL   : Fetching all customers
+2024-05-24T01:39:34.904+05:30  INFO 1140 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] l.i.helloshoesbackend.util.Conversion    : Converting List<CustomerEntity> to List<CustomerDTO>
+2024-05-24T01:39:34.985+05:30  INFO 1140 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] l.i.h.bo.impl.CustomerBOIMPL             : Attempting to get all customers
+2024-05-24T01:39:34.987+05:30  INFO 1140 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] l.i.h.service.impl.CustomerServiceIMPL   : Fetching all customers
+2024-05-24T01:39:34.991+05:30  INFO 1140 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] l.i.helloshoesbackend.util.Conversion    : Converting List<CustomerEntity> to List<CustomerDTO>
+2024-05-24T01:39:48.310+05:30  INFO 1140 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-3] l.i.h.config.AccessLogFilter             : -------- POST --- /api/v1/customer 
+2024-05-24T01:39:48.416+05:30  INFO 1140 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-3] l.i.h.bo.impl.CustomerBOIMPL             : Attempting to save customer with email: krishan@example.com
+2024-05-24T01:39:48.418+05:30  INFO 1140 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-3] l.i.h.service.impl.CustomerServiceIMPL   : Saving new customer with email: krishan@example.com
+2024-05-24T01:39:48.419+05:30  INFO 1140 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-3] l.i.helloshoesbackend.util.Conversion    : Converting CustomerDTO to CustomerEntity
+2024-05-24T01:39:48.437+05:30  INFO 1140 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-3] l.i.helloshoesbackend.util.Conversion    : Converting CustomerEntity to CustomerDTO
+2024-05-24T01:39:48.465+05:30 ERROR 1140 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-3] l.i.h.advice.GlobalExceptionHandler      : Exception occurred: Required request body is missing: public org.springframework.http.ResponseEntity<lk.ijse.helloshoesbackend.dto.CustomerDTO> lk.ijse.helloshoesbackend.api.CustomerAPI.saveCustomer(lk.ijse.helloshoesbackend.dto.CustomerDTO)
+2024-05-24T01:40:05.245+05:30  INFO 1140 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-6] l.i.h.config.AccessLogFilter             : -------- POST --- /api/v1/customer 
+2024-05-24T01:40:05.279+05:30 ERROR 1140 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-6] l.i.h.advice.GlobalExceptionHandler      : Exception occurred: JSON parse error: Unexpected character ('}' (code 125)): was expecting double-quote to start field name
+2024-05-24T01:40:05.281+05:30 ERROR 1140 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-6] l.i.h.advice.GlobalExceptionHandler      : Exception occurred: Required request body is missing: public org.springframework.http.ResponseEntity<lk.ijse.helloshoesbackend.dto.CustomerDTO> lk.ijse.helloshoesbackend.api.CustomerAPI.saveCustomer(lk.ijse.helloshoesbackend.dto.CustomerDTO)
+2024-05-24T01:40:22.615+05:30  INFO 1140 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-5] l.i.h.config.AccessLogFilter             : -------- POST --- /api/v1/customer 
+2024-05-24T01:40:22.643+05:30 ERROR 1140 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-5] l.i.h.advice.GlobalExceptionHandler      : Validation exception occurred: phone: phone shouldn't be null, postalCode: postalCode shouldn't be null, addressCity: addressCity shouldn't be null, email: email shouldn't be null, 
+2024-05-24T01:40:22.645+05:30 ERROR 1140 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-5] l.i.h.advice.GlobalExceptionHandler      : Exception occurred: Required request body is missing: public org.springframework.http.ResponseEntity<lk.ijse.helloshoesbackend.dto.CustomerDTO> lk.ijse.helloshoesbackend.api.CustomerAPI.saveCustomer(lk.ijse.helloshoesbackend.dto.CustomerDTO)
+2024-05-24T01:40:37.490+05:30  INFO 1140 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-8] l.i.h.config.AccessLogFilter             : -------- POST --- /api/v1/customer 
+2024-05-24T01:40:37.517+05:30 ERROR 1140 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-8] l.i.h.advice.GlobalExceptionHandler      : Exception occurred: Required request body is missing: public org.springframework.http.ResponseEntity<lk.ijse.helloshoesbackend.dto.CustomerDTO> lk.ijse.helloshoesbackend.api.CustomerAPI.saveCustomer(lk.ijse.helloshoesbackend.dto.CustomerDTO)
+2024-05-24T01:40:37.519+05:30 ERROR 1140 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-8] l.i.h.advice.GlobalExceptionHandler      : Exception occurred: Required request body is missing: public org.springframework.http.ResponseEntity<lk.ijse.helloshoesbackend.dto.CustomerDTO> lk.ijse.helloshoesbackend.api.CustomerAPI.saveCustomer(lk.ijse.helloshoesbackend.dto.CustomerDTO)
+2024-05-24T01:40:57.561+05:30  INFO 1140 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-10] l.i.h.config.AccessLogFilter             : -------- PUT --- /api/v1/customer/16794b24-ceae-4640-a2a5-37acc9089560 
+2024-05-24T01:40:57.601+05:30  INFO 1140 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-10] l.i.h.bo.impl.CustomerBOIMPL             : Attempting to update customer with id: 16794b24-ceae-4640-a2a5-37acc9089560
+2024-05-24T01:40:57.603+05:30  INFO 1140 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-10] l.i.h.service.impl.CustomerServiceIMPL   : Updating customer with ID: 16794b24-ceae-4640-a2a5-37acc9089560
+2024-05-24T01:40:57.617+05:30  INFO 1140 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-10] l.i.helloshoesbackend.util.Conversion    : Converting CustomerDTO to CustomerEntity
+2024-05-24T01:40:57.627+05:30 ERROR 1140 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-10] l.i.h.advice.GlobalExceptionHandler      : Exception occurred: Required request body is missing: public org.springframework.http.ResponseEntity lk.ijse.helloshoesbackend.api.CustomerAPI.updateCustomer(lk.ijse.helloshoesbackend.dto.CustomerDTO,java.lang.String)
+2024-05-24T01:40:57.628+05:30  WARN 1140 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-10] .m.m.a.ExceptionHandlerExceptionResolver : Failure in @ExceptionHandler lk.ijse.helloshoesbackend.advice.GlobalExceptionHandler#handleExceptions(Exception)
+
+org.springframework.http.converter.HttpMessageNotWritableException: No converter for [class java.util.HashMap] with preset Content-Type 'text/plain;charset=UTF-8'
+	at org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor.writeWithMessageConverters(AbstractMessageConverterMethodProcessor.java:319) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor.handleReturnValue(HttpEntityMethodProcessor.java:245) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.method.support.HandlerMethodReturnValueHandlerComposite.handleReturnValue(HandlerMethodReturnValueHandlerComposite.java:78) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:136) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver.doResolveHandlerMethodException(ExceptionHandlerExceptionResolver.java:432) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodExceptionResolver.doResolveException(AbstractHandlerMethodExceptionResolver.java:74) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver.resolveException(AbstractHandlerExceptionResolver.java:175) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.handler.HandlerExceptionResolverComposite.resolveException(HandlerExceptionResolverComposite.java:80) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.DispatcherServlet.processHandlerException(DispatcherServlet.java:1357) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1160) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1106) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.FrameworkServlet.doPut(FrameworkServlet.java:925) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:593) ~[tomcat-embed-core-10.1.20.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.20.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:206) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at lk.ijse.helloshoesbackend.config.AccessLogFilter.doFilterInternal(AccessLogFilter.java:25) ~[classes/:na]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:391) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:896) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1736) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
+
+2024-05-24T01:40:57.636+05:30  WARN 1140 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-10] .w.s.m.s.DefaultHandlerExceptionResolver : Ignoring exception, response committed already: org.springframework.http.converter.HttpMessageNotReadableException: Required request body is missing: public org.springframework.http.ResponseEntity lk.ijse.helloshoesbackend.api.CustomerAPI.updateCustomer(lk.ijse.helloshoesbackend.dto.CustomerDTO,java.lang.String)
+2024-05-24T01:40:57.638+05:30  WARN 1140 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-10] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: Required request body is missing: public org.springframework.http.ResponseEntity lk.ijse.helloshoesbackend.api.CustomerAPI.updateCustomer(lk.ijse.helloshoesbackend.dto.CustomerDTO,java.lang.String)]
+2024-05-24T01:41:09.970+05:30  INFO 1140 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-2] l.i.h.config.AccessLogFilter             : -------- PUT --- /api/v1/customer/s 
+2024-05-24T01:41:09.987+05:30  INFO 1140 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-2] l.i.h.bo.impl.CustomerBOIMPL             : Attempting to update customer with id: s
+2024-05-24T01:41:09.987+05:30  INFO 1140 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-2] l.i.h.service.impl.CustomerServiceIMPL   : Updating customer with ID: s
+2024-05-24T01:41:09.989+05:30  WARN 1140 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-2] l.i.h.service.impl.CustomerServiceIMPL   : Customer not found with ID: s
+2024-05-24T01:41:09.991+05:30 ERROR 1140 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-2] l.i.h.advice.GlobalExceptionHandler      : Not found exception occurred: Not Found Customer : s
+2024-05-24T01:41:09.994+05:30 ERROR 1140 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-2] l.i.h.advice.GlobalExceptionHandler      : Exception occurred: Required request body is missing: public org.springframework.http.ResponseEntity lk.ijse.helloshoesbackend.api.CustomerAPI.updateCustomer(lk.ijse.helloshoesbackend.dto.CustomerDTO,java.lang.String)
+2024-05-24T01:45:35.268+05:30  INFO 1140 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-6] l.i.h.config.AccessLogFilter             : -------- PUT --- /api/v1/customer/s 
+2024-05-24T01:45:35.296+05:30  INFO 1140 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-6] l.i.h.bo.impl.CustomerBOIMPL             : Attempting to update customer with id: s
+2024-05-24T01:45:35.297+05:30  INFO 1140 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-6] l.i.h.service.impl.CustomerServiceIMPL   : Updating customer with ID: s
+2024-05-24T01:45:35.299+05:30  WARN 1140 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-6] l.i.h.service.impl.CustomerServiceIMPL   : Customer not found with ID: s
+2024-05-24T01:45:35.301+05:30 ERROR 1140 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-6] l.i.h.advice.GlobalExceptionHandler      : Not found exception occurred: Not Found Customer : s
+2024-05-24T01:45:35.303+05:30 ERROR 1140 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-6] l.i.h.advice.GlobalExceptionHandler      : Exception occurred: Required request body is missing: public org.springframework.http.ResponseEntity lk.ijse.helloshoesbackend.api.CustomerAPI.updateCustomer(lk.ijse.helloshoesbackend.dto.CustomerDTO,java.lang.String)
+2024-05-24T01:47:48.876+05:30  INFO 1140 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-4] l.i.h.config.AccessLogFilter             : -------- PUT --- /api/v1/customer/16794b24-ceae-4640-a2a5-37acc9089560 
+2024-05-24T01:47:48.895+05:30  INFO 1140 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-4] l.i.h.bo.impl.CustomerBOIMPL             : Attempting to update customer with id: 16794b24-ceae-4640-a2a5-37acc9089560
+2024-05-24T01:47:48.896+05:30  INFO 1140 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-4] l.i.h.service.impl.CustomerServiceIMPL   : Updating customer with ID: 16794b24-ceae-4640-a2a5-37acc9089560
+2024-05-24T01:47:48.897+05:30  INFO 1140 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-4] l.i.helloshoesbackend.util.Conversion    : Converting CustomerDTO to CustomerEntity
+2024-05-24T01:47:48.903+05:30 ERROR 1140 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-4] l.i.h.advice.GlobalExceptionHandler      : Exception occurred: Required request body is missing: public org.springframework.http.ResponseEntity lk.ijse.helloshoesbackend.api.CustomerAPI.updateCustomer(lk.ijse.helloshoesbackend.dto.CustomerDTO,java.lang.String)
+2024-05-24T01:47:48.904+05:30  WARN 1140 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-4] .m.m.a.ExceptionHandlerExceptionResolver : Failure in @ExceptionHandler lk.ijse.helloshoesbackend.advice.GlobalExceptionHandler#handleExceptions(Exception)
+
+org.springframework.http.converter.HttpMessageNotWritableException: No converter for [class java.util.HashMap] with preset Content-Type 'text/plain;charset=UTF-8'
+	at org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor.writeWithMessageConverters(AbstractMessageConverterMethodProcessor.java:319) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor.handleReturnValue(HttpEntityMethodProcessor.java:245) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.method.support.HandlerMethodReturnValueHandlerComposite.handleReturnValue(HandlerMethodReturnValueHandlerComposite.java:78) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:136) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver.doResolveHandlerMethodException(ExceptionHandlerExceptionResolver.java:432) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodExceptionResolver.doResolveException(AbstractHandlerMethodExceptionResolver.java:74) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver.resolveException(AbstractHandlerExceptionResolver.java:175) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.handler.HandlerExceptionResolverComposite.resolveException(HandlerExceptionResolverComposite.java:80) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.DispatcherServlet.processHandlerException(DispatcherServlet.java:1357) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1160) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1106) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at org.springframework.web.servlet.FrameworkServlet.doPut(FrameworkServlet.java:925) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:593) ~[tomcat-embed-core-10.1.20.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.1.6.jar:6.1.6]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.20.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:206) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at lk.ijse.helloshoesbackend.config.AccessLogFilter.doFilterInternal(AccessLogFilter.java:25) ~[classes/:na]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.6.jar:6.1.6]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:175) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:150) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:391) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:896) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1736) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.20.jar:10.1.20]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
+
+2024-05-24T01:47:48.905+05:30  WARN 1140 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-4] .w.s.m.s.DefaultHandlerExceptionResolver : Ignoring exception, response committed already: org.springframework.http.converter.HttpMessageNotReadableException: Required request body is missing: public org.springframework.http.ResponseEntity lk.ijse.helloshoesbackend.api.CustomerAPI.updateCustomer(lk.ijse.helloshoesbackend.dto.CustomerDTO,java.lang.String)
+2024-05-24T01:47:48.905+05:30  WARN 1140 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-4] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: Required request body is missing: public org.springframework.http.ResponseEntity lk.ijse.helloshoesbackend.api.CustomerAPI.updateCustomer(lk.ijse.helloshoesbackend.dto.CustomerDTO,java.lang.String)]
+2024-05-24T01:49:11.428+05:30  INFO 1140 --- [Hello-Shoes-Springboot] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-05-24T01:49:11.433+05:30  INFO 1140 --- [Hello-Shoes-Springboot] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-05-24T01:49:11.447+05:30  INFO 1140 --- [Hello-Shoes-Springboot] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-05-24T01:49:17.669+05:30  INFO 12340 --- [Hello-Shoes-Springboot] [main] l.i.h.HelloShoesSpringbootApplication    : Starting HelloShoesSpringbootApplication using Java 21.0.1 with PID 12340 (D:\Github\Hello-Shoes-Springboot\backend\target\classes started by USER in D:\Github\Hello-Shoes-Springboot\backend)
+2024-05-24T01:49:17.671+05:30  INFO 12340 --- [Hello-Shoes-Springboot] [main] l.i.h.HelloShoesSpringbootApplication    : No active profile set, falling back to 1 default profile: "default"
+2024-05-24T01:49:18.479+05:30  INFO 12340 --- [Hello-Shoes-Springboot] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-05-24T01:49:18.592+05:30  INFO 12340 --- [Hello-Shoes-Springboot] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 106 ms. Found 12 JPA repository interfaces.
+2024-05-24T01:49:19.038+05:30  INFO 12340 --- [Hello-Shoes-Springboot] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-05-24T01:49:19.049+05:30  INFO 12340 --- [Hello-Shoes-Springboot] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-05-24T01:49:19.050+05:30  INFO 12340 --- [Hello-Shoes-Springboot] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.20]
+2024-05-24T01:49:19.096+05:30  INFO 12340 --- [Hello-Shoes-Springboot] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-05-24T01:49:19.096+05:30  INFO 12340 --- [Hello-Shoes-Springboot] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1376 ms
+2024-05-24T01:49:19.226+05:30  INFO 12340 --- [Hello-Shoes-Springboot] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-05-24T01:49:19.280+05:30  INFO 12340 --- [Hello-Shoes-Springboot] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-05-24T01:49:19.344+05:30  INFO 12340 --- [Hello-Shoes-Springboot] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-05-24T01:49:19.490+05:30  INFO 12340 --- [Hello-Shoes-Springboot] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-05-24T01:49:19.511+05:30  INFO 12340 --- [Hello-Shoes-Springboot] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-05-24T01:49:19.794+05:30  INFO 12340 --- [Hello-Shoes-Springboot] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2e204155
+2024-05-24T01:49:19.795+05:30  INFO 12340 --- [Hello-Shoes-Springboot] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-05-24T01:49:20.735+05:30  INFO 12340 --- [Hello-Shoes-Springboot] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-05-24T01:49:20.865+05:30  INFO 12340 --- [Hello-Shoes-Springboot] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-05-24T01:49:21.161+05:30  INFO 12340 --- [Hello-Shoes-Springboot] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-05-24T01:49:21.795+05:30  WARN 12340 --- [Hello-Shoes-Springboot] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-05-24T01:49:22.049+05:30  INFO 12340 --- [Hello-Shoes-Springboot] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@4cc1f8d3, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@2a9eb44d, org.springframework.security.web.context.SecurityContextHolderFilter@711329fe, org.springframework.security.web.header.HeaderWriterFilter@686a08f4, org.springframework.web.filter.CorsFilter@46135aba, org.springframework.security.web.authentication.logout.LogoutFilter@4e4d6172, lk.ijse.helloshoesbackend.config.JWTConfigurationFilter$$SpringCGLIB$$0@18ed9480, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@37c5e2e6, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@342cc706, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@25a218a, org.springframework.security.web.session.SessionManagementFilter@1ff9d66b, org.springframework.security.web.access.ExceptionTranslationFilter@55af9b48, org.springframework.security.web.access.intercept.AuthorizationFilter@1edad178]
+2024-05-24T01:49:22.277+05:30  INFO 12340 --- [Hello-Shoes-Springboot] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-05-24T01:49:22.283+05:30  INFO 12340 --- [Hello-Shoes-Springboot] [main] l.i.h.HelloShoesSpringbootApplication    : Started HelloShoesSpringbootApplication in 4.952 seconds (process running for 5.791)
+2024-05-24T01:49:42.626+05:30  INFO 12340 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-05-24T01:49:42.626+05:30  INFO 12340 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-05-24T01:49:42.628+05:30  INFO 12340 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2024-05-24T01:49:42.630+05:30  INFO 12340 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] l.i.h.config.AccessLogFilter             : -------- GET --- /api/v1/customer 
+2024-05-24T01:49:42.808+05:30  INFO 12340 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] l.i.helloshoesbackend.api.CustomerAPI    : Fetching all customers
+2024-05-24T01:49:42.808+05:30  INFO 12340 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] l.i.h.bo.impl.CustomerBOIMPL             : Attempting to get all customers
+2024-05-24T01:49:42.809+05:30  INFO 12340 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] l.i.h.service.impl.CustomerServiceIMPL   : Fetching all customers
+2024-05-24T01:49:42.819+05:30  INFO 12340 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] l.i.helloshoesbackend.util.Conversion    : Converting List<CustomerEntity> to List<CustomerDTO>
+2024-05-24T01:49:42.905+05:30  INFO 12340 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] l.i.helloshoesbackend.api.CustomerAPI    : Fetching all customers
+2024-05-24T01:49:42.905+05:30  INFO 12340 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] l.i.h.bo.impl.CustomerBOIMPL             : Attempting to get all customers
+2024-05-24T01:49:42.906+05:30  INFO 12340 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] l.i.h.service.impl.CustomerServiceIMPL   : Fetching all customers
+2024-05-24T01:49:42.910+05:30  INFO 12340 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] l.i.helloshoesbackend.util.Conversion    : Converting List<CustomerEntity> to List<CustomerDTO>
+2024-05-24T01:51:16.084+05:30  INFO 12340 --- [Hello-Shoes-Springboot] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-05-24T01:51:16.090+05:30  INFO 12340 --- [Hello-Shoes-Springboot] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-05-24T01:51:16.103+05:30  INFO 12340 --- [Hello-Shoes-Springboot] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-05-24T01:51:22.428+05:30  INFO 15484 --- [Hello-Shoes-Springboot] [main] l.i.h.HelloShoesSpringbootApplication    : Starting HelloShoesSpringbootApplication using Java 21.0.1 with PID 15484 (D:\Github\Hello-Shoes-Springboot\backend\target\classes started by USER in D:\Github\Hello-Shoes-Springboot\backend)
+2024-05-24T01:51:22.430+05:30  INFO 15484 --- [Hello-Shoes-Springboot] [main] l.i.h.HelloShoesSpringbootApplication    : No active profile set, falling back to 1 default profile: "default"
+2024-05-24T01:51:23.153+05:30  INFO 15484 --- [Hello-Shoes-Springboot] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-05-24T01:51:23.227+05:30  INFO 15484 --- [Hello-Shoes-Springboot] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 69 ms. Found 12 JPA repository interfaces.
+2024-05-24T01:51:23.650+05:30  INFO 15484 --- [Hello-Shoes-Springboot] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-05-24T01:51:23.659+05:30  INFO 15484 --- [Hello-Shoes-Springboot] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-05-24T01:51:23.659+05:30  INFO 15484 --- [Hello-Shoes-Springboot] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.20]
+2024-05-24T01:51:23.701+05:30  INFO 15484 --- [Hello-Shoes-Springboot] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-05-24T01:51:23.702+05:30  INFO 15484 --- [Hello-Shoes-Springboot] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1224 ms
+2024-05-24T01:51:23.828+05:30  INFO 15484 --- [Hello-Shoes-Springboot] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-05-24T01:51:23.896+05:30  INFO 15484 --- [Hello-Shoes-Springboot] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-05-24T01:51:23.933+05:30  INFO 15484 --- [Hello-Shoes-Springboot] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-05-24T01:51:24.105+05:30  INFO 15484 --- [Hello-Shoes-Springboot] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-05-24T01:51:24.124+05:30  INFO 15484 --- [Hello-Shoes-Springboot] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-05-24T01:51:24.406+05:30  INFO 15484 --- [Hello-Shoes-Springboot] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@65fc8edc
+2024-05-24T01:51:24.407+05:30  INFO 15484 --- [Hello-Shoes-Springboot] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-05-24T01:51:25.349+05:30  INFO 15484 --- [Hello-Shoes-Springboot] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-05-24T01:51:25.467+05:30  INFO 15484 --- [Hello-Shoes-Springboot] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-05-24T01:51:25.742+05:30  INFO 15484 --- [Hello-Shoes-Springboot] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-05-24T01:51:26.393+05:30  WARN 15484 --- [Hello-Shoes-Springboot] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-05-24T01:51:26.668+05:30  INFO 15484 --- [Hello-Shoes-Springboot] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@74dde921, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3a24306e, org.springframework.security.web.context.SecurityContextHolderFilter@3b4e0786, org.springframework.security.web.header.HeaderWriterFilter@2324e26c, org.springframework.web.filter.CorsFilter@6b127d96, org.springframework.security.web.authentication.logout.LogoutFilter@411e5672, lk.ijse.helloshoesbackend.config.JWTConfigurationFilter$$SpringCGLIB$$0@75d61b62, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3593e8dd, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@21707a18, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5a4929f5, org.springframework.security.web.session.SessionManagementFilter@283eb984, org.springframework.security.web.access.ExceptionTranslationFilter@37c5e2e6, org.springframework.security.web.access.intercept.AuthorizationFilter@5271c49b]
+2024-05-24T01:51:26.887+05:30  INFO 15484 --- [Hello-Shoes-Springboot] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-05-24T01:51:26.893+05:30  INFO 15484 --- [Hello-Shoes-Springboot] [main] l.i.h.HelloShoesSpringbootApplication    : Started HelloShoesSpringbootApplication in 4.797 seconds (process running for 5.44)
+2024-05-24T01:51:51.566+05:30  INFO 15484 --- [Hello-Shoes-Springboot] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-05-24T01:51:51.570+05:30  INFO 15484 --- [Hello-Shoes-Springboot] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-05-24T01:51:51.580+05:30  INFO 15484 --- [Hello-Shoes-Springboot] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

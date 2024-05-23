@@ -66,8 +66,10 @@ public class AuthenticationServiceIMPL implements AuthenticationService {
         log.info("Attempting to sign up user: {}", dto.getEmail());
 
         //        Throw exception if user already authenticated
-        if (userRepo.findByEmail(dto.getEmail()).isPresent())
+        if (userRepo.findByEmail(dto.getEmail()).isPresent()) {
+            log.info("User already exists for email: {}", dto.getEmail());
             throw new DataDuplicationException("User already exists");
+        }
 
         UserEntity userEntity = new ModelMapper().map(dto, UserEntity.class);
         userEntity.setId(UtilMatter.generateUUID());

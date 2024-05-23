@@ -27,45 +27,35 @@ public class AuthenticationBOIMPL implements AuthenticationBO {
     @Override
     public JwtAuthResponse signIn(SignIn signIn) {
         log.info("Attempting to sign in user with email: {}", signIn.getEmail());
-        try {
-            JwtAuthResponse jwtAuthResponse = authenticationService.signIn(modelMapper.map(signIn, UserDTO.class));
-            jwtAuthResponse.getUser().setPassword(null);
-            return jwtAuthResponse;
-        } catch (Exception e) {
-            log.error("Error during sign in for user: {}", signIn.getEmail());
-            throw e; // Ensure you have appropriate exception handling in the controller
-        }
+        JwtAuthResponse jwtAuthResponse = authenticationService.signIn(modelMapper.map(signIn, UserDTO.class));
+        jwtAuthResponse.getUser().setPassword(null);
+        return jwtAuthResponse;
     }
 
     @Override
     public JwtAuthResponse signUp(SignUp signUp) {
         log.info("Attempting to sign up user with email: {}", signUp.getEmail());
-        try {
-            UserDTO userDTO = modelMapper.map(signUp, UserDTO.class);
+        UserDTO userDTO = modelMapper.map(signUp, UserDTO.class);
 
-            // Get Employee if exists
-            EmployeeDTO employee = employeeService.getEmployee(userDTO.getEmail());
-            if (employee == null) {
-                log.warn("Employee not found for email: {}", userDTO.getEmail());
-                throw new IllegalArgumentException("Employee not found for email: " + userDTO.getEmail());
-            }
-
-            // Set Role
-            if ("manager".equalsIgnoreCase(employee.getDesignation())) {
-                userDTO.setRole(UserRole.ADMIN);
-            } else {
-                userDTO.setRole(UserRole.USER);
-            }
-
-            // Set relationship
-            userDTO.setEmployee(employee);
-
-            JwtAuthResponse jwtAuthResponse = authenticationService.signUp(userDTO);
-            jwtAuthResponse.getUser().setPassword(null);
-            return jwtAuthResponse;
-        } catch (Exception e) {
-            log.error("Error during sign up for user: {}", signUp.getEmail());
-            throw e; // Ensure you have appropriate exception handling in the controller
+        // Get Employee if exists
+        EmployeeDTO employee = employeeService.getEmployee(userDTO.getEmail());
+        if (employee == null) {
+            log.warn("Employee not found for email: {}", userDTO.getEmail());
+            throw new IllegalArgumentException("Employee not found for email: " + userDTO.getEmail());
         }
+
+        // Set Role
+        if ("manager".equalsIgnoreCase(employee.getDesignation())) {
+            userDTO.setRole(UserRole.ADMIN);
+        } else {
+            userDTO.setRole(UserRole.USER);
+        }
+
+        // Set relationship
+        userDTO.setEmployee(employee);
+
+        JwtAuthResponse jwtAuthResponse = authenticationService.signUp(userDTO);
+        jwtAuthResponse.getUser().setPassword(null);
+        return jwtAuthResponse;
     }
 }

@@ -19,13 +19,7 @@ public class AccessLogFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         if(request.getRequestURI().toLowerCase().contains("/api")){
-            try{
-                log.info("-------- {} --- {} ", request.getMethod(), request.getRequestURI());
-                filterChain.doFilter(request, response);
-            }catch (Exception e){
-                log.error("Error processing request: {}", e.getMessage());
-                throw e;
-            }
+            log.info("-------- {} --- {} ", request.getMethod(), request.getRequestURI());
         }
         filterChain.doFilter(request, response);
     }
