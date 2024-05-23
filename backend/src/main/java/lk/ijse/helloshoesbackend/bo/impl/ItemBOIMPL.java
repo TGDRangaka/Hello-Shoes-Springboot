@@ -23,7 +23,7 @@ public class ItemBOIMPL implements ItemBO {
     private final InventoryService inventoryService;
 
     @Override
-    public boolean saveItem(ItemDTO dto) throws Exception {
+    public boolean saveItem(ItemDTO dto){
         Random random = new Random();
         dto.setItemCode(dto.getItemCode() + (random.nextInt(40000) + 10000));
         List<InventoryDTO> colors = dto.getInventoryItems();

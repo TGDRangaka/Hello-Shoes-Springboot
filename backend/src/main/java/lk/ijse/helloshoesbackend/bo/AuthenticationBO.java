@@ -1,5 +1,6 @@
 package lk.ijse.helloshoesbackend.bo;
 
+import lk.ijse.helloshoesbackend.exception.DataDuplicationException;
 import lk.ijse.helloshoesbackend.reqAndResp.request.SignIn;
 import lk.ijse.helloshoesbackend.reqAndResp.request.SignUp;
 import lk.ijse.helloshoesbackend.reqAndResp.response.JwtAuthResponse;

@@ -22,7 +22,7 @@ public class ResupplyBOIMPL implements ResupplyBO {
     private final InventoryService inventoryService;
 
     @Override
-    public boolean saveResupply(ResupplyDTO resupplyDTO) {
+    public boolean saveResupply(ResupplyDTO resupplyDTO){
         if(resupplyDTO.getTotalQty() <= 0) throw new InvalidDataException("Qty must be greater than 1");
 
 //        set resupply details (id, date)

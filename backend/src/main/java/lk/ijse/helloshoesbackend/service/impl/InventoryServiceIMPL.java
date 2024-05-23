@@ -23,7 +23,7 @@ public class InventoryServiceIMPL implements InventoryService {
     private final ItemRepo itemRepo;
 
     @Override
-    public int updateCurrentQty(String inventoryId, int qty) {
+    public int updateCurrentQty(String inventoryId, int qty){
         Optional<InventoryEntity> itemOptional = inventoryRepo.findById(inventoryId);
         if (itemOptional.isPresent()) {
             InventoryEntity item = itemOptional.get();
@@ -64,7 +64,7 @@ public class InventoryServiceIMPL implements InventoryService {
     }
 
     @Override
-    public void restock(String inventoryId, int qty) {
+    public void restock(String inventoryId, int qty){
         if(qty == 0) return;
         if(qty < 0) throw new InvalidDataException("Qty must be greater than 1 : " + inventoryId);
         InventoryEntity item = inventoryRepo.findById(inventoryId)

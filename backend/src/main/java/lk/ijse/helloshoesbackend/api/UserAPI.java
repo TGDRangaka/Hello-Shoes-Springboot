@@ -5,10 +5,11 @@ import lk.ijse.helloshoesbackend.bo.AuthenticationBO;
 import lk.ijse.helloshoesbackend.exception.DataDuplicationException;
 import lk.ijse.helloshoesbackend.reqAndResp.request.SignIn;
 import lk.ijse.helloshoesbackend.reqAndResp.request.SignUp;
+import lk.ijse.helloshoesbackend.reqAndResp.response.JwtAuthResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -16,37 +17,43 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 @CrossOrigin
 @Slf4j
-@Validated
 public class UserAPI {
 
     private final AuthenticationBO authenticationBO;
 
     @GetMapping("/health")
-    public String healthCheck(){
+    public String healthCheck() {
+        log.info("Health check endpoint called");
         return "User Health Good";
     }
 
-//    SignIn
+    // SignIn
     @PutMapping
-    public ResponseEntity signIn(@Valid @RequestBody SignIn signIn){
-        log.info("User sign in by email: " + signIn.getEmail());
-        try{
+    public ResponseEntity<JwtAuthResponse> signIn(@Valid @RequestBody SignIn signIn) {
+        log.info("SignIn request received for email: {}", signIn.getEmail());
+        try {
             return ResponseEntity.accepted().body(authenticationBO.signIn(signIn));
-        }catch (Exception e){
-            return ResponseEntity.status(401).body(e.getMessage());
+        } catch (UsernameNotFoundException e) {
+            log.warn("Username not found error during sign in: {}", e.getMessage());
+            throw e;
+        } catch (Exception e) {
+            log.error("Unexpected error during sign in", e);
+            throw e;
         }
     }
 
-//    SignUp
+    // SignUp
     @PostMapping
-    public ResponseEntity signUp(@RequestBody SignUp signUp){
-        log.info("User sign up by email: " + signUp.getEmail());
-        try{
+    public ResponseEntity<JwtAuthResponse> signUp(@Valid @RequestBody SignUp signUp) {
+        log.info("SignUp request received for email: {}", signUp.getEmail());
+        try {
             return ResponseEntity.accepted().body(authenticationBO.signUp(signUp));
-        }catch (DataDuplicationException e){
-            return ResponseEntity.status(409).body(e.getMessage());
-        }catch (Exception e){
-            return ResponseEntity.internalServerError().body(e.getMessage());
+        } catch (DataDuplicationException e) {
+            log.warn("Data duplication error during sign up: {}", e.getMessage());
+            throw e;
+        } catch (Exception e) {
+            log.error("Unexpected error during sign up", e);
+            throw e;
         }
     }
 }

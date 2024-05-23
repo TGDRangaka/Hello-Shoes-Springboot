@@ -54,7 +54,7 @@ public class AuthenticationServiceIMPL implements AuthenticationService {
     @Override
     public JwtAuthResponse signUp(UserDTO dto) {
 //        Throw exception if user already authenticated
-        if(userRepo.existsById(dto.getEmail())) throw new DataDuplicationException("User already exists");
+        if(userRepo.findByEmail(dto.getEmail()).isPresent()) throw new DataDuplicationException("User already exists");
 
         UserEntity userEntity = new ModelMapper().map(dto, UserEntity.class);
         userEntity.setId(UtilMatter.generateUUID());

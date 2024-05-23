@@ -32,7 +32,7 @@ public class SaleBOIMPL implements SaleBO {
     private final RefundService refundService;
 
     @Override
-    public Map saveSale(SaleDTO saleDTO, String user) {
+    public Map saveSale(SaleDTO saleDTO, String user){
 //        Set Employee who did the sale
         EmployeeDTO employee = employeeService.getEmployee(user);
         saleDTO.setEmployee(employee);
@@ -95,7 +95,7 @@ public class SaleBOIMPL implements SaleBO {
     }
 
     @Override
-    public void refundSaleItems(List<RefundDTO> refunds, String user) {
+    public void refundSaleItems(List<RefundDTO> refunds, String user){
 //        Set Employee who did the sale
         EmployeeDTO employee = employeeService.getEmployee(user);
 

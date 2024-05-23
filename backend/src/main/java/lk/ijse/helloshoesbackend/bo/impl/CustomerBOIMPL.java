@@ -17,12 +17,12 @@ public class CustomerBOIMPL implements CustomerBO {
     private final CustomerService customerService;
 
     @Override
-    public List<CustomerDTO> getAllCustomers() throws Exception {
+    public List<CustomerDTO> getAllCustomers(){
         return customerService.getAll();
     }
 
     @Override
-    public CustomerDTO saveCustomer(CustomerDTO dto) throws Exception {
+    public CustomerDTO saveCustomer(CustomerDTO dto){
         dto.setLevel(CustomerLevel.NEW);
         dto.setTotalPoints(0);
         dto.setJoinedDateAsLoyalty(LocalDate.now());

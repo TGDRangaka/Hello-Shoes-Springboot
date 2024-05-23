@@ -5,7 +5,7 @@ import lk.ijse.helloshoesbackend.dto.ItemDTO;
 import java.util.List;
 
 public interface ItemService {
-    boolean save(ItemDTO dto) throws Exception;
+    boolean save(ItemDTO dto);
 
     void update(ItemDTO dto, String itemCode);
 

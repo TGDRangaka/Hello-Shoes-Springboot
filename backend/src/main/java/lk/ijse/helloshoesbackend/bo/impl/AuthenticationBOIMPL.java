@@ -4,6 +4,7 @@ import lk.ijse.helloshoesbackend.bo.AuthenticationBO;
 import lk.ijse.helloshoesbackend.dto.EmployeeDTO;
 import lk.ijse.helloshoesbackend.dto.UserDTO;
 import lk.ijse.helloshoesbackend.entity.enums.UserRole;
+import lk.ijse.helloshoesbackend.exception.DataDuplicationException;
 import lk.ijse.helloshoesbackend.reqAndResp.request.SignIn;
 import lk.ijse.helloshoesbackend.reqAndResp.request.SignUp;
 import lk.ijse.helloshoesbackend.reqAndResp.response.JwtAuthResponse;
@@ -24,16 +25,12 @@ public class AuthenticationBOIMPL implements AuthenticationBO {
     private final EmployeeService employeeService;
 
     public JwtAuthResponse signIn(SignIn signIn){
-//        for(int i = 0; i < 10; i++){
-//            signIn.setEmail(new String(Base64.getDecoder().decode(signIn.getEmail())));
-//            signIn.setPassword(new String(Base64.getDecoder().decode(signIn.getPassword())));
-//        }
         JwtAuthResponse jwtAuthResponse = authenticationService.signIn(new ModelMapper().map(signIn, UserDTO.class));
         jwtAuthResponse.getUser().setPassword(null);
         return jwtAuthResponse;
     }
 
-    public JwtAuthResponse signUp(SignUp signUp){
+    public JwtAuthResponse signUp(SignUp signUp) {
         UserDTO userDTO = new ModelMapper().map(signUp, UserDTO.class);
 
 //        Get Employee if exist

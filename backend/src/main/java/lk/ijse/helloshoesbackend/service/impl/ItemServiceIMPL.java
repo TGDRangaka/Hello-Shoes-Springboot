@@ -21,7 +21,7 @@ public class ItemServiceIMPL implements ItemService {
     private final ItemRepo itemRepo;
 
     @Override
-    public boolean save(ItemDTO dto) throws Exception {
+    public boolean save(ItemDTO dto){
             List<InventoryEntity> inventoryEntities = Conversion.toInventoryEntityList(dto.getInventoryItems());
 
             ItemEntity itemEntity = Conversion.toItemEntity(dto);
