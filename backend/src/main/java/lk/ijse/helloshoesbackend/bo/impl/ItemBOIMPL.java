@@ -1,5 +1,10 @@
 package lk.ijse.helloshoesbackend.bo.impl;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
+
 import lk.ijse.helloshoesbackend.bo.ItemBO;
 import lk.ijse.helloshoesbackend.dto.InventoryDTO;
 import lk.ijse.helloshoesbackend.dto.ItemDTO;
@@ -10,12 +15,12 @@ import lk.ijse.helloshoesbackend.service.ItemImageService;
 import lk.ijse.helloshoesbackend.service.ItemService;
 import lk.ijse.helloshoesbackend.service.SupplierService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
-
-import java.util.*;
 
 @Component
 @RequiredArgsConstructor
+@Slf4j
 public class ItemBOIMPL implements ItemBO {
     private final ItemService itemService;
     private final ItemImageService itemImageService;
@@ -24,6 +29,7 @@ public class ItemBOIMPL implements ItemBO {
 
     @Override
     public boolean saveItem(ItemDTO dto){
+        log.info("Attempting to save item");
         Random random = new Random();
         dto.setItemCode(dto.getItemCode() + (random.nextInt(40000) + 10000));
         List<InventoryDTO> colors = dto.getInventoryItems();
@@ -46,6 +52,7 @@ public class ItemBOIMPL implements ItemBO {
 
     @Override
     public void updateItem(ItemDTO dto, String id) {
+        log.info("Attempting to update item");
         List<String> availableColors = Arrays.asList(inventoryService.getAvailableColorsById(id));
         List<InventoryDTO> allInventory = new ArrayList<>();
         List<InventoryDTO> colors = dto.getInventoryItems();
@@ -65,6 +72,7 @@ public class ItemBOIMPL implements ItemBO {
 
     @Override
     public List<ItemDTO> getAllItems() {
+        log.info("Attempting to get all items");
         List<ItemDTO> allItems = itemService.getAllItems();
         return allItems;
     }
@@ -99,33 +107,33 @@ public class ItemBOIMPL implements ItemBO {
 
     private List<InventoryDTO> getNewInventory(ItemDTO dto, InventoryDTO color){
         List<InventoryDTO> allInventory = new ArrayList<>();
-            String imgId = itemImageService.saveImage(color.getItemImage().getImage());
-            color.getItemImage().setId(imgId);
-            for(int i = 5; i < 12; i++) {
-                allInventory.add(new InventoryDTO(
-                        dto.getItemCode() +"_SIZE_"+ i +"_"+ color.getColors(),
-                        Sizes.valueOf("SIZE_"+i),
-                        color.getColors(),
-                        0,
-                        0,
-                        "not available",
-                        new ItemDTO(
-                                dto.getItemCode(),
-                                dto.getDescription(),
-                                dto.getCategory(),
-                                dto.getSupplierName(),
-                                null,
-                                dto.getUnitPriceSale(),
-                                dto.getUnitPriceBuy(),
-                                dto.getExpectedProfit(),
-                                dto.getProfitMargin(),
-                                new ArrayList<>()
-                        ),
-                        color.getItemImage(),
-                        color.getResupplyItems(),
-                        color.getSaleItems()
-                ));
-            }
+        String imgId = itemImageService.saveImage(color.getItemImage().getImage());
+        color.getItemImage().setId(imgId);
+        for(int i = 5; i < 12; i++) {
+            allInventory.add(new InventoryDTO(
+                    dto.getItemCode() +"_SIZE_"+ i +"_"+ color.getColors(),
+                    Sizes.valueOf("SIZE_"+i),
+                    color.getColors(),
+                    0,
+                    0,
+                    "not available",
+                    new ItemDTO(
+                            dto.getItemCode(),
+                            dto.getDescription(),
+                            dto.getCategory(),
+                            dto.getSupplierName(),
+                            null,
+                            dto.getUnitPriceSale(),
+                            dto.getUnitPriceBuy(),
+                            dto.getExpectedProfit(),
+                            dto.getProfitMargin(),
+                            new ArrayList<>()
+                    ),
+                    color.getItemImage(),
+                    color.getResupplyItems(),
+                    color.getSaleItems()
+            ));
+        }
         return allInventory;
     }
 }
