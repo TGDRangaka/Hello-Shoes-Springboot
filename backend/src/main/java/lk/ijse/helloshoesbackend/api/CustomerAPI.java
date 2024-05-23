@@ -32,27 +32,24 @@ public class CustomerAPI {
 
     @GetMapping
     public ResponseEntity<List<CustomerDTO>> getAllCustomers(){
-        log.info("Fetching all customers");
+        log.info("Get all customers endpoint called");
         List<CustomerDTO> customers = customerBO.getAllCustomers();
-        log.debug("Fetched {} customers", customers.size());
         return ResponseEntity.ok(customers);
     }
 
     @PostMapping
     @RolesAllowed("ADMIN")
     public ResponseEntity<CustomerDTO> saveCustomer(@Valid @RequestBody CustomerDTO customer){
-        log.info("Saving new customer with email: {}", customer.getEmail());
+        log.info("Save customer endpoint called");
         CustomerDTO savedCustomer = customerBO.saveCustomer(customer);
-        log.debug("Saved customer: {}", savedCustomer);
         return ResponseEntity.ok(savedCustomer);
     }
 
     @PutMapping("/{customerId}")
     @RolesAllowed("ADMIN")
     public ResponseEntity<String> updateCustomer(@Valid @RequestBody CustomerDTO customer, @PathVariable String customerId){
-        log.info("Updating customer with ID: {}", customerId);
+        log.info("Update customer endpoint called");
         customerBO.updateCustomer(customer, customerId);
-        log.debug("Updated customer with ID: {}", customerId);
         return ResponseEntity.accepted().body("Success");
     }
 }
