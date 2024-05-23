@@ -5,6 +5,7 @@ import lk.ijse.helloshoesbackend.dto.InventoryDTO;
 import lk.ijse.helloshoesbackend.dto.ItemDTO;
 import lk.ijse.helloshoesbackend.service.InventoryService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -12,11 +13,13 @@ import java.util.List;
 
 @Component
 @RequiredArgsConstructor
+@Slf4j
 public class InventoryBOIMPL implements InventoryBO {
     private final InventoryService inventoryService;
 
     @Override
     public List<InventoryDTO> getAllAvailableItems() {
+        log.info("Attempting to get all available inventory");
         List<InventoryDTO> allAvailableItems = inventoryService.getAllAvailableItems();
         List<InventoryDTO> tempList = new ArrayList<>();
         allAvailableItems.forEach(item -> {
@@ -48,6 +51,7 @@ public class InventoryBOIMPL implements InventoryBO {
 
     @Override
     public List<InventoryDTO> getAllItems() {
+        log.info("Attempting to get all inventory");
         List<InventoryDTO> all = inventoryService.getAll();
         List<InventoryDTO> tempList = new ArrayList<>();
         all.forEach(item -> {
