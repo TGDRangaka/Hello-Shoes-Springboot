@@ -16,7 +16,7 @@ public class SupplierEntity {
     private String code;
     private String name;
     @Enumerated(EnumType.STRING)
-    private SupplierCategories category;
+    private SupplierCategories category; //INTERNATIONAL OR LOCAL
     private String addressNo;
     private String addressLane;
     private String addressCity;

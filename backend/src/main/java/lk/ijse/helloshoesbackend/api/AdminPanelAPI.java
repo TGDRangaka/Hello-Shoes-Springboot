@@ -21,7 +21,7 @@ public class AdminPanelAPI {
         return "Admin Panel Health Good";
     }
 
-    @GetMapping("/{date}")
+    @GetMapping("/{date:\\d{4}-\\d{2}-\\d{2}}")
     public ResponseEntity getAdminPanelData(@PathVariable String date){
         try {
             date = date.replaceAll("(\\b\\d\\b)", "0$1");
