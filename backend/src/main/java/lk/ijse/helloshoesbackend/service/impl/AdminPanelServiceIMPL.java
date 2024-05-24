@@ -21,6 +21,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -110,7 +111,14 @@ public class AdminPanelServiceIMPL implements AdminPanelService {
     @Override
     public List<MostSoldItemProjection> getMostSoldItems(LocalDate date) {
         log.info("Fetching most sold items for {}", date.toString());
-        return saleItemRepo.findMostSoldItems(date);
+        List<MostSoldItemProjection> mostSoldItems = new ArrayList<>();
+        List<MostSoldItemProjection> allSoldItems = saleItemRepo.findMostSoldItems(date);
+        for (int i = 0; i < 3; i++) {
+            mostSoldItems.add(allSoldItems.get(i));
+        }
+//        Sort by mostSoldItemProjection.qty
+        Collections.sort(mostSoldItems);
+        return mostSoldItems;
     }
 
     @Override
