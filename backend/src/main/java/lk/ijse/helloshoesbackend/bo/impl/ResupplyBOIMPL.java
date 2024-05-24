@@ -8,6 +8,7 @@ import lk.ijse.helloshoesbackend.service.InventoryService;
 import lk.ijse.helloshoesbackend.service.ResupplyService;
 import lk.ijse.helloshoesbackend.util.UtilMatter;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,15 +18,21 @@ import java.util.List;
 @Component
 @RequiredArgsConstructor
 @Transactional
+@Slf4j
 public class ResupplyBOIMPL implements ResupplyBO {
     private final ResupplyService resupplyService;
     private final InventoryService inventoryService;
 
     @Override
     public boolean saveResupply(ResupplyDTO resupplyDTO){
-        if(resupplyDTO.getTotalQty() <= 0) throw new InvalidDataException("Qty must be greater than 1");
+        log.info("Attempting to save resupply");
+        if(resupplyDTO.getTotalQty() <= 0) {
+            log.error("Qty must be greater than 1");
+            throw new InvalidDataException("Qty must be greater than 1");
+        }
 
 //        set resupply details (id, date)
+        log.info("Setting resupply details (Id, supplyId, date");
         String resupplyId = UtilMatter.generateUUID();
         resupplyDTO.setSupplyId(resupplyId);
         resupplyDTO.setSuppliedDate(LocalDate.now());
@@ -35,6 +42,7 @@ public class ResupplyBOIMPL implements ResupplyBO {
             String inventoryCode = resupplyItem.getResupplyItemId().getInventory().getInventoryCode();
 
 //            update inventory item stock
+            log.info("Attempting to update inventory stock");
             inventoryService.restock(inventoryCode, resupplyItem.getSuppliedQty());
 
 //            set resupplyId for each item
@@ -46,6 +54,7 @@ public class ResupplyBOIMPL implements ResupplyBO {
 
     @Override
     public List<ResupplyDTO> getAllResupplies() {
+        log.info("Attempting to get all resupplies");
         return resupplyService.getAllResupplies();
     }
 }

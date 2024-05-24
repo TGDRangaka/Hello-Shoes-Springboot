@@ -3497,3 +3497,170 @@ io.jsonwebtoken.ExpiredJwtException: JWT expired at 2024-05-02T22:00:22Z. Curren
 2024-05-24T10:20:56.352+05:30  INFO 18888 --- [Hello-Shoes-Springboot] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2024-05-24T10:20:56.354+05:30  INFO 18888 --- [Hello-Shoes-Springboot] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2024-05-24T10:20:56.366+05:30  INFO 18888 --- [Hello-Shoes-Springboot] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-05-24T10:21:01.840+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [main] l.i.h.HelloShoesSpringbootApplication    : Starting HelloShoesSpringbootApplication using Java 21.0.1 with PID 6116 (D:\Github\Hello-Shoes-Springboot\backend\target\classes started by USER in D:\Github\Hello-Shoes-Springboot\backend)
+2024-05-24T10:21:01.841+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [main] l.i.h.HelloShoesSpringbootApplication    : No active profile set, falling back to 1 default profile: "default"
+2024-05-24T10:21:02.731+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-05-24T10:21:02.843+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 100 ms. Found 12 JPA repository interfaces.
+2024-05-24T10:21:03.329+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-05-24T10:21:03.339+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-05-24T10:21:03.339+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.20]
+2024-05-24T10:21:03.388+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-05-24T10:21:03.389+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1495 ms
+2024-05-24T10:21:03.545+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-05-24T10:21:03.593+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-05-24T10:21:03.621+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-05-24T10:21:03.733+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-05-24T10:21:03.748+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-05-24T10:21:04.021+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@110620d
+2024-05-24T10:21:04.023+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-05-24T10:21:05.300+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-05-24T10:21:05.490+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-05-24T10:21:05.909+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-05-24T10:21:06.673+05:30  WARN 6116 --- [Hello-Shoes-Springboot] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-05-24T10:21:06.941+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@c4ba591, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@2c73a332, org.springframework.security.web.context.SecurityContextHolderFilter@4913465d, org.springframework.security.web.header.HeaderWriterFilter@5c9844a4, org.springframework.web.filter.CorsFilter@74dde921, org.springframework.security.web.authentication.logout.LogoutFilter@46135aba, lk.ijse.helloshoesbackend.config.JWTConfigurationFilter$$SpringCGLIB$$0@641255d1, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3b4e0786, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@66e17bf2, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3a24306e, org.springframework.security.web.session.SessionManagementFilter@3b47178c, org.springframework.security.web.access.ExceptionTranslationFilter@711329fe, org.springframework.security.web.access.intercept.AuthorizationFilter@a1cac17]
+2024-05-24T10:21:07.195+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-05-24T10:21:07.202+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [main] l.i.h.HelloShoesSpringbootApplication    : Started HelloShoesSpringbootApplication in 5.687 seconds (process running for 6.225)
+2024-05-24T10:21:12.117+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-3] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-05-24T10:21:12.118+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-05-24T10:21:12.119+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-05-24T10:21:12.121+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-3] l.i.h.config.AccessLogFilter             : -------- POST --- /api/v1/sale 
+2024-05-24T10:21:12.438+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-3] lk.ijse.helloshoesbackend.api.SaleAPI    : Save sale endpoint called
+2024-05-24T10:21:12.440+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-3] l.i.h.bo.impl.SaleBOIMPL                 : Attempting to save sale
+2024-05-24T10:21:12.440+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-3] l.i.h.service.impl.EmployeeServiceIMPL   : Fetching employee with email: rangaka@gmail.com
+2024-05-24T10:21:12.452+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-3] l.i.h.service.impl.EmployeeServiceIMPL   : Found employee with email: rangaka@gmail.com
+2024-05-24T10:21:12.477+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-3] l.i.h.service.impl.CustomerServiceIMPL   : Finding customer with name:  and email: 
+2024-05-24T10:21:12.488+05:30  WARN 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-3] l.i.h.service.impl.CustomerServiceIMPL   : Customer not found with name:  and email: 
+2024-05-24T10:21:12.489+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-3] l.i.h.bo.impl.SaleBOIMPL                 : Setting order id: OD594208
+2024-05-24T10:21:12.490+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-3] l.i.h.service.impl.InventoryServiceIMPL  : Updating current quantity for inventory item with ID: CSM17734_SIZE_10_Other
+2024-05-24T10:21:12.513+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-3] l.i.h.service.impl.InventoryServiceIMPL  : Current quantity updated successfully for inventory item with ID: CSM17734_SIZE_10_Other
+2024-05-24T10:21:12.514+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-3] l.i.h.service.impl.SaleServiceIMPL       : Saving sale for orderId: OD594208
+2024-05-24T10:21:12.514+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-3] l.i.helloshoesbackend.util.Conversion    : Converting SaleDTO to SaleEntity
+2024-05-24T10:21:12.529+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-3] l.i.helloshoesbackend.util.Conversion    : Converting EmployeeDTO to EmployeeEntity
+2024-05-24T10:21:12.530+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-3] l.i.helloshoesbackend.util.Conversion    : Converting CustomerDTO to CustomerEntity
+2024-05-24T10:21:12.565+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-3] l.i.h.service.impl.SaleServiceIMPL       : Sale saved for orderId: OD594208
+2024-05-24T10:21:12.712+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-4] l.i.h.config.AccessLogFilter             : -------- GET --- /api/v1/sale 
+2024-05-24T10:21:12.740+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-4] lk.ijse.helloshoesbackend.api.SaleAPI    : Get all sales endpoint called
+2024-05-24T10:21:12.742+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-4] l.i.h.bo.impl.SaleBOIMPL                 : Attempting to get all sales
+2024-05-24T10:21:12.742+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-4] l.i.h.service.impl.SaleServiceIMPL       : Fetching all sales
+2024-05-24T10:21:12.785+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-4] l.i.h.service.impl.SaleServiceIMPL       : Fetched 25 sales
+2024-05-24T10:21:12.785+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-4] l.i.helloshoesbackend.util.Conversion    : Converting List<SaleEntity> to List<SaleDTO>
+2024-05-24T10:21:12.787+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-4] l.i.helloshoesbackend.util.Conversion    : Converting List<SaleItemEntity> to List<SaleItemDTO>
+2024-05-24T10:21:12.803+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-4] l.i.helloshoesbackend.util.Conversion    : Converting List<SaleItemEntity> to List<SaleItemDTO>
+2024-05-24T10:21:12.806+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-4] l.i.helloshoesbackend.util.Conversion    : Converting List<SaleItemEntity> to List<SaleItemDTO>
+2024-05-24T10:21:12.817+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-4] l.i.helloshoesbackend.util.Conversion    : Converting List<SaleItemEntity> to List<SaleItemDTO>
+2024-05-24T10:21:12.824+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-4] l.i.helloshoesbackend.util.Conversion    : Converting List<SaleItemEntity> to List<SaleItemDTO>
+2024-05-24T10:21:12.829+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-4] l.i.helloshoesbackend.util.Conversion    : Converting List<SaleItemEntity> to List<SaleItemDTO>
+2024-05-24T10:21:12.836+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-4] l.i.helloshoesbackend.util.Conversion    : Converting List<SaleItemEntity> to List<SaleItemDTO>
+2024-05-24T10:21:12.844+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-4] l.i.helloshoesbackend.util.Conversion    : Converting List<SaleItemEntity> to List<SaleItemDTO>
+2024-05-24T10:21:12.851+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-4] l.i.helloshoesbackend.util.Conversion    : Converting List<SaleItemEntity> to List<SaleItemDTO>
+2024-05-24T10:21:12.859+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-4] l.i.helloshoesbackend.util.Conversion    : Converting List<SaleItemEntity> to List<SaleItemDTO>
+2024-05-24T10:21:12.879+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-4] l.i.helloshoesbackend.util.Conversion    : Converting List<SaleItemEntity> to List<SaleItemDTO>
+2024-05-24T10:21:12.886+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-4] l.i.helloshoesbackend.util.Conversion    : Converting List<SaleItemEntity> to List<SaleItemDTO>
+2024-05-24T10:21:12.896+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-4] l.i.helloshoesbackend.util.Conversion    : Converting List<SaleItemEntity> to List<SaleItemDTO>
+2024-05-24T10:21:12.902+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-4] l.i.helloshoesbackend.util.Conversion    : Converting List<SaleItemEntity> to List<SaleItemDTO>
+2024-05-24T10:21:12.910+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-4] l.i.helloshoesbackend.util.Conversion    : Converting List<SaleItemEntity> to List<SaleItemDTO>
+2024-05-24T10:21:12.918+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-4] l.i.helloshoesbackend.util.Conversion    : Converting List<SaleItemEntity> to List<SaleItemDTO>
+2024-05-24T10:21:12.921+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-4] l.i.helloshoesbackend.util.Conversion    : Converting List<SaleItemEntity> to List<SaleItemDTO>
+2024-05-24T10:21:12.929+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-4] l.i.helloshoesbackend.util.Conversion    : Converting List<SaleItemEntity> to List<SaleItemDTO>
+2024-05-24T10:21:12.932+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-4] l.i.helloshoesbackend.util.Conversion    : Converting List<SaleItemEntity> to List<SaleItemDTO>
+2024-05-24T10:21:12.935+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-4] l.i.helloshoesbackend.util.Conversion    : Converting List<SaleItemEntity> to List<SaleItemDTO>
+2024-05-24T10:21:12.939+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-4] l.i.helloshoesbackend.util.Conversion    : Converting List<SaleItemEntity> to List<SaleItemDTO>
+2024-05-24T10:21:12.948+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-4] l.i.helloshoesbackend.util.Conversion    : Converting List<SaleItemEntity> to List<SaleItemDTO>
+2024-05-24T10:21:12.953+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-4] l.i.helloshoesbackend.util.Conversion    : Converting List<SaleItemEntity> to List<SaleItemDTO>
+2024-05-24T10:21:12.961+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-4] l.i.helloshoesbackend.util.Conversion    : Converting List<SaleItemEntity> to List<SaleItemDTO>
+2024-05-24T10:21:12.964+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-4] l.i.helloshoesbackend.util.Conversion    : Converting List<SaleItemEntity> to List<SaleItemDTO>
+2024-05-24T10:21:22.919+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-2] l.i.h.config.AccessLogFilter             : -------- GET --- /api/v1/refund/OD138813 
+2024-05-24T10:21:22.970+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-2] l.ijse.helloshoesbackend.api.RefundAPI   : Get sale items by order id endpoint called
+2024-05-24T10:21:22.971+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-2] l.i.h.bo.impl.SaleBOIMPL                 : Attempting to get sale items for orderId: OD138813
+2024-05-24T10:21:22.972+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-2] l.i.h.service.impl.SaleServiceIMPL       : Checking refund availability for orderId: OD138813
+2024-05-24T10:21:22.979+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-2] l.i.h.bo.impl.SaleBOIMPL                 : Refund available false for orderId: OD138813
+2024-05-24T10:21:22.979+05:30 ERROR 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-2] l.i.h.bo.impl.SaleBOIMPL                 : Refund request exceeded time limit for order item ID: OD138813
+2024-05-24T10:21:25.931+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-6] l.i.h.config.AccessLogFilter             : -------- GET --- /api/v1/sale 
+2024-05-24T10:21:25.957+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-6] lk.ijse.helloshoesbackend.api.SaleAPI    : Get all sales endpoint called
+2024-05-24T10:21:25.958+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-6] l.i.h.bo.impl.SaleBOIMPL                 : Attempting to get all sales
+2024-05-24T10:21:25.958+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-6] l.i.h.service.impl.SaleServiceIMPL       : Fetching all sales
+2024-05-24T10:21:25.989+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-6] l.i.h.service.impl.SaleServiceIMPL       : Fetched 25 sales
+2024-05-24T10:21:25.989+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-6] l.i.helloshoesbackend.util.Conversion    : Converting List<SaleEntity> to List<SaleDTO>
+2024-05-24T10:21:25.990+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-6] l.i.helloshoesbackend.util.Conversion    : Converting List<SaleItemEntity> to List<SaleItemDTO>
+2024-05-24T10:21:26.003+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-6] l.i.helloshoesbackend.util.Conversion    : Converting List<SaleItemEntity> to List<SaleItemDTO>
+2024-05-24T10:21:26.008+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-6] l.i.helloshoesbackend.util.Conversion    : Converting List<SaleItemEntity> to List<SaleItemDTO>
+2024-05-24T10:21:26.019+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-6] l.i.helloshoesbackend.util.Conversion    : Converting List<SaleItemEntity> to List<SaleItemDTO>
+2024-05-24T10:21:26.027+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-6] l.i.helloshoesbackend.util.Conversion    : Converting List<SaleItemEntity> to List<SaleItemDTO>
+2024-05-24T10:21:26.030+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-6] l.i.helloshoesbackend.util.Conversion    : Converting List<SaleItemEntity> to List<SaleItemDTO>
+2024-05-24T10:21:26.039+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-6] l.i.helloshoesbackend.util.Conversion    : Converting List<SaleItemEntity> to List<SaleItemDTO>
+2024-05-24T10:21:26.049+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-6] l.i.helloshoesbackend.util.Conversion    : Converting List<SaleItemEntity> to List<SaleItemDTO>
+2024-05-24T10:21:26.056+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-6] l.i.helloshoesbackend.util.Conversion    : Converting List<SaleItemEntity> to List<SaleItemDTO>
+2024-05-24T10:21:26.063+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-6] l.i.helloshoesbackend.util.Conversion    : Converting List<SaleItemEntity> to List<SaleItemDTO>
+2024-05-24T10:21:26.079+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-6] l.i.helloshoesbackend.util.Conversion    : Converting List<SaleItemEntity> to List<SaleItemDTO>
+2024-05-24T10:21:26.089+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-6] l.i.helloshoesbackend.util.Conversion    : Converting List<SaleItemEntity> to List<SaleItemDTO>
+2024-05-24T10:21:26.099+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-6] l.i.helloshoesbackend.util.Conversion    : Converting List<SaleItemEntity> to List<SaleItemDTO>
+2024-05-24T10:21:26.106+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-6] l.i.helloshoesbackend.util.Conversion    : Converting List<SaleItemEntity> to List<SaleItemDTO>
+2024-05-24T10:21:26.114+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-6] l.i.helloshoesbackend.util.Conversion    : Converting List<SaleItemEntity> to List<SaleItemDTO>
+2024-05-24T10:21:26.123+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-6] l.i.helloshoesbackend.util.Conversion    : Converting List<SaleItemEntity> to List<SaleItemDTO>
+2024-05-24T10:21:26.126+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-6] l.i.helloshoesbackend.util.Conversion    : Converting List<SaleItemEntity> to List<SaleItemDTO>
+2024-05-24T10:21:26.133+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-6] l.i.helloshoesbackend.util.Conversion    : Converting List<SaleItemEntity> to List<SaleItemDTO>
+2024-05-24T10:21:26.136+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-6] l.i.helloshoesbackend.util.Conversion    : Converting List<SaleItemEntity> to List<SaleItemDTO>
+2024-05-24T10:21:26.139+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-6] l.i.helloshoesbackend.util.Conversion    : Converting List<SaleItemEntity> to List<SaleItemDTO>
+2024-05-24T10:21:26.142+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-6] l.i.helloshoesbackend.util.Conversion    : Converting List<SaleItemEntity> to List<SaleItemDTO>
+2024-05-24T10:21:26.151+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-6] l.i.helloshoesbackend.util.Conversion    : Converting List<SaleItemEntity> to List<SaleItemDTO>
+2024-05-24T10:21:26.158+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-6] l.i.helloshoesbackend.util.Conversion    : Converting List<SaleItemEntity> to List<SaleItemDTO>
+2024-05-24T10:21:26.166+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-6] l.i.helloshoesbackend.util.Conversion    : Converting List<SaleItemEntity> to List<SaleItemDTO>
+2024-05-24T10:21:26.170+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-6] l.i.helloshoesbackend.util.Conversion    : Converting List<SaleItemEntity> to List<SaleItemDTO>
+2024-05-24T10:21:40.132+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-7] l.i.h.config.AccessLogFilter             : -------- GET --- /api/v1/refund/OD187680 
+2024-05-24T10:21:40.170+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-7] l.ijse.helloshoesbackend.api.RefundAPI   : Get sale items by order id endpoint called
+2024-05-24T10:21:40.179+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-7] l.i.h.bo.impl.SaleBOIMPL                 : Attempting to get sale items for orderId: OD187680
+2024-05-24T10:21:40.179+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-7] l.i.h.service.impl.SaleServiceIMPL       : Checking refund availability for orderId: OD187680
+2024-05-24T10:21:40.188+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-7] l.i.h.bo.impl.SaleBOIMPL                 : Refund available true for orderId: OD187680
+2024-05-24T10:21:40.189+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-7] l.i.h.service.impl.SaleServiceIMPL       : Fetching sale items for orderId: OD187680
+2024-05-24T10:21:40.220+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-7] l.i.h.service.impl.SaleServiceIMPL       : Fetched 2 sale items for orderId: OD187680
+2024-05-24T10:21:40.220+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-7] l.i.helloshoesbackend.util.Conversion    : Converting List<SaleItemEntity> to List<SaleItemDTO>
+2024-05-24T10:21:40.220+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-7] l.i.h.service.impl.RefundServiceIMPL     : Fetching refunds by orderId: OD187680 and inventoryCode: CSM17734_SIZE_5_Red
+2024-05-24T10:21:40.232+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-7] l.i.h.service.impl.RefundServiceIMPL     : Fetched 0 refunds
+2024-05-24T10:21:40.233+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-7] l.i.helloshoesbackend.util.Conversion    : Converting List<RefundEntity> to List<RefundDTO>
+2024-05-24T10:21:40.233+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-7] l.i.h.service.impl.RefundServiceIMPL     : Fetching refunds by orderId: OD187680 and inventoryCode: FSM27290_SIZE_11_Black
+2024-05-24T10:21:40.240+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-7] l.i.h.service.impl.RefundServiceIMPL     : Fetched 1 refunds
+2024-05-24T10:21:40.240+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-7] l.i.helloshoesbackend.util.Conversion    : Converting List<RefundEntity> to List<RefundDTO>
+2024-05-24T10:21:57.372+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-9] l.i.h.config.AccessLogFilter             : -------- GET --- /api/v1/employee/validate/rangaka@gmail.com/dilshan1234 
+2024-05-24T10:21:57.396+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-9] l.i.helloshoesbackend.api.EmployeeAPI    : isValidCredentials is called
+2024-05-24T10:21:57.397+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-9] l.i.h.bo.impl.EmployeeBOIMPL             : Attempting to validate employee credentials: rangaka@gmail.com
+2024-05-24T10:21:57.398+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-9] l.i.helloshoesbackend.util.UtilMatter    : Decoding credentials
+2024-05-24T10:21:57.398+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-9] l.i.h.s.impl.AuthenticationServiceIMPL   : Validating credentials for email: rangaka@gmail.com
+2024-05-24T10:21:57.498+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-9] l.i.h.s.impl.AuthenticationServiceIMPL   : Credentials valid for email: rangaka@gmail.com
+2024-05-24T10:21:57.498+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-9] l.i.h.bo.impl.EmployeeBOIMPL             : Credentials valid: true
+2024-05-24T10:22:16.403+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-4] l.i.h.config.AccessLogFilter             : -------- GET --- /api/v1/employee/validate/rangaka@gmail.com/dilshan1234 
+2024-05-24T10:22:16.426+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-4] l.i.helloshoesbackend.api.EmployeeAPI    : isValidCredentials is called
+2024-05-24T10:22:16.426+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-4] l.i.h.bo.impl.EmployeeBOIMPL             : Attempting to validate employee credentials: rangaka@gmail.com
+2024-05-24T10:22:16.426+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-4] l.i.helloshoesbackend.util.UtilMatter    : Decoding credentials
+2024-05-24T10:22:16.426+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-4] l.i.h.s.impl.AuthenticationServiceIMPL   : Validating credentials for email: rangaka@gmail.com
+2024-05-24T10:22:16.521+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-4] l.i.h.s.impl.AuthenticationServiceIMPL   : Credentials valid for email: rangaka@gmail.com
+2024-05-24T10:22:16.521+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-4] l.i.h.bo.impl.EmployeeBOIMPL             : Credentials valid: true
+2024-05-24T10:22:16.535+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] l.i.h.config.AccessLogFilter             : -------- POST --- /api/v1/refund 
+2024-05-24T10:22:16.595+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] l.ijse.helloshoesbackend.api.RefundAPI   : Save refund endpoint called
+2024-05-24T10:22:16.597+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] l.i.h.service.impl.EmployeeServiceIMPL   : Fetching employee with email: rangaka@gmail.com
+2024-05-24T10:22:16.603+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] l.i.h.service.impl.EmployeeServiceIMPL   : Found employee with email: rangaka@gmail.com
+2024-05-24T10:22:16.604+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] l.i.h.bo.impl.SaleBOIMPL                 : Attempting to refund sale items for orderId: OD187680
+2024-05-24T10:22:16.605+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] l.i.helloshoesbackend.util.UtilMatter    : Generated UUID: 7f31cc88-a922-4773-a327-f03b35e97f0b
+2024-05-24T10:22:16.605+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] l.i.h.bo.impl.SaleBOIMPL                 : Attempting to save refund item
+2024-05-24T10:22:16.605+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] l.i.h.service.impl.RefundServiceIMPL     : Saving refund
+2024-05-24T10:22:16.605+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] l.i.helloshoesbackend.util.UtilMatter    : Generated UUID: 4d90aa4d-ca9c-44e6-a015-0364811ee9ee
+2024-05-24T10:22:16.605+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] l.i.helloshoesbackend.util.Conversion    : Converting RefundDTO to RefundEntity
+2024-05-24T10:22:16.632+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] l.i.h.service.impl.RefundServiceIMPL     : Refund saved successfully
+2024-05-24T10:22:16.633+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] l.i.h.bo.impl.SaleBOIMPL                 : Attempting to update item current quantity for inventoryCode: CSM17734_SIZE_5_Red
+2024-05-24T10:22:16.633+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] l.i.h.service.impl.InventoryServiceIMPL  : Updating current quantity for inventory item with ID: CSM17734_SIZE_5_Red
+2024-05-24T10:22:16.634+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] l.i.h.service.impl.InventoryServiceIMPL  : Current quantity updated successfully for inventory item with ID: CSM17734_SIZE_5_Red
+2024-05-24T10:22:16.634+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] l.i.h.bo.impl.SaleBOIMPL                 : Attempting to update item stock status for inventoryCode: CSM17734_SIZE_5_Red
+2024-05-24T10:22:16.634+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] l.i.h.service.impl.InventoryServiceIMPL  : Updating stock status for inventory item with ID: CSM17734_SIZE_5_Red
+2024-05-24T10:22:16.635+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] l.i.h.service.impl.InventoryServiceIMPL  : Stock status updated successfully for inventory item with ID: CSM17734_SIZE_5_Red
+2024-05-24T10:22:16.635+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] l.i.h.bo.impl.SaleBOIMPL                 : Saved All refund items
+2024-05-24T10:22:16.687+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-2] l.i.h.config.AccessLogFilter             : -------- GET --- /api/v1/refund 
+2024-05-24T10:22:16.708+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-2] l.ijse.helloshoesbackend.api.RefundAPI   : Get all refunds endpoint called
+2024-05-24T10:22:16.709+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-2] l.i.h.bo.impl.SaleBOIMPL                 : Attempting to get all refunds
+2024-05-24T10:22:16.709+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-2] l.i.h.service.impl.RefundServiceIMPL     : Fetching all refunds
+2024-05-24T10:22:16.866+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-2] l.i.h.service.impl.RefundServiceIMPL     : Fetched 8 refunds
+2024-05-24T10:22:16.867+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-2] l.i.helloshoesbackend.util.Conversion    : Converting List<RefundEntity> to List<RefundDTO>
+2024-05-24T10:30:29.965+05:30  WARN 6116 --- [Hello-Shoes-Springboot] [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=55s638ms741µs600ns).
+2024-05-24T10:42:36.095+05:30  WARN 6116 --- [Hello-Shoes-Springboot] [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=11m36s56ms600µs600ns).
+2024-05-24T11:45:36.638+05:30  WARN 6116 --- [Hello-Shoes-Springboot] [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=58m448ms935µs100ns).
+2024-05-24T11:58:09.044+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-05-24T11:58:09.317+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-05-24T11:58:09.554+05:30  INFO 6116 --- [Hello-Shoes-Springboot] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
