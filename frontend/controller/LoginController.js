@@ -117,7 +117,7 @@ const handleUserLoginToSystem = (response) => {
     $(".user-img").css('background-image', `url(data:image/jpeg;base64,${user.profilePic})`);
 
     // save login record
-    // saveAlert(`${response.user.employee.name} logged in`, 'INFO');
+    saveAlert(`${response.user.employee.name} logged in`, 'INFO');
 }
 
 // manage admin view

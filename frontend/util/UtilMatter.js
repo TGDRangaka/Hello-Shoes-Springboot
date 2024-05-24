@@ -70,13 +70,13 @@ export const getCategory = value => {
 export const saveAlert = (message, type) => {
 
     if (type.toLowerCase() === 'warning') {
-        Swal.fire({
-            position: "top-end",
-            icon: "warning",
-            title: message,
-            showConfirmButton: false,
-            timer: 2500
-        });
+        setTimeout(() => {
+            Swal.fire({
+                icon: "warning",
+                title: message
+            });
+        }, 2000)
+
     }
 
     var settings = {
@@ -97,7 +97,8 @@ export const saveAlert = (message, type) => {
         console.log(response);
         addAlert(response);
         $(".notifications").empty();
-        response.map(alert => {
+        for (let i = 0; i < response.length || i < 100; i++) {
+            let alert = response[i];
             $(".notifications").append(`
             <div class="notification">
                 <i class="fa-solid fa-${alert.type === 'GENERAL' ? 'thumbs-up'
@@ -106,11 +107,11 @@ export const saveAlert = (message, type) => {
                 } notifi-${alert.type.toLowerCase()}"></i>
                 <div class="body">
                     <h6>${alert.message}</h6>
-                    <span>${alert.date}, ${alert.time}</span>
+                    <span>${alert.date} - ${alert.time.substring(0, 8)}</span>
                 </div>
             </div>
             `);
-        });
+        }
     });
 }
 
@@ -176,12 +177,12 @@ $(".password-input").on('click', 'i', function () {
 // copy text
 $("body").on('click', '.fa-copy', function () {
     let text = $(this).parent().text().trim();
-    
+
     // Create a temporary textarea element
     let tempInput = $("<textarea>");
     $("body").append(tempInput);
     tempInput.val(text).select();
-    
+
     try {
         document.execCommand("copy");
         // alert("Copied the text: " + text);
@@ -203,7 +204,7 @@ $("body").on('click', '.fa-copy', function () {
             timer: 1000
         });
     }
-    
+
     // Remove the temporary element
     tempInput.remove();
 });

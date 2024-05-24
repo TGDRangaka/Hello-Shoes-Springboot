@@ -5,6 +5,7 @@ import lk.ijse.helloshoesbackend.dto.AdminPanelDTO;
 import lk.ijse.helloshoesbackend.dto.AlertDTO;
 import lk.ijse.helloshoesbackend.service.AdminPanelService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,12 +16,14 @@ import java.util.List;
 @Component
 @Transactional
 @RequiredArgsConstructor
+@Slf4j
 public class AdminPanelBOIMPL implements AdminPanelBO{
     private final AdminPanelService adminPanelService;
 
     @Override
     public AdminPanelDTO getAdminPanelDate(LocalDate date) {
-        return new AdminPanelDTO(
+        log.info("Attempting to get admin panel data");
+        AdminPanelDTO adminPanelDTO = new AdminPanelDTO(
                 adminPanelService.getTotalSalesCount(date),
                 adminPanelService.getTotalProfits(date),
                 adminPanelService.getTotalSoldProductsCount(date),
@@ -29,18 +32,17 @@ public class AdminPanelBOIMPL implements AdminPanelBO{
                 adminPanelService.getDailyTotalSales(date),
                 adminPanelService.getDailyTotalProfits(date)
         );
+
+        log.info("Returning admin panel data");
+        return adminPanelDTO;
     }
 
     @Override
     public List<AlertDTO> recordAlert(AlertDTO alert){
+        log.info("Attempting to record alert");
         alert.setDate(LocalDate.now());
         alert.setTime(LocalTime.now());
 
         return adminPanelService.saveAlert(alert);
-    }
-
-    @Override
-    public List<AlertDTO> getAllAlerts(){
-        return adminPanelService.getAllAlerts();
     }
 }

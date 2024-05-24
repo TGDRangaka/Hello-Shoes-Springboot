@@ -10,6 +10,4 @@ public interface AdminPanelBO {
     AdminPanelDTO getAdminPanelDate(LocalDate date);
 
     List<AlertDTO> recordAlert(AlertDTO alert);
-
-    List<AlertDTO> getAllAlerts();
 }

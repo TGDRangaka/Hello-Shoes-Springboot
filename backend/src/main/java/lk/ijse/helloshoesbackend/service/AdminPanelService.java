@@ -20,6 +20,4 @@ public interface AdminPanelService {
     List<MostSoldItemProjection> getMostSoldItems(LocalDate date);
 
     List<AlertDTO> saveAlert(AlertDTO alertDTO);
-
-    List<AlertDTO> getAllAlerts();
 }

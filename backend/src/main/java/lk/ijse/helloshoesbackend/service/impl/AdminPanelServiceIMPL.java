@@ -13,6 +13,7 @@ import lk.ijse.helloshoesbackend.service.AdminPanelService;
 import lk.ijse.helloshoesbackend.util.Conversion;
 import lk.ijse.helloshoesbackend.util.UtilMatter;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,21 +24,24 @@ import java.util.List;
 @Service
 @Transactional
 @RequiredArgsConstructor
+@Slf4j
 public class AdminPanelServiceIMPL implements AdminPanelService {
     private final SaleRepo saleRepo;
     private final SaleItemRepo saleItemRepo;
     private final AlertRepo alertRepo;
-    private final RefundRepo refundRepo;
 
 
     @Override
     public int getTotalSalesCount(LocalDate date) {
+        log.info("Fetching total sales count for {}", date.toString());
         Integer integer = saleRepo.countByOrderDate(date);
+        log.info("Fetched total sales count {}", integer);
         return integer == null? 0 : integer;
     }
 
     @Override
     public Double getTotalProfits(LocalDate date) {
+        log.info("Fetching total profits for {}", date.toString());
         List<SaleItemProjection> sales = saleItemRepo.getTotalProfit(date);
 //        Double totalRefunds = refundRepo.getTotalRefundByDate(date);
         Double totalProfit = 0.0;
@@ -45,30 +49,37 @@ public class AdminPanelServiceIMPL implements AdminPanelService {
             totalProfit += sale.getQty() * sale.getExpectedProfit();
         }
 //        return totalProfit - (totalRefunds == null ? 0 : totalRefunds);
+        log.info("Fetched total profits amount {}", totalProfit);
         return totalProfit;
     }
 
     @Override
     public int getTotalSoldProductsCount(LocalDate date) {
+        log.info("Fetching total sold products count for {}", date.toString());
         Integer totalQtySold = saleItemRepo.getTotalQtySold(date);
+        log.info("Fetched total sold products count {}", totalQtySold);
         return totalQtySold == null? 0 : totalQtySold;
     }
 
     @Override
     public List<DailySalesProjection> getDailyTotalSales(LocalDate date) {
+        log.info("Fetching daily total sales for {}", date.toString());
         List<DailySalesProjection> dailyTotSales = new ArrayList<>();
         for(int i = 6; i >= 0; i--){
             dailyTotSales.add(new DailySalesProjection(date.minusDays(i), saleRepo.countByOrderDate(date.minusDays(i))));
         }
+        log.info("Fetched daily total sales for {}", date.toString());
         return dailyTotSales;
     }
 
     @Override
     public List<DailyProfitProjection> getDailyTotalProfits(LocalDate date){
+        log.info("Fetching daily total profits for {}", date.toString());
         List<DailyProfitProjection> dailyTotProfits = new ArrayList<>();
         for(int i = 6; i >= 0; i--){
             dailyTotProfits.add(new DailyProfitProjection(date.minusDays(i), getTotalProfits(date.minusDays(i))));
         }
+        log.info("Fetched daily total profits for {}", date.toString());
         return dailyTotProfits;
     }
 
@@ -79,18 +90,16 @@ public class AdminPanelServiceIMPL implements AdminPanelService {
 
     @Override
     public List<MostSoldItemProjection> getMostSoldItems(LocalDate date) {
+        log.info("Fetching most sold items for {}", date.toString());
         return saleItemRepo.findMostSoldItems(date);
     }
 
     @Override
     public List<AlertDTO> saveAlert(AlertDTO alertDTO){
+        log.info("Saving alert");
         alertDTO.setId(UtilMatter.generateUUID());
         alertRepo.save(Conversion.toAlertEntity(alertDTO));
-        return Conversion.toAlertDTOList(alertRepo.findAll());
-    }
-
-    @Override
-    public List<AlertDTO> getAllAlerts() {
-        return Conversion.toAlertDTOList(alertRepo.findAll());
+        log.info("Saved alert and returning all alerts");
+        return Conversion.toAlertDTOList(alertRepo.findAllByOrderByDateDescTimeDesc());
     }
 }

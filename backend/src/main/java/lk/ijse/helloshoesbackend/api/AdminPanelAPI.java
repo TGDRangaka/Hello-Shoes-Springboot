@@ -4,6 +4,7 @@ import lk.ijse.helloshoesbackend.bo.AdminPanelBO;
 import lk.ijse.helloshoesbackend.dto.AlertDTO;
 import lk.ijse.helloshoesbackend.service.AdminPanelService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,43 +14,27 @@ import java.time.LocalDate;
 @RequestMapping("/api/v1/admin-panel")
 @CrossOrigin
 @RequiredArgsConstructor
+@Slf4j
 public class AdminPanelAPI {
     private final AdminPanelBO adminPanelBO;
 
     @GetMapping("/health")
     public String healthCheck(){
+        log.info("Admin Panel Health Check endpoint called");
         return "Admin Panel Health Good";
     }
 
-    @GetMapping("/{date:\\d{4}-\\d{2}-\\d{2}}")
+    @GetMapping("/{date:\\d{4}-\\d{1,2}-\\d{1,2}}")
     public ResponseEntity getAdminPanelData(@PathVariable String date){
-        try {
-            date = date.replaceAll("(\\b\\d\\b)", "0$1");
-            return ResponseEntity.accepted().body(adminPanelBO.getAdminPanelDate(LocalDate.parse(date)));
-        }catch (Exception e){
-            e.printStackTrace();
-            return ResponseEntity.internalServerError().body(e.getMessage());
-        }
+        log.info("Get Admin Panel Data endpoint called - Date: {}", date);
+        date = date.replaceAll("(\\b\\d\\b)", "0$1");
+        return ResponseEntity.accepted().body(adminPanelBO.getAdminPanelDate(LocalDate.parse(date)));
     }
 
     @PostMapping("/alert")
     public ResponseEntity recordAlert(@RequestBody AlertDTO alertDTO){
-        try{
-            return ResponseEntity.ok(adminPanelBO.recordAlert(alertDTO));
-        }catch (Exception e){
-            e.printStackTrace();
-            return ResponseEntity.internalServerError().body(e.getMessage());
-        }
-    }
-
-    @GetMapping("/alert")
-    public ResponseEntity getAllAlerts(){
-        try{
-            return ResponseEntity.ok(adminPanelBO.getAllAlerts());
-        }catch (Exception e){
-            e.printStackTrace();
-            return ResponseEntity.internalServerError().body(e.getMessage());
-        }
+        log.info("Record Alert endpoint called - Alert: {}", alertDTO);
+        return ResponseEntity.ok(adminPanelBO.recordAlert(alertDTO));
     }
 
 }
