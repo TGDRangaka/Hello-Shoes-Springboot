@@ -6328,3 +6328,148 @@ io.jsonwebtoken.ExpiredJwtException: JWT expired at 2024-05-23T23:08:08Z. Curren
 2024-05-24T18:07:13.418+05:30  INFO 13368 --- [Hello-Shoes-Springboot] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2024-05-24T18:07:13.517+05:30  INFO 13368 --- [Hello-Shoes-Springboot] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2024-05-24T18:07:13.615+05:30  INFO 13368 --- [Hello-Shoes-Springboot] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-05-24T18:07:23.647+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [main] l.i.h.HelloShoesSpringbootApplication    : Starting HelloShoesSpringbootApplication using Java 21.0.1 with PID 3180 (D:\Github\Hello-Shoes-Springboot\backend\target\classes started by USER in D:\Github\Hello-Shoes-Springboot\backend)
+2024-05-24T18:07:23.649+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [main] l.i.h.HelloShoesSpringbootApplication    : No active profile set, falling back to 1 default profile: "default"
+2024-05-24T18:07:24.600+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-05-24T18:07:24.758+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 148 ms. Found 12 JPA repository interfaces.
+2024-05-24T18:07:25.366+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-05-24T18:07:25.378+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-05-24T18:07:25.378+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.20]
+2024-05-24T18:07:25.429+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-05-24T18:07:25.430+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1726 ms
+2024-05-24T18:07:25.605+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-05-24T18:07:25.671+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-05-24T18:07:25.712+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-05-24T18:07:25.936+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-05-24T18:07:25.957+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-05-24T18:07:26.466+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@33215ffb
+2024-05-24T18:07:26.469+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-05-24T18:07:27.976+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-05-24T18:07:28.340+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-05-24T18:07:28.890+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-05-24T18:07:29.808+05:30  WARN 3180 --- [Hello-Shoes-Springboot] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-05-24T18:07:30.152+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@1ff9d66b, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1e2c701, org.springframework.security.web.context.SecurityContextHolderFilter@7ec416a0, org.springframework.security.web.header.HeaderWriterFilter@737652a9, org.springframework.web.filter.CorsFilter@21e441d1, org.springframework.security.web.authentication.logout.LogoutFilter@24a29d8, lk.ijse.helloshoesbackend.config.JWTConfigurationFilter$$SpringCGLIB$$0@3ba50851, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@2cfd91b9, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@491cceb4, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@711329fe, org.springframework.security.web.session.SessionManagementFilter@77cac3b, org.springframework.security.web.access.ExceptionTranslationFilter@2cf88ae1, org.springframework.security.web.access.intercept.AuthorizationFilter@6fab250b]
+2024-05-24T18:07:30.412+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-05-24T18:07:30.420+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [main] l.i.h.HelloShoesSpringbootApplication    : Started HelloShoesSpringbootApplication in 7.209 seconds (process running for 7.9)
+2024-05-24T18:07:35.135+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-05-24T18:07:35.136+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-05-24T18:07:35.139+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2024-05-24T18:07:35.144+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] l.i.h.config.AccessLogFilter             : -------- OPTIONS --- /api/v1/auth 
+2024-05-24T18:07:35.244+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-8] l.i.h.config.AccessLogFilter             : -------- PUT --- /api/v1/auth 
+2024-05-24T18:07:35.412+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-8] lk.ijse.helloshoesbackend.api.UserAPI    : SignIn request received for email: rangaka@gmail.com
+2024-05-24T18:07:35.414+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-8] l.i.h.s.impl.AuthenticationServiceIMPL   : Attempting to authenticate user: rangaka@gmail.com
+2024-05-24T18:07:35.761+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-8] l.i.h.s.impl.AuthenticationServiceIMPL   : Authentication successful for user: rangaka@gmail.com
+2024-05-24T18:07:35.833+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-8] l.i.h.s.impl.AuthenticationServiceIMPL   : Generated JWT token for user: rangaka@gmail.com
+2024-05-24T18:07:35.833+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-8] l.i.helloshoesbackend.util.Conversion    : Converting UserEntity to UserDTO
+2024-05-24T18:07:35.983+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-10] l.i.h.config.AccessLogFilter             : -------- OPTIONS --- /api/v1/admin-panel/alert 
+2024-05-24T18:07:35.996+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-3] l.i.h.config.AccessLogFilter             : -------- POST --- /api/v1/admin-panel/alert 
+2024-05-24T18:07:36.088+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-3] l.i.helloshoesbackend.api.AdminPanelAPI  : Record Alert endpoint called - Alert: AlertDTO(id=null, message=Dilshan Rangaka logged in, date=null, time=null, type=INFO)
+2024-05-24T18:07:36.089+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-3] l.i.h.s.impl.AdminPanelServiceIMPL       : Saving alert
+2024-05-24T18:07:36.093+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-3] l.i.helloshoesbackend.util.UtilMatter    : Generated UUID: 405727aa-9095-4f4d-a1bd-d097c059094c
+2024-05-24T18:07:36.094+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-3] l.i.helloshoesbackend.util.Conversion    : Converting AlertDTO to AlertEntity
+2024-05-24T18:07:36.167+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-3] l.i.h.s.impl.AdminPanelServiceIMPL       : Saved alert and returning all alerts
+2024-05-24T18:07:36.282+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-5] l.i.h.config.AccessLogFilter             : -------- OPTIONS --- /api/v1/item 
+2024-05-24T18:07:36.294+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-6] l.i.h.config.AccessLogFilter             : -------- GET --- /api/v1/item 
+2024-05-24T18:07:36.309+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-3] l.i.helloshoesbackend.util.Conversion    : Converting List<AlertEntity> to List<AlertDTO>
+2024-05-24T18:07:36.343+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-6] lk.ijse.helloshoesbackend.api.ItemAPI    : Get All Items endpoint called
+2024-05-24T18:07:36.345+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-6] l.i.h.service.impl.ItemServiceIMPL       : Fetching all items
+2024-05-24T18:07:36.384+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-6] l.i.helloshoesbackend.util.Conversion    : Converting List<ItemEntity> to List<ItemDTO>
+2024-05-24T18:07:48.329+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-9] l.i.h.config.AccessLogFilter             : -------- OPTIONS --- /api/v1/admin-panel/2024-5-24 
+2024-05-24T18:07:48.342+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-4] l.i.h.config.AccessLogFilter             : -------- GET --- /api/v1/admin-panel/2024-5-24 
+2024-05-24T18:07:48.391+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-4] l.i.helloshoesbackend.api.AdminPanelAPI  : Get Admin Panel Data endpoint called - Date: 2024-5-24
+2024-05-24T18:07:48.396+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-4] l.i.h.s.impl.AdminPanelServiceIMPL       : Attempting to get admin panel data
+2024-05-24T18:07:48.397+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-4] l.i.h.s.impl.AdminPanelServiceIMPL       : Fetching total sales count for 2024-05-24
+2024-05-24T18:07:48.418+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-4] l.i.h.s.impl.AdminPanelServiceIMPL       : Fetched total sales count 6
+2024-05-24T18:07:48.419+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-4] l.i.h.s.impl.AdminPanelServiceIMPL       : Fetching total profits for 2024-05-24
+2024-05-24T18:07:48.441+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-4] l.i.h.s.impl.AdminPanelServiceIMPL       : Fetched total profits amount 1470.0
+2024-05-24T18:07:48.441+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-4] l.i.h.s.impl.AdminPanelServiceIMPL       : Fetching total sold products count for 2024-05-24
+2024-05-24T18:07:48.449+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-4] l.i.h.s.impl.AdminPanelServiceIMPL       : Fetched total sold products count 9
+2024-05-24T18:07:48.449+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-4] l.i.h.s.impl.AdminPanelServiceIMPL       : Fetching most sold items for 2024-05-24
+2024-05-24T18:07:48.497+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-4] l.i.h.s.impl.AdminPanelServiceIMPL       : Fetching daily total sales for 2024-05-24
+2024-05-24T18:07:48.519+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-4] l.i.h.s.impl.AdminPanelServiceIMPL       : Fetched daily total sales for 2024-05-24
+2024-05-24T18:07:48.519+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-4] l.i.h.s.impl.AdminPanelServiceIMPL       : Fetching daily total profits for 2024-05-24
+2024-05-24T18:07:48.521+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-4] l.i.h.s.impl.AdminPanelServiceIMPL       : Fetching total profits for 2024-05-18
+2024-05-24T18:07:48.526+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-4] l.i.h.s.impl.AdminPanelServiceIMPL       : Fetched total profits amount 460.0
+2024-05-24T18:07:48.526+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-4] l.i.h.s.impl.AdminPanelServiceIMPL       : Fetching total profits for 2024-05-19
+2024-05-24T18:07:48.530+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-4] l.i.h.s.impl.AdminPanelServiceIMPL       : Fetched total profits amount 0.0
+2024-05-24T18:07:48.530+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-4] l.i.h.s.impl.AdminPanelServiceIMPL       : Fetching total profits for 2024-05-20
+2024-05-24T18:07:48.533+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-4] l.i.h.s.impl.AdminPanelServiceIMPL       : Fetched total profits amount 0.0
+2024-05-24T18:07:48.533+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-4] l.i.h.s.impl.AdminPanelServiceIMPL       : Fetching total profits for 2024-05-21
+2024-05-24T18:07:48.537+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-4] l.i.h.s.impl.AdminPanelServiceIMPL       : Fetched total profits amount 3100.0
+2024-05-24T18:07:48.537+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-4] l.i.h.s.impl.AdminPanelServiceIMPL       : Fetching total profits for 2024-05-22
+2024-05-24T18:07:48.541+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-4] l.i.h.s.impl.AdminPanelServiceIMPL       : Fetched total profits amount 3040.0
+2024-05-24T18:07:48.541+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-4] l.i.h.s.impl.AdminPanelServiceIMPL       : Fetching total profits for 2024-05-23
+2024-05-24T18:07:48.545+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-4] l.i.h.s.impl.AdminPanelServiceIMPL       : Fetched total profits amount 1600.0
+2024-05-24T18:07:48.546+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-4] l.i.h.s.impl.AdminPanelServiceIMPL       : Fetching total profits for 2024-05-24
+2024-05-24T18:07:48.550+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-4] l.i.h.s.impl.AdminPanelServiceIMPL       : Fetched total profits amount 1470.0
+2024-05-24T18:07:48.550+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-4] l.i.h.s.impl.AdminPanelServiceIMPL       : Fetched daily total profits for 2024-05-24
+2024-05-24T18:07:48.550+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-4] l.i.h.s.impl.AdminPanelServiceIMPL       : Returning admin panel data
+2024-05-24T18:07:51.851+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-8] l.i.h.config.AccessLogFilter             : -------- GET --- /api/v1/item 
+2024-05-24T18:07:51.851+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] l.i.h.config.AccessLogFilter             : -------- OPTIONS --- /api/v1/customer 
+2024-05-24T18:07:51.860+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-10] l.i.h.config.AccessLogFilter             : -------- GET --- /api/v1/customer 
+2024-05-24T18:07:51.877+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-8] lk.ijse.helloshoesbackend.api.ItemAPI    : Get All Items endpoint called
+2024-05-24T18:07:51.879+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-8] l.i.h.service.impl.ItemServiceIMPL       : Fetching all items
+2024-05-24T18:07:51.887+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-10] l.i.helloshoesbackend.api.CustomerAPI    : Get all customers endpoint called
+2024-05-24T18:07:51.888+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-10] l.i.h.service.impl.CustomerServiceIMPL   : Fetching all customers
+2024-05-24T18:07:51.890+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-8] l.i.helloshoesbackend.util.Conversion    : Converting List<ItemEntity> to List<ItemDTO>
+2024-05-24T18:07:51.899+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-10] l.i.helloshoesbackend.util.Conversion    : Converting List<CustomerEntity> to List<CustomerDTO>
+2024-05-24T18:07:56.873+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-6] l.i.h.config.AccessLogFilter             : -------- GET --- /api/v1/item 
+2024-05-24T18:07:56.900+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-6] lk.ijse.helloshoesbackend.api.ItemAPI    : Get All Items endpoint called
+2024-05-24T18:07:56.901+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-6] l.i.h.service.impl.ItemServiceIMPL       : Fetching all items
+2024-05-24T18:07:56.911+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-6] l.i.helloshoesbackend.util.Conversion    : Converting List<ItemEntity> to List<ItemDTO>
+2024-05-24T18:08:42.494+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-2] l.i.h.config.AccessLogFilter             : -------- OPTIONS --- /api/v1/item 
+2024-05-24T18:08:42.503+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-9] l.i.h.config.AccessLogFilter             : -------- POST --- /api/v1/item 
+2024-05-24T18:08:42.570+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-9] lk.ijse.helloshoesbackend.api.ItemAPI    : Save Item endpoint called
+2024-05-24T18:08:42.572+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-9] l.i.h.service.impl.ItemServiceIMPL       : Attempting to save item
+2024-05-24T18:08:42.573+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-9] l.i.h.service.impl.ItemImageServiceIMPL  : Saving image
+2024-05-24T18:08:42.573+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-9] l.i.helloshoesbackend.util.UtilMatter    : Generated UUID: 1eb60604-f51a-4ea7-8e82-d70b9edc2670
+2024-05-24T18:08:42.575+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-9] l.i.h.service.impl.ItemImageServiceIMPL  : Image saved successfully with ID: 1eb60604-f51a-4ea7-8e82-d70b9edc2670
+2024-05-24T18:08:42.578+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-9] l.i.h.service.impl.ItemImageServiceIMPL  : Saving image
+2024-05-24T18:08:42.578+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-9] l.i.helloshoesbackend.util.UtilMatter    : Generated UUID: 7db384a6-ccae-43de-9b06-07c46deea673
+2024-05-24T18:08:42.580+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-9] l.i.h.service.impl.ItemImageServiceIMPL  : Image saved successfully with ID: 7db384a6-ccae-43de-9b06-07c46deea673
+2024-05-24T18:08:42.580+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-9] l.i.h.service.impl.SupplierServiceIMPL   : Finding supplier by name: Converse
+2024-05-24T18:08:42.583+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-9] l.i.helloshoesbackend.util.Conversion    : Converting SupplierEntity to SupplierDTO
+2024-05-24T18:08:42.584+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-9] l.i.h.service.impl.ItemServiceIMPL       : Saving new item with id CSW22130
+2024-05-24T18:08:42.585+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-9] l.i.helloshoesbackend.util.Conversion    : Converting List<InventoryDTO> to List<InventoryEntity>
+2024-05-24T18:08:42.593+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-9] l.i.helloshoesbackend.util.Conversion    : Converting ItemDTO to ItemEntity
+2024-05-24T18:08:42.747+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-9] l.i.h.service.impl.ItemServiceIMPL       : New item with id CSW22130 saved successfully
+2024-05-24T18:08:42.945+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-4] l.i.h.config.AccessLogFilter             : -------- GET --- /api/v1/item 
+2024-05-24T18:08:42.975+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-4] lk.ijse.helloshoesbackend.api.ItemAPI    : Get All Items endpoint called
+2024-05-24T18:08:42.976+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-4] l.i.h.service.impl.ItemServiceIMPL       : Fetching all items
+2024-05-24T18:08:42.987+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-4] l.i.helloshoesbackend.util.Conversion    : Converting List<ItemEntity> to List<ItemDTO>
+2024-05-24T18:09:53.668+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-10] l.i.h.config.AccessLogFilter             : -------- OPTIONS --- /api/v1/item/CSW22130 
+2024-05-24T18:09:53.689+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-8] l.i.h.config.AccessLogFilter             : -------- PUT --- /api/v1/item/CSW22130 
+2024-05-24T18:09:53.717+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-8] lk.ijse.helloshoesbackend.api.ItemAPI    : Update Item endpoint called
+2024-05-24T18:09:53.719+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-8] l.i.h.service.impl.ItemServiceIMPL       : Attempting to update item
+2024-05-24T18:09:53.720+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-8] l.i.h.service.impl.InventoryServiceIMPL  : Fetching available colors for inventory item with ID: CSW22130
+2024-05-24T18:09:53.733+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-8] l.i.h.service.impl.InventoryServiceIMPL  : Fetched available colors successfully for inventory item with ID: CSW22130
+2024-05-24T18:09:53.734+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-8] l.i.h.service.impl.ItemImageServiceIMPL  : Updating image with id: 1eb60604-f51a-4ea7-8e82-d70b9edc2670
+2024-05-24T18:09:53.739+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-8] l.i.h.service.impl.ItemImageServiceIMPL  : Image updated successfully with ID: 1eb60604-f51a-4ea7-8e82-d70b9edc2670
+2024-05-24T18:09:53.740+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-8] l.i.h.service.impl.ItemImageServiceIMPL  : Updating image with id: 7db384a6-ccae-43de-9b06-07c46deea673
+2024-05-24T18:09:53.742+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-8] l.i.h.service.impl.ItemImageServiceIMPL  : Image updated successfully with ID: 7db384a6-ccae-43de-9b06-07c46deea673
+2024-05-24T18:09:53.742+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-8] l.i.h.service.impl.ItemServiceIMPL       : Updating item with id CSW22130
+2024-05-24T18:09:53.745+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-8] l.i.h.service.impl.ItemServiceIMPL       : Item with id CSW22130 updated successfully
+2024-05-24T18:09:53.795+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-3] l.i.h.config.AccessLogFilter             : -------- GET --- /api/v1/item 
+2024-05-24T18:09:53.814+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-3] lk.ijse.helloshoesbackend.api.ItemAPI    : Get All Items endpoint called
+2024-05-24T18:09:53.815+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-3] l.i.h.service.impl.ItemServiceIMPL       : Fetching all items
+2024-05-24T18:09:53.822+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-3] l.i.helloshoesbackend.util.Conversion    : Converting List<ItemEntity> to List<ItemDTO>
+2024-05-24T18:10:09.030+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-5] l.i.h.config.AccessLogFilter             : -------- PUT --- /api/v1/auth 
+2024-05-24T18:10:09.034+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-5] lk.ijse.helloshoesbackend.api.UserAPI    : SignIn request received for email: rangaka@gmail.com
+2024-05-24T18:10:09.034+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-5] l.i.h.s.impl.AuthenticationServiceIMPL   : Attempting to authenticate user: rangaka@gmail.com
+2024-05-24T18:10:09.150+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-5] l.i.h.s.impl.AuthenticationServiceIMPL   : Authentication successful for user: rangaka@gmail.com
+2024-05-24T18:10:09.153+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-5] l.i.h.s.impl.AuthenticationServiceIMPL   : Generated JWT token for user: rangaka@gmail.com
+2024-05-24T18:10:09.154+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-5] l.i.helloshoesbackend.util.Conversion    : Converting UserEntity to UserDTO
+2024-05-24T18:10:09.178+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-6] l.i.h.config.AccessLogFilter             : -------- POST --- /api/v1/admin-panel/alert 
+2024-05-24T18:10:09.198+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-6] l.i.helloshoesbackend.api.AdminPanelAPI  : Record Alert endpoint called - Alert: AlertDTO(id=null, message=Dilshan Rangaka logged in, date=null, time=null, type=INFO)
+2024-05-24T18:10:09.199+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-6] l.i.h.s.impl.AdminPanelServiceIMPL       : Saving alert
+2024-05-24T18:10:09.199+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-6] l.i.helloshoesbackend.util.UtilMatter    : Generated UUID: a700ec89-cd22-473f-b53c-182af712c766
+2024-05-24T18:10:09.199+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-6] l.i.helloshoesbackend.util.Conversion    : Converting AlertDTO to AlertEntity
+2024-05-24T18:10:09.208+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-6] l.i.h.s.impl.AdminPanelServiceIMPL       : Saved alert and returning all alerts
+2024-05-24T18:10:09.222+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-6] l.i.helloshoesbackend.util.Conversion    : Converting List<AlertEntity> to List<AlertDTO>
+2024-05-24T18:10:09.498+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-7] l.i.h.config.AccessLogFilter             : -------- GET --- /api/v1/item 
+2024-05-24T18:10:09.525+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-7] lk.ijse.helloshoesbackend.api.ItemAPI    : Get All Items endpoint called
+2024-05-24T18:10:09.527+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-7] l.i.h.service.impl.ItemServiceIMPL       : Fetching all items
+2024-05-24T18:10:09.537+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-7] l.i.helloshoesbackend.util.Conversion    : Converting List<ItemEntity> to List<ItemDTO>
+2024-05-24T18:49:09.997+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-05-24T18:49:10.336+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-05-24T18:49:10.431+05:30  INFO 3180 --- [Hello-Shoes-Springboot] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

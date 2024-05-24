@@ -8,7 +8,7 @@ import lk.ijse.helloshoesbackend.exception.InvalidDataException;
 import java.util.List;
 
 public interface SaleService {
-    boolean save(SaleDTO saleDTO);
+    boolean save(SaleDTO saleDTO, String user);
     List<SaleDTO> getSales();
     List<SaleItemDTO> getSaleItems(String orderId);
     boolean checkRefundAvailable(String orderId);

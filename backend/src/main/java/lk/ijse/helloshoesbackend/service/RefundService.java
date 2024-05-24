@@ -6,7 +6,7 @@ import lk.ijse.helloshoesbackend.dto.SaleItemDTO;
 import java.util.List;
 
 public interface RefundService {
-    void refundSaleItem(RefundDTO refundDTO);
+    void saveRefund(List<RefundDTO> refunds, String user);
     List<RefundDTO> getAllRefunds();
     List<RefundDTO> checkRefundedBefore(SaleItemDTO saleItem);
 }

@@ -2,7 +2,6 @@ package lk.ijse.helloshoesbackend.api;
 
 import jakarta.annotation.security.RolesAllowed;
 import jakarta.validation.Valid;
-import lk.ijse.helloshoesbackend.bo.SaleBO;
 import lk.ijse.helloshoesbackend.dto.RefundDTO;
 import lk.ijse.helloshoesbackend.service.RefundService;
 import lk.ijse.helloshoesbackend.service.SaleService;
@@ -20,7 +19,8 @@ import java.util.List;
 @RequiredArgsConstructor
 @Slf4j
 public class RefundAPI {
-    private final SaleBO saleBO;
+    private final RefundService refundService;
+    private final SaleService saleService;
 
     @GetMapping("/health")
     public String healthCheck(){
@@ -31,20 +31,20 @@ public class RefundAPI {
     @GetMapping
     public ResponseEntity getAllRefunds(){
         log.info("Get all refunds endpoint called");
-        return ResponseEntity.ok(saleBO.getAllRefunds());
+        return ResponseEntity.ok(refundService.getAllRefunds());
     }
 
     @GetMapping("/{orderId}")
     public ResponseEntity getSaleItemsByOrderId(@PathVariable String orderId){
         log.info("Get sale items by order id endpoint called");
-        return ResponseEntity.ok(saleBO.getSaleItems(orderId));
+        return ResponseEntity.ok(saleService.getSaleItems(orderId));
     }
 
     @PostMapping
     @RolesAllowed("ADMIN")
     public ResponseEntity saveRefund(@Valid @RequestBody List<RefundDTO> refunds, Authentication authentication){
         log.info("Save refund endpoint called");
-        saleBO.refundSaleItems(refunds, authentication.getName());
+        refundService.saveRefund(refunds, authentication.getName());
         return ResponseEntity.ok("Ok");
     }
 }
