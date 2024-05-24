@@ -20,9 +20,7 @@ import java.util.List;
 @Slf4j
 public class CustomerAPI {
     private final CustomerBO customerBO;
-
-    @Autowired
-    private CustomerService customerService;
+    private final CustomerService customerService;
 
     @GetMapping("/health")
     public String healthCheck(){
