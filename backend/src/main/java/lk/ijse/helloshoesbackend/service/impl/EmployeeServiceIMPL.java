@@ -8,6 +8,7 @@ import lk.ijse.helloshoesbackend.repo.EmployeeRepo;
 import lk.ijse.helloshoesbackend.repo.UserRepo;
 import lk.ijse.helloshoesbackend.service.EmployeeService;
 import lk.ijse.helloshoesbackend.util.Conversion;
+import lk.ijse.helloshoesbackend.util.UtilMatter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
@@ -48,7 +49,9 @@ public class EmployeeServiceIMPL implements EmployeeService {
 
     @Override
     public String saveEmployee(EmployeeDTO employee) {
-        log.info("Saving employee: {}", employee);
+        log.info("Saving employee: ");
+
+        employee.setEmployeeCode(UtilMatter.generateUUID());
         EmployeeEntity savedEmployee = employeeRepo.save(Conversion.toEmployeeEntity(employee));
         log.info("Saved employee with code: {}", savedEmployee.getEmployeeCode());
         return savedEmployee.getEmployeeCode();

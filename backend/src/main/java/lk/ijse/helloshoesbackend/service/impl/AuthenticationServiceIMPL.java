@@ -6,7 +6,6 @@ import lk.ijse.helloshoesbackend.entity.UserEntity;
 import lk.ijse.helloshoesbackend.entity.enums.UserRole;
 import lk.ijse.helloshoesbackend.exception.DataDuplicationException;
 import lk.ijse.helloshoesbackend.exception.InvalidDataException;
-import lk.ijse.helloshoesbackend.exception.NotFoundException;
 import lk.ijse.helloshoesbackend.repo.UserRepo;
 import lk.ijse.helloshoesbackend.reqAndResp.request.SignIn;
 import lk.ijse.helloshoesbackend.reqAndResp.request.SignUp;
@@ -59,8 +58,16 @@ public class AuthenticationServiceIMPL implements AuthenticationService {
     }
 
     @Override
-    public boolean isCredentialsValid(String email, String password) {
+    public boolean isCredentialsValid(String email, String password, Authentication authentication) {
         log.info("Validating credentials for email: {}", email);
+
+        password = UtilMatter.decodeCredentials(password, 0);
+
+        if (!email.equals(authentication.getName())) {
+            log.warn("Email mismatch: {} != {}", email, authentication.getName());
+            return false;
+        }
+
         UserEntity byEmail = userRepo.findByEmail(email)
                 .orElseThrow(() -> new UsernameNotFoundException("User Not Found"));
 

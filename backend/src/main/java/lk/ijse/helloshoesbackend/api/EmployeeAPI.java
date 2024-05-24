@@ -1,12 +1,11 @@
 package lk.ijse.helloshoesbackend.api;
 
 import jakarta.annotation.security.RolesAllowed;
-import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
-import lk.ijse.helloshoesbackend.bo.EmployeeBO;
 import lk.ijse.helloshoesbackend.dto.EmployeeDTO;
 import lk.ijse.helloshoesbackend.entity.enums.Gender;
-import lk.ijse.helloshoesbackend.reqAndResp.request.SignIn;
+import lk.ijse.helloshoesbackend.service.AuthenticationService;
+import lk.ijse.helloshoesbackend.service.EmployeeService;
 import lk.ijse.helloshoesbackend.util.UtilMatter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -26,20 +25,20 @@ import java.time.LocalDate;
 @RequiredArgsConstructor
 @Slf4j
 public class EmployeeAPI {
-
-    private final EmployeeBO employeeBO;
+    private final EmployeeService employeeService;
+    private final AuthenticationService authenticationService;
 
     @GetMapping
     public ResponseEntity getAllEmployees(){
         log.info("Get all employees endpoint called");
-        return ResponseEntity.ok(employeeBO.getAllEmployees());
+        return ResponseEntity.ok(employeeService.getAllEmployees());
     }
 
     @RolesAllowed("ADMIN")
     @GetMapping("/validate/{email}/{password}")
     public ResponseEntity isValidCredentials(@PathVariable String email, @PathVariable String password, Authentication authentication){
         log.info("isValidCredentials is called");
-        return ResponseEntity.ok(employeeBO.isEmployeeCredentialsValid(email, password, authentication));
+        return ResponseEntity.ok(authenticationService.isCredentialsValid(email, password, authentication));
     }
 
     @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
@@ -84,7 +83,7 @@ public class EmployeeAPI {
         employee.setPhone(phone);
         employee.setGuardianOrNominatedPerson(guardianOrNominatedPerson);
         employee.setEmergencyContact(emergencyContact);
-        return ResponseEntity.ok(employeeBO.saveEmployee(employee));
+        return ResponseEntity.ok(employeeService.saveEmployee(employee));
     }
 
     @PutMapping(path = "/{employeeCode}" ,consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
@@ -131,6 +130,6 @@ public class EmployeeAPI {
         employee.setGuardianOrNominatedPerson(guardianOrNominatedPerson);
         employee.setEmergencyContact(emergencyContact);
 
-        return ResponseEntity.ok().body(employeeBO.updateEmployee(employee,employeeCode));
+        return ResponseEntity.ok().body(employeeService.updateEmployee(employee,employeeCode));
     }
 }
