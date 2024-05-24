@@ -2,6 +2,7 @@ package lk.ijse.helloshoesbackend.service.impl;
 
 import lk.ijse.helloshoesbackend.dto.CustomerDTO;
 import lk.ijse.helloshoesbackend.entity.CustomerEntity;
+import lk.ijse.helloshoesbackend.entity.enums.CustomerLevel;
 import lk.ijse.helloshoesbackend.exception.NotFoundException;
 import lk.ijse.helloshoesbackend.repo.CustomerRepo;
 import lk.ijse.helloshoesbackend.service.CustomerService;
@@ -12,6 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -34,6 +36,10 @@ public class CustomerServiceIMPL implements CustomerService {
     public CustomerDTO save(CustomerDTO dto) {
         log.info("Saving new customer with email: {}", dto.getEmail());
         dto.setCustomerCode(UtilMatter.generateUUID());
+        dto.setLevel(CustomerLevel.NEW);
+        dto.setTotalPoints(0);
+        dto.setJoinedDateAsLoyalty(LocalDate.now());
+
         CustomerEntity savedEntity = customerRepo.save(Conversion.toCustomerEntity(dto));
         CustomerDTO savedCustomer = Conversion.toCustomerDTO(savedEntity);
         log.debug("Saved customer: {}", savedCustomer.getCustomerCode());

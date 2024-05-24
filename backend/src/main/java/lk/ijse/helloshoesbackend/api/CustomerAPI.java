@@ -2,12 +2,10 @@ package lk.ijse.helloshoesbackend.api;
 
 import jakarta.annotation.security.RolesAllowed;
 import jakarta.validation.Valid;
-import lk.ijse.helloshoesbackend.bo.CustomerBO;
 import lk.ijse.helloshoesbackend.dto.CustomerDTO;
 import lk.ijse.helloshoesbackend.service.CustomerService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,7 +17,6 @@ import java.util.List;
 @RequiredArgsConstructor
 @Slf4j
 public class CustomerAPI {
-    private final CustomerBO customerBO;
     private final CustomerService customerService;
 
     @GetMapping("/health")
@@ -31,7 +28,7 @@ public class CustomerAPI {
     @GetMapping
     public ResponseEntity<List<CustomerDTO>> getAllCustomers(){
         log.info("Get all customers endpoint called");
-        List<CustomerDTO> customers = customerBO.getAllCustomers();
+        List<CustomerDTO> customers = customerService.getAll();
         return ResponseEntity.ok(customers);
     }
 
@@ -39,7 +36,7 @@ public class CustomerAPI {
     @RolesAllowed("ADMIN")
     public ResponseEntity<CustomerDTO> saveCustomer(@Valid @RequestBody CustomerDTO customer){
         log.info("Save customer endpoint called");
-        CustomerDTO savedCustomer = customerBO.saveCustomer(customer);
+        CustomerDTO savedCustomer = customerService.save(customer);
         return ResponseEntity.ok(savedCustomer);
     }
 
@@ -47,7 +44,7 @@ public class CustomerAPI {
     @RolesAllowed("ADMIN")
     public ResponseEntity<String> updateCustomer(@Valid @RequestBody CustomerDTO customer, @PathVariable String customerId){
         log.info("Update customer endpoint called");
-        customerBO.updateCustomer(customer, customerId);
+        customerService.update(customer, customerId);
         return ResponseEntity.accepted().body("Success");
     }
 }
