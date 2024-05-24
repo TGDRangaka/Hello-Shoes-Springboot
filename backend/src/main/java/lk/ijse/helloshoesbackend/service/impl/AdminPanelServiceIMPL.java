@@ -1,5 +1,6 @@
 package lk.ijse.helloshoesbackend.service.impl;
 
+import lk.ijse.helloshoesbackend.dto.AdminPanelDTO;
 import lk.ijse.helloshoesbackend.dto.AlertDTO;
 import lk.ijse.helloshoesbackend.dto.projection.DailyProfitProjection;
 import lk.ijse.helloshoesbackend.dto.projection.DailySalesProjection;
@@ -18,6 +19,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,6 +32,23 @@ public class AdminPanelServiceIMPL implements AdminPanelService {
     private final SaleItemRepo saleItemRepo;
     private final AlertRepo alertRepo;
 
+
+    @Override
+    public AdminPanelDTO getAdminPanelData(LocalDate date){
+        log.info("Attempting to get admin panel data");
+        AdminPanelDTO adminPanelDTO = new AdminPanelDTO(
+                getTotalSalesCount(date),
+                getTotalProfits(date),
+                getTotalSoldProductsCount(date),
+                0,
+                getMostSoldItems(date),
+                getDailyTotalSales(date),
+                getDailyTotalProfits(date)
+        );
+
+        log.info("Returning admin panel data");
+        return adminPanelDTO;
+    }
 
     @Override
     public int getTotalSalesCount(LocalDate date) {
@@ -97,7 +116,11 @@ public class AdminPanelServiceIMPL implements AdminPanelService {
     @Override
     public List<AlertDTO> saveAlert(AlertDTO alertDTO){
         log.info("Saving alert");
+
         alertDTO.setId(UtilMatter.generateUUID());
+        alertDTO.setDate(LocalDate.now());
+        alertDTO.setTime(LocalTime.now());
+
         alertRepo.save(Conversion.toAlertEntity(alertDTO));
         log.info("Saved alert and returning all alerts");
         return Conversion.toAlertDTOList(alertRepo.findAllByOrderByDateDescTimeDesc());

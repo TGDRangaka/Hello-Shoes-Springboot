@@ -1,6 +1,5 @@
 package lk.ijse.helloshoesbackend.api;
 
-import lk.ijse.helloshoesbackend.bo.AdminPanelBO;
 import lk.ijse.helloshoesbackend.dto.AlertDTO;
 import lk.ijse.helloshoesbackend.service.AdminPanelService;
 import lombok.RequiredArgsConstructor;
@@ -16,7 +15,7 @@ import java.time.LocalDate;
 @RequiredArgsConstructor
 @Slf4j
 public class AdminPanelAPI {
-    private final AdminPanelBO adminPanelBO;
+    private final AdminPanelService adminPanelService;
 
     @GetMapping("/health")
     public String healthCheck(){
@@ -28,13 +27,13 @@ public class AdminPanelAPI {
     public ResponseEntity getAdminPanelData(@PathVariable String date){
         log.info("Get Admin Panel Data endpoint called - Date: {}", date);
         date = date.replaceAll("(\\b\\d\\b)", "0$1");
-        return ResponseEntity.accepted().body(adminPanelBO.getAdminPanelDate(LocalDate.parse(date)));
+        return ResponseEntity.accepted().body(adminPanelService.getAdminPanelData(LocalDate.parse(date)));
     }
 
     @PostMapping("/alert")
     public ResponseEntity recordAlert(@RequestBody AlertDTO alertDTO){
         log.info("Record Alert endpoint called - Alert: {}", alertDTO);
-        return ResponseEntity.ok(adminPanelBO.recordAlert(alertDTO));
+        return ResponseEntity.ok(adminPanelService.saveAlert(alertDTO));
     }
 
 }
