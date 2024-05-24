@@ -4920,3 +4920,70 @@ io.jsonwebtoken.ExpiredJwtException: JWT expired at 2024-05-23T23:08:08Z. Curren
 2024-05-24T15:16:41.361+05:30  INFO 17412 --- [Hello-Shoes-Springboot] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2024-05-24T15:16:41.408+05:30  INFO 17412 --- [Hello-Shoes-Springboot] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2024-05-24T15:16:41.500+05:30  INFO 17412 --- [Hello-Shoes-Springboot] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-05-24T15:16:49.676+05:30  INFO 13920 --- [Hello-Shoes-Springboot] [main] l.i.h.HelloShoesSpringbootApplication    : Starting HelloShoesSpringbootApplication using Java 21.0.1 with PID 13920 (D:\Github\Hello-Shoes-Springboot\backend\target\classes started by USER in D:\Github\Hello-Shoes-Springboot\backend)
+2024-05-24T15:16:49.678+05:30  INFO 13920 --- [Hello-Shoes-Springboot] [main] l.i.h.HelloShoesSpringbootApplication    : No active profile set, falling back to 1 default profile: "default"
+2024-05-24T15:16:50.513+05:30  INFO 13920 --- [Hello-Shoes-Springboot] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-05-24T15:16:50.643+05:30  INFO 13920 --- [Hello-Shoes-Springboot] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 121 ms. Found 12 JPA repository interfaces.
+2024-05-24T15:16:51.359+05:30  INFO 13920 --- [Hello-Shoes-Springboot] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-05-24T15:16:51.373+05:30  INFO 13920 --- [Hello-Shoes-Springboot] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-05-24T15:16:51.373+05:30  INFO 13920 --- [Hello-Shoes-Springboot] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.20]
+2024-05-24T15:16:51.434+05:30  INFO 13920 --- [Hello-Shoes-Springboot] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-05-24T15:16:51.435+05:30  INFO 13920 --- [Hello-Shoes-Springboot] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1710 ms
+2024-05-24T15:16:51.635+05:30  INFO 13920 --- [Hello-Shoes-Springboot] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-05-24T15:16:51.725+05:30  INFO 13920 --- [Hello-Shoes-Springboot] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-05-24T15:16:51.775+05:30  INFO 13920 --- [Hello-Shoes-Springboot] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-05-24T15:16:52.018+05:30  INFO 13920 --- [Hello-Shoes-Springboot] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-05-24T15:16:52.052+05:30  INFO 13920 --- [Hello-Shoes-Springboot] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-05-24T15:16:52.567+05:30  INFO 13920 --- [Hello-Shoes-Springboot] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@42ff9a77
+2024-05-24T15:16:52.569+05:30  INFO 13920 --- [Hello-Shoes-Springboot] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-05-24T15:16:54.027+05:30  INFO 13920 --- [Hello-Shoes-Springboot] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-05-24T15:16:54.204+05:30  INFO 13920 --- [Hello-Shoes-Springboot] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-05-24T15:16:54.627+05:30  INFO 13920 --- [Hello-Shoes-Springboot] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-05-24T15:16:55.543+05:30  WARN 13920 --- [Hello-Shoes-Springboot] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-05-24T15:16:55.893+05:30  INFO 13920 --- [Hello-Shoes-Springboot] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@71c1ba6d, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@50f6eb17, org.springframework.security.web.context.SecurityContextHolderFilter@72bd8702, org.springframework.security.web.header.HeaderWriterFilter@5e388a77, org.springframework.web.filter.CorsFilter@7bc3e36b, org.springframework.security.web.authentication.logout.LogoutFilter@71af3c7, lk.ijse.helloshoesbackend.config.JWTConfigurationFilter$$SpringCGLIB$$0@15ae31b, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@18f90bd8, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1ff9d66b, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@335aac7a, org.springframework.security.web.session.SessionManagementFilter@3a8dd899, org.springframework.security.web.access.ExceptionTranslationFilter@1b261005, org.springframework.security.web.access.intercept.AuthorizationFilter@3c42dc9f]
+2024-05-24T15:16:56.208+05:30  INFO 13920 --- [Hello-Shoes-Springboot] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-05-24T15:16:56.220+05:30  INFO 13920 --- [Hello-Shoes-Springboot] [main] l.i.h.HelloShoesSpringbootApplication    : Started HelloShoesSpringbootApplication in 6.949 seconds (process running for 7.582)
+2024-05-24T15:17:24.046+05:30  INFO 13920 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-05-24T15:17:24.046+05:30  INFO 13920 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-05-24T15:17:24.047+05:30  INFO 13920 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-05-24T15:17:24.051+05:30  INFO 13920 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] l.i.h.config.AccessLogFilter             : -------- GET --- /api/v1/admin-panel/2024-05-05 
+2024-05-24T15:17:24.360+05:30  INFO 13920 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] l.i.helloshoesbackend.api.AdminPanelAPI  : Get Admin Panel Data endpoint called - Date: 2024-05-05
+2024-05-24T15:17:24.372+05:30  INFO 13920 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] l.i.h.s.impl.AdminPanelServiceIMPL       : Attempting to get admin panel data
+2024-05-24T15:17:24.372+05:30  INFO 13920 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] l.i.h.s.impl.AdminPanelServiceIMPL       : Fetching total sales count for 2024-05-05
+2024-05-24T15:17:24.397+05:30  INFO 13920 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] l.i.h.s.impl.AdminPanelServiceIMPL       : Fetched total sales count 3
+2024-05-24T15:17:24.398+05:30  INFO 13920 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] l.i.h.s.impl.AdminPanelServiceIMPL       : Fetching total profits for 2024-05-05
+2024-05-24T15:17:24.438+05:30  INFO 13920 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] l.i.h.s.impl.AdminPanelServiceIMPL       : Fetched total profits amount 1440.0
+2024-05-24T15:17:24.439+05:30  INFO 13920 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] l.i.h.s.impl.AdminPanelServiceIMPL       : Fetching total sold products count for 2024-05-05
+2024-05-24T15:17:24.446+05:30  INFO 13920 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] l.i.h.s.impl.AdminPanelServiceIMPL       : Fetched total sold products count 9
+2024-05-24T15:17:24.446+05:30  INFO 13920 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] l.i.h.s.impl.AdminPanelServiceIMPL       : Fetching most sold items for 2024-05-05
+2024-05-24T15:17:24.474+05:30  INFO 13920 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] l.i.h.s.impl.AdminPanelServiceIMPL       : Fetching daily total sales for 2024-05-05
+2024-05-24T15:17:24.493+05:30  INFO 13920 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] l.i.h.s.impl.AdminPanelServiceIMPL       : Fetched daily total sales for 2024-05-05
+2024-05-24T15:17:24.493+05:30  INFO 13920 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] l.i.h.s.impl.AdminPanelServiceIMPL       : Fetching daily total profits for 2024-05-05
+2024-05-24T15:17:24.495+05:30  INFO 13920 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] l.i.h.s.impl.AdminPanelServiceIMPL       : Fetching total profits for 2024-04-29
+2024-05-24T15:17:24.500+05:30  INFO 13920 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] l.i.h.s.impl.AdminPanelServiceIMPL       : Fetched total profits amount 0.0
+2024-05-24T15:17:24.500+05:30  INFO 13920 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] l.i.h.s.impl.AdminPanelServiceIMPL       : Fetching total profits for 2024-04-30
+2024-05-24T15:17:24.504+05:30  INFO 13920 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] l.i.h.s.impl.AdminPanelServiceIMPL       : Fetched total profits amount 0.0
+2024-05-24T15:17:24.505+05:30  INFO 13920 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] l.i.h.s.impl.AdminPanelServiceIMPL       : Fetching total profits for 2024-05-01
+2024-05-24T15:17:24.506+05:30  INFO 13920 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] l.i.h.s.impl.AdminPanelServiceIMPL       : Fetched total profits amount 0.0
+2024-05-24T15:17:24.507+05:30  INFO 13920 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] l.i.h.s.impl.AdminPanelServiceIMPL       : Fetching total profits for 2024-05-02
+2024-05-24T15:17:24.509+05:30  INFO 13920 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] l.i.h.s.impl.AdminPanelServiceIMPL       : Fetched total profits amount 0.0
+2024-05-24T15:17:24.509+05:30  INFO 13920 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] l.i.h.s.impl.AdminPanelServiceIMPL       : Fetching total profits for 2024-05-03
+2024-05-24T15:17:24.513+05:30  INFO 13920 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] l.i.h.s.impl.AdminPanelServiceIMPL       : Fetched total profits amount 960.0
+2024-05-24T15:17:24.514+05:30  INFO 13920 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] l.i.h.s.impl.AdminPanelServiceIMPL       : Fetching total profits for 2024-05-04
+2024-05-24T15:17:24.517+05:30  INFO 13920 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] l.i.h.s.impl.AdminPanelServiceIMPL       : Fetched total profits amount 40.0
+2024-05-24T15:17:24.517+05:30  INFO 13920 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] l.i.h.s.impl.AdminPanelServiceIMPL       : Fetching total profits for 2024-05-05
+2024-05-24T15:17:24.519+05:30  INFO 13920 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] l.i.h.s.impl.AdminPanelServiceIMPL       : Fetched total profits amount 1440.0
+2024-05-24T15:17:24.520+05:30  INFO 13920 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] l.i.h.s.impl.AdminPanelServiceIMPL       : Fetched daily total profits for 2024-05-05
+2024-05-24T15:17:24.520+05:30  INFO 13920 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-1] l.i.h.s.impl.AdminPanelServiceIMPL       : Returning admin panel data
+2024-05-24T15:17:37.085+05:30  INFO 13920 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-3] l.i.h.config.AccessLogFilter             : -------- POST --- /api/v1/admin-panel/alert 
+2024-05-24T15:17:37.137+05:30  INFO 13920 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-3] l.i.helloshoesbackend.api.AdminPanelAPI  : Record Alert endpoint called - Alert: AlertDTO(id=null, message=User Logged In, date=null, time=null, type=INFO)
+2024-05-24T15:17:37.139+05:30  INFO 13920 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-3] l.i.h.s.impl.AdminPanelServiceIMPL       : Saving alert
+2024-05-24T15:17:37.140+05:30  INFO 13920 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-3] l.i.helloshoesbackend.util.UtilMatter    : Generated UUID: 3aba529e-0a07-4b9e-a0ce-e47abd275312
+2024-05-24T15:17:37.141+05:30  INFO 13920 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-3] l.i.helloshoesbackend.util.Conversion    : Converting AlertDTO to AlertEntity
+2024-05-24T15:17:37.206+05:30  INFO 13920 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-3] l.i.h.s.impl.AdminPanelServiceIMPL       : Saved alert and returning all alerts
+2024-05-24T15:17:37.304+05:30  INFO 13920 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-3] l.i.helloshoesbackend.util.Conversion    : Converting List<AlertEntity> to List<AlertDTO>
+2024-05-24T15:17:45.437+05:30  INFO 13920 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-2] l.i.h.config.AccessLogFilter             : -------- GET --- /api/v1/admin-panel/health 
+2024-05-24T15:17:45.458+05:30  INFO 13920 --- [Hello-Shoes-Springboot] [http-nio-8080-exec-2] l.i.helloshoesbackend.api.AdminPanelAPI  : Admin Panel Health Check endpoint called
+2024-05-24T15:21:43.697+05:30  INFO 13920 --- [Hello-Shoes-Springboot] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-05-24T15:21:43.702+05:30  INFO 13920 --- [Hello-Shoes-Springboot] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-05-24T15:21:43.724+05:30  INFO 13920 --- [Hello-Shoes-Springboot] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
