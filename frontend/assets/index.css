@@ -626,13 +626,13 @@ section header {
 
 .dashboard-total-panes {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 15px;
 }
 
 .pane-totals {
     display: flex;
-    align-items: center;
+    /* align-items: start; */
     justify-content: center;
     gap: 30px;
     padding: 20px 10px;
@@ -769,7 +769,13 @@ section header {
 
 .most-sold-item h6 {
     margin: 0;
-    font-size: 20px;
+    font-size: 16px;
+}
+
+.most-sold-item label {
+    width: 100%;
+    margin: 0;
+    font-size: 13px;
 }
 
 .most-sold-item .img {

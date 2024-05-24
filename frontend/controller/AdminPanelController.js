@@ -34,6 +34,24 @@ const displayData = (data) => {
     $("#totalProfitAmount").text(data.totalProfitAmount) // total profit amount
     $("#totalQtySold").text(data.totalQtySold)   // total qty sold
 
+    // Most sold items
+    $(".most-sold-items").empty();
+    for(let i = 0; i < 3; i++){
+        let item = data.mostSoldItems[i];
+        $(".most-sold-items").append(`
+        <div class="most-sold-item">
+            <div class="img" style="background-image: url(${item.itemImage});"></div>
+            <div class="body">
+                <h6>${item.itemName}</h6>
+                <label class="truncate">${item.itemCode}</label>
+                <label>Sold ${item.qty}</label>
+            </div>
+            <span>${i+1}</span>
+        </div>
+        `)
+    }
+
+
     // set bar chart
     let barLabels = [];
 
