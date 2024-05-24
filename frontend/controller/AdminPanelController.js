@@ -121,6 +121,14 @@ $("#dates").on('click', '.btn-date', function(){
     // ToDo : get dashboard data
 })
 
+// Dashboard Buttons
+$("#dbInventoryBtn").click(()=> $("#inventoryFormBtn").click());
+$("#dbEmployeeBtn").click(()=> $("#employeeFormBtn").click());
+$("#dbCustomerBtn").click(()=> $("#customerFormBtn").click());
+$("#dbSupplierBtn").click(()=> $("#supplierFormBtn").click());
+$("#dbRefundBtn").click(()=> $("#refundBtn").click());
+$("#dbRestockBtn").click(()=> $("#restockBtn").click());
+
 let barChartData = {
     labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange', 'Yellow'],
     datasets: [{

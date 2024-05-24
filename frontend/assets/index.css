@@ -856,13 +856,29 @@ section header {
     justify-content: center;
     align-items: center;
     border: none;
-    border: 1px solid var(--highlight-color);
+    border: 1px solid #8747f556;
     border-radius: 4px;
     background-color: white;
     font-size: 17px;
     /* font-weight: 700; */
     gap: 8px;
     transition-duration: .1s;
+}
+
+.shortcutBtn::after{
+    content: "";
+    width: 6px;
+    height: 70%;
+    background-color: var(--highlight-color);
+    position: absolute;
+    left: -3px;
+    border-radius: 6px;
+    transition-duration: .4s;
+}
+
+.shortcutBtn:hover::after {
+    background-color: var(--bg-color);
+    height: 100%;
 }
 
 .shortcutBtn img {
@@ -872,7 +888,7 @@ section header {
 }
 
 .shortcutBtn:hover {
-    background-color: #bd97ff;
+    background-color: #cbacff;
 }
 
 .shortcutBtn:hover img {
