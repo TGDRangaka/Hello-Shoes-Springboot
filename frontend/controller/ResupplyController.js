@@ -253,7 +253,7 @@ $(".supplier-items").on('click', '.supplier-item-card', function () {
 })
 
 const getSelectedItemData = selectedItemCode => {
-    allItems.map(item => {
+    allItems.map(item => { 
         if (item.itemCode === selectedItemCode) {
             let colors = []
             item.inventoryItems.map(inv => colors.push(inv.colors))

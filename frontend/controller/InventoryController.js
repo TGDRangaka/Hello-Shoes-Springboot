@@ -1,6 +1,6 @@
-import {Item} from '../model/Item.js'
-import {Inventory} from '../model/Inventory.js'
-import {token} from '../db/data.js'
+import { Item } from '../model/Item.js'
+import { Inventory } from '../model/Inventory.js'
+import { token } from '../db/data.js'
 import { getCategory, setAsInvalid, setAsValid, clearValidations, showSuccessAlert, showErrorAlert } from '../util/UtilMatter.js';
 
 let allItems = [];
@@ -10,21 +10,21 @@ let isItemSelected = false;
 let shoeColors = ['Black', 'White', 'Red', 'Blue', 'Brown', 'Gray'];
 // let socksColors = ['Black', 'White', 'Brown'];
 
-$("#inventoryBtn").click(()=>{
+$("#inventoryBtn").click(() => {
     getAllItems();
 })
 
-const getAllItems = ()=>{
+const getAllItems = () => {
     var settings = {
         "url": "http://localhost:8080/api/v1/item",
         "method": "GET",
         "timeout": 0,
         "headers": {
-          "Authorization": "Bearer " + token
+            "Authorization": "Bearer " + token
         },
-      };
-      
-      $.ajax(settings).done(function (response) {
+    };
+
+    $.ajax(settings).done(function (response) {
         allItems = response;
         // allItems.map(item => {
         //     let img = new Image();
@@ -33,13 +33,13 @@ const getAllItems = ()=>{
         // })
         loadItemTable(allItems);
         // console.log(allItems);
-      });
+    });
 }
 
 const loadItemTable = (allItems) => {
 
     // if have a sort value
-    if($("#inventorySort").val() !== 'NONE'){
+    if ($("#inventorySort").val() !== 'NONE') {
         sortItems();
     }
 
@@ -48,21 +48,21 @@ const loadItemTable = (allItems) => {
     allItems.map((item, i) => {
 
         // if have filter values
-        if(!isInSelectedCategory(item)) return;
-        if(!isInSelectedGender(item)) return;
-        if(!isInSelectedOccasion(item)) return;
-        if(!isInSelectedSupplier(item)) return;
-        if(!isInSearchedKeyword(item)) return;
+        if (!isInSelectedCategory(item)) return;
+        if (!isInSelectedGender(item)) return;
+        if (!isInSelectedOccasion(item)) return;
+        if (!isInSelectedSupplier(item)) return;
+        if (!isInSearchedKeyword(item)) return;
 
         let category = item.category;
         let colors = [];
         let imgsByColors = '';
         let itemsByColors = [];
         let rows = '';
-        if(category !== 'ACC'){
+        if (category !== 'ACC') {
             // get inventory items by colors
             item.inventoryItems.map(inventory => {
-                if(!colors.includes(inventory.colors)){
+                if (!colors.includes(inventory.colors)) {
                     colors.push(inventory.colors);
                     imgsByColors += `
                     <div class="swiper-slide">
@@ -74,14 +74,14 @@ const loadItemTable = (allItems) => {
             colors.map((color) => {
                 let tempItems = [];
                 item.inventoryItems.map(inventory => (inventory.colors === color) && tempItems.push(inventory))
-                itemsByColors.push({color: color, items: tempItems});
+                itemsByColors.push({ color: color, items: tempItems });
             })
 
             // set table row through loop
             itemsByColors.map((colorItem, i) => {
                 let row = `
                 <tr>
-                    <td>${i+1}</td>
+                    <td>${i + 1}</td>
                     <td>
                     <img src="${colorItem.items[0].itemImage.image}" class="img-fluid" alt="">
                     </td>
@@ -94,16 +94,16 @@ const loadItemTable = (allItems) => {
                 colorItem.items.sort((a, b) => parseInt(a.size.substring(5)) - parseInt(b.size.substring(5)))
                 // console.log(colorItem.items);
                 let totQty = 0;
-                for(let j = 0,k = 0; j < 7; j++) {
+                for (let j = 0, k = 0; j < 7; j++) {
                     let itm = colorItem.items[k];
-                    if(`SIZE_${j+5}` === itm.size){
+                    if (`SIZE_${j + 5}` === itm.size) {
                         totQty += itm.currentQty;
                         let per = itm.currentQty == 0 ? 0 : itm.currentQty / itm.originalQty * 100;
                         row += `
-                        <td>${itm.currentQty}<span class="bg-${per >= 50? 'success' : per > 0 ? 'warning' : 'danger'} p-1 rounded text-white bg-opacity-75 ms-1">${per.toFixed(0)}%</span></td>`
+                        <td>${itm.currentQty}<span class="bg-${per >= 50 ? 'success' : per > 0 ? 'warning' : 'danger'} p-1 rounded text-white bg-opacity-75 ms-1">${per.toFixed(0)}%</span></td>`
                         k++;
                         (k == colorItem.items.length) && k--;
-                    }else{
+                    } else {
                         row += `
                         <td>0<span class="bg-danger p-1 rounded text-white bg-opacity-75 ms-1">0%</span></td>`
                     }
@@ -114,7 +114,7 @@ const loadItemTable = (allItems) => {
                 rows += row;
                 // console.log(colorItem.color, row);
             })
-        }else{
+        } else {
             let accessory = item.inventoryItems[0]
             var accessoriesData = `
                 <div class="input col-3">
@@ -242,16 +242,16 @@ const loadItemTable = (allItems) => {
     })
 }
 
-$('#cbColors').on('click', '.form-check-input',function() {
+$('#cbColors').on('click', '.form-check-input', function () {
     var selectedColors = [];
 
-    $('#cbColors .form-check-input').each(function() {
+    $('#cbColors .form-check-input').each(function () {
         if ($(this).is(':checked')) {
             selectedColors.push($(this).val());
         }
     });
 
-    if(selectedColors){
+    if (selectedColors) {
         otherBtnCount = 0;
         $("#colorInputs").empty();
         selectedColors.map(color => {
@@ -260,7 +260,7 @@ $('#cbColors').on('click', '.form-check-input',function() {
     }
 });
 
-const getColorFieldsComponent = color =>{
+const getColorFieldsComponent = color => {
     return `
     <div id="${color}Inputs" class="mb-3">
         <label for="" class="label ms-1 me-3 quicksand-bold">${color}</label>
@@ -290,14 +290,14 @@ const getOtherColorFieldsComponent = (id) => {
     `;
 }
 
-$('#cbColors').on('click', '#otherColorBtn',function() {
+$('#cbColors').on('click', '#otherColorBtn', function () {
     otherBtnCount++;
     let id = "Other" + otherBtnCount;
     $("#otherColorInputs").append(getOtherColorFieldsComponent(id));
 })
 
-$("#addProductBtn").click(async ()=>{
-    if(checkValidations()){
+$("#addProductBtn").click(async () => {
+    if (checkValidations()) {
         isItemSelected ? updateProduct() : saveProduct();
     }
 })
@@ -326,41 +326,41 @@ const saveProduct = async () => {
     );
 
     let selectedColors = [];
-    if(category === 'ACC'){
-        if(verities === 'POLB'){
+    if (category === 'ACC') {
+        if (verities === 'POLB') {
             selectedColors.push("Black");
-        }else if(verities === 'POLBR'){
+        } else if (verities === 'POLBR') {
             selectedColors.push("Brown");
-        }else if(verities === 'POLDBR'){
-            selectedColors.push("Dark Brown");
-        }else{
+        } else if (verities === 'POLDBR') {
+            selectedColors.push("Dark_Brown");
+        } else {
             selectedColors.push("No-Colour");
         }
-    }else{
-        $('#cbColors .form-check-input').each(function() {
+    } else {
+        $('#cbColors .form-check-input').each(function () {
             if ($(this).is(':checked')) {
                 selectedColors.push($(this).val());
             }
         });
-        for(let i = 1; i <= otherBtnCount; i++){
+        for (let i = 1; i <= otherBtnCount; i++) {
             let id = "Other" + i;
             selectedColors.push(id);
         }
     }
-    
+
     console.log(selectedColors);
 
-    for(let color of selectedColors){
+    for (let color of selectedColors) {
         let id = color;
         let img = (category === 'ACC') ? $(`#shampooNoClrImage`).prop('files')[0] : $(`#product${id}Image`).prop('files')[0];
         let colorName = id.includes("Other") ? $(`#product${id}Name`).val() : color;
-        
-        if(!checkImage(img, colorName)) return;
+
+        if (!checkImage(img, colorName)) return;
 
         let inventoryItm = new Inventory();
         inventoryItm.size = (category !== 'ACC') ? 'SIZE_5' : (['SHMP', 'POLB', 'POLBR', 'POLDBR'].includes(verities)) ? 'NOT_APPLICABLE' : verities === 'SOF' ? 'FULL' : verities === 'SOH' ? 'HALF' : 'NOT_APPLICABLE';
         inventoryItm.colors = colorName;
-        inventoryItm.itemImage = {id:"", image: await getFileToBase64(img)};
+        inventoryItm.itemImage = { id: "", image: await getFileToBase64(img) };
         inventoryItm.resupplyItems = [];
         inventoryItm.saleItems = [];
 
@@ -373,19 +373,19 @@ const saveProduct = async () => {
         "method": "POST",
         "timeout": 0,
         "headers": {
-          "Content-Type": "application/json",
-          "Authorization": `Bearer ${token}`
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
         },
         "data": JSON.stringify(item),
         // "data": JSON.stringify(item),
-      };
-      
-      $.ajax(settings).done(function (response) {
+    };
+
+    $.ajax(settings).done(function (response) {
         console.log(response);
         showSuccessAlert("Product saved successfully")
         $("#cancelProductBtn").click();
         $("#inventoryBtn").click();
-      }).fail(function (jqXHR, textStatus, errorThrown) {
+    }).fail(function (jqXHR, textStatus, errorThrown) {
         showErrorAlert("An error occurred while saving product");
         console.error("Error details:", textStatus, errorThrown, jqXHR);
     });
@@ -411,34 +411,34 @@ const updateProduct = async () => {
     );
 
     let selectedColors = [];
-    if(category === 'ACC'){
-        if(verities === 'POLB'){
+    if (category === 'ACC') {
+        if (verities === 'POLB') {
             selectedColors.push("Black");
-        }else if(verities === 'POLBR'){
+        } else if (verities === 'POLBR') {
             selectedColors.push("Brown");
-        }else if(verities === 'POLDBR'){
-            selectedColors.push("Dark Brown");
-        }else{
+        } else if (verities === 'POLDBR') {
+            selectedColors.push("Dark_Brown");
+        } else {
             selectedColors.push("No-Colour");
         }
-    }else{
-        $('#cbColors .form-check-input').each(function() {
+    } else {
+        $('#cbColors .form-check-input').each(function () {
             if ($(this).is(':checked')) {
                 selectedColors.push($(this).val());
             }
         });
-        for(let i = 1; i <= otherBtnCount; i++){
+        for (let i = 1; i <= otherBtnCount; i++) {
             let id = "Other" + i;
             selectedColors.push(id);
         }
     }
-    
+
     let availableColors = [];
     selectedItem.inventoryItems.map(itm => {
         !availableColors.includes(itm.colors) && availableColors.push(itm.colors);
     })
 
-    for(let color of selectedColors){
+    for (let color of selectedColors) {
         let id = color;
         let inventoryItm = new Inventory();
         let colorName = id.includes("Other") ? $(`#product${id}Name`).val() : color;
@@ -449,21 +449,21 @@ const updateProduct = async () => {
 
         // process inventory images
         try {
-            
+
         } catch (error) {
-            
+
         }
         let img = (category === 'ACC') ? $(`#shampooNoClrImage`).prop('files')[0] : $(`#product${id}Image`).prop('files')[0];
-        if(availableColors.includes(colorName)){
+        if (availableColors.includes(colorName)) {
             let currentImage = selectedItem.inventoryItems.find(itm => itm.colors === colorName).itemImage;
-            if(img){
-                inventoryItm.itemImage = {id: currentImage.id, image: await getFileToBase64(img)};
-            }else{
+            if (img) {
+                inventoryItm.itemImage = { id: currentImage.id, image: await getFileToBase64(img) };
+            } else {
                 inventoryItm.itemImage = currentImage;
             }
-        }else{
-            if(!checkImage(img, colorName)) return;
-            inventoryItm.itemImage = {id:"", image: await getFileToBase64(img)};
+        } else {
+            if (!checkImage(img, colorName)) return;
+            inventoryItm.itemImage = { id: "", image: await getFileToBase64(img) };
         }
 
         item.inventoryItems.push(inventoryItm);
@@ -475,20 +475,20 @@ const updateProduct = async () => {
         "method": "PUT",
         "timeout": 0,
         "headers": {
-          "Content-Type": "application/json",
-          "Authorization": `Bearer ${token}`
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
         },
         "data": JSON.stringify(item),
         // "data": JSON.stringify(item),
-      };
-      
-      $.ajax(settings).done(function (response) {
+    };
+
+    $.ajax(settings).done(function (response) {
         console.log(response);
         showSuccessAlert("Product updated successfully")
         $("#cancelProductBtn").click();
         $("#inventoryBtn").click();
 
-      }).fail(function (jqXHR, textStatus, errorThrown) {
+    }).fail(function (jqXHR, textStatus, errorThrown) {
         showErrorAlert("An error occurred while updating the product");
         console.error("Error details:", textStatus, errorThrown, jqXHR);
     });
@@ -497,7 +497,7 @@ const updateProduct = async () => {
 const getFileToBase64 = async file => {
     let reader = new FileReader();
     return new Promise((resolve, reject) => {
-        reader.onloadend = function(){
+        reader.onloadend = function () {
             resolve(reader.result);
         }
         reader.readAsDataURL(file);
@@ -505,74 +505,73 @@ const getFileToBase64 = async file => {
 }
 
 const checkValidations = () => {
-    let selectedColors = [];
-    $('#cbColors .form-check-input').each(function() {
-        if ($(this).is(':checked')) {
-            selectedColors.push($(this).val());
+    if ($("#productByCategory").val() !== 'ACC') {
+        let selectedColors = [];
+        $('#cbColors .form-check-input').each(function () {
+            if ($(this).is(':checked')) {
+                selectedColors.push($(this).val());
+            }
+        });
+        for (let i = 1; i <= otherBtnCount; i++) {
+            let id = "Other" + i;
+            selectedColors.push(id);
         }
-    });
-    for(let i = 1; i <= otherBtnCount; i++){
-        let id = "Other" + i;
-        selectedColors.push(id);
+
+        if (selectedColors.length <= 0) {
+            showErrorAlert("Please select color/s for product");
+            return false;
+        }
     }
 
-    if(selectedColors.length <= 0){
-        Swal.fire({
-            icon: "error",
-            title: "Oops...",
-            text: "Please select color/s for product",
-        });
-        return false;
-    }
 
     return ($("#productName").val() ? setAsValid('#productName', 'Looks Good!')
-    : setAsInvalid('#productName', 'Name Required!'))
-    &
-    ($("#productBySupplier").val() ? setAsValid('#productBySupplier', 'Looks Good!')
-    : setAsInvalid('#productBySupplier', 'Please select the supplier'))
-    &
-    ($("#productSellPrice").val() ? setAsValid('#productSellPrice', 'Looks Good!')
-    : setAsInvalid('#productSellPrice', 'Please enter the selling price'))
-    &
-    ($("#productBuyPrice").val() ? setAsValid('#productBuyPrice', 'Looks Good!')
-    : setAsInvalid('#productBuyPrice', 'Please enter the buying price'))
-    &
-    ($("#productExpectProfit").val() ? setAsValid('#productExpectProfit', 'Looks Good!')
-    : setAsInvalid('#productExpectProfit', 'Please enter the expected profit'))
-    &
-    ($("#productProfitMargin").val() ? setAsValid('#productProfitMargin', 'Looks Good!')
-    : setAsInvalid('#productProfitMargin', 'Please enter the profit margin'));
+        : setAsInvalid('#productName', 'Name Required!'))
+        &
+        ($("#productBySupplier").val() ? setAsValid('#productBySupplier', 'Looks Good!')
+            : setAsInvalid('#productBySupplier', 'Please select the supplier'))
+        &
+        ($("#productSellPrice").val() ? setAsValid('#productSellPrice', 'Looks Good!')
+            : setAsInvalid('#productSellPrice', 'Please enter the selling price'))
+        &
+        ($("#productBuyPrice").val() ? setAsValid('#productBuyPrice', 'Looks Good!')
+            : setAsInvalid('#productBuyPrice', 'Please enter the buying price'))
+        &
+        ($("#productExpectProfit").val() ? setAsValid('#productExpectProfit', 'Looks Good!')
+            : setAsInvalid('#productExpectProfit', 'Please enter the expected profit'))
+        &
+        ($("#productProfitMargin").val() ? setAsValid('#productProfitMargin', 'Looks Good!')
+            : setAsInvalid('#productProfitMargin', 'Please enter the profit margin'));
 }
 
 // inventory category validations
 
 $("#accessoriesAdditional").hide();
 $("#accessoriesImage").hide();
-$("#productByCategory").on('change', function (){
+$("#productByCategory").on('change', function () {
     let val = $(this).val();
 
     // set gender women for women items
-    if(val === 'F' || val === 'H' || val === 'W'){
+    if (val === 'F' || val === 'H' || val === 'W') {
         $("#typesByGender").prop('disabled', true);
         $("#typesByGender").val('W');
-    }else{
+    } else {
         $("#typesByGender").prop('disabled', false);
     }
 
     // if category shoes enable occasion types(industry, sport)
     /^(S)$/.test(val) ? $("#is, #ss").prop('disabled', false)
-    : $("#is, #ss").prop('disabled', true);
+        : $("#is, #ss").prop('disabled', true);
 
     // if category flip-flops/slippers, then disable occasion all types
     /^(FF|SL)$/.test(val) ? $("#typesByOccasion").prop('disabled', true)
-    : $("#typesByOccasion").prop('disabled', false);
+        : $("#typesByOccasion").prop('disabled', false);
 
-    if(val === 'ACC'){
+    if (val === 'ACC') {
         $("#shoesAdditional").hide();
         $("#accessoriesAdditional").show();
         $("#shoeColors").hide();
         $("#accessoriesImage").show();
-    }else{
+    } else {
         $("#shoesAdditional").show();
         $("#accessoriesAdditional").hide();
         $("#shoeColors").show();
@@ -585,12 +584,12 @@ const getFirstLaters = text => {
     let ar = text.split(' ');
     let s = '';
     ar.map(t => {
-        s+=t.charAt(0);
+        s += t.charAt(0);
     })
     return s;
 }
 
-$("#inventoryItems").on('click', '.itemEdit', function(){
+$("#inventoryItems").on('click', '.itemEdit', function () {
     let index = $(this).data('index');
     console.log(index);
     selectedItem = allItems[index];
@@ -610,13 +609,13 @@ const setItemData = item => {
 
     // Additional
     let letters = item.itemCode.substring(0, item.itemCode.length - 5);
-    if(item.category !== 'ACC'){
+    if (item.category !== 'ACC') {
         let gender = letters.charAt(letters.length - 1);
         $("#typesByGender").prop('disabled', true);
         $("#typesByGender").val(gender);
         $("#typesByOccasion").prop('disabled', true);
         $("#typesByOccasion").val(item.itemCode.charAt(0) + 'S');
-    }else{
+    } else {
         $("#shoesAdditional").hide();
         $("#accessoriesAdditional").show();
         $("#typesByVerities").prop('disabled', true);
@@ -630,7 +629,7 @@ const setItemData = item => {
     $("#productProfitMargin").val(item.profitMargin);
 
     // Colors/Images
-    if(item.category !== 'ACC'){
+    if (item.category !== 'ACC') {
         let colors = []
         item.inventoryItems.map(inventory => {
             !colors.includes(inventory.colors) && colors.push(inventory.colors);
@@ -647,7 +646,7 @@ const setItemData = item => {
                 <label class="label" for="cbColor${color}">${color}</label>
             </div>
             `)
-            if(colors.includes(color)){
+            if (colors.includes(color)) {
                 // colorCount++;
                 $("#colorInputs").append(getColorFieldsComponent(color))
                 colors.splice(colors.indexOf(color), 1);
@@ -657,7 +656,7 @@ const setItemData = item => {
         <button id="otherColorBtn" type="button" class="btn btn-primary"><i class="fa-solid fa-plus me-2"></i>Other</button>
         `);
         otherBtnCount = 0;
-        colors.map(color =>{
+        colors.map(color => {
             otherBtnCount++;
             let id = 'Other' + otherBtnCount;
             $("#otherColorInputs").append(`
@@ -677,7 +676,7 @@ const setItemData = item => {
         })
         $("#shoeColors").show();
         $("#accessoriesImage").hide();
-    }else{
+    } else {
         $("#shoeColors").hide();
         $("#accessoriesImage").show();
     }
@@ -707,30 +706,30 @@ setShoeColorButtons();
 function dataURLtoFile(dataurl, filename) {
     var arr = dataurl.split(','),
         mime = arr[0].match(/:(.*?);/)[1],
-        bstr = atob(arr[arr.length - 1]), 
-        n = bstr.length, 
+        bstr = atob(arr[arr.length - 1]),
+        n = bstr.length,
         u8arr = new Uint8Array(n);
-    while(n--){
+    while (n--) {
         u8arr[n] = bstr.charCodeAt(n);
     }
-    return new File([u8arr], filename, {type:mime});
+    return new File([u8arr], filename, { type: mime });
 }
 
-$("#productSellPrice").on('input', function(){
+$("#productSellPrice").on('input', function () {
     let sell = $(this).val() ? $(this).val() : 0;
     let buy = $("#productBuyPrice").val() ? $("#productBuyPrice").val() : 0;
     $("#productExpectProfit").val(sell - buy);
     $("#productProfitMargin").val(((sell == 0 & buy == 0) ? 0 : (sell - buy) / buy * 100).toFixed(2));
 })
 
-$("#productBuyPrice").on('input', function(){
+$("#productBuyPrice").on('input', function () {
     let sell = $("#productSellPrice").val() ? $("#productSellPrice").val() : 0;
     let buy = $(this).val() ? $(this).val() : 0;
     $("#productExpectProfit").val(sell - buy);
     $("#productProfitMargin").val(((sell == 0 & buy == 0) ? 0 : (sell - buy) / buy * 100).toFixed(2));
 });
 
-$("#productExpectProfit").on('input', function(){
+$("#productExpectProfit").on('input', function () {
     let buy = $("#productBuyPrice").val() ? $("#productBuyPrice").val() : 0;
     let profit = $(this).val() ? $(this).val() : 0;
     let sell = parseInt(buy) + parseInt(profit);
@@ -738,7 +737,7 @@ $("#productExpectProfit").on('input', function(){
     $("#productProfitMargin").val(((sell == 0 & buy == 0) ? 0 : profit / buy * 100).toFixed(2));
 });
 
-$("#productProfitMargin").on('input', function(){
+$("#productProfitMargin").on('input', function () {
     let buy = $("#productBuyPrice").val() ? $("#productBuyPrice").val() : 0;
     let profit = parseInt(buy) * (parseInt($(this).val()) / 100.0);
     let sell = parseInt(buy) + parseInt(profit);
@@ -747,9 +746,9 @@ $("#productProfitMargin").on('input', function(){
 });
 
 
-const checkImage = (img, colorName) =>{
+const checkImage = (img, colorName) => {
     console.log(img, colorName);
-    if(colorName === ''){
+    if (colorName === '') {
         Swal.fire({
             icon: "error",
             title: "No Color",
@@ -757,7 +756,7 @@ const checkImage = (img, colorName) =>{
         });
         return false;
     }
-    if(!img){
+    if (!img) {
         Swal.fire({
             icon: "error",
             title: "No Image...",
@@ -769,35 +768,35 @@ const checkImage = (img, colorName) =>{
 }
 
 // sorting
-$("#inventorySort").on('change', function(){
+$("#inventorySort").on('change', function () {
     loadItemTable(allItems);
 });
 
 const sortItems = () => {
     let sortValue = $("#inventorySort").val();
 
-    if(sortValue === 'A-Z'){
+    if (sortValue === 'A-Z') {
         allItems.sort((a, b) => a.description.localeCompare(b.description));
-    }else if(sortValue === 'Z-A'){
+    } else if (sortValue === 'Z-A') {
         allItems.sort((a, b) => b.description.localeCompare(a.description));
-    }else if(sortValue === 'LOW-HIGH'){
+    } else if (sortValue === 'LOW-HIGH') {
         allItems.sort((a, b) => a.unitPriceSale - b.unitPriceSale);
-    }else if(sortValue === 'HIGH-LOW'){
+    } else if (sortValue === 'HIGH-LOW') {
         allItems.sort((a, b) => b.unitPriceSale - a.unitPriceSale);
     }
 }
 
 // filters
 
-$("#inventory select").on('change', function(){
+$("#inventory select").on('change', function () {
     loadItemTable(allItems);
 });
 
 const isInSelectedCategory = (item) => {
     let category = $("#inventoryCateforyFilter").val();
-    if(category === 'ALL' || category === item.category){
+    if (category === 'ALL' || category === item.category) {
         return true;
-    }else{
+    } else {
         return false;
     }
 }
@@ -805,27 +804,27 @@ const isInSelectedCategory = (item) => {
 const isInSelectedGender = (item) => {
     let gender = $("#inventoryGenderFilter").val();
     let letter = item.itemCode.split('').reverse().join('').charAt(5)
-    if(gender === 'ALL' || gender === letter && item.category !== 'ACC'){
+    if (gender === 'ALL' || gender === letter && item.category !== 'ACC') {
         return true;
-    }else{
+    } else {
         return false;
     }
 }
 
 const isInSelectedOccasion = (item) => {
     let occasion = $("#inventoryOccasionFilter").val();
-    if(occasion === 'ALL' || occasion === item.itemCode.charAt(0) && item.category !== 'ACC'){
+    if (occasion === 'ALL' || occasion === item.itemCode.charAt(0) && item.category !== 'ACC') {
         return true;
-    }else{
+    } else {
         return false;
     }
 }
 
 const isInSelectedSupplier = (item) => {
     let supplier = $("#inventorySupplierFilter").val();
-    if(supplier === 'ALL' || supplier === item.supplierName){
+    if (supplier === 'ALL' || supplier === item.supplierName) {
         return true;
-    }else{
+    } else {
         return false;
     }
 }
@@ -833,12 +832,12 @@ const isInSelectedSupplier = (item) => {
 const isInSearchedKeyword = (item) => {
     let keyword = $("#inventorySearch").val();
     return keyword === ''
-    || item.description.toLowerCase().includes(keyword.toLowerCase())
-    || item.itemCode.toLowerCase().includes(keyword.toLowerCase())
-    || item.supplierName.toLowerCase().includes(keyword.toLowerCase())
-    || item.category.toLowerCase().includes(keyword.toLowerCase());
+        || item.description.toLowerCase().includes(keyword.toLowerCase())
+        || item.itemCode.toLowerCase().includes(keyword.toLowerCase())
+        || item.supplierName.toLowerCase().includes(keyword.toLowerCase())
+        || item.category.toLowerCase().includes(keyword.toLowerCase());
 }
-$("#inventorySearchBtn").click(()=> {
+$("#inventorySearchBtn").click(() => {
     loadItemTable(allItems);
 })
 
