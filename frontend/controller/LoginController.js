@@ -1,5 +1,5 @@
 import { user, setToken, setUser, setUserRole, userRole, token } from "../db/data.js";
-import { saveAlert, showErrorAlert, showSuccessAlert } from "../util/UtilMatter.js";
+import { decode, encode, saveAlert, showErrorAlert, showSuccessAlert } from "../util/UtilMatter.js";
 
 let isRegisterState = false;
 
@@ -53,8 +53,8 @@ const loginUser = (username, password) => {
             "Content-Type": "application/json"
         },
         "data": JSON.stringify({
-            "email": encode(username),
-            "password": encode(password)
+            "email": encode(username, 0),
+            "password": encode(password, 0)
         }),
     };
 
@@ -75,8 +75,8 @@ const registerUser = (username, password) => {
             "Content-Type": "application/json"
         },
         "data": JSON.stringify({
-            "email": encode(username),
-            "password": encode(password)
+            "email": encode(username, 0),
+            "password": encode(password, 0)
         }),
     };
 
@@ -91,7 +91,7 @@ const registerUser = (username, password) => {
 // handle user login
 const handleUserLoginToSystem = (response) => {
     showSuccessAlert("Logged in successfully!");
-    
+
     setTimeout(() => {
         adminViewHandle(response.user.role);
         // hide login pane
@@ -101,11 +101,8 @@ const handleUserLoginToSystem = (response) => {
 
     // is user checked remember me
     if ($("#rememberMe").is(":checked")) {
-        localStorage.setItem("user", JSON.stringify(response.user.employee));
-        localStorage.setItem("role", response.user.role);
-    } else {
-        localStorage.removeItem("user");
-        localStorage.removeItem("role");
+        localStorage.setItem("email", response.user.employee.email);
+        localStorage.setItem("credentials", encode($("#loginPassward").val(), 3));
     }
 
     // set user data
@@ -131,11 +128,31 @@ const adminViewHandle = (role) => {
     }
 }
 
-const encode = (text) => {
-    // for(let i=0; i<10; i++){
-    //     text = btoa(text);
-    // }
-    return text;
+// logout
+$("#logoutBtn").click(() => {
+    // clear user information from local storage
+
+    Swal.fire({
+        title: "Are you sure?",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Log Out"
+    }).then((result) => {
+        if (result.isConfirmed) {
+            location.reload();
+            saveAlert(user.name + " Logged out", "INFO");
+            localStorage.removeItem("email");
+            localStorage.removeItem("credentials");
+        }
+    });
+
+})
+
+// check local storage have been stored
+if (localStorage.getItem("email") && localStorage.getItem("credentials")) {
+    loginUser(localStorage.getItem("email"), decode(localStorage.getItem("credentials"), 3));
 }
 
-loginUser('rangaka@gmail.com', 'dilshan1234');
+// loginUser('rangaka@gmail.com', 'dilshan1234');

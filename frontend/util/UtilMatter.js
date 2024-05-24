@@ -115,21 +115,6 @@ export const saveAlert = (message, type) => {
     });
 }
 
-// export const getAllAlerts = () => {
-//     var settings = {
-//         "url": "http://localhost:8080/api/v1/admin-panel/alert",
-//         "method": "GET",
-//         "timeout": 0,
-//         "headers": {
-//           "Authorization": "Bearer " + token
-//         },
-//       };
-
-//       $.ajax(settings).done(function (response) {
-//         console.log(response);
-//       });
-// }
-
 export const showSuccessAlert = (message) => {
     Swal.fire({
         position: "top-end",
@@ -208,3 +193,17 @@ $("body").on('click', '.fa-copy', function () {
     // Remove the temporary element
     tempInput.remove();
 });
+
+export function encode(text, depth){
+    while(depth-- > 0){
+        text = btoa(text);
+    }
+    return text;
+}
+
+export function decode(text, depth){
+    while(depth-- > 0){
+        text = atob(text);
+    }
+    return text;
+}
