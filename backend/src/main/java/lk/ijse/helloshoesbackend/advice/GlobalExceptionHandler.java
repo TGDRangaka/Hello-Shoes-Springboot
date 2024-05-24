@@ -3,6 +3,7 @@ package lk.ijse.helloshoesbackend.advice;
 import lk.ijse.helloshoesbackend.exception.DataDuplicationException;
 import lk.ijse.helloshoesbackend.exception.InvalidDataException;
 import lk.ijse.helloshoesbackend.exception.NotFoundException;
+import lk.ijse.helloshoesbackend.exception.RefundTimeExceededException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -50,6 +51,14 @@ public class GlobalExceptionHandler {
     }
     @ExceptionHandler(NotFoundException.class)
     public ResponseEntity<Map<String, String>> handleNotFoundExceptions(NotFoundException ex) {
+        Map<String, String> errors = new HashMap<>();
+        errors.put("errorMessage", ex.getMessage());
+//        log.error("Not found exception occurred: " + ex.getMessage());
+
+        return new ResponseEntity<>(errors, HttpStatus.NOT_FOUND);
+    }
+    @ExceptionHandler(RefundTimeExceededException.class)
+    public ResponseEntity<Map<String, String>> handleRefundTimeExceededExceptions(RefundTimeExceededException ex) {
         Map<String, String> errors = new HashMap<>();
         errors.put("errorMessage", ex.getMessage());
 //        log.error("Not found exception occurred: " + ex.getMessage());

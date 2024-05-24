@@ -1,5 +1,8 @@
 package lk.ijse.helloshoesbackend.dto;
 
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lk.ijse.helloshoesbackend.entity.enums.PaymentMethods;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -16,7 +19,10 @@ import java.util.List;
 @NoArgsConstructor
 public class SaleDTO {
     private String orderId;
+    @NotNull
+    @Min(0)
     private Double totalPrice;
+    @NotNull
     private PaymentMethods paymentMethod;
     private Integer addedPoints;
     private LocalDate orderDate;
@@ -24,5 +30,6 @@ public class SaleDTO {
 
     private EmployeeDTO employee;
     private CustomerDTO customer;
+    @NotNull
     private List<SaleItemDTO> saleItems;
 }

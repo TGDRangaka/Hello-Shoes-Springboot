@@ -3,6 +3,8 @@ package lk.ijse.helloshoesbackend.service.impl;
 import lk.ijse.helloshoesbackend.dto.UserDTO;
 import lk.ijse.helloshoesbackend.entity.UserEntity;
 import lk.ijse.helloshoesbackend.exception.DataDuplicationException;
+import lk.ijse.helloshoesbackend.exception.InvalidDataException;
+import lk.ijse.helloshoesbackend.exception.NotFoundException;
 import lk.ijse.helloshoesbackend.repo.UserRepo;
 import lk.ijse.helloshoesbackend.reqAndResp.response.JwtAuthResponse;
 import lk.ijse.helloshoesbackend.service.AuthenticationService;
@@ -57,8 +59,12 @@ public class AuthenticationServiceIMPL implements AuthenticationService {
                 .orElseThrow(() -> new UsernameNotFoundException("User Not Found"));
 
         boolean isValid = passwordEncoder.matches(password, byEmail.getPassword());
-        log.info("Credentials valid for email: {}: {}", email, isValid);
-        return isValid;
+        if(isValid){
+            log.info("Credentials valid for email: {}", email);
+            return true;
+        }
+        log.error("Credentials invalid for email: {}", email);
+        throw new InvalidDataException("Credentials invalid for email: " + email);
     }
 
     @Override

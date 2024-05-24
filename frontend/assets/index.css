@@ -1570,17 +1570,17 @@ form {
     margin-right: 5px;
 }
 
-.password-input i {
+.password-input .fa-eye-slash, .password-input .fa-eye{
     font-size: 24px;
     position: absolute;
     right: 10px;
-    bottom: 6px;
+    bottom: 27px;
     color: var(--bg-color);
     cursor: pointer;
     transition-duration: .2s;
 }
 
-.password-input i:active {
+.password-input .fa-eye-slash:active, .password-input .fa-eye:active {
     scale: .85;
 }
 

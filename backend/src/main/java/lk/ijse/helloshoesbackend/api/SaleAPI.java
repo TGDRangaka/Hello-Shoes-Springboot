@@ -1,5 +1,6 @@
 package lk.ijse.helloshoesbackend.api;
 
+import jakarta.validation.Valid;
 import lk.ijse.helloshoesbackend.bo.SaleBO;
 import lk.ijse.helloshoesbackend.dto.SaleDTO;
 import lk.ijse.helloshoesbackend.exception.InvalidDataException;
@@ -26,28 +27,14 @@ public class SaleAPI {
 
     @GetMapping
     public ResponseEntity getAllSales() {
-        log.info("Fetching all sales");
-        try {
-            return ResponseEntity.ok(saleBO.getSales());
-        } catch (Exception e) {
-            log.error("Error occurred while fetching sales", e);
-            return ResponseEntity.status(500).body("An error occurred while fetching sales");
-        }
+        log.info("Get all sales endpoint called");
+        return ResponseEntity.ok(saleBO.getSales());
     }
 
     @PostMapping
-    public ResponseEntity saveSale(@RequestBody SaleDTO saleDTO, Authentication authentication){
+    public ResponseEntity saveSale(@Valid @RequestBody SaleDTO saleDTO, Authentication authentication){
         String user = authentication.getName();
-        log.info("Saving sale for user: {}", user);
-        log.debug("SaleDTO: {}", saleDTO);
-        try {
-            return ResponseEntity.ok(saleBO.saveSale(saleDTO, user));
-        } catch (InvalidDataException e) {
-            log.warn("Invalid data provided for saving sale", e);
-            throw e;
-        } catch (Exception e) {
-            log.error("Unexpected error occurred while saving sale", e);
-            return ResponseEntity.status(500).body("An unexpected error occurred while saving the sale");
-        }
+        log.info("Save sale endpoint called");
+        return ResponseEntity.ok(saleBO.saveSale(saleDTO, user));
     }
 }

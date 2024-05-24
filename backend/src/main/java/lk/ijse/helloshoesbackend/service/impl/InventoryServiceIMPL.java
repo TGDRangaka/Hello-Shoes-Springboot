@@ -56,6 +56,7 @@ public class InventoryServiceIMPL implements InventoryService {
         if (itemOptional.isPresent()) {
             itemOptional.get().setStatus(status);
             log.info("Stock status updated successfully for inventory item with ID: {}", inventoryId);
+            return;
         }
         log.error("Inventory item with ID: {} not found", inventoryId);
         throw new NotFoundException("Not Found Item Named : " + inventoryId);
