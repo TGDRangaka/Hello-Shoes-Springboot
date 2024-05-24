@@ -1,9 +1,8 @@
 package lk.ijse.helloshoesbackend.api;
 
 import jakarta.validation.Valid;
-import lk.ijse.helloshoesbackend.bo.ResupplyBO;
 import lk.ijse.helloshoesbackend.dto.ResupplyDTO;
-import lk.ijse.helloshoesbackend.entity.ResupplyEntity;
+import lk.ijse.helloshoesbackend.service.ResupplyService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -15,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 @Slf4j
 public class ResupplyAPI {
-    private final ResupplyBO resupplyBO;
+    private final ResupplyService resupplyService;
 
     @GetMapping("/health")
     public String healthCheck(){
@@ -26,13 +25,13 @@ public class ResupplyAPI {
     @GetMapping
     public ResponseEntity getAllResupplies(){
         log.info("Get all resupplies endpoint called");
-        return ResponseEntity.ok(resupplyBO.getAllResupplies());
+        return ResponseEntity.ok(resupplyService.getAllResupplies());
     }
 
     @PostMapping
     public ResponseEntity saveResupply(@Valid @RequestBody ResupplyDTO resupplyDTO){
         log.info("Save resupply endpoint called");
-        boolean isSaved = resupplyBO.saveResupply(resupplyDTO);
+        boolean isSaved = resupplyService.save(resupplyDTO);
         return ResponseEntity.ok(isSaved);
     }
 }

@@ -83,8 +83,7 @@ public class InventoryServiceIMPL implements InventoryService {
     @Override
     public void restock(String inventoryId, int qty){
         log.info("Restocking inventory item with ID: {}, quantity: {}", inventoryId, qty);
-        if(qty == 0) return;
-        if(qty < 0) {
+        if(qty <= 0) {
             log.error("Invalid quantity for restocking inventory item with ID: {}, quantity: {}", inventoryId, qty);
             throw new InvalidDataException("Qty must be greater than 1 : " + inventoryId);
         }
