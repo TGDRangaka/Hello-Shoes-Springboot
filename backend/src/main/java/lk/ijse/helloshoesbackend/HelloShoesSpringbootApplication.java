@@ -5,6 +5,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
 @MultipartConfig(
@@ -13,6 +14,7 @@ import org.springframework.context.annotation.Bean;
         maxRequestSize = 1024 * 1024 * 50,
         fileSizeThreshold = 1024 * 1024 * 5
 )
+@EnableScheduling
 public class HelloShoesSpringbootApplication {
 
     public static void main(String[] args) {

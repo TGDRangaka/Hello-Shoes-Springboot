@@ -10,4 +10,6 @@ public interface CustomerService {
     CustomerDTO save(CustomerDTO dto);
     void update(CustomerDTO dto, String customerId);
     CustomerDTO findByNameAndEmail(String name, String email);
+
+    void sendBirthdayWishes();
 }
