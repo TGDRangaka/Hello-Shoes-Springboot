@@ -996,8 +996,47 @@
                         </div>
                         <div class="col p-3">
                             <div id="prductColorInputs">
-                                <div id="colorInputs"></div>
-                                <div id="otherColorInputs"></div>
+                                <div id="colorInputs">
+                                    <div id="${color}Inputs" class="mb-3 d-flex gap-3">
+                                        <div class="bg-img" style="background-image: url(assets/imgs/shoe1.png);"></div>
+                                        <div>
+                                            <label for="" class="label ms-1 me-3 quicksand-bold">${color}</label>
+                                            <div class="mt-2">
+                                                <label class="label">Image: </label>
+                                                <input class="form-control mb-2 import" id="product${color}Image" name="product${color}Image" type="file">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div id="${color}Inputs" class="mb-3 d-flex gap-3">
+                                        <div class="bg-img border border-dark"></div>
+                                        <div>
+                                            <label for="" class="label ms-1 me-3 quicksand-bold">${color}</label>
+                                            <div class="mt-2">
+                                                <label class="label">Image: </label>
+                                                <input class="form-control mb-2 import" id="product${color}Image" name="product${color}Image" type="file">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                </div>
+                                <div id="otherColorInputs">
+                                    <div id="${id}Inputs" class="mb-3 otherColorInputs d-flex gap-3">
+                                        <div class="bg-img"></div>
+                                        <div>
+                                            <label for="" class="label ms-1 me-3">#${id} :</label><br>
+                                            <div class="mt-2">
+                                                <label class="label">Color Name: </label>
+                                                <input class="form-control import" id="product${id}Name" name="product${id}Name" type="text" placeholder="Colour/Pattern Name*">
+                                            </div>
+                                            <div class="mt-2">
+                                                <label class="label">Image: </label>
+                                                <input class="form-control mb-2 import" id="product${id}Image" name="product${id}Image" type="file">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                </div>
                             </div>
                         </div>
                     </div>

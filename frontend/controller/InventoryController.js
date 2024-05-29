@@ -255,18 +255,21 @@ $('#cbColors').on('click', '.form-check-input', function () {
         otherBtnCount = 0;
         $("#colorInputs").empty();
         selectedColors.map(color => {
-            $("#colorInputs").append(getColorFieldsComponent(color))
+            $("#colorInputs").append(getColorFieldsComponent(color, null))
         })
     }
 });
 
-const getColorFieldsComponent = color => {
+const getColorFieldsComponent = (color, imgBase64) => {
     return `
-    <div id="${color}Inputs" class="mb-3">
-        <label for="" class="label ms-1 me-3 quicksand-bold">${color}</label>
-        <div class="mt-2">
-            <label class="label">Image: </label>
-            <input class="form-control mb-2 import" id="product${color}Image" name="product${color}Image" type="file">
+    <div id="${color}Inputs" class="mb-3 d-flex gap-3">
+        <div class="bg-img" ${imgBase64 && `style='background-image: url(${imgBase64})'`}></div>
+        <div>
+            <label for="" class="label ms-1 me-3 quicksand-bold">${color}</label>
+            <div class="mt-2">
+                <label class="label">Image: </label>
+                <input class="form-control mb-2 import" id="product${color}Image" name="product${color}Image" type="file">
+            </div>
         </div>
     </div>
     <hr>
@@ -275,20 +278,50 @@ const getColorFieldsComponent = color => {
 
 const getOtherColorFieldsComponent = (id) => {
     return `
-    <div id="${id}Inputs" class="mb-3 otherColorInputs">
-        <label for="" class="label ms-1 me-3">#${id} :</label><br>
-        <div class="mt-2">
-            <label class="label">Color Name: </label>
-            <input class="form-control import" id="product${id}Name" name="product${id}Name" type="text" placeholder="Colour/Pattern Name*">
-        </div>
-        <div class="mt-2">
-            <label class="label">Image: </label>
-            <input class="form-control mb-2 import" id="product${id}Image" name="product${id}Image" type="file">
+    <div id="${id}Inputs" class="mb-3 otherColorInputs d-flex gap-3">
+        <div class="bg-img"></div>
+        <div>
+            <label for="" class="label ms-1 me-3">#${id} :</label><br>
+            <div class="mt-2">
+                <label class="label">Color Name: </label>
+                <input class="form-control import" id="product${id}Name" name="product${id}Name" type="text" placeholder="Colour/Pattern Name*">
+            </div>
+            <div class="mt-2">
+                <label class="label">Image: </label>
+                <input class="form-control mb-2 import" id="product${id}Image" name="product${id}Image" type="file">
+            </div>
         </div>
     </div>
     <hr>
     `;
 }
+
+// set images to display
+$("#prductColorInputs").on('change', 'input[type=file]', function () {
+    // Get the file object
+    var file = $(this).prop('files')[0];
+
+    // Get the parent container of the input element
+    var parentContainer = $(this).closest('.mb-3');
+
+    // Find the corresponding div.bg-img element within the parent container
+    var bgImgElement = parentContainer.find('.bg-img');
+
+    // Check if a file was selected
+    if (file) {
+        // Create a FileReader object
+        var reader = new FileReader();
+
+        // Define the onload event handler
+        reader.onload = function (e) {
+            // Set the background image of the div.bg-img element to the uploaded image
+            bgImgElement.css('background-image', 'url(' + e.target.result + ')');
+        }
+
+        // Read the contents of the file as a Data URL
+        reader.readAsDataURL(file);
+    }
+})
 
 $('#cbColors').on('click', '#otherColorBtn', function () {
     otherBtnCount++;
@@ -632,9 +665,11 @@ const setItemData = item => {
     if (item.category !== 'ACC') {
         let colors = []
         item.inventoryItems.map(inventory => {
-            !colors.includes(inventory.colors) && colors.push(inventory.colors);
+            !colors.find(colorItem => colorItem.color == inventory.colors) && colors.push({ color: inventory.colors, img: inventory.itemImage.image });
         })
-        console.log(colors);
+        for(let colorItem of colors) {
+            console.log(colorItem);
+        }
         $("#cbColors").empty();
         $("#colorInputs").empty();
         $("#otherColorInputs").empty();
@@ -646,29 +681,38 @@ const setItemData = item => {
                 <label class="label" for="cbColor${color}">${color}</label>
             </div>
             `)
-            if (colors.includes(color)) {
-                // colorCount++;
-                $("#colorInputs").append(getColorFieldsComponent(color))
-                colors.splice(colors.indexOf(color), 1);
-            }
+            colors.map((colorItem,i) => {
+                if (colorItem.color === color) {
+                    $("#colorInputs").append(getColorFieldsComponent(color, colorItem.img))
+                    colors.splice(i, 1);
+                }
+            })
+            // if (colors.includes(color)) {
+            //     // colorCount++;
+            //     $("#colorInputs").append(getColorFieldsComponent(color, null))
+            //     colors.splice(colors.indexOf(color), 1);
+            // }
         })
         $("#cbColors").append(`
         <button id="otherColorBtn" type="button" class="btn btn-primary"><i class="fa-solid fa-plus me-2"></i>Other</button>
         `);
         otherBtnCount = 0;
-        colors.map(color => {
+        colors.map(colorItem => {
             otherBtnCount++;
             let id = 'Other' + otherBtnCount;
             $("#otherColorInputs").append(`
-            <div id="${id}Inputs" class="mb-3 otherColorInputs">
-                <label for="" class="label ms-1 me-3">#${id} :</label><br>
-                <div class="mt-2">
-                    <label class="label">Color Name: </label>
-                    <input class="form-control import" id="product${id}Name" name="product${id}Name" type="text" value="${color}" disabled>
-                </div>
-                <div class="mt-2">
-                    <label class="label">Image: </label>
-                    <input class="form-control mb-2 import" id="product${id}Image" name="product${id}Image" type="file">
+            <div id="${id}Inputs" class="mb-3 otherColorInputs d-flex gap-3">
+                <div class="bg-img" style="background-image: url(${colorItem.img});"></div>
+                <div>
+                    <label for="" class="label ms-1 me-3">#${id} :</label><br>
+                    <div class="mt-2">
+                        <label class="label">Color Name: </label>
+                        <input class="form-control import" id="product${id}Name" name="product${id}Name" type="text" value="${colorItem.color}" disabled>
+                    </div>
+                    <div class="mt-2">
+                        <label class="label">Image: </label>
+                        <input class="form-control mb-2 import" id="product${id}Image" name="product${id}Image" type="file">
+                    </div>
                 </div>
             </div>
             <hr>
