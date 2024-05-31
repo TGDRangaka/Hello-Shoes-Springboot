@@ -1,4 +1,4 @@
-import { token } from '../db/data.js';
+import { token, userRole } from '../db/data.js';
 import { getRegex, setAsValid, setAsInvalid, showSuccessAlert, showErrorAlert, clearValidations } from '../util/UtilMatter.js';
 import { Customer } from '../model/Customer.js';
 
@@ -114,7 +114,7 @@ const loadCustomerTable = customers => {
             <td>${getData(cus.joinedDateAsLoyalty)}</td>
             <td>${getData(cus.gender)}</td>
             <td class="text-center">${getData(cus.recentPurchaseDateTime)}</td>
-            <td class="table-action"><button data-index=${i} class="btn"><i class="fa-solid fa-pen"></i></button></i></td>
+            ${userRole != 'admin' ? '' : `<td class="table-action"><button data-index=${i} class="btn"><i class="fa-solid fa-pen"></i></button></i></td>`}
         </tr>
         `)
     })

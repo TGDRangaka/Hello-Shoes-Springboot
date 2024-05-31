@@ -1,4 +1,4 @@
-import { token } from "../db/data.js";
+import { token, userRole } from "../db/data.js";
 import { Supplier } from "../model/Supplier.js";
 import { setAsInvalid, setAsValid, getRegex, clearValidations, showSuccessAlert, showErrorAlert } from "../util/UtilMatter.js";
 
@@ -135,7 +135,7 @@ const loadTable = (suppliers) => {
         <td>${supplier.contactNo1}</td>
         <td>${supplier.contactNo2}</td>
         <td>${supplier.originCountry}</td>
-        <td class="table-action"><button data-index="${i}" class="btn"><i class="fa-solid fa-pen"></i></button></i></td>
+        ${userRole != 'admin' ? '' : `<td class="table-action"><button data-index=${i} class="btn"><i class="fa-solid fa-pen"></i></button></i></td>`}
     </tr>
     `)
   })

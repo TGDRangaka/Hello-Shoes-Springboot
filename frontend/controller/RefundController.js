@@ -150,9 +150,15 @@ const getOrderItems = (orderId) => {
         selectedOrderItems = [];
         refundSubTotal = 0;
         addOrderItemsToTable(orderItems);
-    }).fail(function (jqXHR, textStatus, errorThrown) {
-        showErrorAlert("An error occurred while searching for order");
-        console.error("Error details:", textStatus, errorThrown, jqXHR);
+    }).fail(function ( textStatus, errorThrown, jqXHR) {
+        console.error("Error details:", errorThrown);
+        let message = textStatus.responseJSON.errorMessage;
+        if(message.includes("Refund request exceeded the 3-day limit")){
+            showErrorAlert("Refund request exceeded the 3-day limit");
+        }else{
+            showErrorAlert("An error occurred while refunding the items");
+        }
+        
     });
 }
 

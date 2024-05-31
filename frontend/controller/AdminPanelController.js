@@ -29,15 +29,15 @@ const getAdminPanelData = (date)=>{
 }
 
 const displayData = (data) => {
-    console.log(data);
+    // console.log(data);
     $("#totalSalesCount").text(data.totalSalesCount) // total sales count
     $("#totalProfitAmount").text(data.totalProfitAmount) // total profit amount
     $("#totalQtySold").text(data.totalQtySold)   // total qty sold
 
     // Most sold items
     $(".most-sold-items").empty();
-    for(let i = 0; i < 3; i++){
-        let item = data.mostSoldItems[i];
+    data.mostSoldItems.map((item,i) => {
+        // let item = data.mostSoldItems[i];
         $(".most-sold-items").append(`
         <div class="most-sold-item">
             <div class="img" style="background-image: url(${item.itemImage});"></div>
@@ -49,7 +49,7 @@ const displayData = (data) => {
             <span>${i+1}</span>
         </div>
         `)
-    }
+    })
 
 
     // set bar chart

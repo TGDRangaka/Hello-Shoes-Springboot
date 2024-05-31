@@ -482,6 +482,7 @@ nav button h3 {
 
 section {
     height: calc(100vh - 91px);
+    /* border:  1px solid red; */
     /* height: 100%; */
     z-index: 4;
     padding: 12px;
@@ -492,12 +493,28 @@ section {
     /* box-shadow: -1px 0 20px 1px rgba(0, 0, 0, 0.2); */
 }
 
+
+.accordion {
+    /* border: 1px solid blue; */
+    
+    height: 670px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
 section header {
     /* background-color: var(--light-bg-color); */
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+section .table-content{
+    /* border: 1px solid blue; */
+    height: 730px;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .search {

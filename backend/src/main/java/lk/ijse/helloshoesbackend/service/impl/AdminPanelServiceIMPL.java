@@ -22,6 +22,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 @Service
@@ -113,11 +114,15 @@ public class AdminPanelServiceIMPL implements AdminPanelService {
         log.info("Fetching most sold items for {}", date.toString());
         List<MostSoldItemProjection> mostSoldItems = new ArrayList<>();
         List<MostSoldItemProjection> allSoldItems = saleItemRepo.findMostSoldItems(date);
-        for (int i = 0; i < 3; i++) {
+
+        // Add up to 3 items from allSoldItems to mostSoldItems
+        for (int i = 0; i < 3 && i < allSoldItems.size(); i++) {
             mostSoldItems.add(allSoldItems.get(i));
         }
-//        Sort by mostSoldItemProjection.qty
-        Collections.sort(mostSoldItems);
+
+        // Sort by mostSoldItemProjection.qty
+        mostSoldItems.sort(Comparator.comparingInt(MostSoldItemProjection::getQty).reversed());
+
         return mostSoldItems;
     }
 

@@ -1,4 +1,4 @@
-import { token, user, setUser } from '../db/data.js';
+import { token, user, setUser, userRole } from '../db/data.js';
 import { Employee } from '../model/Employee.js'
 import { getRegex, setAsInvalid, setAsValid, clearValidations, showSuccessAlert, showErrorAlert } from '../util/UtilMatter.js';
 
@@ -63,7 +63,7 @@ const loadEmployeeTable = (employees) => {
             <td>${employee.gender}</td>
             <td>${employee.guardianOrNominatedPerson}</td>
             <td>${employee.emergencyContact}</td>
-            <td class="table-action"><button data-index=${i} class="btn edit"><i class="fa-solid fa-pen"></i></button></i></td>
+            ${userRole != 'admin' ? '' : `<td class="table-action"><button data-index=${i} class="btn"><i class="fa-solid fa-pen"></i></button></i></td>`}
         </tr>
         `);
     })
