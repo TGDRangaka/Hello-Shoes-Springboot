@@ -105,8 +105,7 @@ const saveSale = () => {
 }
 
 $("#salePayBtn").click(() => {
-
-    if (selectedItemByColors.length == 0) {
+    if (selectedItems.length == 0) {
         showErrorAlert("Please add items to order.")
         return;
     }
@@ -144,7 +143,7 @@ $("#saleConfirmBtn").click(() => {
     saveSale();
 })
 
-$("#saleCancelBtn").click(() => {
+$("#cardPaymentPopupCancelBtn").click(() => {
     $("#cardLasDigits").val("");
     $("#cardBankName").val("");
     clearValidations("#cardPaymentPopup")
@@ -238,12 +237,22 @@ const loadSoldItemsTable = (soldItems) => {
 }
 
 $("#payBtn").on("click", () => {
+
+    if (selectedItems.length == 0) {
+        showErrorAlert("Please add items to order.")
+        return;
+    }
+
     paymentMethod = $('input[name="paymentMethod"]:checked').val();
     if (paymentMethod !== 'card' && !isPaymentPanelOpened) return;
     if (!isPaymentPanelOpened) {
         $("#cardPaymentPopup").css("display", "flex");
         isPaymentPanelOpened = true;
     }
+})
+
+$("#saleCancelBtn").click(function(){
+    
 })
 
 $("#cardPayment, #cashPayment").on("click", () => {

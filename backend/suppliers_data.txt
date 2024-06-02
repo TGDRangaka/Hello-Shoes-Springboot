@@ -1,0 +1,456 @@
+
+        ArrayList<SupplierEntity> suppliers = new ArrayList<>();
+suppliers.add(new SupplierEntity(
+            "SUP001",
+            "Nike",
+            SupplierCategories.INTERNATIONAL,
+            "1234",
+            "Main Lane",
+            "Colombo",
+            "Western Province",
+            "00100",
+            "United States",
+            "nike@example.com",
+            "0771234567",
+            "0777654321"
+        ));
+
+        suppliers.add(new SupplierEntity(
+            "SUP002",
+            "Adidas",
+            SupplierCategories.INTERNATIONAL,
+            "1235",
+            "Second Lane",
+            "Kandy",
+            "Central Province",
+            "20000",
+            "Germany",
+            "adidas@example.com",
+            "0771234568",
+            "0777654322"
+        ));
+
+        suppliers.add(new SupplierEntity(
+            "SUP003",
+            "Puma",
+            SupplierCategories.INTERNATIONAL,
+            "1236",
+            "Third Lane",
+            "Galle",
+            "Southern Province",
+            "80000",
+            "Germany",
+            "puma@example.com",
+            "0771234569",
+            "0777654323"
+        ));
+
+        suppliers.add(new SupplierEntity(
+            "SUP004",
+            "Converse",
+            SupplierCategories.INTERNATIONAL,
+            "1237",
+            "Fourth Lane",
+            "Jaffna",
+            "Northern Province",
+            "40000",
+            "United States",
+            "converse@example.com",
+            "0771234570",
+            "0777654324"
+        ));
+
+        suppliers.add(new SupplierEntity(
+            "SUP005",
+            "Vans",
+            SupplierCategories.INTERNATIONAL,
+            "1238",
+            "Fifth Lane",
+            "Matara",
+            "Southern Province",
+            "81000",
+            "United States",
+            "vans@example.com",
+            "0771234571",
+            "0777654325"
+        ));
+
+        suppliers.add(new SupplierEntity(
+            "SUP006",
+            "Reebok",
+            SupplierCategories.INTERNATIONAL,
+            "1239",
+            "Sixth Lane",
+            "Kurunegala",
+            "North Western Province",
+            "60000",
+            "United States",
+            "reebok@example.com",
+            "0771234572",
+            "0777654326"
+        ));
+
+        suppliers.add(new SupplierEntity(
+            "SUP007",
+            "New Balance",
+            SupplierCategories.INTERNATIONAL,
+            "1240",
+            "Seventh Lane",
+            "Anuradhapura",
+            "North Central Province",
+            "50000",
+            "United States",
+            "newbalance@example.com",
+            "0771234573",
+            "0777654327"
+        ));
+
+        suppliers.add(new SupplierEntity(
+            "SUP008",
+            "Timberland",
+            SupplierCategories.INTERNATIONAL,
+            "1241",
+            "Eighth Lane",
+            "Ratnapura",
+            "Sabaragamuwa Province",
+            "70000",
+            "United States",
+            "timberland@example.com",
+            "0771234574",
+            "0777654328"
+        ));
+
+        suppliers.add(new SupplierEntity(
+            "SUP009",
+            "Dr. Martens",
+            SupplierCategories.INTERNATIONAL,
+            "1242",
+            "Ninth Lane",
+            "Nuwara Eliya",
+            "Central Province",
+            "22000",
+            "United Kingdom",
+            "drmartens@example.com",
+            "0771234575",
+            "0777654329"
+        ));
+
+        suppliers.add(new SupplierEntity(
+            "SUP010",
+            "Asics",
+            SupplierCategories.INTERNATIONAL,
+            "1243",
+            "Tenth Lane",
+            "Polonnaruwa",
+            "North Central Province",
+            "51000",
+            "Japan",
+            "asics@example.com",
+            "0771234576",
+            "0777654330"
+        ));
+
+        suppliers.add(new SupplierEntity(
+            "SUP011",
+            "Skechers",
+            SupplierCategories.INTERNATIONAL,
+            "1244",
+            "Eleventh Lane",
+            "Badulla",
+            "Uva Province",
+            "90000",
+            "United States",
+            "skechers@example.com",
+            "0771234577",
+            "0777654331"
+        ));
+
+        suppliers.add(new SupplierEntity(
+            "SUP012",
+            "Clarks",
+            SupplierCategories.INTERNATIONAL,
+            "1245",
+            "Twelfth Lane",
+            "Trincomalee",
+            "Eastern Province",
+            "31000",
+            "United Kingdom",
+            "clarks@example.com",
+            "0771234578",
+            "0777654332"
+        ));
+
+        suppliers.add(new SupplierEntity(
+            "SUP013",
+            "Under Armour",
+            SupplierCategories.INTERNATIONAL,
+            "1246",
+            "Thirteenth Lane",
+            "Batticaloa",
+            "Eastern Province",
+            "30000",
+            "United States",
+            "underarmour@example.com",
+            "0771234579",
+            "0777654333"
+        ));
+
+        suppliers.add(new SupplierEntity(
+            "SUP014",
+            "Fila",
+            SupplierCategories.INTERNATIONAL,
+            "1247",
+            "Fourteenth Lane",
+            "Hambantota",
+            "Southern Province",
+            "82000",
+            "South Korea",
+            "fila@example.com",
+            "0771234580",
+            "0777654334"
+        ));
+
+        suppliers.add(new SupplierEntity(
+            "SUP015",
+            "Salomon",
+            SupplierCategories.INTERNATIONAL,
+            "1248",
+            "Fifteenth Lane",
+            "Ampara",
+            "Eastern Province",
+            "32000",
+            "France",
+            "salomon@example.com",
+            "0771234581",
+            "0777654335"
+        ));
+
+
+
+
+
+
+        suppliers.add(new SupplierEntity(
+                        "SUP016",
+                        "DSI",
+                        SupplierCategories.LOCAL,
+                        "1249",
+                        "Sixteenth Lane",
+                        "Colombo",
+                        "Western Province",
+                        "00100",
+                        "Sri Lanka",
+                        "dsi@example.com",
+                        "0771234582",
+                        "0777654336"
+                ));
+
+                suppliers.add(new SupplierEntity(
+                        "SUP017",
+                        "Bata",
+                        SupplierCategories.LOCAL,
+                        "1250",
+                        "Seventeenth Lane",
+                        "Kandy",
+                        "Central Province",
+                        "20000",
+                        "Sri Lanka",
+                        "bata@example.com",
+                        "0771234583",
+                        "0777654337"
+                ));
+
+                suppliers.add(new SupplierEntity(
+                        "SUP018",
+                        "Gihan Shoe Mart",
+                        SupplierCategories.LOCAL,
+                        "1251",
+                        "Eighteenth Lane",
+                        "Galle",
+                        "Southern Province",
+                        "80000",
+                        "Sri Lanka",
+                        "gihanshoemart@example.com",
+                        "0771234584",
+                        "0777654338"
+                ));
+
+                suppliers.add(new SupplierEntity(
+                        "SUP019",
+                        "Redtape",
+                        SupplierCategories.LOCAL,
+                        "1252",
+                        "Nineteenth Lane",
+                        "Jaffna",
+                        "Northern Province",
+                        "40000",
+                        "Sri Lanka",
+                        "redtape@example.com",
+                        "0771234585",
+                        "0777654339"
+                ));
+
+                suppliers.add(new SupplierEntity(
+                        "SUP020",
+                        "Hameedia",
+                        SupplierCategories.LOCAL,
+                        "1253",
+                        "Twentieth Lane",
+                        "Matara",
+                        "Southern Province",
+                        "81000",
+                        "Sri Lanka",
+                        "hameedia@example.com",
+                        "0771234586",
+                        "0777654340"
+                ));
+
+                suppliers.add(new SupplierEntity(
+                        "SUP021",
+                        "DSI Premier",
+                        SupplierCategories.LOCAL,
+                        "1254",
+                        "Twenty-first Lane",
+                        "Kurunegala",
+                        "North Western Province",
+                        "60000",
+                        "Sri Lanka",
+                        "dsipremier@example.com",
+                        "0771234587",
+                        "0777654341"
+                ));
+
+                suppliers.add(new SupplierEntity(
+                        "SUP022",
+                        "Reborn",
+                        SupplierCategories.LOCAL,
+                        "1255",
+                        "Twenty-second Lane",
+                        "Anuradhapura",
+                        "North Central Province",
+                        "50000",
+                        "Sri Lanka",
+                        "reborn@example.com",
+                        "0771234588",
+                        "0777654342"
+                ));
+
+                suppliers.add(new SupplierEntity(
+                        "SUP023",
+                        "DI",
+                        SupplierCategories.LOCAL,
+                        "1256",
+                        "Twenty-third Lane",
+                        "Ratnapura",
+                        "Sabaragamuwa Province",
+                        "70000",
+                        "Sri Lanka",
+                        "di@example.com",
+                        "0771234589",
+                        "0777654343"
+                ));
+
+                suppliers.add(new SupplierEntity(
+                        "SUP024",
+                        "Ranpa Footwear",
+                        SupplierCategories.LOCAL,
+                        "1257",
+                        "Twenty-fourth Lane",
+                        "Nuwara Eliya",
+                        "Central Province",
+                        "22000",
+                        "Sri Lanka",
+                        "ranpafootwear@example.com",
+                        "0771234590",
+                        "0777654344"
+                ));
+
+                suppliers.add(new SupplierEntity(
+                        "SUP025",
+                        "SADS Footwear",
+                        SupplierCategories.LOCAL,
+                        "1258",
+                        "Twenty-fifth Lane",
+                        "Polonnaruwa",
+                        "North Central Province",
+                        "51000",
+                        "Sri Lanka",
+                        "sadsfootwear@example.com",
+                        "0771234591",
+                        "0777654345"
+                ));
+
+                suppliers.add(new SupplierEntity(
+                        "SUP026",
+                        "ZigZag",
+                        SupplierCategories.LOCAL,
+                        "1259",
+                        "Twenty-sixth Lane",
+                        "Badulla",
+                        "Uva Province",
+                        "90000",
+                        "Sri Lanka",
+                        "zigzag@example.com",
+                        "0771234592",
+                        "0777654346"
+                ));
+
+                suppliers.add(new SupplierEntity(
+                        "SUP027",
+                        "Dilly & Carlo",
+                        SupplierCategories.LOCAL,
+                        "1260",
+                        "Twenty-seventh Lane",
+                        "Trincomalee",
+                        "Eastern Province",
+                        "31000",
+                        "Sri Lanka",
+                        "dillyandcarlo@example.com",
+                        "0771234593",
+                        "0777654347"
+                ));
+
+                suppliers.add(new SupplierEntity(
+                        "SUP028",
+                        "Hitz",
+                        SupplierCategories.LOCAL,
+                        "1261",
+                        "Twenty-eighth Lane",
+                        "Batticaloa",
+                        "Eastern Province",
+                        "30000",
+                        "Sri Lanka",
+                        "hitz@example.com",
+                        "0771234594",
+                        "0777654348"
+                ));
+
+                suppliers.add(new SupplierEntity(
+                        "SUP029",
+                        "Stoneridge",
+                        SupplierCategories.LOCAL,
+                        "1262",
+                        "Twenty-ninth Lane",
+                        "Hambantota",
+                        "Southern Province",
+                        "82000",
+                        "Sri Lanka",
+                        "stoneridge@example.com",
+                        "0771234595",
+                        "0777654349"
+                ));
+
+                suppliers.add(new SupplierEntity(
+                        "SUP030",
+                        "UL Wickramasinghe & Company",
+                        SupplierCategories.LOCAL,
+                        "1263",
+                        "Thirtieth Lane",
+                        "Ampara",
+                        "Eastern Province",
+                        "32000",
+                        "Sri Lanka",
+                        "ulwickramasinghe@example.com",
+                        "0771234596",
+                        "0777654350"
+                ));

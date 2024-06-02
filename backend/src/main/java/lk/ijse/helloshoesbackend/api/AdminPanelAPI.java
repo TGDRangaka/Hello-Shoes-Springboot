@@ -1,5 +1,6 @@
 package lk.ijse.helloshoesbackend.api;
 
+import jakarta.annotation.security.RolesAllowed;
 import lk.ijse.helloshoesbackend.dto.AlertDTO;
 import lk.ijse.helloshoesbackend.service.AdminPanelService;
 import lombok.RequiredArgsConstructor;
@@ -31,6 +32,7 @@ public class AdminPanelAPI {
     }
 
     @PostMapping("/alert")
+    @RolesAllowed(value={"ROLE_USER", "ROLE_ADMIN"})
     public ResponseEntity recordAlert(@RequestBody AlertDTO alertDTO){
         log.info("Record Alert endpoint called - Alert: {}", alertDTO);
         return ResponseEntity.ok(adminPanelService.saveAlert(alertDTO));

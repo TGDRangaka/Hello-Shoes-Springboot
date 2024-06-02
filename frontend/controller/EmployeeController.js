@@ -63,7 +63,7 @@ const loadEmployeeTable = (employees) => {
             <td>${employee.gender}</td>
             <td>${employee.guardianOrNominatedPerson}</td>
             <td>${employee.emergencyContact}</td>
-            ${userRole != 'admin' ? '' : `<td class="table-action"><button data-index=${i} class="btn"><i class="fa-solid fa-pen"></i></button></i></td>`}
+            ${userRole != 'ADMIN' ? '' : `<td class="table-action"><button data-index=${i} class="btn edit"><i class="fa-solid fa-pen"></i></button></i></td>`}
         </tr>
         `);
     })
@@ -381,6 +381,10 @@ $('#submitProfileBtn').on('click', () => {
             console.log(JSON.parse(response));
             setUser(JSON.parse(response));
             clearValidations("#profile form");
+            $(".userName").text(user.name);
+            $(".userEmail").text(user.email);
+            localStorage.setItem("email", user.email);
+            $(".user-img").css('background-image', `url(data:image/jpeg;base64,${user.profilePic})`);
         });
     }
 });

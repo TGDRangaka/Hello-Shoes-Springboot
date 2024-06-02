@@ -7,8 +7,8 @@ import org.springframework.security.core.Authentication;
 
 public interface AuthenticationService {
     JwtAuthResponse signIn(SignIn signIn);
+    JwtAuthResponse signUp(SignUp signUp) ;
 
     boolean isCredentialsValid(String email, String password, Authentication authentication);
 
-    JwtAuthResponse signUp(SignUp signUp) ;
 }

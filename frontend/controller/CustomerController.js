@@ -114,7 +114,7 @@ const loadCustomerTable = customers => {
             <td>${getData(cus.joinedDateAsLoyalty)}</td>
             <td>${getData(cus.gender)}</td>
             <td class="text-center">${getData(cus.recentPurchaseDateTime)}</td>
-            ${userRole != 'admin' ? '' : `<td class="table-action"><button data-index=${i} class="btn"><i class="fa-solid fa-pen"></i></button></i></td>`}
+            ${userRole != 'ADMIN' ? '' : `<td class="table-action"><button data-index=${i} class="btn"><i class="fa-solid fa-pen"></i></button></i></td>`}
         </tr>
         `)
     })

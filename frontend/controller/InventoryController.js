@@ -1,6 +1,6 @@
 import { Item } from '../model/Item.js'
 import { Inventory } from '../model/Inventory.js'
-import { token } from '../db/data.js'
+import { token, userRole } from '../db/data.js'
 import { getCategory, setAsInvalid, setAsValid, clearValidations, showSuccessAlert, showErrorAlert } from '../util/UtilMatter.js';
 
 let allItems = [];
@@ -152,7 +152,7 @@ const loadItemTable = (allItems) => {
             <div class="col">${item.supplierName}</div>
             <div class="col-1">${item.unitPriceSale}</div>
             <div class="col-1">${item.unitPriceBuy}</div>
-            <div class="col-1"><i data-index="${i}" class="fa-solid fa-pen itemEdit"></i></div>
+            ${userRole != 'ADMIN' ? '' : `<div class="col-1"><i data-index="${i}" class="fa-solid fa-pen itemEdit"></i></div>`}
         </div>
         `;
 
@@ -866,11 +866,7 @@ const isInSelectedOccasion = (item) => {
 
 const isInSelectedSupplier = (item) => {
     let supplier = $("#inventorySupplierFilter").val();
-    if (supplier === 'ALL' || supplier === item.supplierName) {
-        return true;
-    } else {
-        return false;
-    }
+    return supplier === 'ALL' ? true : supplier === item.supplierName;
 }
 
 const isInSearchedKeyword = (item) => {

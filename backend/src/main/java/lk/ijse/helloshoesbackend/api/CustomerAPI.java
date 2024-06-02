@@ -1,14 +1,24 @@
 package lk.ijse.helloshoesbackend.api;
 
+import jakarta.annotation.PostConstruct;
+import jakarta.annotation.security.DeclareRoles;
 import jakarta.annotation.security.RolesAllowed;
 import jakarta.validation.Valid;
 import lk.ijse.helloshoesbackend.dto.CustomerDTO;
+import lk.ijse.helloshoesbackend.entity.CustomerEntity;
+import lk.ijse.helloshoesbackend.entity.enums.CustomerLevel;
+import lk.ijse.helloshoesbackend.entity.enums.Gender;
+import lk.ijse.helloshoesbackend.repo.CustomerRepo;
 import lk.ijse.helloshoesbackend.service.CustomerService;
+import lk.ijse.helloshoesbackend.util.UtilMatter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -19,6 +29,7 @@ import java.util.List;
 public class CustomerAPI {
     private final CustomerService customerService;
 
+
     @GetMapping("/health")
     public String healthCheck(){
         log.info("Health check endpoint called");
@@ -26,6 +37,7 @@ public class CustomerAPI {
     }
 
     @GetMapping
+    @RolesAllowed("ADMIN")
     public ResponseEntity<List<CustomerDTO>> getAllCustomers(){
         log.info("Get all customers endpoint called");
         List<CustomerDTO> customers = customerService.getAll();

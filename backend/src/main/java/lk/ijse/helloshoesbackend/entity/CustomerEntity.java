@@ -22,11 +22,11 @@ public class CustomerEntity {
     private String customerCode;
     private String name;
     @Enumerated(EnumType.STRING)
-    private Gender gender;
+    private Gender gender;  // MALE FEMALE
     private LocalDate joinedDateAsLoyalty;
     @Enumerated(EnumType.STRING)
-    private CustomerLevel level;
-    private Integer totalPoints;
+    private CustomerLevel level; //NEW BRONZE SILVER GOLD
+    private Integer totalPoints; //NEW(0-49) BRONZE(50-99) SILVER(100-199) GOLD(200+)
     private LocalDate dob;
     private String addressNo;
     private String addressLane;

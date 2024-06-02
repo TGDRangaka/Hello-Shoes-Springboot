@@ -135,7 +135,7 @@ const loadTable = (suppliers) => {
         <td>${supplier.contactNo1}</td>
         <td>${supplier.contactNo2}</td>
         <td>${supplier.originCountry}</td>
-        ${userRole != 'admin' ? '' : `<td class="table-action"><button data-index=${i} class="btn"><i class="fa-solid fa-pen"></i></button></i></td>`}
+        ${userRole != 'ADMIN' ? '' : `<td class="table-action"><button data-index=${i} class="btn"><i class="fa-solid fa-pen"></i></button></i></td>`}
     </tr>
     `)
   })
@@ -224,7 +224,7 @@ const sortSupplierTable = () => {
 // filter
 const isInSelectedCategory = (supplier) => {
   let category = $("#supplierCategorySelect").val();
-  return category === 'All' ? true : supplier.category === category;
+  return (category === 'All') ? true : supplier.category === category;
 }
 
 // search 
