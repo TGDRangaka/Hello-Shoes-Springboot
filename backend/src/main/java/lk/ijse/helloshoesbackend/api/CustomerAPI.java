@@ -37,7 +37,6 @@ public class CustomerAPI {
     }
 
     @GetMapping
-    @RolesAllowed("ADMIN")
     public ResponseEntity<List<CustomerDTO>> getAllCustomers(){
         log.info("Get all customers endpoint called");
         List<CustomerDTO> customers = customerService.getAll();

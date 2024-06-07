@@ -111,7 +111,7 @@ public class AuthenticationServiceIMPL implements AuthenticationService {
             throw new DataDuplicationException("User already exists");
         }
 
-        UserEntity userEntity = new ModelMapper().map(signUp, UserEntity.class);
+        UserEntity userEntity = new ModelMapper().map(userDTO, UserEntity.class);
         userEntity.setId(UtilMatter.generateUUID());
         userEntity.setPassword(passwordEncoder.encode(signUp.getPassword()));
 

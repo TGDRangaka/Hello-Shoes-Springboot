@@ -80,6 +80,8 @@ const registerUser = (username, password) => {
         }),
     };
 
+    console.log(encode(username, 0), password);
+
     $.ajax(settings).done(function (response) {
         handleUserLoginToSystem(response);
     }).fail(function (jqXHR, textStatus, errorThrown) {

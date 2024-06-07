@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @Builder
 public class SignUp {
     @NotNull(message = "email must be provided")
-    @Email(message = "must be a valid email address")
+//    @Email(message = "must be a valid email address")
     private String email;
 
     @NotNull(message = "Password must be provided")
